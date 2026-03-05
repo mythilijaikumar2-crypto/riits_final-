@@ -15,7 +15,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ["Oswald", "sans-serif"],
+        heading: ["Montserrat", "sans-serif"],
         body: ["Inter", "sans-serif"],
       },
       colors: {
@@ -96,6 +96,14 @@ export default {
           "0%": { opacity: "0", transform: "translateX(-40px)" },
           "100%": { opacity: "1", transform: "translateX(0)" },
         },
+        "marquee-left": {
+          "0%":   { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        "marquee-right": {
+          "0%":   { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -103,6 +111,8 @@ export default {
         "fade-up": "fade-up 0.8s ease-out forwards",
         "fade-in": "fade-in 0.6s ease-out forwards",
         "slide-in-left": "slide-in-left 0.6s ease-out forwards",
+        "marquee-left":  "marquee-left 40s linear infinite",
+        "marquee-right": "marquee-right 45s linear infinite",
       },
     },
   },

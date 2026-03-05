@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import { Phone, MapPin, Mail } from "lucide-react";
 
 const Footer = () => (
-  <footer className="bg-primary text-primary-foreground">
+  <footer className="bg-[#061b54] text-white">
     <div className="container-main section-padding">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         <div>
-          <h3 className="font-heading text-xl font-bold uppercase mb-4">RITS Metal Craft</h3>
+          <h3 className="font-heading text-xl font-bold uppercase mb-4">RIITS Metal Craft</h3>
           <p className="text-sm opacity-80 leading-relaxed">
             The Art of Metal. Premium fabrication, elevation & cladding solutions based in Trichy, Tamil Nadu.
           </p>
@@ -55,8 +55,8 @@ const Footer = () => (
           </div>
         </div>
       </div>
-      <div className="border-t border-primary-foreground/20 mt-12 pt-8 text-center text-sm opacity-60">
-        © {new Date().getFullYear()} RITS Metal Craft. All rights reserved.
+      <div className="border-t border-white/20 mt-12 pt-8 text-center text-sm opacity-60">
+        © {new Date().getFullYear()} RIITS Metal Craft. All rights reserved.
       </div>
     </div>
   </footer>

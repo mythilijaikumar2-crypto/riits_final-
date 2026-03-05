@@ -1,20 +1,160 @@
 import { motion } from "framer-motion";
 import SectionHeading from "../components/SectionHeading";
 import { Phone, MessageCircle, MapPin, Mail, Clock } from "lucide-react";
+import { TurtleButton } from "../components/TurtleButton";
 
-const Contact = () => (
-  <main className="pt-20">
-    <section className="section-padding bg-primary text-primary-foreground">
-      <div className="container-main">
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <p className="section-subtitle text-silver mb-3">Get in Touch</p>
-          <h1 className="heading-xl mb-6">Contact Us</h1>
-          <p className="text-lg max-w-3xl opacity-80 leading-relaxed">
-            Reach out to RITS Metal Craft for inquiries, quotations, or to schedule a site visit. We're based in Trichy and serve all of Tamil Nadu.
-          </p>
+const Contact = () => {
+  return (
+    <main className="pt-20">
+      <style>{`
+        .contact-hero {
+          position: relative;
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          background: #061b54;
+          overflow: hidden;
+          transform: translateZ(0);
+          backface-visibility: hidden;
+        }
+        .hero-bg-img {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 0.35;
+          mix-blend-mode: screen;
+          will-change: transform;
+        }
+        .hero-overlay {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle at 50% 50%, rgba(6, 27, 84, 0.4) 0%, #061b54 95%);
+          z-index: 1;
+        }
+        .hero-grid-lines {
+          position: absolute;
+          inset: 0;
+          background-image: 
+            linear-gradient(rgba(29, 78, 216, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(29, 78, 216, 0.1) 1px, transparent 1px);
+          background-size: 60px 60px;
+          z-index: 0;
+          mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%);
+        }
+        .contact-shimmer {
+          background: linear-gradient(90deg, #93c5fd 0%, #ffffff 50%, #93c5fd 100%);
+          background-size: 200% auto;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: contactShimmer 3.5s linear infinite;
+        }
+        @keyframes contactShimmer {
+          to { background-position: 200% center; }
+        }
+        .float-mail {
+          position: absolute;
+          opacity: 0.2;
+          pointer-events: none;
+          z-index: 2;
+        }
+        .glow-sphere {
+          position: absolute;
+          width: 300px;
+          height: 300px;
+          background: radial-gradient(circle, rgba(29, 78, 216, 0.15) 0%, transparent 70%);
+          border-radius: 50%;
+          filter: blur(40px);
+          z-index: 0;
+        }
+      `}</style>
+
+      {/* ── CONTACT HERO ── */}
+      <section className="contact-hero">
+        <motion.div
+          initial={{ scale: 1.15, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="absolute inset-0"
+        >
+          <img
+            src="/src/assets/contack page hero .png"
+            alt="Contact Background"
+            className="hero-bg-img"
+          />
         </motion.div>
-      </div>
-    </section>
+        <div className="hero-overlay" />
+        <div className="hero-grid-lines" />
+
+
+        {/* Floating stat badges */}
+        <motion.div
+          animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-24 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10"
+        >
+          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+          Available 24/7 For You
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, 12, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-24 left-[6%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10"
+        >
+          <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+          Free Consultation & Site Visit
+        </motion.div>
+
+        <div className="container-main relative z-10">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
+            {/* Left copy */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.3 } } }}
+            >
+              <motion.div
+                variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-widest mb-4"
+              >
+                <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+                Get In Touch
+              </motion.div>
+
+              <motion.h1
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                className="font-heading text-4xl sm:text-5xl lg:text-6xl font-black uppercase leading-none tracking-tight text-white mb-4"
+              >
+                Let's Talk<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600">
+                  Steel.
+                </span><br />
+                Start Today.
+              </motion.h1>
+
+              <motion.p
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                className="text-white/65 text-base leading-relaxed max-w-md mb-7"
+              >
+                Have a project in mind or need a technical consultation? Our experts are ready to turn your vision into structural reality — with a free, transparent quote.
+              </motion.p>
+
+              <motion.div
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                className="flex flex-wrap gap-3"
+              >
+                <TurtleButton href="tel:+919876543210" variant="premium_shimmer" className="rounded-xl">
+                  <Phone className="w-4 h-4" /> Call Now
+                </TurtleButton>
+                <TurtleButton href="https://wa.me/919876543210" variant="whatsapp" external className="rounded-xl">
+                  <MessageCircle className="w-4 h-4" /> WhatsApp
+                </TurtleButton>
+              </motion.div>
+            </motion.div>
+
+
+          </div>
+        </div>
+      </section>
 
     <section className="section-padding bg-background">
       <div className="container-main">
@@ -78,7 +218,8 @@ const Contact = () => (
         </div>
       </div>
     </section>
-  </main>
-);
+    </main>
+  );
+};
 
 export default Contact;
