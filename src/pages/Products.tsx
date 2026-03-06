@@ -1,6 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, memo } from "react";
+import { useState, useEffect, memo } from "react";
+import { Phone, MessageCircle } from "lucide-react";
 import { TurtleButton } from "../components/TurtleButton";
+
 
 /* ── Local image imports ── */
 
@@ -128,25 +130,33 @@ type Product = (typeof productCategories)[0]["products"][0];
 type Category = (typeof productCategories)[0];
 
 /* ── Benefit Card ── */
-const BenefitCard = memo(({ label, index }: { label: string; index: number }) => {
+const BenefitCard = memo(({ label, index, isActive }: { label: string; index: number; isActive: boolean }) => {
   const detail = benefitDetails[label] ?? { icon: "✅", desc: "Quality guaranteed." };
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.4 }}
-      className="rounded-xl border border-slate-200 bg-slate-50 p-5 shadow-sm"
+      className="benefit-wrapper"
     >
-      <div className="mb-3 flex items-center gap-3">
-        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-lg">
-          {detail.icon}
-        </span>
-        <h4 className="text-sm font-semibold tracking-wide text-slate-800 uppercase">
-          {label}
-        </h4>
+      <div className={`letter-image ${isActive ? "active" : ""}`}>
+        <div className="animated-mail">
+          <div className="back-fold"></div>
+          <div className="letter">
+            <div className="letter-border"></div>
+            <div className="letter-title">{label}</div>
+            <div className="letter-stamp">
+              <div className="letter-stamp-inner">{detail.icon}</div>
+            </div>
+            <div className="letter-context">{detail.desc}</div>
+          </div>
+          <div className="top-fold"></div>
+          <div className="body"></div>
+          <div className="left-fold"></div>
+        </div>
+        <div className="mail-shadow"></div>
       </div>
-      <p className="text-sm leading-relaxed text-slate-600">{detail.desc}</p>
     </motion.div>
   );
 });
@@ -167,7 +177,7 @@ const ProductCard = memo(({ product, index }: { product: Product; index: number 
       </div>
 
       <div className="project-info">
-        <div className="flex">
+        <div className="flex justify-between items-center">
           <div className="project-title">{product.name}</div>
           <span className="tag">Product</span>
         </div>
@@ -175,13 +185,13 @@ const ProductCard = memo(({ product, index }: { product: Product; index: number 
           {product.desc}
         </span>
         <div className="mt-5 pt-5 border-t border-slate-100 flex flex-col gap-2">
-           <div className="text-[12px] leading-tight text-slate-400 font-black uppercase tracking-[0.1em]">Technical Details</div>
-           <div className="text-[14px] text-slate-700 flex items-start gap-2 leading-relaxed">
-              <span className="text-blue-600 font-extrabold min-w-[75px]">MATERIAL:</span> {product.materials}
-           </div>
-           <div className="text-[14px] text-slate-700 flex items-start gap-2 leading-relaxed">
-              <span className="text-blue-600 font-extrabold min-w-[75px]">USE CASE:</span> {product.applications}
-           </div>
+          <div className="text-[12px] leading-tight text-slate-400 font-black uppercase tracking-[0.1em]">Technical Details</div>
+          <div className="text-[14px] text-slate-700 flex items-start gap-2 leading-relaxed">
+            <span className="text-blue-600 font-extrabold min-w-[75px]">MATERIAL:</span> {product.materials}
+          </div>
+          <div className="text-[14px] text-slate-700 flex items-start gap-2 leading-relaxed">
+            <span className="text-blue-600 font-extrabold min-w-[75px]">USE CASE:</span> {product.applications}
+          </div>
         </div>
       </div>
     </motion.div>
@@ -190,36 +200,45 @@ const ProductCard = memo(({ product, index }: { product: Product; index: number 
 
 /* ── Category Section ── */
 const CategorySection = memo(({ category }: { category: Category }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % 4);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [category.id]);
+
   return (
     <section id={`section-${category.id}`} className="scroll-mt-24 pb-12" style={{ contentVisibility: 'auto' }}>
-    <div className="mb-8">
-      <p className="text-xs font-semibold tracking-wider text-blue-600 uppercase mb-1">
-        {category.subtitle}
+      <div className="mb-8">
+        <p className="text-xs font-semibold tracking-wider text-blue-600 uppercase mb-1">
+          {category.subtitle}
+        </p>
+        <h2 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
+          {category.title}
+        </h2>
+      </div>
+      <div className="mb-8 h-px bg-slate-200" />
+      <p className="mb-10 max-w-3xl text-base leading-relaxed text-slate-600">
+        {category.overview}
       </p>
-      <h2 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
-        {category.title}
-      </h2>
-    </div>
-    <div className="mb-8 h-px bg-slate-200" />
-    <p className="mb-10 max-w-3xl text-base leading-relaxed text-slate-600">
-      {category.overview}
-    </p>
-    <div className="mb-12 product-grid sm:grid-cols-2 lg:grid-cols-3">
-      {category.products.map((p, i) => (
-        <ProductCard key={p.name} product={p} index={i} />
-      ))}
-    </div>
-    <div className="mb-6">
-      <h3 className="text-sm font-semibold tracking-wider text-slate-500 uppercase mb-5">
-        Key Benefits
-      </h3>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {category.benefits.map((b, i) => (
-          <BenefitCard key={b} label={b} index={i} />
+      <div className="mb-12 product-grid sm:grid-cols-2 lg:grid-cols-3">
+        {category.products.map((p, i) => (
+          <ProductCard key={p.name} product={p} index={i} />
         ))}
       </div>
-    </div>
-  </section>
+      <div className="mb-6">
+        <h3 className="text-sm font-semibold tracking-wider text-slate-500 uppercase mb-5">
+          Key Benefits
+        </h3>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {category.benefits.map((b, i) => (
+            <BenefitCard key={b} label={b} index={i} isActive={i === activeIndex} />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 });
 
@@ -342,12 +361,6 @@ const Products = () => {
           overflow: hidden;
         }
 
-        .flex {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
         .tag {
           font-size: 0.7rem;
           font-weight: 700;
@@ -361,6 +374,173 @@ const Products = () => {
         .product-grid {
           display: grid;
           gap: 2rem;
+        }
+
+        /* ── Benefit Card Animation (Animated Mail) ── */
+        .benefit-wrapper {
+          position: relative;
+          width: 100%;
+          height: 250px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .letter-image {
+          position: relative;
+          width: 200px;
+          height: 200px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+        }
+
+        .animated-mail {
+          position: absolute;
+          height: 150px;
+          width: 200px;
+          transition: .4s;
+          z-index: 10;
+        }
+        
+        .animated-mail .body {
+          position: absolute;
+          bottom: 0;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 0 0 100px 200px;
+          border-color: transparent transparent #3a42b4 transparent;
+          z-index: 2;
+        }
+        
+        .animated-mail .top-fold {
+          position: absolute;
+          top: 50px;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 50px 100px 0 100px;
+          transform-origin: 50% 0%;
+          transition: transform .4s .4s, z-index .2s .4s;
+          border-color: #0b266e transparent transparent transparent;
+          z-index: 2;
+        }
+        
+        .animated-mail .back-fold {
+          position: absolute;
+          bottom: 0;
+          width: 200px;
+          height: 100px;
+          background: #0b266e;
+          z-index: 0;
+        }
+        
+        .animated-mail .left-fold {
+          position: absolute;
+          bottom: 0;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 50px 0 50px 100px;
+          border-color: transparent transparent transparent #091e5c;
+          z-index: 2;
+        }
+        
+        .animated-mail .letter {
+          left: 20px;
+          bottom: 0px;
+          position: absolute;
+          width: 160px;
+          height: 60px;
+          background: white;
+          z-index: 1;
+          overflow: hidden;
+          transition: .4s .2s;
+          border-radius: 4px;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+        
+        .animated-mail .letter-border {
+          height: 10px;
+          width: 100%;
+          background: repeating-linear-gradient(-45deg, #061b54, #061b54 8px, transparent 8px, transparent 18px);
+        }
+        
+        .animated-mail .letter-title {
+          margin-top: 8px;
+          margin-left: 10px;
+          margin-right: 30px;
+          font-size: 13px;
+          font-weight: 800;
+          color: #061b54;
+          line-height: 1.1;
+        }
+        
+        .animated-mail .letter-context {
+          margin-top: 6px;
+          margin-left: 10px;
+          margin-right: 10px;
+          font-size: 10px;
+          color: #475569;
+          line-height: 1.3;
+          opacity: 0;
+          transition: opacity 0.2s;
+        }
+        
+        .animated-mail .letter-stamp {
+          position: absolute;
+          top: 15px;
+          right: 10px;
+          border-radius: 100%;
+          height: 28px;
+          width: 28px;
+          background: #f1f5f9;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 14px;
+        }
+
+        .mail-shadow {
+          position: absolute;
+          top: 190px;
+          left: 50%;
+          width: 200px;
+          height: 15px;
+          transition: .4s;
+          transform: translateX(-50%);
+          border-radius: 100%;
+          background: radial-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.0), rgba(0,0,0,0.0));
+        }
+
+        .letter-image:hover .animated-mail,
+        .letter-image.active .animated-mail {
+          transform: translateY(20px);
+        }
+        
+        .letter-image:hover .animated-mail .top-fold,
+        .letter-image.active .animated-mail .top-fold {
+          transition: transform .4s, z-index .2s;
+          transform: rotateX(180deg);
+          z-index: 0;
+        }
+        
+        .letter-image:hover .animated-mail .letter,
+        .letter-image.active .animated-mail .letter {
+          height: 195px;
+        }
+
+        .letter-image:hover .animated-mail .letter-context,
+        .letter-image.active .animated-mail .letter-context {
+          opacity: 1;
+          transition-delay: 0.4s;
+        }
+        
+        .letter-image:hover .mail-shadow,
+        .letter-image.active .mail-shadow {
+          width: 250px;
         }
       `}</style>
 
@@ -432,13 +612,14 @@ const Products = () => {
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
                 className="flex flex-wrap gap-3"
               >
-                <TurtleButton href="tel:+919876543210" variant="premium_shimmer" className="rounded-xl">
-                  <span>📞</span> Call Now
+                <TurtleButton href="tel:+919876543210" variant="index_brand_shimmer" className="rounded-xl">
+                  <Phone className="w-4 h-4" /> Call Now
                 </TurtleButton>
                 <TurtleButton href="https://wa.me/919876543210" variant="whatsapp" external className="rounded-xl">
-                  <span>💬</span> WhatsApp
+                  <MessageCircle className="w-4 h-4" /> WhatsApp
                 </TurtleButton>
               </motion.div>
+
             </div>
 
 
@@ -453,11 +634,10 @@ const Products = () => {
             <button
               key={cat.id}
               onClick={() => setActiveTab(cat.id)}
-              className={`whitespace-nowrap flex-shrink-0 rounded-xl px-6 py-2.5 text-sm font-bold uppercase tracking-wide transition-all duration-300 ${
-                activeTab === cat.id
-                  ? "bg-white text-[#061b54] shadow-[0_0_20px_rgba(255,255,255,0.3)] scale-105"
-                  : "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"
-              }`}
+              className={`whitespace-nowrap flex-shrink-0 rounded-xl px-6 py-2.5 text-sm font-bold uppercase tracking-wide transition-all duration-300 ${activeTab === cat.id
+                ? "bg-white text-[#061b54] shadow-[0_0_20px_rgba(255,255,255,0.3)] scale-105"
+                : "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"
+                }`}
             >
               {cat.title}
             </button>
