@@ -2,10 +2,16 @@ import { motion } from "framer-motion";
 import SectionHeading from "../components/SectionHeading";
 import { Phone, MessageCircle, MapPin, Mail, Clock, Facebook } from "lucide-react";
 import { TurtleButton } from "../components/TurtleButton";
+import SEO from "../components/SEO";
 
 const Contact = () => {
   return (
     <main className="pt-20">
+      <SEO 
+        title="Contact RIITS Metal Craft | Metal Fabricators in Trichy"
+        description="Contact RIITS Metal Craft in Trichy for all your metal fabrication needs. Get a free quote for gates, railings, elevation work, and industrial structures. Call +91 98765 43210."
+        keywords="contact riits metal craft, trichy fabricators phone number, metal work quote trichy"
+      />
       <style>{`
         .contact-hero {
           position: relative;
@@ -85,8 +91,9 @@ const Contact = () => {
         >
           <img
             src="/src/assets/contack page hero .png"
-            alt="Contact Background"
+            alt="Contact RIITS Metal Craft - We are Here to Help with Your Fabrication Projects"
             className="hero-bg-img"
+            loading="eager"
           />
         </motion.div>
         <div className="hero-overlay" />
@@ -278,6 +285,42 @@ const Contact = () => {
         </div>
       </div>
     </section>
+      {/* ── FINAL CTA ── */}
+      <section 
+        className="bg-slate-950 py-24 relative overflow-hidden text-center"
+        style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 400px' }}
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)]" />
+        
+        <div className="mx-auto max-w-7xl px-6 relative z-10 md:px-8">
+          <p className="font-heading text-sm font-semibold uppercase tracking-[0.25em] text-blue-300 mb-4">
+            Direct Line
+          </p>
+          <h2 className="text-4xl font-black uppercase tracking-tight text-white mb-6">
+            Immediate Assistance?
+          </h2>
+          <p className="mx-auto max-w-lg text-base text-white/60 mb-10 leading-relaxed">
+            Our expert engineers are just a call away for technical queries, design help, or urgent project quotations.
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="tel:+919876543210"
+              className="inline-flex items-center gap-2.5 bg-white text-slate-950 px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-white/10 hover:shadow-2xl hover:-translate-y-1"
+            >
+              <Phone className="w-4 h-4" /> Call +91 98765 43210
+            </a>
+            <a
+              href="https://wa.me/919876543210"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-emerald-600/30 hover:shadow-2xl hover:-translate-y-1"
+            >
+              <MessageCircle className="w-4 h-4" /> WhatsApp Now
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
   );
 };

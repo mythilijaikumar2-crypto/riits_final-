@@ -92,13 +92,13 @@ const ProcessSection: React.FC = () => {
 
                 {/* ── Section title ─────────────────────────────────── */}
                 <div className="text-center mb-2">
-                    <p className="text-white/60 text-xs font-semibold uppercase tracking-[0.3em] mb-1">
+                    <p className="text-white/85 text-xs font-semibold uppercase tracking-[0.3em] mb-1">
                         Step by Step
                     </p>
                     <h2 className="text-white font-heading text-3xl sm:text-4xl font-black uppercase tracking-tight">
                         Our Process
                     </h2>
-                    <p className="text-white/50 text-xs mt-1 max-w-md mx-auto leading-relaxed">
+                    <p className="text-white/75 text-xs mt-1 max-w-md mx-auto leading-relaxed">
                         A proven end-to-end workflow that delivers quality from the first call to final handover.
                     </p>
                 </div>
@@ -111,7 +111,7 @@ const ProcessSection: React.FC = () => {
                             style={{ width: `${progressPct}%` }}
                         />
                     </div>
-                    <span className="text-white/70 text-xs font-semibold font-heading uppercase tracking-wider whitespace-nowrap">
+                    <span className="text-white/90 text-xs font-semibold font-heading uppercase tracking-wider whitespace-nowrap">
                         {active + 1} / {STEPS.length}
                     </span>
                 </div>
@@ -139,6 +139,7 @@ const ProcessSection: React.FC = () => {
                                         key={step.num}
                                         onClick={() => handleStepClick(i)}
                                         onMouseEnter={() => handleStepClick(i)}
+                                        aria-label={`Switch to ${step.title}`}
                                         className="flex items-center gap-5 text-left group py-1.5 focus:outline-none"
                                     >
                                         {/* ── Node circle ── */}
@@ -150,10 +151,10 @@ const ProcessSection: React.FC = () => {
                                                 className={[
                                                     "w-9 h-9 rounded-full border-2 flex items-center justify-center text-xs font-black font-heading transition-all duration-300",
                                                     isActive
-                                                        ? "bg-white border-white text-[#0e6b8f]"
+                                                        ? "bg-white border-white text-[#084158]"
                                                         : isPast
                                                             ? "bg-white/40 border-white/60 text-white"
-                                                            : "bg-transparent border-white/30 text-white/40",
+                                                            : "bg-transparent border-white/30 text-white/70",
                                                 ].join(" ")}
                                             >
                                                 {isPast && !isActive ? "✓" : step.num}
@@ -172,7 +173,7 @@ const ProcessSection: React.FC = () => {
                                             <span
                                                 className={[
                                                     "font-heading text-sm font-bold uppercase tracking-wide block leading-tight",
-                                                    isActive ? "text-[#0e6b8f]" : "text-white/70",
+                                                    isActive ? "text-[#084158]" : "text-white/90",
                                                 ].join(" ")}
                                             >
                                                 {step.title}
@@ -185,7 +186,7 @@ const ProcessSection: React.FC = () => {
                                                     isActive ? "max-h-20 mt-1 opacity-100" : "max-h-0 opacity-0",
                                                 ].join(" ")}
                                             >
-                                                <p className="text-xs text-[#0e6b8f]/70 leading-relaxed">
+                                                <p className="text-xs text-[#084158] leading-relaxed">
                                                     {step.desc}
                                                 </p>
                                             </div>
@@ -260,13 +261,18 @@ const ProcessSection: React.FC = () => {
                             key={i}
                             onClick={() => handleStepClick(i)}
                             title={`Step ${i + 1}`}
-                            className="rounded-full transition-all duration-300 focus:outline-none"
-                            style={{
-                                width: active === i ? 28 : 8,
-                                height: 8,
-                                background: active === i ? "#fff" : "rgba(255,255,255,0.25)",
-                            }}
-                        />
+                            aria-label={`Go to step ${i + 1}`}
+                            className="p-3 transition-all duration-300 focus:outline-none group"
+                        >
+                            <div
+                                className="rounded-full transition-all duration-300 group-hover:scale-110"
+                                style={{
+                                    width: active === i ? 28 : 8,
+                                    height: 8,
+                                    background: active === i ? "#fff" : "rgba(255,255,255,0.25)",
+                                }}
+                            />
+                        </button>
                     ))}
                 </div>
             </div>

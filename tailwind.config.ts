@@ -52,6 +52,9 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        slate: {
+          950: "#0d2557",
+        },
         steel: "hsl(var(--steel))",
         silver: "hsl(var(--silver))",
         navy: {

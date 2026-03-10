@@ -27,6 +27,31 @@ import heroImage from "../assets/home page hero1.png";
 import SectionHeading from "../components/SectionHeading";
 import { TurtleButton } from "../components/TurtleButton";
 import ProcessSection from "../components/ProcessSection";
+import SEO from "../components/SEO";
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "RIITS Metal Craft",
+  "image": "https://riits.in/og-image.webp",
+  "url": "https://riits.in",
+  "telephone": "+919876543210",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Trichy",
+    "addressLocality": "Trichy",
+    "addressRegion": "Tamil Nadu",
+    "postalCode": "620001",
+    "addressCountry": "IN"
+  },
+  "description": "Trichy's most trusted metal fabrication studio specializing in gates, railings, elevation & industrial structures.",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    "opens": "09:00",
+    "closes": "20:00"
+  }
+};
 
 const services = [
   { icon: "🚪", title: "Gates & Grills", desc: "Custom MS & SS gates with modern geometric designs", category: "MS / SS Fabrication", image: gates, productCategory: "ss" },
@@ -74,7 +99,7 @@ const whyUs = [
 /* ================= HERO ================= */
 
 const HeroSection = () => (
-  <section className="relative h-screen flex flex-col justify-center bg-[#0d151f] overflow-hidden" style={{ contentVisibility: 'auto' }}>
+  <section className="relative h-screen flex flex-col justify-center bg-slate-950 overflow-hidden" style={{ contentVisibility: 'auto' }}>
 
     {/* Background image */}
     <div className="absolute inset-0 z-0">
@@ -87,7 +112,7 @@ const HeroSection = () => (
         className="w-full h-full object-cover object-center opacity-35 mix-blend-overlay"
         style={{ willChange: "transform" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0d151f]/90 via-[#0d151f]/50 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/50 to-transparent" />
     </div>
 
 
@@ -251,6 +276,12 @@ const Index = () => {
 
   return (
     <main className="overflow-hidden" style={{ scrollBehavior: 'smooth' }}>
+      <SEO 
+        title="Best Metal Fabricators in Trichy | Gates, Railings & Structural Works"
+        description="RIITS Metal Craft is Trichy's premium fabrication studio. We specialize in custom SS/MS gates, railings, aluminium glazing, ACP cladding, and industrial structural works."
+        keywords="metal fabrication trichy, gate fabricators trichy, stainless steel railings trichy, industrial fabrication tamil nadu, ACP cladding trichy"
+        schemaData={localBusinessSchema}
+      />
       <motion.div style={{ scaleX: scrollYProgress }}
         className="fixed top-0 left-0 right-0 h-[3px] bg-accent origin-left z-[100]" />
 
@@ -269,7 +300,7 @@ const Index = () => {
                   onMouseEnter={() => setCurrentSlide(index)}
                   className={`w-full text-left px-5 py-2.5 rounded-xl font-heading text-xs font-bold uppercase tracking-[0.15em] transition-all duration-150 border-2 ${currentSlide === index
                     ? "bg-[hsl(225,73%,35%)] text-white border-[hsl(225,73%,35%)] shadow-lg scale-105"
-                    : "bg-white text-[hsl(225,73%,35%)]/60 border-transparent hover:bg-slate-50 hover:text-[hsl(225,73%,35%)]"
+                    : "bg-white text-[hsl(225,73%,35%)]/85 border-transparent hover:bg-slate-50 hover:text-[hsl(225,73%,35%)]"
                     }`}
                   whileHover={{ x: 8 }}
                   whileTap={{ scale: 0.98 }}
@@ -334,9 +365,12 @@ const Index = () => {
                       <button
                         key={i}
                         onClick={() => setCurrentSlide(i)}
-                        className={`w-2 h-2 rounded-full transition-all duration-300 ${currentSlide === i ? "bg-[hsl(225,73%,35%)] w-6" : "bg-slate-300"
-                          }`}
-                      />
+                        aria-label={`Go to slide ${i + 1}`}
+                        className="p-4 transition-all duration-300 hover:scale-110 active:scale-95 outline-none group"
+                      >
+                        <div className={`h-2 rounded-full transition-all duration-300 ${currentSlide === i ? "bg-[hsl(225,73%,35%)] w-6" : "bg-slate-300 w-2"
+                          }`} />
+                      </button>
                     ))}
                   </div>
                 </div>

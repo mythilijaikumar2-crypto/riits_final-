@@ -122,6 +122,7 @@ const Navbar = () => {
                     className="relative z-10 block"
                     whileHover={{ y: -1.5, color: "hsl(var(--primary))" }}
                     transition={{ duration: 0.2 }}
+                    aria-label={`Navigate to ${link.label}`}
                   >
                     {link.label}
                   </motion.span>
@@ -131,16 +132,17 @@ const Navbar = () => {
 
             {/* CTA Button with shimmer */}
             <motion.a
-              href="tel:+919876543210"
-              className="navbar-cta btn-primary text-xs py-2 px-5 relative overflow-hidden"
-              whileHover={{ scale: 1.04, y: -1 }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            >
-              <span className="navbar-cta-shimmer" />
-              <Phone className="w-4 h-4 relative z-10" />
-              <span className="relative z-10">Call Now</span>
-            </motion.a>
+                href="tel:+919876543210"
+                className="navbar-cta btn-primary text-xs py-2 px-5 relative overflow-hidden"
+                whileHover={{ scale: 1.04, y: -1 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                aria-label="Call RIITS Metal Craft"
+              >
+                <span className="navbar-cta-shimmer" />
+                <Phone className="w-4 h-4 relative z-10" />
+                <span className="relative z-10">Call Now</span>
+              </motion.a>
           </div>
 
           {/* Mobile toggle */}

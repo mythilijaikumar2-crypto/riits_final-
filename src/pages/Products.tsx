@@ -1,7 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, memo } from "react";
-import { Phone, MessageCircle } from "lucide-react";
+import { Phone, MessageCircle, CheckCircle2 } from "lucide-react";
 import { TurtleButton } from "../components/TurtleButton";
+import SEO from "../components/SEO";
 
 
 /* ── Local image imports ── */
@@ -266,6 +267,11 @@ const Products = () => {
 
   return (
     <main className="min-h-screen bg-white">
+      <SEO 
+        title="Premium Metal Products in Trichy | SS, MS & Aluminium Catalouge"
+        description="Browse our catalogue of premium metal products in Trichy. We offer stainless steel gates, mild steel structures, aluminium windows, and high-security rolling shutters."
+        keywords="metal products trichy, ss gate designs, rolling shutter types, aluminium window price trichy"
+      />
       <style>{`
         .products-hero {
           position: relative;
@@ -569,10 +575,11 @@ const Products = () => {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 2, ease: "easeOut" }}
             src="/src/assets/industryworks.jpg"
-            alt=""
-            aria-hidden="true"
+            alt="RIITS Metal Craft Industrial Fabrication - Heavy-Duty Structural Works"
+            aria-hidden="false"
             className="w-full h-full object-cover opacity-30 mix-blend-overlay"
             style={{ willChange: "transform" }}
+            loading="eager"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#020617]/90 via-[#020617]/55 to-transparent" />
         </div>
@@ -646,7 +653,7 @@ const Products = () => {
 
       {/* ─── Premium Tab Navigation (Automated) ─── */}
       <nav
-        className="sticky top-0 z-50 bg-slate-950/95 backdrop-blur-xl border-b border-white/10 shadow-2xl py-4 transition-all duration-300"
+        className="sticky top-[64px] lg:top-[80px] z-40 bg-slate-950/90 backdrop-blur-md border-b border-white/10 shadow-2xl py-4 transition-all duration-300"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -689,7 +696,7 @@ const Products = () => {
                   )}
 
                   {/* Content */}
-                  <span className={`relative z-10 text-[0.7rem] sm:text-[0.75rem] font-black uppercase tracking-[0.18em] transition-colors duration-300 ${isActive ? "text-[#0d2557]" : "text-white/60 group-hover:text-white"
+                  <span className={`relative z-10 text-[0.7rem] sm:text-[0.75rem] font-black uppercase tracking-[0.18em] transition-colors duration-300 ${isActive ? "text-slate-950" : "text-white/60 group-hover:text-white"
                     }`}>
                     {cat.title}
                   </span>
@@ -720,20 +727,48 @@ const Products = () => {
       </div>
 
       {/* ─── CTA ─── */}
-      <section className="bg-slate-50 py-20 border-t border-slate-200">
-        <div className="mx-auto max-w-7xl px-6 text-center md:px-8">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl mb-4">
-            Request a Custom Quote
-          </h2>
-          <p className="mx-auto max-w-lg text-base text-slate-600 mb-8">
-            Tell us about your project requirements and our team will prepare a detailed quotation.
+      <section 
+        className="bg-slate-950 py-24 relative overflow-hidden text-center"
+        style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 400px' }}
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)]" />
+        
+        <div className="mx-auto max-w-7xl px-6 relative z-10 md:px-8">
+          <p className="font-heading text-sm font-semibold uppercase tracking-[0.25em] text-blue-300 mb-4">
+            Get In Touch
           </p>
-          <a
-            href="#"
-            className="inline-block rounded-lg bg-blue-600 px-8 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 transition-colors"
-          >
-            Get a Free Consultation
-          </a>
+          <h2 className="text-4xl font-black uppercase tracking-tight text-white mb-6">
+            Ready to Build Your Vision?
+          </h2>
+          <p className="mx-auto max-w-lg text-base text-white/60 mb-10 leading-relaxed">
+            Tell us about your project requirements and our team will prepare a detailed consultation and quotation.
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="tel:+919876543210"
+              className="inline-flex items-center gap-2.5 bg-white text-slate-950 px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-white/10 hover:shadow-2xl hover:-translate-y-1"
+            >
+              <Phone className="w-4 h-4" /> Get Free Consultation
+            </a>
+            <a
+              href="https://wa.me/919876543210"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-emerald-600/30 hover:shadow-2xl hover:-translate-y-1"
+            >
+              <MessageCircle className="w-4 h-4" /> WhatsApp Us
+            </a>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-6 mt-12 pt-10 border-t border-white/10">
+            {["Certified Quality", "Precision Engineering", "Timely Delivery"].map((b) => (
+              <div key={b} className="flex items-center gap-2 text-sm text-white/40 font-medium">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                {b}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </main>

@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionHeading from "../components/SectionHeading";
 import { TurtleButton } from "../components/TurtleButton";
-import { X } from "lucide-react";
+import { X, CheckCircle2 } from "lucide-react";
+import SEO from "../components/SEO";
 
 import res1 from "../assets/service page/our works/ss railing installing.webp";
 import res2 from "../assets/service page/our works/ms gate installing.webp";
@@ -85,6 +86,11 @@ const Projects = () => {
 
   return (
     <main className="pt-20">
+      <SEO 
+        title="Recent Metal Fabrication Projects in Trichy | RIITS Portfolio"
+        description="View our portfolio of successful metal fabrication projects in Trichy. From residential gates to industrial sheds and commercial facades, see our craftsmanship in action."
+        keywords="fabrication projects trichy, ss railing portfolio, ms gate designs tamil nadu"
+      />
       <style>{`
         .projects-hero {
           position: relative;
@@ -145,8 +151,9 @@ const Projects = () => {
         <div className="absolute inset-0 z-0 overflow-hidden opacity-80">
           <img
             src="/src/assets/our work hero page .png"
-            alt="Background"
+            alt="RIITS Metal Craft Portfolio - Showcasing Our Excellence in Fabrication"
             className="hero-bg-img"
+            loading="eager"
           />
         </div>
         <div className="hero-overlay" />
@@ -279,6 +286,7 @@ const Projects = () => {
               {/* Close Button */}
               <button
                 onClick={() => setSelectedProject(null)}
+                aria-label="Close project details"
                 className="absolute top-6 right-6 z-10 p-3 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md transition-all hover:scale-110 active:scale-95"
               >
                 <X size={24} />
@@ -336,6 +344,51 @@ const Projects = () => {
           </div>
         )}
       </AnimatePresence>
+      {/* ── CTA ── */}
+      <section 
+        className="bg-slate-950 py-24 relative overflow-hidden text-center"
+        style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 400px' }}
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)]" />
+        
+        <div className="mx-auto max-w-7xl px-6 relative z-10 md:px-8">
+          <p className="font-heading text-sm font-semibold uppercase tracking-[0.25em] text-blue-300 mb-4">
+            Next Steps
+          </p>
+          <h2 className="text-4xl font-black uppercase tracking-tight text-white mb-6">
+            Want Similar Results <br className="hidden sm:block" /> for Your Building?
+          </h2>
+          <p className="mx-auto max-w-lg text-base text-white/60 mb-10 leading-relaxed">
+            From precision fabrication to expert installation, we bring your vision to life. Get a free site visit and feasibility report today.
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="tel:+919876543210"
+              className="inline-flex items-center gap-2.5 bg-white text-slate-950 px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-white/10 hover:shadow-2xl hover:-translate-y-1"
+            >
+              <span>📞</span> Call Our Expert
+            </a>
+            <a
+              href="https://wa.me/919876543210"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-emerald-600/30 hover:shadow-2xl hover:-translate-y-1"
+            >
+              <span>💬</span> WhatsApp Details
+            </a>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-6 mt-12 pt-10 border-t border-white/10">
+            {["Premium Finish", "Structural Integrity", "On-Time Completion"].map((b) => (
+              <div key={b} className="flex items-center gap-2 text-sm text-white/40 font-medium">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                {b}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </main>
   );
 };

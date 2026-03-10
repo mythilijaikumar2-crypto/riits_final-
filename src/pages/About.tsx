@@ -5,6 +5,7 @@ import {
   Layers, Ruler, Shield, Search, Wrench, ArrowRight,
   CheckCircle2, MapPin, Phone, Star, Quote
 } from "lucide-react";
+import SEO from "../components/SEO";
 
 const R = ({ children, delay = 0, dir = "up" }: any) => {
   const v = {
@@ -565,7 +566,7 @@ const ReviewCard = ({ rev }: { rev: typeof reviews[0] }) => (
           {rev.name.charAt(0)}
         </div>
         <div className="min-w-0">
-          <p className="text-[0.85rem] font-black text-[#0d2557] leading-tight truncate">{rev.name}</p>
+          <p className="text-[0.85rem] font-black text-slate-950 leading-tight truncate">{rev.name}</p>
           <div className="flex items-center gap-1.5 mt-0.5">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
             <p className="text-[9px] text-emerald-600 font-bold uppercase tracking-[0.14em]">Verified Client</p>
@@ -645,7 +646,7 @@ const ReviewsSection = () => {
             </span>
 
             {/* Heading */}
-            <h2 className="dlg text-[#0d2557] tracking-tight leading-tight max-w-xl mx-auto">
+            <h2 className="dlg text-slate-950 tracking-tight leading-tight max-w-xl mx-auto">
               Trusted by Hundreds of Happy Clients
             </h2>
 
@@ -661,13 +662,13 @@ const ReviewsSection = () => {
                 { val: '5.0', lbl: 'Avg Rating' },
                 { val: '15+', lbl: 'Years' },
               ].map(({ val, lbl }, i, arr) => (
-                <>
-                  <div key={lbl} className="text-center">
-                    <div className="text-2xl font-black text-[#0d2557]">{val}</div>
+                <div key={lbl} className="flex items-center gap-6 sm:gap-10">
+                  <div className="text-center">
+                    <div className="text-2xl font-black text-slate-950">{val}</div>
                     <div className="text-[10px] text-slate-400 uppercase tracking-widest font-bold mt-0.5">{lbl}</div>
                   </div>
                   {i < arr.length - 1 && <div className="w-px h-8 bg-slate-200 shrink-0" />}
-                </>
+                </div>
               ))}
             </div>
           </div>
@@ -688,6 +689,11 @@ const About = () => {
   const navigate = useNavigate();
   return (
     <main className="ap pt-20" style={{ transform: 'translateZ(0)' }}>
+      <SEO 
+        title="About RIITS Metal Craft | Leading Metal Fabricators in Trichy"
+        description="Learn about RIITS Metal Craft, Trichy's premier metal fabrication studio. With 15+ years of experience, we specialize in high-quality SS/MS fabrication, elevation, and industrial works."
+        keywords="about rits metal craft, metal fabricators trichy history, stainless steel experts tamil nadu"
+      />
       <FontLoader />
 
       {/* ── HERO / ABOUT US SECTION ── */}
@@ -699,8 +705,10 @@ const About = () => {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 2, ease: "easeOut" }}
             src="/src/assets/about page hero.png"
+            alt="RIITS Metal Craft Workshop - Precision Fabrication in Progress"
             className="w-full h-full object-cover opacity-30 mix-blend-overlay"
             style={{ willChange: "transform" }}
+            loading="eager"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--navy)] via-[var(--navy)]/60 to-transparent z-[1]" />
         </div>
@@ -896,7 +904,7 @@ const About = () => {
       <ReviewsSection />
 
       {/* ── CTA FOOTER — navy ── */}
-      <section className="navy-bg" style={{ padding: "clamp(3.5rem,7vw,6rem) clamp(1.5rem,5vw,5rem)", textAlign: "center", position: "relative", overflow: "hidden" }}>
+      <section className="navy-bg" style={{ padding: "clamp(3.5rem,7vw,6rem) clamp(1.5rem,5vw,5rem)", textAlign: "center", position: "relative", overflow: "hidden", contentVisibility: 'auto', containIntrinsicSize: 'auto 400px' }}>
         <div style={{
           position: "absolute", inset: 0, pointerEvents: "none",
           background: "radial-gradient(ellipse 60% 70% at 50% 50%, rgba(29,78,216,0.22) 0%, transparent 70%)"

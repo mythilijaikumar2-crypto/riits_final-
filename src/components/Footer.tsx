@@ -21,7 +21,7 @@ const Footer = () => (
               { to: "/projects", label: "Our Work" },
               { to: "/contact", label: "Contact" },
             ].map((l) => (
-              <Link key={l.to} to={l.to} className="text-sm opacity-70 hover:opacity-100 transition-opacity">
+              <Link key={l.to} to={l.to} className="text-sm opacity-70 hover:opacity-100 transition-opacity" aria-label={`Go to ${l.label} page`}>
                 {l.label}
               </Link>
             ))}
@@ -44,11 +44,11 @@ const Footer = () => (
               <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
               <span>Trichy, Tamil Nadu, India</span>
             </div>
-            <a href="tel:+919876543210" className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity">
+            <a href="tel:+919876543210" className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity" aria-label="Call RIITS Metal Craft">
               <Phone className="w-4 h-4" />
               <span>+91 98765 43210</span>
             </a>
-            <a href="mailto:info@ritsmetalcraft.com" className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity">
+            <a href="mailto:info@ritsmetalcraft.com" className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity" aria-label="Send email to RIITS Metal Craft">
               <Mail className="w-4 h-4" />
               <span>info@ritsmetalcraft.com</span>
             </a>

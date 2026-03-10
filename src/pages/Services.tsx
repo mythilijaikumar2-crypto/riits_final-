@@ -1,12 +1,13 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import { Phone, MessageCircle, ArrowRight, Star, CheckCircle2, Wrench, Home, Building2, Factory, Zap } from "lucide-react";
 import { TurtleButton } from "../components/TurtleButton";
+import SEO from "../components/SEO";
 import resSvcImg from "../assets/residental.jpeg";
 import comSvcImg from "../assets/commercial.jpeg";
 import indSvcImg from "../assets/industial.jpeg";
 
 /* ─── DATA ──────────────────────────────────────────────────────────── */
-
 const serviceAreas = [
   {
     title: "Residential",
@@ -14,7 +15,13 @@ const serviceAreas = [
     color: "#2563eb",
     gradient: "from-blue-600 to-indigo-800",
     image: comSvcImg,
-    items: ["Home gates & grills", "Balcony railings", "Staircase handrails", "Window systems", "Elevation work"],
+    items: [
+      { name: "Home gates & grills", slug: "ms-works" },
+      { name: "Balcony railings", slug: "ss-works" },
+      { name: "Staircase handrails", slug: "ss-works" },
+      { name: "Window systems", slug: "aluminium-windows" },
+      { name: "Elevation work", slug: "elevation-work" },
+    ],
   },
   {
     title: "Commercial",
@@ -22,7 +29,13 @@ const serviceAreas = [
     color: "#0f766e",
     gradient: "from-teal-600 to-emerald-800",
     image: indSvcImg,
-    items: ["Showroom facades", "Office partitions", "Structural glazing", "Rolling shutters", "ACP cladding"],
+    items: [
+      { name: "Showroom facades", slug: "aluminium-windows" },
+      { name: "Office partitions", slug: "aluminium-partition" },
+      { name: "Structural glazing", slug: "aluminium-windows" },
+      { name: "Rolling shutters", slug: "general-fabrication" },
+      { name: "ACP cladding", slug: "elevation-work" },
+    ],
   },
   {
     title: "Industrial",
@@ -30,7 +43,13 @@ const serviceAreas = [
     color: "#b45309",
     gradient: "from-amber-600 to-orange-800",
     image: resSvcImg,
-    items: ["Factory sheds", "Warehouse structures", "Heavy-duty shutters", "Structural steel", "Industrial gates"],
+    items: [
+      { name: "Factory sheds", slug: "roofing-work" },
+      { name: "Warehouse structures", slug: "steel-fabrication" },
+      { name: "Heavy-duty shutters", slug: "general-fabrication" },
+      { name: "Structural steel", slug: "steel-fabrication" },
+      { name: "Industrial gates", slug: "ms-works" },
+    ],
   },
 ];
 
@@ -51,6 +70,11 @@ const AnimatedCounter = ({ text }: { text: string }) => {
 const Services = () => {
   return (
     <main className="overflow-hidden" style={{ transform: "translateZ(0)" }}>
+      <SEO 
+        title="Professional Metal Fabrication Services in Trichy | RIITS Metal Craft"
+        description="Explore our wide range of metal and glass services in Trichy. We offer residential fabrication, commercial structural glazing, and industrial sheds across Tamil Nadu."
+        keywords="fabrication services trichy, industrial shed construction, glass partitions office tamil nadu"
+      />
       {/* ── HERO ──────────────────────────────────────────────────── */}
       <section className="relative h-screen flex flex-col justify-center overflow-hidden bg-slate-950">
         {/* Background image */}
@@ -58,7 +82,8 @@ const Services = () => {
           <img
             src="/src/assets/services hero page .png"
             className="w-full h-full object-cover opacity-60"
-            alt="Services hero"
+            alt="RIITS Metal Craft Services - Comprehensive Fabrication Solutions"
+            loading="eager"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/30 to-transparent" />
         </div>
@@ -230,14 +255,16 @@ const Services = () => {
                   <ul className="space-y-3">
                     {area.items.map((item) => (
                       <li
-                        key={item}
+                        key={item.name}
                         className="flex items-center gap-3 text-sm text-slate-600 group-hover:gap-4 transition-all duration-300"
                       >
                         <span
                           className="w-1.5 h-1.5 rounded-full shrink-0"
                           style={{ background: area.color }}
                         />
-                        {item}
+                        <Link to={`/services/${item.slug}`} className="hover:text-blue-600 transition-colors">
+                          {item.name}
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -256,20 +283,23 @@ const Services = () => {
       </section>
 
       {/* ── CTA ───────────────────────────────────────────────────── */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(26,58,107,0.05),transparent_70%)]" />
+      <section 
+        className="py-24 bg-slate-950 relative overflow-hidden text-white"
+        style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 400px' }}
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)]" />
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
           <div>
-            <p className="font-heading text-sm font-semibold uppercase tracking-[0.25em] text-[#2d5a8e] mb-4">
+            <p className="font-heading text-sm font-semibold uppercase tracking-[0.25em] text-blue-300 mb-4">
               Get In Touch
             </p>
-            <h2 className="font-heading text-4xl sm:text-5xl font-black uppercase text-[#1a3a6b] tracking-tight mb-6">
+            <h2 className="font-heading text-4xl sm:text-5xl font-black uppercase tracking-tight mb-6">
               Ready to Start
               <br />
               Your Project?
             </h2>
-            <p className="text-slate-500 text-base leading-relaxed max-w-xl mx-auto mb-10">
+            <p className="text-white/60 text-base leading-relaxed max-w-xl mx-auto mb-10">
               Contact us today for a free consultation and site visit. Our team is ready to bring your vision to life
               with precision craftsmanship.
             </p>
@@ -277,7 +307,7 @@ const Services = () => {
             <div className="flex flex-wrap justify-center gap-4">
               <a
                 href="tel:+919876543210"
-                className="inline-flex items-center gap-2.5 bg-[#1a3a6b] hover:bg-[#2d5a8e] text-white px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-[#1a3a6b]/30 hover:shadow-2xl"
+                className="inline-flex items-center gap-2.5 bg-white text-slate-950 px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-white/10 hover:shadow-2xl hover:-translate-y-1"
               >
                 <Phone className="w-4 h-4" /> Call Now
               </a>
@@ -285,16 +315,16 @@ const Services = () => {
                 href="https://wa.me/919876543210"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-emerald-600/30 hover:shadow-2xl"
+                className="inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-emerald-600/30 hover:shadow-2xl hover:-translate-y-1"
               >
                 <MessageCircle className="w-4 h-4" /> WhatsApp Us
               </a>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-6 mt-12 pt-10 border-t border-slate-100">
+            <div className="flex flex-wrap justify-center gap-6 mt-12 pt-10 border-t border-white/10">
               {["Free Consultation", "On-Time Delivery", "Quality Assured", "Pan Tamil Nadu"].map((b) => (
-                <div key={b} className="flex items-center gap-2 text-sm text-slate-500 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                <div key={b} className="flex items-center gap-2 text-sm text-white/50 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                   {b}
                 </div>
               ))}
