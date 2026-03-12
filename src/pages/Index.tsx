@@ -20,10 +20,15 @@ import {
   Layers,
   Clock4,
   ChevronRight,
-  PhoneCall,
   ArrowRight,
+  Star,
+  Quote,
 } from "lucide-react";
-import heroImage from "../assets/home page hero1.png";
+import heroImage from "../assets/heropage/home page hero1.webp";
+import pricingImg from "../assets/whychoiseus/finance.webp";
+import fabricationImg from "../assets/whychoiseus/precision fabrication.webp";
+import materialsImg from "../assets/whychoiseus/premium material.webp";
+import deliveryImg from "../assets/whychoiseus/on time delevery.webp";
 import SectionHeading from "../components/SectionHeading";
 import { TurtleButton } from "../components/TurtleButton";
 import ProcessSection from "../components/ProcessSection";
@@ -70,28 +75,101 @@ const whyUs = [
     desc: "No hidden costs, no surprises. Every project gets a detailed written quotation before work begins.",
     highlights: ["Written estimates", "No surprise charges", "Fair market rates"],
     accent: "#1a3a6b",
-    bg: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=700&h=500&auto=format&fit=crop&q=70",
+    bg: pricingImg,
   },
   {
     Icon: Ruler, title: "Precision Fabrication",
     desc: "Every cut, weld and finish is executed with laser accuracy. We don't cut corners — only metal.",
     highlights: ["Laser-accurate cuts", "Zero-tolerance fits", "Quality inspected"],
     accent: "#2d5a8e",
-    bg: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&h=500&auto=format&fit=crop&q=70",
+    bg: fabricationImg,
   },
   {
     Icon: Layers, title: "Premium Materials",
     desc: "Grade-A stainless steel, mild steel, aluminium & glass — sourced only from certified suppliers.",
     highlights: ["Grade A materials", "Certified suppliers", "Long-lasting finish"],
     accent: "#1e4d7b",
-    bg: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=700&h=500&auto=format&fit=crop&q=70",
+    bg: materialsImg,
   },
   {
     Icon: Clock4, title: "On-Time Delivery",
     desc: "Trichy's most reliable team. We set deadlines and we meet them — every single time.",
     highlights: ["Trichy-based team", "Timely handover", "Post-install support"],
     accent: "#16355f",
-    bg: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=700&h=500&auto=format&fit=crop&q=70",
+    bg: deliveryImg,
+  },
+];
+
+const testimonials = [
+  {
+    name: "Rajesh Kumar",
+    initial: "R",
+    text: "Excellent service and high-quality fabrication work. The team was very professional.",
+    rating: 5,
+    verified: true,
+  },
+  {
+    name: "Shanmugam",
+    initial: "S",
+    text: "தரமான வேலை மற்றும் சரியான நேரத்தில் முடித்துக் கொடுத்தார்கள். மிக்க நன்றி.",
+    rating: 5,
+    verified: true,
+  },
+  {
+    name: "Priya S.",
+    initial: "P",
+    text: "The stainless steel railings installed at my home are top-notch. Highly recommended!",
+    rating: 5,
+    verified: true,
+  },
+  {
+    name: "Revathi",
+    initial: "R",
+    text: "எங்கள் வீட்டிற்கு அமைத்த ஸ்டெயின்லெஸ் ஸ்டீல் கைப்பிடிகள் மிகவும் அழகாக உள்ளது.",
+    rating: 5,
+    verified: true,
+  },
+  {
+    name: "Arun Enterprises",
+    initial: "A",
+    text: "RIITS Metal Craft delivered our industrial shed ahead of schedule. Great project management.",
+    rating: 5,
+    verified: true,
+  },
+  {
+    name: "Karthik",
+    initial: "K",
+    text: "திருச்சியில் சிறந்த இரும்பு வேலை செய்யும் இடம். நம்பகமான சேவை.",
+    rating: 5,
+    verified: true,
+  },
+  {
+    name: "Murali Dharan",
+    initial: "M",
+    text: "Best metal fabricators in Trichy. Their attention to detail is remarkable.",
+    rating: 5,
+    verified: true,
+  },
+  {
+    name: "Selvam Krishna",
+    initial: "S",
+    text: "வேலைப்பாடு மிகவும் நுணுக்கமாக உள்ளது. விலையும் நியாயமானதாக இருக்கிறது.",
+    rating: 5,
+    verified: true,
+  },
+  {
+    name: "Kavitha R.",
+    initial: "K",
+    text: "Very happy with the modern gate design they provided. It really enhanced our home's curb appeal.",
+    rating: 5,
+    verified: true,
+  },
+  {
+    name: "Suresh Babu",
+    initial: "S",
+    text: "Professional team, transparent pricing, and quality materials. Would definitely hire them again.",
+    rating: 5,
+    verified: true,
   },
 ];
 
@@ -164,7 +242,7 @@ const HeroSection = () => (
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
             className="flex flex-wrap gap-3"
           >
-            <TurtleButton href="tel:+919876543210" variant="index_brand_shimmer" className="rounded-xl">
+            <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-10">
               <Phone className="w-4 h-4" /> Call Now
             </TurtleButton>
             <TurtleButton href="https://wa.me/919876543210" variant="whatsapp" external className="rounded-xl">
@@ -259,6 +337,142 @@ const WhyUsSection = () => {
     </section>
   );
 };
+
+
+const TestimonialCard = ({ name, initial, text, rating, verified }: typeof testimonials[0]) => (
+  <div className="w-[300px] sm:w-[360px] shrink-0 px-2" style={{ transform: 'translateZ(0)' }}>
+    <div className="relative flex flex-col justify-between h-full bg-white/90 backdrop-blur-sm rounded-2xl border border-slate-200/70 px-6 py-6 shadow-sm overflow-hidden group/card transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-2 hover:shadow-[0_20px_48px_-12px_rgba(37,99,235,0.12)] hover:border-blue-300/50">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200/60 to-transparent" />
+      <Quote className="absolute top-3 right-3 w-12 h-12 text-slate-100 group-hover/card:text-blue-100/70 transition-colors duration-500 pointer-events-none" aria-hidden="true" />
+      
+      <div className="relative z-10">
+        <div className="flex items-center gap-0.5 mb-3">
+          {[...Array(rating)].map((_, i) => (
+            <Star key={i} className="w-3 h-3 fill-amber-400 text-amber-400" />
+          ))}
+          <span className="ml-2 text-[9px] font-extrabold text-amber-600 uppercase tracking-widest">5.0</span>
+        </div>
+        <p className={`text-slate-600 leading-relaxed text-[0.88rem] font-medium line-clamp-4 italic ${text.match(/[^\x00-\x7F]/) ? 'font-serif' : ''}`}>
+          “{text}”
+        </p>
+      </div>
+
+      <div className="relative z-10 flex items-center gap-3 pt-4 mt-4 border-t border-slate-100">
+        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-400 text-white flex items-center justify-center font-bold text-base shadow shrink-0 select-none">
+          {initial}
+        </div>
+        <div className="min-w-0">
+          <p className="text-[0.85rem] font-black text-slate-950 leading-tight truncate">{name}</p>
+          {verified && (
+            <div className="flex items-center gap-1.5 mt-0.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+              <p className="text-[9px] text-emerald-600 font-bold uppercase tracking-[0.14em]">Verified Client</p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const TestimonialsSection = () => {
+  const row1 = testimonials.slice(0, 5);
+  const row2 = testimonials.slice(5, 10);
+
+  return (
+    <section className="py-20 bg-gradient-to-b from-blue-50/50 via-white to-blue-50/30 overflow-hidden relative border-t border-blue-100/50">
+      <div className="max-w-7xl mx-auto mb-14 text-center relative z-20 px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="flex flex-col items-center gap-4">
+            <span className="inline-flex items-center gap-2 bg-white text-blue-700 px-5 py-1.5 rounded-full font-bold text-[0.7rem] tracking-[0.22em] uppercase border border-slate-200 shadow-sm">
+              <Star className="w-3 h-3 fill-blue-600 text-blue-600" /> Client Testimonials
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-950 tracking-tight leading-tight max-w-xl mx-auto uppercase">
+              Trusted by Hundreds of Happy Clients
+            </h2>
+            <p className="text-slate-500 text-[0.95rem] max-w-lg mx-auto leading-relaxed font-medium">
+              Over 800 families and businesses in Trichy trust RIITS Metal Craft. Here's what they say.
+            </p>
+
+            <div className="flex items-center justify-center gap-6 sm:gap-10 mt-6 pt-6 border-t border-slate-200 w-full max-w-sm mx-auto">
+              {[
+                { label: "Projects", val: "800+" },
+                { label: "Avg Rating", val: "5.0" },
+                { label: "Years", val: "15+" },
+              ].map((stat, i) => (
+                <div key={i} className="flex items-center gap-6 sm:gap-10">
+                  <div className="text-center">
+                    <div className="text-2xl font-black text-slate-950">{stat.val}</div>
+                    <div className="text-[10px] text-slate-400 uppercase tracking-widest font-bold mt-0.5">{stat.label}</div>
+                  </div>
+                  {i < 2 && <div className="w-px h-8 bg-slate-200 shrink-0" />}
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      <div className="relative space-y-5 z-20">
+        <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+          <div className="flex gap-4 py-3 animate-marquee-left hover:[animation-play-state:paused]">
+            {[...row1, ...row1].map((t, i) => (
+              <TestimonialCard key={i} {...t} />
+            ))}
+          </div>
+        </div>
+
+        <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+          <div className="flex gap-4 py-3 animate-marquee-right hover:[animation-play-state:paused]">
+            {[...row2, ...row2].map((t, i) => (
+              <TestimonialCard key={i} {...t} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
+/* ================= CTA ================= */
+
+const CTASection = () => (
+  <section className="bg-slate-950 relative overflow-hidden py-24 px-6 text-center border-t border-white/5" style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 400px' }}>
+    <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(60% 70% at 50% 50%, rgba(29, 78, 216, 0.22) 0%, transparent 70%)" }} />
+    <div className="max-w-4xl mx-auto relative z-10">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <p className="text-blue-300 text-[0.68rem] font-bold uppercase tracking-[0.24em] mb-4">
+          Start Your Project
+        </p>
+        <h2 className="text-white text-3xl sm:text-5xl font-black uppercase tracking-tight mb-4">
+          Ready to Build?
+        </h2>
+        <p className="text-white/50 text-base sm:text-lg leading-relaxed max-w-[460px] mx-auto mb-10 font-medium">
+          Get a free consultation and detailed written quotation for your next metal fabrication or elevation project.
+        </p>
+        <div className="flex flex-wrap justify-center gap-4">
+          <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-10 py-4 h-auto text-base">
+            <Phone className="w-5 h-5" /> Call +91 98765 43210
+          </TurtleButton>
+          <button className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-white/20 bg-white/5 text-white/80 font-medium text-[0.92rem] hover:bg-white/10 transition-all duration-300">
+            View Our Work <ArrowRight className="w-5 h-5" />
+          </button>
+        </div>
+      </motion.div>
+    </div>
+  </section>
+);
 
 
 /* ================= MAIN ================= */
@@ -384,33 +598,12 @@ const Index = () => {
 
       <ProcessSection />
 
+      <TestimonialsSection />
+
+      <CTASection />
+
       {/* FOOTER */}
       <footer className="footer-bg bg-slate-950 text-white overflow-hidden" style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 400px' }}>
-        <div className="px-8 sm:px-12 lg:px-20 pt-16 pb-12" style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-10 max-w-7xl mx-auto">
-            <div className="flex-1">
-              <h2 className="text-3xl sm:text-4xl font-bold text-white font-display mb-3">
-                Start With a Transparent Quote!
-              </h2>
-              <p className="text-base max-w-lg leading-relaxed opacity-60">
-                We Prepare a clear and detailed quotation for your project.Once you approve, we move
-                forward with execution as planned.
-              </p>
-            </div>
-            <div className="flex-shrink-0 p-4">
-              <motion.a href="tel:+919876543210"
-                whileHover={{ scale: 1.07 }} whileTap={{ scale: 0.93 }}
-                className="relative w-40 h-40 rounded-full flex flex-col items-center justify-center text-center cursor-pointer"
-                style={{ background: "linear-gradient(135deg,rgba(255,255,255,0.10),rgba(255,255,255,0.04))", border: "1px solid rgba(255,255,255,0.28)" }}>
-                <div className="absolute rounded-full pointer-events-none animate-[spin_16s_linear_infinite]"
-                  style={{ inset: "-10px", border: "1.5px dashed rgba(255,255,255,0.22)" }} />
-                <PhoneCall className="w-8 h-8 mb-2 text-white opacity-90" />
-                <p className="text-[11px] font-bold uppercase tracking-[0.15em] leading-tight text-white opacity-85">Get Free<br />Quote</p>
-              </motion.a>
-            </div>
-          </div>
-        </div>
-
         <div className="px-8 sm:px-12 lg:px-20 py-14 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
           style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
           <div>

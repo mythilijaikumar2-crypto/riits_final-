@@ -111,9 +111,9 @@ const RoofingWork = () => {
                   Ready to add a roof to your balcony or factory? Get an expert quote now.
                 </p>
                 <div className="flex flex-wrap gap-4 relative z-10">
-                  <a href="tel:+919876543210" className="flex items-center gap-2 bg-white text-blue-600 px-5 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider hover:bg-slate-100 transition-colors">
+                  <TurtleButton href="tel:+919876543210" variant="call_now" size="sm" className="rounded-xl px-6">
                     <Phone className="w-3.5 h-3.5" /> Call Now
-                  </a>
+                  </TurtleButton>
                   <a href="https://wa.me/919876543210" className="flex items-center gap-2 bg-emerald-500 text-white px-5 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider hover:bg-emerald-400 transition-colors">
                     <MessageCircle className="w-3.5 h-3.5" /> WhatsApp
                   </a>

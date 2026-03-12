@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 
 /* ─── assets ────────────────────────────────────────────────────────── */
-import consultationImg from "../assets/service page/consultantion.png";
-import siteVisitImg from "../assets/service page/site visit.png";
-import designImg from "../assets/service page/disigning.png";
-import fabricationImg from "../assets/service page/fabrication.png";
-import installationImg from "../assets/service page/installation.png";
-import completionImg from "../assets/service page/completion.jpg";
+import consultationImg from "../assets/our process/consultation.webp";
+import siteVisitImg from "../assets/our process/site visit.webp";
+import designImg from "../assets/our process/design.webp";
+import fabricationImg from "../assets/our process/fabrication.webp";
+import installationImg from "../assets/our process/installation.webp";
+import completionImg from "../assets/our process/completetion.webp";
 
 /* ─── Types ─────────────────────────────────────────────────────────── */
 interface Step {
@@ -92,7 +92,7 @@ const ProcessSection: React.FC = () => {
 
                 {/* ── Section title ─────────────────────────────────── */}
                 <div className="text-center mb-2">
-                    <p className="text-white/85 text-xs font-semibold uppercase tracking-[0.3em] mb-1">
+                    <p className="text-white/90 text-sm font-semibold uppercase tracking-[0.3em] mb-1">
                         Step by Step
                     </p>
                     <h2 className="text-white font-heading text-3xl sm:text-4xl font-black uppercase tracking-tight">
@@ -154,7 +154,7 @@ const ProcessSection: React.FC = () => {
                                                         ? "bg-white border-white text-[#084158]"
                                                         : isPast
                                                             ? "bg-white/40 border-white/60 text-white"
-                                                            : "bg-transparent border-white/30 text-white/70",
+                                                            : "bg-transparent border-white/50 text-white/90",
                                                 ].join(" ")}
                                             >
                                                 {isPast && !isActive ? "✓" : step.num}
@@ -172,8 +172,8 @@ const ProcessSection: React.FC = () => {
                                         >
                                             <span
                                                 className={[
-                                                    "font-heading text-sm font-bold uppercase tracking-wide block leading-tight",
-                                                    isActive ? "text-[#084158]" : "text-white/90",
+                                                    "font-heading text-[0.95rem] font-bold uppercase tracking-wide block leading-tight",
+                                                    isActive ? "text-[#084158]" : "text-white",
                                                 ].join(" ")}
                                             >
                                                 {step.title}
@@ -186,7 +186,7 @@ const ProcessSection: React.FC = () => {
                                                     isActive ? "max-h-20 mt-1 opacity-100" : "max-h-0 opacity-0",
                                                 ].join(" ")}
                                             >
-                                                <p className="text-xs text-[#084158] leading-relaxed">
+                                                <p className="text-sm text-[#084158] font-medium leading-relaxed">
                                                     {step.desc}
                                                 </p>
                                             </div>
@@ -228,11 +228,21 @@ const ProcessSection: React.FC = () => {
                                 />
                             </div>
 
-                            {/* Step number badge — sits on top */}
-                            <div className="relative z-20 flex flex-col items-center justify-end h-full pb-6">
-                                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/30 border border-white/20 backdrop-blur-sm">
-                                    <span className="text-white/90 text-xs font-semibold uppercase tracking-widest">
-                                        Step {STEPS[active].num} — {STEPS[active].title}
+                            {/* Step number badge — sits on top, synced with image crossfade */}
+                            <div className="relative z-20 flex flex-col items-center justify-end h-full pb-8">
+                                <div 
+                                    className="inline-flex flex-col items-center gap-1 px-5 py-2.5 rounded-2xl bg-slate-950/80 border border-white/20 backdrop-blur-xl shadow-2xl transition-all duration-300"
+                                    style={{
+                                        opacity: fading ? 0 : 1,
+                                        transform: fading ? "translateY(8px)" : "translateY(0)",
+                                        transition: "opacity 220ms ease-in-out, transform 220ms ease-in-out",
+                                    }}
+                                >
+                                    <span className="text-blue-400 text-[10px] font-black uppercase tracking-[0.2em]">
+                                        Step {STEPS[displayed].num}
+                                    </span>
+                                    <span className="text-white text-[0.8rem] font-black uppercase tracking-[0.1em] leading-none">
+                                        {STEPS[displayed].title}
                                     </span>
                                 </div>
                             </div>

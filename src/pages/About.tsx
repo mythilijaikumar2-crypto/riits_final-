@@ -6,6 +6,7 @@ import {
   CheckCircle2, MapPin, Phone, Star, Quote
 } from "lucide-react";
 import SEO from "../components/SEO";
+import { TurtleButton } from "../components/TurtleButton";
 
 const R = ({ children, delay = 0, dir = "up" }: any) => {
   const v = {
@@ -704,7 +705,7 @@ const About = () => {
             initial={{ scale: 1.15, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 2, ease: "easeOut" }}
-            src="/src/assets/about page hero.png"
+            src="/src/assets/heropage/about page hero.webp"
             alt="RIITS Metal Craft Workshop - Precision Fabrication in Progress"
             className="w-full h-full object-cover opacity-30 mix-blend-overlay"
             style={{ willChange: "transform" }}
@@ -891,9 +892,9 @@ const About = () => {
                     </div>
                   ))}
                 </div>
-                <a href="tel:+919876543210" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "12px 26px", borderRadius: 9, background: "#0d2557", color: "white", fontWeight: 600, fontSize: "0.88rem", textDecoration: "none" }}>
+                <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-8">
                   <Phone style={{ width: 15, height: 15 }} /> Book a Site Visit
-                </a>
+                </TurtleButton>
               </div>
             </R>
           </div>
@@ -917,9 +918,9 @@ const About = () => {
               Get a free consultation and detailed written quotation for your next metal fabrication or elevation project.
             </p>
             <div style={{ display: "flex", justifyContent: "center", gap: 14, flexWrap: "wrap" }}>
-              <a href="tel:+919876543210" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 34px", borderRadius: 9, background: "rgba(255,255,255,0.95)", color: "#0d2557", fontWeight: 700, fontSize: "0.92rem", textDecoration: "none" }}>
-                <Phone style={{ width: 16, height: 16 }} /> +91 98765 43210
-              </a>
+              <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-10">
+                <Phone className="w-4 h-4" /> Call +91 98765 43210
+              </TurtleButton>
               <motion.button whileHover={{ background: "rgba(255,255,255,0.09)" }} onClick={() => navigate("/projects")}
                 style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 34px", borderRadius: 9, background: "transparent", color: "rgba(255,255,255,0.82)", fontWeight: 500, fontSize: "0.92rem", cursor: "pointer", border: "1px solid rgba(255,255,255,0.24)" }}>
                 View Our Work <ArrowRight style={{ width: 16, height: 16 }} />

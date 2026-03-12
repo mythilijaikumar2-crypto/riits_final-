@@ -2,26 +2,103 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionHeading from "../components/SectionHeading";
 import { TurtleButton } from "../components/TurtleButton";
-import { X, CheckCircle2 } from "lucide-react";
+import { X, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import SEO from "../components/SEO";
 
-import res1 from "../assets/service page/our works/ss railing installing.webp";
-import res2 from "../assets/service page/our works/ms gate installing.webp";
-import res3 from "../assets/service page/our works/aluminium window installation.png";
-import res4 from "../assets/service page/our works/elevation work installing.png";
+import stair1 from "../assets/staircase/stairs.webp";
+import stair2 from "../assets/staircase/stairs1.webp";
+import stair3 from "../assets/staircase/stair2.webp";
+import stair4 from "../assets/staircase/stairs3.webp";
+import stair_img5 from "../assets/staircase/stairs4.webp";
+import res2_1 from "../assets/ms gate/ms gate.webp";
+import res2_2 from "../assets/ms gate/ms gate1.webp";
+import res2_3 from "../assets/ms gate/ms gate 2.webp";
+import res2_4 from "../assets/ms gate/ms gate2.webp";
+import res2_5 from "../assets/ms gate/ms gate4.webp";
 
-import com1 from "../assets/service page/our works/Showroom Facade – Trichy Main Road.webp";
-import com2 from "../assets/service page/our works/Rolling Shutters – Commercial Complex.webp";
+import win1 from "../assets/aluminiumwind/window.webp";
+import win2 from "../assets/aluminiumwind/window1.webp";
+import win3 from "../assets/aluminiumwind/window2.webp";
+import win4 from "../assets/aluminiumwind/window3.webp";
+import win5 from "../assets/aluminiumwind/window4.webp";
+
+
+import fac1 from "../assets/facard/Glass facades1.jpg";
+import fac3 from "../assets/facard/facade3.jpg";
+import fac4 from "../assets/facard/facade4.jpg";
+import fac5 from "../assets/facard/facade5.jpg";
+import fac6 from "../assets/facard/facade6.avif";
+
+import shut1 from "../assets/shutters/shutter.webp";
+import shut2 from "../assets/shutters/shutter1.webp";
+import shut3 from "../assets/shutters/shutter2.webp";
+import shut5 from "../assets/shutters/shutter4.webp";
+
 import com3 from "../assets/service page/our works/Office Partition – IT Park.webp";
-import com4 from "../assets/service page/our works/Glass Entrance.webp";
+import lobby1 from "../assets/hotellabby/lobby2.webp";
+import lobby2 from "../assets/hotellabby/lobby3.jpg";
+import lobby3 from "../assets/hotellabby/lobby4.jpg";
 
 import ind1 from "../assets/service page/our works/Factory Shed – SIDCO Industrial Estate.webp";
-import ind2 from "../assets/service page/our works/Warehouse Shutters – Manachanallur.jpg";
-import ind3 from "../assets/service page/our works/Structural Steel – Construction Site.jpg";
-
+import wh1 from "../assets/warehouse/warehouse shutter.webp";
+import wh2 from "../assets/warehouse/warehouse shutter1.webp";
+import wh3 from "../assets/warehouse/warehouse shutter2.webp";
+import wh4 from "../assets/warehouse/warehouse shutter3.webp";
+import wh5 from "../assets/warehouse/warehouse shutter4.webp";
+import ss1 from "../assets/structuralsteel/structural steel.webp";
+import ss2 from "../assets/structuralsteel/structural steel1.webp";
+import ss3 from "../assets/structuralsteel/structural steel2.webp";
+import ss4 from "../assets/structuralsteel/structural steel3.webp";
+import ss5 from "../assets/structuralsteel/strucural steel.webp";
 import ele1 from "../assets/service page/our works/Full Elevation – Residential Complex.jpg";
-import ele2 from "../assets/service page/our works/Facade Upgrade – Commercial Building.jpg";
-import ele3 from "../assets/service page/our works/Heritage Restoration – Temple Town.avif";
+
+import ele1_1 from "../assets/elivation/elevation.webp";
+import ele1_2 from "../assets/elivation/elevation1.webp";
+import ele1_3 from "../assets/elivation/elevation2.webp";
+import ele1_4 from "../assets/elivation/elevation 3.webp";
+import ele1_5 from "../assets/elivation/elevation4.webp";
+import fc1 from "../assets/facadcommercial/commercial1.webp";
+import fc2 from "../assets/facadcommercial/commercial2.jpg";
+import fc3 from "../assets/facadcommercial/commercial3.webp";
+import fc4 from "../assets/facadcommercial/commercial4.jpg";
+import fcMain from "../assets/facadcommercial/main.jpg";
+
+import her1 from "../assets/heritage/heritage.webp";
+import her2 from "../assets/heritage/heritage1.webp";
+import her3 from "../assets/heritage/heritage2.webp";
+import her4 from "../assets/heritage/heritage4.webp";
+
+import shed1 from "../assets/factoryshed/factory shut.webp";
+import shed2 from "../assets/factoryshed/factory shut1.webp";
+import shed3 from "../assets/factoryshed/factory shut2.webp";
+import shed4 from "../assets/factoryshed/factory shut3.webp";
+import shed5 from "../assets/factoryshed/factory shut4.webp";
+
+import glass1_3 from "../assets/glasses/glass5.webp";
+
+import part1 from "../assets/partition/glass partition1.webp";
+import part2 from "../assets/partition/glass partition2.jpg";
+import part3 from "../assets/partition/glass partition3.jpg";
+import part4 from "../assets/partition/glass partition4.jpeg";
+import part5 from "../assets/partition/glass partition5.jpeg";
+
+import elw1 from "../assets/elivatiowork/elevation.webp";
+import elw2 from "../assets/elivatiowork/elevation1.webp";
+import elw3 from "../assets/elivatiowork/elevation2.webp";
+import elw4 from "../assets/elivatiowork/elevation3.webp";
+import elw5 from "../assets/elivatiowork/elevation4.webp";
+
+import whr1 from "../assets/warehouseshed/warehouse roofing.webp";
+import whr2 from "../assets/warehouseshed/warehouse roofing1.webp";
+import whr3 from "../assets/warehouseshed/warehouse roofing2.webp";
+import whr4 from "../assets/warehouseshed/warehouse roofing3.webp";
+import whr5 from "../assets/warehouseshed/warehouse roofing4.webp";
+import roof1 from "../assets/roofing/roof1.webp";
+import roof2 from "../assets/roofing/roof2.webp";
+import roof3 from "../assets/roofing/roof3.webp";
+import roof5 from "../assets/roofing/roof5.webp";
+import roof6 from "../assets/roofing/roof6.webp";
+import roof7 from "../assets/roofing/roofimg5.webp";
 
 type ProjectCategory = {
   title: string;
@@ -32,47 +109,86 @@ type Project = {
   title: string;
   desc: string;
   image?: string;
+  images?: string[];
 };
 
 const projectCategories: ProjectCategory[] = [
   {
     title: "Residential",
     projects: [
-      { title: "SS Railing Installation – Trichy", desc: "Brushed stainless steel balcony railings with glass infill for a 3-storey residence.", image: res1 },
-      { title: "Modern MS Gate – Srirangam", desc: "Geometric-patterned mild steel main gate with motorized operation.", image: res2 },
-      { title: "Aluminium Windows – Thillai Nagar", desc: "Full-house aluminium sliding window system with tinted glass.", image: res3 },
-      { title: "Elevation Work – KK Nagar", desc: "ACP cladding and decorative louvers for a residential villa.", image: res4 },
+      { 
+        title: "SS Railing & Staircase – Trichy", 
+        desc: "Custom-fabricated stainless steel staircase railings with ergonomic handrails and precision-welded supports for modern homes.", 
+        images: [stair1, stair2, stair3, stair4, stair_img5] 
+      },
+      { 
+        title: "Modern MS Gate – Srirangam", 
+        desc: "Geometric-patterned mild steel main gate with motorized operation, premium powder coating, and precision laser-cut designs.", 
+        images: [res2_1, res2_2, res2_3, res2_4, res2_5] 
+      },
+      { 
+        title: "Aluminium Windows – Thillai Nagar", 
+        desc: "Premium aluminium sliding and casement window systems with high-quality gaskets, tinted toughened glass, and smooth-operating hardware for residences.", 
+        images: [win1, win2, win3, win4, win5] 
+      },
+      { title: "Elevation Work – KK Nagar", desc: "ACP cladding and decorative louvers for a residential villa.", images: [elw1, elw2, elw3, elw4, elw5] },
     ],
   },
   {
     title: "Commercial",
     projects: [
-      { title: "Showroom Facade – Trichy Main Road", desc: "Structural glazing with ACP cladding for a multi-brand showroom.", image: com1 },
-      { title: "Rolling Shutters – Commercial Complex", desc: "Motorized rolling shutters for 12 shop units.", image: com2 },
-      { title: "Office Partition – IT Park", desc: "Frameless toughened glass partitions for corporate office space.", image: com3 },
-      { title: "Glass Entrance – Hotel Lobby", desc: "Toughened glass swing doors with SS hardware and canopy.", image: com4 },
+      { title: "Showroom Facade – Trichy Main Road", desc: "Structural glazing with ACP cladding for a multi-brand showroom.", images: [fac1, fac3, fac4, fac5, fac6] },
+      { 
+        title: "Rolling Shutters – Commercial Complex", 
+        desc: "Heavy-duty motorized rolling shutters for 12 shop units in a high-traffic urban complex, featuring remote operation and security locks.", 
+        images: [shut1, shut2, shut3, shut5] 
+      },
+      { title: "Office Partition – IT Park", desc: "Frameless toughened glass partitions for corporate office space.", images: [part1, part2, part3, part4, part5] },
+      { title: "Glass Entrance – Hotel Lobby", desc: "Toughened glass swing doors with SS hardware and canopy.", images: [lobby1, lobby2, lobby3] },
     ],
   },
   {
     title: "Industrial",
     projects: [
-      { title: "Factory Shed – SIDCO Industrial Estate", desc: "Large-span MS structural shed with GI roofing sheets.", image: ind1 },
-      { title: "Warehouse Shutters – Manachanallur", desc: "Heavy-duty industrial rolling shutters for warehouse complex.", image: ind2 },
-      { title: "Structural Steel – Construction Site", desc: "MS I-beam and column fabrication for multi-storey building.", image: ind3 },
+      { title: "Factory Shed – SIDCO Industrial Estate", desc: "Large-span MS structural shed with GI roofing sheets.", images: [shed1, shed2, shed3, shed4, shed5] },
+      { title: "Warehouse Shutters – Manachanallur", desc: "Heavy-duty industrial rolling shutters for warehouse complex.", images: [wh1, wh2, wh3, wh4, wh5] },
+      { title: "Structural Steel – Construction Site", desc: "MS I-beam and column fabrication for multi-storey building.", images: [ss1, ss2, ss3, ss4, ss5] },
     ],
   },
   {
     title: "Elevation",
     projects: [
-      { title: "Full Elevation – Residential Complex", desc: "Complete ACP + HPL cladding with aluminium louvers and SS railings.", image: ele1 },
-      { title: "Facade Upgrade – Commercial Building", desc: "Decorative laser-cut panels with LED backlighting integration.", image: ele2 },
-      { title: "Heritage Restoration – Temple Town", desc: "MS decorative gates and railings matching traditional Trichy architecture.", image: ele3 },
+      { title: "Full Elevation – Residential Complex", desc: "Complete ACP + HPL cladding with aluminium louvers and SS railings.", images: [ele1_1, ele1_2, ele1_3, ele1_4, ele1_5, ele1] },
+      { title: "Facade Upgrade – Commercial Building", desc: "Decorative laser-cut panels with LED backlighting integration.", images: [fcMain, fc1, fc2, fc3, fc4] },
+      { title: "Heritage Restoration – Temple Town", desc: "MS decorative gates and railings matching traditional Trichy architecture.", images: [her1, her2, her3, her4] },
+    ],
+  },
+  {
+    title: "Roofing",
+    projects: [
+      { 
+        title: "Industrial & Warehouse Roofing", 
+        desc: "High-durability GI and Galvalume roofing sheets for large industrial spans and warehouses.", 
+        images: [whr1, whr2, whr3, whr4, whr5] 
+      },
+      { 
+        title: "Residential Terrace Roofing", 
+        desc: "Polycarbonate and aesthetic metal roofing solutions for home terraces and sit-outs.", 
+        images: [roof1, roof2, roof3, roof5, roof6, roof7] 
+      },
     ],
   },
 ];
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  // Single global tick — all sliders advance together at the same moment
+  const [globalTick, setGlobalTick] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setGlobalTick((t) => t + 1), 2500);
+    return () => clearInterval(id);
+  }, []);
 
   // Prevent scroll when modal is open
   useEffect(() => {
@@ -150,7 +266,7 @@ const Projects = () => {
       <section className="projects-hero">
         <div className="absolute inset-0 z-0 overflow-hidden opacity-80">
           <img
-            src="/src/assets/our work hero page .png"
+            src="/src/assets/heropage/our work hero page .webp"
             alt="RIITS Metal Craft Portfolio - Showcasing Our Excellence in Fabrication"
             className="hero-bg-img"
             loading="eager"
@@ -192,7 +308,7 @@ const Projects = () => {
               </p>
 
               <div className="flex flex-wrap gap-3">
-                <TurtleButton href="tel:+919876543210" variant="premium_shimmer" className="rounded-xl">
+                <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-10">
                   <span>📞</span> Call Now
                 </TurtleButton>
                 <TurtleButton href="https://wa.me/919876543210" variant="whatsapp" external className="rounded-xl">
@@ -216,16 +332,11 @@ const Projects = () => {
                   key={p.title}
                   className="group flex flex-col md:flex-row bg-white dark:bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200/60 dark:border-slate-800 shadow-xl shadow-slate-200/20 dark:shadow-none hover:shadow-2xl hover:shadow-primary/10 dark:hover:border-primary/30 transition-all duration-500"
                 >
-                  {p.image && (
-                    <div className="md:w-5/12 aspect-[16/10] md:aspect-auto overflow-hidden relative">
-                      <img
-                        src={p.image}
-                        alt={p.title}
-                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500" />
-                    </div>
-                  )}
+                  {/* Project Image Area with Auto-Slider */}
+                  <div className="md:w-5/12 aspect-[16/10] md:aspect-auto overflow-hidden relative">
+                    <ProjectImageSlider p={p} tick={globalTick} />
+                    <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
+                  </div>
 
                   <div className="flex-1 p-8 md:p-10 flex flex-col justify-center">
                     <div className="inline-flex items-center gap-2 mb-4 group/tag">
@@ -295,13 +406,7 @@ const Projects = () => {
               <div className="flex flex-col lg:flex-row h-full overflow-y-auto lg:overflow-hidden">
                 {/* Image Side */}
                 <div className="lg:w-3/5 h-[300px] sm:h-[400px] lg:h-auto relative overflow-hidden bg-slate-100 dark:bg-slate-800">
-                  {selectedProject.image && (
-                    <img
-                      src={selectedProject.image}
-                      alt={selectedProject.title}
-                      className="w-full h-full object-cover"
-                    />
-                  )}
+                  <ProjectImageSlider p={selectedProject} isModal />
                 </div>
 
                 {/* Content Side */}
@@ -331,7 +436,7 @@ const Projects = () => {
 
                   <div className="mt-10">
                     <TurtleButton
-                      variant="primary"
+                      variant="call_now"
                       className="rounded-2xl px-10"
                       href="tel:+919876543210"
                     >
@@ -344,6 +449,9 @@ const Projects = () => {
           </div>
         )}
       </AnimatePresence>
+
+
+
       {/* ── CTA ── */}
       <section 
         className="bg-slate-950 py-24 relative overflow-hidden text-center"
@@ -363,12 +471,13 @@ const Projects = () => {
           </p>
           
           <div className="flex flex-wrap justify-center gap-4">
-            <a
+            <TurtleButton
               href="tel:+919876543210"
-              className="inline-flex items-center gap-2.5 bg-white text-slate-950 px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-white/10 hover:shadow-2xl hover:-translate-y-1"
+              variant="call_now"
+              className="rounded-xl px-10"
             >
               <span>📞</span> Call Our Expert
-            </a>
+            </TurtleButton>
             <a
               href="https://wa.me/919876543210"
               target="_blank"
@@ -390,6 +499,118 @@ const Projects = () => {
         </div>
       </section>
     </main>
+  );
+};
+
+const ProjectImageSlider = ({
+  p,
+  isModal = false,
+  tick,
+}: {
+  p: Project;
+  isModal?: boolean;
+  tick?: number;
+}) => {
+  const images = p.images || (p.image ? [p.image] : []);
+  const [current, setCurrent] = useState(0);
+
+  // Advance on each global tick (only for card sliders, not modal)
+  useEffect(() => {
+    if (isModal) return;          // modal has its own manual-only navigation
+    if (images.length <= 1) return;
+    setCurrent((prev) => (prev + 1) % images.length);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tick]);
+
+  const paginate = (dir: number) => {
+    setCurrent((prev) => (prev + dir + images.length) % images.length);
+  };
+
+  if (images.length === 0) return null;
+
+  const variants = {
+    enter: {
+      opacity: 0,
+      scale: 1.05,
+    },
+    center: {
+      zIndex: 1,
+      opacity: 1,
+      scale: 1,
+    },
+    exit: {
+      zIndex: 0,
+      opacity: 0,
+      scale: 0.95,
+    }
+  };
+
+  return (
+    <div className="relative w-full h-full overflow-hidden group/slider">
+      <AnimatePresence initial={false} mode="sync">
+        <motion.img
+          key={current}
+          src={images[current]}
+          alt={p.title}
+          variants={variants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{
+            opacity: { duration: 0.3, ease: "easeInOut" },
+            scale: { duration: 0.3, ease: "easeInOut" }
+          }}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={1}
+          onDragEnd={(_, { offset }) => {
+            const swipe = Math.abs(offset.x) > 50;
+            if (swipe) {
+              paginate(offset.x > 0 ? -1 : 1);
+            }
+          }}
+          className={`absolute inset-0 w-full h-full object-cover select-none cursor-grab active:cursor-grabbing ${!isModal ? 'transition-transform duration-1000 group-hover:scale-105' : ''}`}
+        />
+      </AnimatePresence>
+      
+      {/* Navigation Arrows - Visible in Modal or on Hover in Card */}
+      {images.length > 1 && (
+        <>
+          <button
+            title="Previous Image"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/30 hover:bg-black/60 text-white backdrop-blur-md transition-all opacity-0 group-hover/slider:opacity-100"
+            onClick={(e) => { e.stopPropagation(); paginate(-1); }}
+          >
+            <ChevronLeft size={isModal ? 24 : 20} />
+          </button>
+          <button
+            title="Next Image"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/30 hover:bg-black/60 text-white backdrop-blur-md transition-all opacity-0 group-hover/slider:opacity-100"
+            onClick={(e) => { e.stopPropagation(); paginate(1); }}
+          >
+            <ChevronRight size={isModal ? 24 : 20} />
+          </button>
+        </>
+      )}
+
+      {/* Progress Indicators */}
+      {images.length > 1 && (
+        <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-20 pt-4 px-4 bg-gradient-to-t from-black/50 to-transparent">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              title={`Go to image ${i + 1}`}
+              onClick={(e) => { e.stopPropagation(); setCurrent(i); }}
+              className="group/dot p-1 transition-all"
+            >
+              <div 
+                className={`h-1 rounded-full transition-all duration-500 ${current === i ? 'w-6 bg-white shadow-[0_0_10px_rgba(255,255,255,0.5)]' : 'w-2 bg-white/40 group-hover/dot:bg-white/60'}`}
+              />
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
   );
 };
 

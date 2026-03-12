@@ -574,7 +574,7 @@ const Products = () => {
             initial={{ scale: 1.1, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 2, ease: "easeOut" }}
-            src="/src/assets/industryworks.jpg"
+            src="/src/assets/heropage/products page hero.webp"
             alt="RIITS Metal Craft Industrial Fabrication - Heavy-Duty Structural Works"
             aria-hidden="false"
             className="w-full h-full object-cover opacity-30 mix-blend-overlay"
@@ -636,7 +636,7 @@ const Products = () => {
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
                 className="flex flex-wrap gap-3"
               >
-                <TurtleButton href="tel:+919876543210" variant="index_brand_shimmer" className="rounded-xl">
+                <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-10">
                   <Phone className="w-4 h-4" /> Call Now
                 </TurtleButton>
                 <TurtleButton href="https://wa.me/919876543210" variant="whatsapp" external className="rounded-xl">
@@ -745,12 +745,13 @@ const Products = () => {
           </p>
           
           <div className="flex flex-wrap justify-center gap-4">
-            <a
+            <TurtleButton
               href="tel:+919876543210"
-              className="inline-flex items-center gap-2.5 bg-white text-slate-950 px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-white/10 hover:shadow-2xl hover:-translate-y-1"
+              variant="call_now"
+              className="rounded-xl px-10"
             >
               <Phone className="w-4 h-4" /> Get Free Consultation
-            </a>
+            </TurtleButton>
             <a
               href="https://wa.me/919876543210"
               target="_blank"

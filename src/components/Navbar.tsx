@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import { TurtleButton } from "./TurtleButton";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -131,18 +132,14 @@ const Navbar = () => {
             })}
 
             {/* CTA Button with shimmer */}
-            <motion.a
+            <TurtleButton
                 href="tel:+919876543210"
-                className="navbar-cta btn-primary text-xs py-2 px-5 relative overflow-hidden"
-                whileHover={{ scale: 1.04, y: -1 }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                aria-label="Call RIITS Metal Craft"
+                variant="call_now"
+                size="sm"
+                className="rounded-xl px-5"
               >
-                <span className="navbar-cta-shimmer" />
-                <Phone className="w-4 h-4 relative z-10" />
-                <span className="relative z-10">Call Now</span>
-              </motion.a>
+                <Phone className="w-3.5 h-3.5" /> Call Now
+              </TurtleButton>
           </div>
 
           {/* Mobile toggle */}
@@ -230,14 +227,14 @@ const Navbar = () => {
                   animate="visible"
                   className="mt-3"
                 >
-                  <a
+                  <TurtleButton
                     href="tel:+919876543210"
-                    className="btn-primary text-xs justify-center w-full relative overflow-hidden"
+                    variant="call_now"
+                    size="sm"
+                    className="w-full rounded-xl"
                   >
-                    <span className="navbar-cta-shimmer" />
-                    <Phone className="w-4 h-4 relative z-10" />
-                    <span className="relative z-10">Call Now</span>
-                  </a>
+                    <Phone className="w-4 h-4" /> Call Now
+                  </TurtleButton>
                 </motion.div>
               </div>
             </motion.div>

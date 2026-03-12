@@ -80,7 +80,7 @@ const Services = () => {
         {/* Background image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/src/assets/services hero page .png"
+            src="/src/assets/heropage/services hero page .webp"
             className="w-full h-full object-cover opacity-60"
             alt="RIITS Metal Craft Services - Comprehensive Fabrication Solutions"
             loading="eager"
@@ -131,7 +131,7 @@ const Services = () => {
               </p>
 
               <div className="flex flex-wrap gap-3">
-                <TurtleButton href="tel:+919876543210" variant="premium_shimmer" className="rounded-xl">
+                <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-10">
                   <Phone className="w-4 h-4" /> Call Now
                 </TurtleButton>
                 <TurtleButton
@@ -305,12 +305,13 @@ const Services = () => {
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
-              <a
+              <TurtleButton
                 href="tel:+919876543210"
-                className="inline-flex items-center gap-2.5 bg-white text-slate-950 px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-white/10 hover:shadow-2xl hover:-translate-y-1"
+                variant="call_now"
+                className="rounded-xl px-10"
               >
                 <Phone className="w-4 h-4" /> Call Now
-              </a>
+              </TurtleButton>
               <a
                 href="https://wa.me/919876543210"
                 target="_blank"

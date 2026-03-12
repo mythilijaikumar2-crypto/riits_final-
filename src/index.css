@@ -329,6 +329,25 @@
       opacity: 0.4;
     }
   }
+
+  @keyframes call-pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.5);
+      transform: scale(1);
+    }
+    70% {
+      box-shadow: 0 0 0 15px rgba(249, 115, 22, 0);
+      transform: scale(1.02);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
+      transform: scale(1);
+    }
+  }
+
+  .animate-call-pulse {
+    animation: call-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
 }
 
 @layer utilities {
@@ -343,6 +362,10 @@
     color: rgb(255 255 255 / var(--tw-text-opacity, 1));
     content-visibility: auto;
     contain-intrinsic-size: auto 400px;
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
 }
 
