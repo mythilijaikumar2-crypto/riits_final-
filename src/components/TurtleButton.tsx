@@ -64,6 +64,13 @@ export const TurtleButton = React.forwardRef<HTMLButtonElement | HTMLAnchorEleme
     // Inner content — shimmer span + children
     const content = (
       <>
+        <style>{`
+          @keyframes call-pulse {
+            0%   { transform: scale(1);    opacity: 1; }
+            50%  { transform: scale(1.08); opacity: 0.8; }
+            100% { transform: scale(1);    opacity: 1; }
+          }
+        `}</style>
         <motion.span
           className="absolute inset-0 -skew-x-12 z-0 pointer-events-none"
           style={{ background: "linear-gradient(90deg,transparent,rgba(255,255,255,0.22),transparent)" }}

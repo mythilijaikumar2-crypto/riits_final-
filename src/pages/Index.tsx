@@ -189,6 +189,8 @@ const HeroSection = () => (
         alt="RIITS Metal Craft building"
         className="w-full h-full object-cover object-center opacity-35 mix-blend-overlay"
         style={{ willChange: "transform" }}
+        loading="eager"
+        fetchPriority="high"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/50 to-transparent" />
     </div>

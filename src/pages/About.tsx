@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Layers, Ruler, Shield, Search, Wrench, ArrowRight,
-  CheckCircle2, MapPin, Phone, Star, Quote
+  CheckCircle2, MapPin, Phone
 } from "lucide-react";
 import SEO from "../components/SEO";
 import { TurtleButton } from "../components/TurtleButton";
@@ -488,117 +488,7 @@ const districts = [
   { name: "Dindigul", main: false }
 ];
 
-const reviews = [
-  { name: "Rajesh Kumar", text: "Excellent service and high-quality fabrication work. The team was very professional.", rating: 5, lang: "en" },
-  { name: "Shanmugam", text: "தரமான வேலை மற்றும் சரியான நேரத்தில் முடித்துக் கொடுத்தார்கள். மிக்க நன்றி.", rating: 5, lang: "ta" },
-  { name: "Priya S.", text: "The stainless steel railings installed at my home are top-notch. Highly recommended!", rating: 5, lang: "en" },
-  { name: "Revathi", text: "எங்கள் வீட்டிற்கு அமைத்த ஸ்டெயின்லெஸ் ஸ்டீல் கைப்பிடிகள் மிகவும் அழகாக உள்ளது.", rating: 5, lang: "ta" },
-  { name: "Arun Enterprises", text: "RIITS Metal Craft delivered our industrial shed ahead of schedule. Great project management.", rating: 5, lang: "en" },
-  { name: "Karthik", text: "திருச்சியில் சிறந்த இரும்பு வேலை செய்யும் இடம். நம்பகமான சேவை.", rating: 5, lang: "ta" },
-  { name: "Murali Dharan", text: "Best metal fabricators in Trichy. Their attention to detail is remarkable.", rating: 5, lang: "en" },
-  { name: "Selvam Krishna", text: "வேலைப்பாடு மிகவும் நுணுக்கமாக உள்ளது. விலையும் நியாயமானதாக இருக்கிறது.", rating: 5, lang: "ta" },
-  { name: "Kavitha R.", text: "Very happy with the modern gate design they provided. It really enhanced our home's curb appeal.", rating: 5, lang: "en" },
-  { name: "Vijayakumar", text: "தொழில்முறை அணுகுமுறை மற்றும் தரமான பொருட்கள். பாராட்டுக்கள்!", rating: 5, lang: "ta" },
-  { name: "Suresh Babu", text: "Professional team, transparent pricing, and quality materials. Would definitely hire them again.", rating: 5, lang: "en" },
-  { name: "Shivakumar", text: "எங்கள் தொழிற்சாலைக்கு அமைத்த மேற்கூரை மிகவும் வலுவாக உள்ளது.", rating: 5, lang: "ta" },
-  { name: "Deepak J.", text: "The aluminium window systems are perfect. Noise reduction and aesthetics are both excellent.", rating: 5, lang: "en" },
-  { name: "Bhaskar", text: "புதிய மாடல் கேட் டிசைன்கள் இங்கே கிடைக்கின்றன. மிகவும் திருப்தியாக உள்ளது.", rating: 5, lang: "ta" },
-  { name: "V-Mart Trichy", text: "Impressive structural glazing work for our showroom. Truly world-class quality.", rating: 5, lang: "en" },
-  { name: "Mohan", text: "குறிப்பிட்ட காலத்திற்குள் வேலையை முடித்து கை ஒப்படைத்தார்கள். சிறந்த நிறுவனம்.", rating: 5, lang: "ta" },
-  { name: "Lakshmi Industries", text: "Reliable and efficient. They handled our large-scale industrial project with ease.", rating: 5, lang: "en" },
-  { name: "Anjali M.", text: "The laser-cut elevation panels look stunning. Got many compliments from neighbors.", rating: 5, lang: "en" },
-  { name: "Robert Wilson", text: "Great after-sales support. They came back for minor adjustments immediately when called.", rating: 5, lang: "en" },
-  { name: "Vignesh K.", text: "From design to installation, everything was handled perfectly. Worth every rupee.", rating: 5, lang: "en" },
-  { name: "K. Ramakrishnan", text: "Exceptional quality SS fabrication for our new apartment complex.", rating: 5, lang: "en" },
-  { name: "M. Ganesan", text: "மிகவும் நுணுக்கமான வேலைப்பாடு. திருப்திகரமான சேவை.", rating: 5, lang: "ta" }
-];
 
-const ReviewCard = ({ rev }: { rev: typeof reviews[0] }) => (
-  /* GPU-only hover: only transform changes — no layout reflow */
-  <div
-    className="w-[300px] sm:w-[360px] shrink-0 px-2"
-    style={{ transform: 'translateZ(0)', willChange: 'transform' }}
-  >
-    <div
-      className="
-        relative flex flex-col justify-between h-full
-        bg-white/90 backdrop-blur-sm
-        rounded-2xl border border-slate-200/70
-        px-6 py-6
-        shadow-sm
-        overflow-hidden
-        group/card
-        transition-[transform,box-shadow] duration-300 ease-out
-        hover:-translate-y-2 hover:shadow-[0_20px_48px_-12px_rgba(37,99,235,0.12)]
-        hover:border-blue-300/50
-      "
-      style={{ willChange: 'transform' }}
-    >
-      {/* Subtle glass shimmer top-edge */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200/60 to-transparent" />
-
-      {/* Quote decoration — decorative only, behind content */}
-      <Quote className="absolute top-3 right-3 w-12 h-12 text-slate-100 group-hover/card:text-blue-100/70 transition-colors duration-500 pointer-events-none" aria-hidden="true" />
-
-      {/* TOP — Stars + review text */}
-      <div className="relative z-10">
-        {/* Star row */}
-        <div className="flex items-center gap-0.5 mb-3">
-          {[...Array(5)].map((_, s) => (
-            <Star key={s} className="w-3 h-3 fill-amber-400 text-amber-400" />
-          ))}
-          <span className="ml-2 text-[9px] font-extrabold text-amber-600 uppercase tracking-widest">5.0</span>
-        </div>
-
-        {/* Review text — line-clamped to keep all cards uniform height */}
-        <p
-          className={`text-slate-600 leading-relaxed text-[0.88rem] font-medium line-clamp-4 ${
-            rev.lang === 'ta' ? '' : 'italic'
-          }`}
-        >
-          &ldquo;{rev.text}&rdquo;
-        </p>
-      </div>
-
-      {/* BOTTOM — divider + profile */}
-      <div className="relative z-10 flex items-center gap-3 pt-4 mt-4 border-t border-slate-100">
-        {/* Avatar */}
-        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-400 text-white flex items-center justify-center font-bold text-base shadow shrink-0 select-none">
-          {rev.name.charAt(0)}
-        </div>
-        <div className="min-w-0">
-          <p className="text-[0.85rem] font-black text-slate-950 leading-tight truncate">{rev.name}</p>
-          <div className="flex items-center gap-1.5 mt-0.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
-            <p className="text-[9px] text-emerald-600 font-bold uppercase tracking-[0.14em]">Verified Client</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
-/**
- * Pure-CSS marquee row — uses CSS animations (marquee-left / marquee-right)
- * already defined in tailwind.config.ts. Zero JavaScript per-frame,
- * entirely GPU-composited (only `transform: translateX` changes).
- * Pauses on hover via `animation-play-state: paused`.
- */
-const ReviewRow = ({ items, reverse = false }: { items: typeof reviews, reverse?: boolean }) => (
-  <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
-    <div
-      className={`flex gap-4 py-3 ${
-        reverse ? 'animate-marquee-right' : 'animate-marquee-left'
-      } hover:[animation-play-state:paused]`}
-      style={{ willChange: 'transform' }}
-    >
-      {/* Duplicate items so the loop is seamless */}
-      {[...items, ...items].map((rev, i) => (
-        <ReviewCard key={i} rev={rev} />
-      ))}
-    </div>
-  </div>
-);
 
 const Counter = ({ value, duration = 2 }: { value: string; duration?: number }) => {
   const [displayValue, setDisplayValue] = useState(0);
@@ -628,62 +518,7 @@ const Counter = ({ value, duration = 2 }: { value: string; duration?: number }) 
   );
 };
 
-const ReviewsSection = () => {
-  const row1 = reviews.slice(0, 11);
-  const row2 = reviews.slice(11, 22);
 
-  return (
-    <section className="py-20 bg-gradient-to-b from-blue-50/50 via-white to-blue-50/30 overflow-hidden relative border-t border-blue-100/50">
-
-      {/* ── Section Header ───────────────────────────────────── */}
-      <div className="ctr mb-14 text-center relative z-20">
-        <R>
-          <div className="flex flex-col items-center gap-4">
-
-            {/* Label pill */}
-            <span className="inline-flex items-center gap-2 bg-white text-blue-700 px-5 py-1.5 rounded-full font-bold text-[0.7rem] tracking-[0.22em] uppercase border border-slate-200 shadow-sm">
-              <Star className="w-3 h-3 fill-blue-600 text-blue-600" />
-              Client Testimonials
-            </span>
-
-            {/* Heading */}
-            <h2 className="dlg text-slate-950 tracking-tight leading-tight max-w-xl mx-auto">
-              Trusted by Hundreds of Happy Clients
-            </h2>
-
-            {/* Subtitle */}
-            <p className="text-slate-500 text-[0.95rem] max-w-lg mx-auto leading-relaxed font-medium">
-              Over 800 families and businesses in Trichy trust RIITS Metal Craft. Here's what they say.
-            </p>
-
-            {/* Stats bar */}
-            <div className="flex items-center justify-center gap-6 sm:gap-10 mt-6 pt-6 border-t border-slate-200 w-full max-w-sm mx-auto">
-              {[
-                { val: '800+', lbl: 'Projects' },
-                { val: '5.0', lbl: 'Avg Rating' },
-                { val: '15+', lbl: 'Years' },
-              ].map(({ val, lbl }, i, arr) => (
-                <div key={lbl} className="flex items-center gap-6 sm:gap-10">
-                  <div className="text-center">
-                    <div className="text-2xl font-black text-slate-950">{val}</div>
-                    <div className="text-[10px] text-slate-400 uppercase tracking-widest font-bold mt-0.5">{lbl}</div>
-                  </div>
-                  {i < arr.length - 1 && <div className="w-px h-8 bg-slate-200 shrink-0" />}
-                </div>
-              ))}
-            </div>
-          </div>
-        </R>
-      </div>
-
-      {/* ── Marquee rows ─────────────────────────────────────── */}
-      <div className="relative space-y-5 z-20">
-        <ReviewRow items={row1} />
-        <ReviewRow items={row2} reverse />
-      </div>
-    </section>
-  );
-};
 
 /* ════════════════ MAIN ABOUT PAGE ════════════════ */
 const About = () => {
@@ -901,8 +736,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* ── CUSTOMER REVIEWS ── */}
-      <ReviewsSection />
+
 
       {/* ── CTA FOOTER — navy ── */}
       <section className="navy-bg" style={{ padding: "clamp(3.5rem,7vw,6rem) clamp(1.5rem,5vw,5rem)", textAlign: "center", position: "relative", overflow: "hidden", contentVisibility: 'auto', containIntrinsicSize: 'auto 400px' }}>

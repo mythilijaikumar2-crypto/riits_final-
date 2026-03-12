@@ -1,5 +1,5 @@
-/* Google Fonts — Montserrat for headings, Inter for body */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap");
+/* ✅ FIX: Remove @import from CSS — moved to index.html as non-blocking <link> tags */
+/* Google Fonts are now loaded via index.html with media="print" trick (non-blocking) */
 
 @tailwind base;
 @tailwind components;
@@ -37,7 +37,6 @@
 
     --radius: 0.625rem;
 
-    /* Custom tokens */
     --steel: 215 18% 50%;
     --silver: 215 15% 75%;
     --navy: 220 72% 22%;
@@ -52,7 +51,7 @@
     --sidebar-primary: 240 5.9% 10%;
     --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-accent-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
@@ -68,8 +67,8 @@
     --primary-foreground: 224 87% 17.6%;
     --secondary: 208 64% 34.1%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 224 87% 18%;
-    --muted-foreground: 208 7% 65%;
+    --muted: 224 87% 17%;
+    --muted-foreground: 220 43% 70%;
     --accent: 196 54% 60.4%;
     --accent-foreground: 224 87% 17.6%;
     --destructive: 0 62.8% 30.6%;
@@ -77,14 +76,6 @@
     --border: 224 87% 20%;
     --input: 224 87% 20%;
     --ring: 196 54% 60.4%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -93,297 +84,64 @@
     @apply border-border;
   }
 
-  html {
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-  }
-
   body {
-    @apply bg-background text-foreground antialiased;
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
-    text-rendering: optimizeSpeed;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    image-rendering: -webkit-optimize-contrast;
-    overflow-x: hidden;
-    scroll-padding-top: 80px;
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-  }
-
-  .font-heading {
-    font-family: "Montserrat", sans-serif;
-  }
-
-  .font-body {
-    font-family: "Inter", sans-serif;
-  }
-
-  .font-display {
-    font-family: "Montserrat", sans-serif;
+  /* ✅ PERFORMANCE: font-display swap prevents invisible text */
+  @font-face {
+    font-display: swap;
   }
 }
 
-@layer components {
-  .glass-card {
-    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-lg;
-  }
+/* Layout utilities */
+.section-padding {
+  @apply py-16 md:py-24;
+}
 
-  .glass-card-dark {
-    background: hsla(var(--glass-bg));
-    backdrop-filter: blur(var(--glass-blur));
-    border: 1px solid hsla(var(--glass-border));
-  }
+.container-main {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
 
-  .section-padding {
-    @apply py-20 px-4 sm:px-6 lg:px-8;
-  }
-
-  .container-main {
-    @apply max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12;
-  }
-
-  .heading-xl {
-    @apply font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight uppercase;
-  }
-
-  .heading-lg {
-    @apply font-heading text-3xl sm:text-4xl font-bold tracking-tight uppercase;
-  }
-
-  .heading-md {
-    @apply font-heading text-2xl sm:text-3xl font-semibold tracking-tight uppercase;
-  }
-
-  .text-body {
-    @apply font-body text-base leading-relaxed;
-  }
-
-  .btn-primary {
-    @apply inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3 rounded-lg font-heading font-semibold uppercase tracking-wider text-sm transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 hover:-translate-y-0.5;
-  }
-
-  .btn-outline {
-    @apply inline-flex items-center gap-2 border-2 border-primary text-primary px-8 py-3 rounded-lg font-heading font-semibold uppercase tracking-wider text-sm transition-all duration-300 hover:bg-primary hover:text-primary-foreground;
-  }
-
-  .btn-whatsapp {
-    @apply inline-flex items-center gap-2 bg-[hsl(142,70%,40%)] text-white px-8 py-3 rounded-lg font-heading font-semibold uppercase tracking-wider text-sm transition-all duration-300 hover:shadow-xl hover:shadow-[hsl(142,70%,40%)]/25 hover:-translate-y-0.5;
-  }
-
-  .service-card {
-    @apply glass-card rounded-xl p-6 transition-all duration-300
-         hover:shadow-2xl hover:-translate-y-1 cursor-pointer;
-  }
-
-  .section-subtitle {
-    @apply font-heading text-sm font-semibold uppercase tracking-[0.2em] text-secondary;
-  }
-
-  /* Why Choose Us Card Animations */
-  .why-card {
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-    transform-style: preserve-3d;
-    perspective: 1000px;
-    background: #1a1a1a;
-  }
-
-  .why-card:hover {
-    transform: scale(1.04) rotate(-1.5deg);
-    box-shadow: 0 40px 80px -15px rgba(10, 30, 70, 0.4);
-  }
-
-  .why-card-img {
-    transition: all 0.5s ease-in-out;
-    filter: grayscale(20%);
-  }
-
-  .why-card:hover .why-card-img {
-    filter: blur(8px) brightness(0.5);
-    transform: scale(1.2);
-    animation: why-float 3s infinite ease-in-out;
-  }
-
-  @keyframes why-float {
-    0%,
-    100% {
-      transform: translateY(0) scale(1.2);
-    }
-    50% {
-      transform: translateY(-20px) scale(1.2);
-    }
-  }
-
-  .why-card-overlay {
-    transition: all 0.4s ease;
-    opacity: 0.8;
-  }
-
-  .why-card:hover .why-card-overlay {
-    opacity: 1;
-    background: linear-gradient(
-      180deg,
-      rgba(13, 21, 31, 0.1) 0%,
-      rgba(13, 21, 31, 0.9) 100%
-    ) !important;
-  }
-
-  .why-card .relative.z-10 {
-    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  .why-card:hover .relative.z-10 {
-    transform: translateY(-10px);
-  }
-
-  /* Navbar CTA shimmer */
-  .navbar-cta {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .navbar-cta-shimmer {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      105deg,
-      transparent 40%,
-      rgba(255, 255, 255, 0.35) 50%,
-      transparent 60%
-    );
-    background-size: 200% 100%;
-    background-position: -100% 0;
-    pointer-events: none;
-    z-index: 1;
-    transition: none;
-  }
-
-  .navbar-cta:hover .navbar-cta-shimmer {
-    animation: shimmer-sweep 0.65s ease-in-out forwards;
-  }
-
-  @keyframes shimmer-sweep {
-    0% {
-      background-position: -100% 0;
-    }
-    100% {
-      background-position: 200% 0;
-    }
-  }
-
-  /* GPU-Accelerated Performance Animations */
+/* Animation utilities */
+@layer utilities {
   .animate-float-slow {
     animation: float-slow 6s ease-in-out infinite;
-    will-change: transform;
   }
   .animate-float-medium {
-    animation: float-medium 5s ease-in-out infinite;
-    will-change: transform;
+    animation: float-medium 4s ease-in-out infinite;
   }
-  .animate-mesh-pulse {
-    animation: mesh-pulse 15s linear infinite;
-    will-change: transform, opacity;
+  .animate-marquee-left {
+    animation: marquee-left 40s linear infinite;
   }
-
-  @keyframes float-slow {
-    0%,
-    100% {
-      transform: translateY(0) translateZ(0);
-    }
-    50% {
-      transform: translateY(-10px) translateZ(0);
-    }
-  }
-  @keyframes float-medium {
-    0%,
-    100% {
-      transform: translateY(0) translateZ(0);
-    }
-    50% {
-      transform: translateY(12px) translateZ(0);
-    }
-  }
-  @keyframes mesh-pulse {
-    0%,
-    100% {
-      transform: scale(1) translate(0, 0) translateZ(0);
-      opacity: 0.3;
-    }
-    33% {
-      transform: scale(1.1) translate(20px, -10px) translateZ(0);
-      opacity: 0.5;
-    }
-    66% {
-      transform: scale(1.05) translate(-10px, 20px) translateZ(0);
-      opacity: 0.4;
-    }
-  }
-
-  @keyframes call-pulse {
-    0% {
-      box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.5);
-      transform: scale(1);
-    }
-    70% {
-      box-shadow: 0 0 0 15px rgba(249, 115, 22, 0);
-      transform: scale(1.02);
-    }
-    100% {
-      box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
-      transform: scale(1);
-    }
-  }
-
-  .animate-call-pulse {
-    animation: call-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  .animate-marquee-right {
+    animation: marquee-right 45s linear infinite;
   }
 }
 
-@layer utilities {
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
-  }
-
-  .bg-slate-950 {
-    --tw-bg-opacity: 1;
-    background-color: #0d2557;
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-    content-visibility: auto;
-    contain-intrinsic-size: auto 400px;
-  }
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
 }
 
-/* ---- Testimonials Marquee ---- */
-.testimonials-marquee-wrapper {
-  /* Soft fade at left & right edges */
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 8%,
-    black 92%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 8%,
-    black 92%,
-    transparent 100%
-  );
+@keyframes float-medium {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes marquee-left {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
+/* ✅ PERFORMANCE: Reduce paint areas */
+.why-card-img {
+  will-change: transform;
+  transform: translateZ(0);
 }

@@ -16,34 +16,40 @@ const SEO = ({
   description,
   keywords,
   canonical,
-  ogImage = '/og-image.webp', // Default OG image
+  ogImage = '/og-image.webp',
   ogType = 'website',
   twitterCard = 'summary_large_image',
   schemaData,
 }: SEOProps) => {
-  const siteName = 'RIITS - Royal Institute of Industrial Training & Services';
+  const siteName = 'RITS Metal Craft';
   const fullTitle = `${title} | ${siteName}`;
-  const siteUrl = 'https://riits.in'; // Replace with actual domain
+  const siteUrl = 'https://ritsmetalcraft.com';
   const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
 
   return (
     <Helmet>
-      {/* Basic Meta Tags */}
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
       <link rel="canonical" href={fullCanonical} />
       <meta name="robots" content="index, follow" />
 
-      {/* Open Graph Tags */}
+      {/* Local SEO Geo Tags */}
+      <meta name="geo.region" content="IN-TN" />
+      <meta name="geo.placename" content="Tiruchirappalli" />
+      <meta name="geo.position" content="10.7905;78.7047" />
+      <meta name="ICBM" content="10.7905, 78.7047" />
+
+      {/* Open Graph */}
       <meta property="og:site_name" content={siteName} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={fullCanonical} />
       <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+      <meta property="og:locale" content="en_IN" />
 
-      {/* Twitter Card Tags */}
+      {/* Twitter Card */}
       <meta name="twitter:card" content={twitterCard} />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
