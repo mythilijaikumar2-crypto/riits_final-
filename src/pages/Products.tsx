@@ -57,19 +57,58 @@ const benefitDetails: Record<string, { icon: string; desc: string }> = {
   "Weather resistant": { icon: "🌪️", desc: "Galvanised or powder-coated slats resist corrosion and UV degradation, maintaining performance through years of outdoor use." },
 };
 
+/* ── Product Categories — SEO-enriched overviews & descriptions ── */
 const productCategories = [
   {
     id: "ss",
     title: "Stainless Steel Fabrication",
     subtitle: "STAINLESS STEEL FABRICATION",
-    overview: "Premium-grade SS 304 and SS 202 fabrication for residential and commercial applications. All products feature brushed or mirror-polished finishes with precision welding.",
+    /* H2 maps to: Steel Gates & Metal Gates / Grills & Railings */
+    seoHeading: "Steel Gates, Grills & Railings in Trichy",
+    overview: "Looking for a custom steel gate or stainless steel gate in Trichy? RITS Metal Craft offers premium SS 304 and SS 202 gate fabrication, grill work, balcony railings and staircase railings for residential and commercial properties. All products feature brushed or mirror-polished finishes with precision welding.",
     products: [
-      { name: "SS Gates", desc: "Modern geometric and classic designs, motorized or manual operation.", materials: "SS 304 / SS 202", applications: "Residential entrances, villa gates, compound gates", image: ssGateImg },
-      { name: "SS Railings", desc: "Balcony railings, terrace railings with glass or rod infill options.", materials: "SS 304 tubes & pipes", applications: "Balconies, terraces, staircases", image: ssRailingImg },
-      { name: "SS Staircases", desc: "Straight, spiral and L-shaped staircases with anti-skid treads.", materials: "SS 304, toughened glass", applications: "Residential, commercial interiors", image: ssStaircaseImg },
-      { name: "SS Pergolas", desc: "Outdoor and entrance pergolas with powder-coated or polished finish.", materials: "SS 304 / MS with SS cladding", applications: "Entrances, terraces, gardens", image: ssPergola },
-      { name: "SS Canopies", desc: "Rain shelter and entrance canopies with glass or polycarbonate roofing.", materials: "SS 304, polycarbonate / glass", applications: "Building entrances, driveways", image: ssCanopyImg },
-      { name: "SS Decorative Panels", desc: "Laser-cut decorative panels for exterior and interior applications.", materials: "SS 304 sheet", applications: "Facades, partitions, feature walls", image: ssDecorativeImg },
+      {
+        name: "SS Gates",
+        desc: "Custom stainless steel gates — modern geometric and classic designs, motorized or manual. Ideal for residential entrances, villa gates and compound gates.",
+        materials: "SS 304 / SS 202",
+        applications: "Residential entrances, villa gates, compound gates",
+        image: ssGateImg,
+      },
+      {
+        name: "SS Railings",
+        desc: "Balcony railings and staircase railings with glass or rod infill options — strong, rust-free and stylish for any property.",
+        materials: "SS 304 tubes & pipes",
+        applications: "Balconies, terraces, staircases",
+        image: ssRailingImg,
+      },
+      {
+        name: "SS Staircases",
+        desc: "Straight, spiral and L-shaped steel staircases with anti-skid treads — precision-built for residential and commercial interiors.",
+        materials: "SS 304, toughened glass",
+        applications: "Residential, commercial interiors",
+        image: ssStaircaseImg,
+      },
+      {
+        name: "SS Pergolas",
+        desc: "Outdoor and entrance pergolas with powder-coated or polished finish — a premium addition to any terrace or garden.",
+        materials: "SS 304 / MS with SS cladding",
+        applications: "Entrances, terraces, gardens",
+        image: ssPergola,
+      },
+      {
+        name: "SS Canopies",
+        desc: "Rain shelter and entrance canopies with glass or polycarbonate roofing — built for durability and elegant kerb appeal.",
+        materials: "SS 304, polycarbonate / glass",
+        applications: "Building entrances, driveways",
+        image: ssCanopyImg,
+      },
+      {
+        name: "SS Decorative Panels",
+        desc: "Laser-cut decorative panels for exterior and interior applications — facades, partitions and feature walls.",
+        materials: "SS 304 sheet",
+        applications: "Facades, partitions, feature walls",
+        image: ssDecorativeImg,
+      },
     ],
     benefits: ["Corrosion-resistant", "Low maintenance", "Premium finish", "Long lifespan"],
   },
@@ -77,12 +116,38 @@ const productCategories = [
     id: "ms",
     title: "Mild Steel Fabrication",
     subtitle: "MILD STEEL FABRICATION",
-    overview: "Durable and cost-effective mild steel fabrication for structural and functional applications. All MS products are treated with anti-rust primer and powder coating.",
+    /* H2 maps to: Staircases & Structural Fabrication */
+    seoHeading: "MS Gates, Staircases & Structural Steel Fabrication in Trichy",
+    overview: "Need a heavy-duty metal gate or structural steel fabrication in Trichy? Our mild steel fabrication covers MS gates, metal staircases, structural frames, sheds and roofing systems. All MS products are treated with anti-rust primer and powder coating for long-lasting durability.",
     products: [
-      { name: "MS Gates", desc: "Heavy-duty main gates with automated or manual systems.", materials: "MS tubes, sheets, castings", applications: "Residential, commercial, industrial", image: msGateImg },
-      { name: "MS Structural Frames", desc: "Load-bearing frames and columns for construction support.", materials: "MS I-beams, channels, angles", applications: "Building construction, mezzanines", image: msFrameImg },
-      { name: "MS Sheds", desc: "Industrial and commercial shed structures with roofing.", materials: "MS tubular frames, GI sheets", applications: "Warehouses, factories, parking", image: msShedImg },
-      { name: "MS Roofing", desc: "Roofing truss systems and metal roof sheet installations.", materials: "MS trusses, GI/Color sheets", applications: "Industrial, residential roofing", image: msRoofingImg },
+      {
+        name: "MS Gates",
+        desc: "Heavy-duty metal gates with automated or manual systems — built for residential, commercial and industrial use.",
+        materials: "MS tubes, sheets, castings",
+        applications: "Residential, commercial, industrial",
+        image: msGateImg,
+      },
+      {
+        name: "MS Structural Frames",
+        desc: "Load-bearing steel frames and columns for construction support — precision-welded for maximum strength.",
+        materials: "MS I-beams, channels, angles",
+        applications: "Building construction, mezzanines",
+        image: msFrameImg,
+      },
+      {
+        name: "MS Sheds",
+        desc: "Industrial and commercial shed structures with roofing — cost-effective steel fabrication for warehouses and factories.",
+        materials: "MS tubular frames, GI sheets",
+        applications: "Warehouses, factories, parking",
+        image: msShedImg,
+      },
+      {
+        name: "MS Roofing",
+        desc: "Roofing truss systems and metal roof sheet installations — strong, weather-resistant and built to last.",
+        materials: "MS trusses, GI/Color sheets",
+        applications: "Industrial, residential roofing",
+        image: msRoofingImg,
+      },
     ],
     benefits: ["High strength", "Cost-effective", "Weldable", "Versatile applications"],
   },
@@ -90,13 +155,45 @@ const productCategories = [
     id: "glass",
     title: "Glass & Aluminium System",
     subtitle: "GLASS & ALUMINIUM SYSTEM",
-    overview: "Modern aluminium and glass systems for residential and commercial buildings. All systems feature anodized or powder-coated aluminium with toughened safety glass.",
+    /* H2 maps to: Aluminium Doors & Windows / Glass Doors & Partitions */
+    seoHeading: "Aluminium Doors, Windows, Glass Doors & Partitions in Trichy",
+    overview: "Searching for an aluminium window in Trichy or a toughened glass door for your office? We fabricate and fit aluminium doors, aluminium sliding windows, glass doors, glass partitions and office glass partitions — all using anodized or powder-coated aluminium profiles with toughened safety glass.",
     products: [
-      { name: "Aluminium Doors", desc: "Swing, sliding and folding door systems with thermal break profiles.", materials: "Aluminium sections, toughened glass", applications: "Residential, commercial entrances", image: alDoorImg },
-      { name: "Aluminium Windows", desc: "Sliding, casement and fixed window systems with mosquito mesh options.", materials: "Aluminium profiles, clear/tinted glass", applications: "All building types", image: alWindowImg },
-      { name: "Sliding Systems", desc: "Multi-track sliding systems for balconies and large openings.", materials: "Heavy-duty aluminium tracks", applications: "Balcony enclosures, partitions", image: alSlidingImg },
-      { name: "Glass Partitions", desc: "Frameless and framed glass partition systems for interior spaces.", materials: "Toughened glass 10mm/12mm", applications: "Offices, showrooms, commercial", image: glassPartImg },
-      { name: "Structural Glazing", desc: "Full glass facade systems with spider fittings and silicone joints.", materials: "Toughened/DGU glass, SS spiders", applications: "Commercial facades, showrooms", image: structGlazingImg },
+      {
+        name: "Aluminium Doors",
+        desc: "Swing, sliding and folding aluminium door systems with thermal break profiles — modern, weather-sealed and low maintenance.",
+        materials: "Aluminium sections, toughened glass",
+        applications: "Residential, commercial entrances",
+        image: alDoorImg,
+      },
+      {
+        name: "Aluminium Windows",
+        desc: "Sliding, casement and fixed aluminium window systems with mosquito mesh options — ideal for all building types in Trichy.",
+        materials: "Aluminium profiles, clear/tinted glass",
+        applications: "All building types",
+        image: alWindowImg,
+      },
+      {
+        name: "Aluminium Sliding Windows",
+        desc: "Multi-track aluminium sliding window systems for balconies and large openings — smooth operation and energy efficient.",
+        materials: "Heavy-duty aluminium tracks",
+        applications: "Balcony enclosures, partitions",
+        image: alSlidingImg,
+      },
+      {
+        name: "Glass Partitions",
+        desc: "Frameless and framed glass partition systems and office glass partitions — clean, professional and built to last.",
+        materials: "Toughened glass 10mm/12mm",
+        applications: "Offices, showrooms, commercial",
+        image: glassPartImg,
+      },
+      {
+        name: "Structural Glazing",
+        desc: "Full glass facade systems with spider fittings and silicone joints — toughened glass doors and curtain wall solutions.",
+        materials: "Toughened/DGU glass, SS spiders",
+        applications: "Commercial facades, showrooms",
+        image: structGlazingImg,
+      },
     ],
     benefits: ["Weather-sealed", "Energy efficient", "Modern aesthetics", "Sound insulation"],
   },
@@ -104,12 +201,37 @@ const productCategories = [
     id: "elevation",
     title: "Exterior Elevation & Cladding",
     subtitle: "EXTERIOR ELEVATION & CLADDING",
-    overview: "Transform building exteriors with modern cladding and facade systems. Our elevation solutions combine aesthetics with weather protection.",
+    seoHeading: "ACP Cladding, Facade Panels & Building Elevation in Trichy",
+    overview: "Transform your building's exterior with modern cladding and facade systems. Our elevation solutions — ACP panels, HPL cladding, louvers and decorative facade panels — combine architectural aesthetics with long-term weather protection across Trichy and Tamil Nadu.",
     products: [
-      { name: "ACP Panels", desc: "Aluminium Composite Panel cladding in various colors and finishes.", materials: "ACP sheets, aluminium framework", applications: "Commercial buildings, showrooms", image: acpPanelImg },
-      { name: "HPL Cladding", desc: "High Pressure Laminate cladding for premium exterior finishes.", materials: "HPL sheets, SS/aluminium framing", applications: "Residential villas, offices", image: hplCladdingImg },
-      { name: "Louvers", desc: "Aluminium and MS louvers for ventilation and aesthetics.", materials: "Aluminium / MS blades", applications: "Facades, parking structures", image: louversImg },
-      { name: "Decorative Facade Panels", desc: "Custom laser-cut and CNC-routed metal panels for facades.", materials: "MS / SS / Aluminium sheets", applications: "Feature walls, building facades", image: facadePanelImg },
+      {
+        name: "ACP Panels",
+        desc: "Aluminium Composite Panel cladding in various colors and finishes — the most popular building elevation product in Trichy.",
+        materials: "ACP sheets, aluminium framework",
+        applications: "Commercial buildings, showrooms",
+        image: acpPanelImg,
+      },
+      {
+        name: "HPL Cladding",
+        desc: "High Pressure Laminate cladding for premium exterior finishes — durable, stylish and weather-resistant.",
+        materials: "HPL sheets, SS/aluminium framing",
+        applications: "Residential villas, offices",
+        image: hplCladdingImg,
+      },
+      {
+        name: "Louvers",
+        desc: "Aluminium and MS louvers for ventilation and aesthetics — ideal for facades and parking structures.",
+        materials: "Aluminium / MS blades",
+        applications: "Facades, parking structures",
+        image: louversImg,
+      },
+      {
+        name: "Decorative Facade Panels",
+        desc: "Custom laser-cut and CNC-routed metal panels for facades — feature walls and building exterior cladding.",
+        materials: "MS / SS / Aluminium sheets",
+        applications: "Feature walls, building facades",
+        image: facadePanelImg,
+      },
     ],
     benefits: ["Weather protection", "Thermal insulation", "Low maintenance", "Architectural appeal"],
   },
@@ -117,11 +239,31 @@ const productCategories = [
     id: "shutters",
     title: "Rolling Shutter",
     subtitle: "ROLLING SHUTTER",
-    overview: "Motorized and manual rolling shutter systems for commercial, industrial and residential security. Heavy-duty construction with long operational life.",
+    /* H2 maps to: Rolling Shutters */
+    seoHeading: "Rolling Shutters & Shop Shutters in Trichy",
+    overview: "Need a rolling shutter in Trichy for your shop, showroom or warehouse? RITS Metal Craft supplies and installs heavy-duty rolling shutters and shop shutters — motorized and manual — built for commercial, industrial and residential security with long operational life.",
     products: [
-      { name: "Commercial Shutters", desc: "Standard rolling shutters for shops and commercial spaces.", materials: "GI / MS slats, spring/motor", applications: "Shops, showrooms, offices", image: shutterCommImg },
-      { name: "Industrial Shutters", desc: "Heavy-gauge shutters for warehouses and factory entrances.", materials: "MS heavy-gauge slats, motor-operated", applications: "Warehouses, factories", image: shutterIndImg },
-      { name: "Heavy-Duty Systems", desc: "Extra-wide and extra-tall shutter systems for large openings.", materials: "Reinforced MS/GI construction", applications: "Industrial, logistics, hangars", image: shutterHeavyImg },
+      {
+        name: "Commercial Shutters",
+        desc: "Standard rolling shutters and shop shutters for retail shops, showrooms and commercial spaces — durable and secure.",
+        materials: "GI / MS slats, spring/motor",
+        applications: "Shops, showrooms, offices",
+        image: shutterCommImg,
+      },
+      {
+        name: "Industrial Shutters",
+        desc: "Heavy-gauge rolling shutters for warehouses and factory entrances — motor-operated for high-frequency daily use.",
+        materials: "MS heavy-gauge slats, motor-operated",
+        applications: "Warehouses, factories",
+        image: shutterIndImg,
+      },
+      {
+        name: "Heavy-Duty Systems",
+        desc: "Extra-wide and extra-tall shutter systems for large industrial openings — reinforced construction for maximum security.",
+        materials: "Reinforced MS/GI construction",
+        applications: "Industrial, logistics, hangars",
+        image: shutterHeavyImg,
+      },
     ],
     benefits: ["Motorized options", "High security", "Low maintenance", "Weather resistant"],
   },
@@ -216,11 +358,13 @@ const CategorySection = memo(({ category }: { category: Category }) => {
         <p className="text-xs font-semibold tracking-wider text-blue-600 uppercase mb-1">
           {category.subtitle}
         </p>
+        {/* SEO H2 — keyword-rich, used as section heading */}
         <h2 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
-          {category.title}
+          {category.seoHeading}
         </h2>
       </div>
       <div className="mb-8 h-px bg-slate-200" />
+      {/* SEO-enriched overview paragraph */}
       <p className="mb-10 max-w-3xl text-base leading-relaxed text-slate-600">
         {category.overview}
       </p>
@@ -239,6 +383,23 @@ const CategorySection = memo(({ category }: { category: Category }) => {
           ))}
         </div>
       </div>
+
+      {/* ── Near-me CTA bar — local SEO keywords ── */}
+      <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-950 rounded-2xl px-7 py-5">
+        <p className="text-sm font-medium text-white/70 leading-relaxed">
+          {category.id === "ss" && <>Need a <strong className="text-blue-300">steel gate in Trichy</strong> or <strong className="text-blue-300">grill work in Trichy</strong>? RITS Metal Craft is your trusted fabrication shop.</>}
+          {category.id === "ms" && <>Looking for a <strong className="text-blue-300">metal gate or steel staircase</strong> in Trichy? Our steel fabrication team delivers on time.</>}
+          {category.id === "glass" && <>Searching for an <strong className="text-blue-300">aluminium window in Trichy</strong> or a <strong className="text-blue-300">glass door</strong> for your office? Call us for a free quote.</>}
+          {category.id === "elevation" && <>Transform your building with the best <strong className="text-blue-300">ACP cladding and facade work</strong> in Trichy — call for a free site visit.</>}
+          {category.id === "shutters" && <>Need a <strong className="text-blue-300">rolling shutter in Trichy</strong>? We supply and install <strong className="text-blue-300">shop shutters</strong> for all types of businesses.</>}
+        </p>
+        <a
+          href="tel:+919876543210"
+          className="shrink-0 inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs uppercase tracking-widest px-6 py-3 rounded-xl transition-colors duration-200 whitespace-nowrap"
+        >
+          📞 Call Now
+        </a>
+      </div>
     </section>
   );
 });
@@ -248,10 +409,8 @@ const Products = () => {
   const [activeTab, setActiveTab] = useState(productCategories[0].id);
   const [isPaused, setIsPaused] = useState(false);
 
-  // Automation: Auto-cycle through categories every 8 seconds
   useEffect(() => {
     if (isPaused) return;
-
     const interval = setInterval(() => {
       setActiveTab((prev) => {
         const currentIndex = productCategories.findIndex(c => c.id === prev);
@@ -259,7 +418,6 @@ const Products = () => {
         return productCategories[nextIndex].id;
       });
     }, 4000);
-
     return () => clearInterval(interval);
   }, [isPaused]);
 
@@ -272,6 +430,7 @@ const Products = () => {
         description="Browse our catalogue of premium metal products in Trichy. We offer stainless steel gates, mild steel structures, aluminium windows, and high-security rolling shutters."
         keywords="metal products trichy, ss gate designs, rolling shutter types, aluminium window price trichy"
       />
+
       <style>{`
         .products-hero {
           position: relative;
@@ -337,7 +496,7 @@ const Products = () => {
           height: 220px;
           display: flex;
           justify-content: center;
-          padding: 0 0.5rem; /* Small padding to keep it 'floating' but wide */
+          padding: 0 0.5rem;
         }
 
         .card-imgs {
@@ -690,14 +849,19 @@ const Products = () => {
 
       {/* ─── Hero ─── */}
       <section className="products-hero">
+
+        {/* Visually hidden H1 — primary SEO heading for Google */}
+        <h1 className="sr-only">
+          Fabrication Products in Trichy — Steel Gates, Railings, Rolling Shutters, Aluminium Windows &amp; Glass Doors | RITS Metal Craft
+        </h1>
+
         <div className="hero-bg-media">
           <motion.img
             initial={{ scale: 1.1, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 2, ease: "easeOut" }}
             src="/src/assets/heropage/products page hero.webp"
-            alt="RIITS Metal Craft Industrial Fabrication - Heavy-Duty Structural Works"
-            aria-hidden="false"
+            alt="RITS Metal Craft fabrication products — steel gates, railings, rolling shutters and aluminium works in Trichy"
             className="w-full h-full object-cover opacity-30 mix-blend-overlay"
             style={{ willChange: "transform" }}
             loading="eager"
@@ -708,12 +872,9 @@ const Products = () => {
         <div className="hero-overlay" />
         <div className="hero-mesh" />
 
-
-        {/* Grid overlay */}
         <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
           style={{ backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)", backgroundSize: "48px 48px" }} />
 
-        {/* Floating stat badges */}
         <div className="absolute top-24 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10 animate-float-slow">
           <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
           5 Product Categories
@@ -725,17 +886,18 @@ const Products = () => {
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-8">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
-            {/* Left copy */}
             <div>
               <motion.div
                 initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
                 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 text-xs font-semibold uppercase tracking-widest mb-4"
               >
                 <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                Metal · Glass · Cladding
+                Fabrication Shop in Trichy
               </motion.div>
 
-              <motion.h1
+              {/* Decorative display heading — aria-hidden, real H1 is sr-only above */}
+              <motion.p
+                aria-hidden="true"
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.05 }}
                 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-black uppercase leading-none tracking-tight text-white mb-4"
               >
@@ -744,13 +906,22 @@ const Products = () => {
                   Catalogue.
                 </span><br />
                 Built to Excel.
-              </motion.h1>
+              </motion.p>
 
+              {/* SEO-rich hero paragraph */}
               <motion.p
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-white/65 text-base leading-relaxed max-w-md mb-7"
               >
-                Explore our precision-engineered range — stainless steel fabrication, aluminium &amp; glass systems, elevation cladding, and industrial rolling shutters built for lasting excellence.
+                Explore our complete range of{" "}
+                <strong className="text-white/85">fabrication products</strong> in Trichy — custom{" "}
+                <strong className="text-white/85">steel gates</strong>,{" "}
+                <strong className="text-white/85">balcony railings</strong>,{" "}
+                <strong className="text-white/85">rolling shutters</strong>,{" "}
+                <strong className="text-white/85">aluminium windows</strong>,{" "}
+                <strong className="text-white/85">glass doors</strong> and{" "}
+                <strong className="text-white/85">ACP cladding</strong> — precision-built
+                with Grade-A materials for lasting excellence.
               </motion.p>
 
               <motion.div
@@ -764,10 +935,7 @@ const Products = () => {
                   <MessageCircle className="w-4 h-4" /> WhatsApp
                 </TurtleButton>
               </motion.div>
-
             </div>
-
-
           </div>
         </div>
       </section>
@@ -845,16 +1013,16 @@ const Products = () => {
           <h2 className="text-4xl font-black uppercase tracking-tight text-white mb-6">
             Ready to Build Your Vision?
           </h2>
-          <p className="mx-auto max-w-lg text-base text-white/60 mb-10 leading-relaxed">
-            Tell us about your project requirements and our team will prepare a detailed consultation and quotation.
+          <p className="mx-auto max-w-xl text-base text-white/60 mb-10 leading-relaxed">
+            Need a <strong className="text-white/80">steel gate</strong>,{" "}
+            <strong className="text-white/80">rolling shutter</strong>,{" "}
+            <strong className="text-white/80">aluminium window</strong> or{" "}
+            <strong className="text-white/80">glass door</strong> in Trichy?
+            Our team will visit your site, measure and provide a detailed, written quotation — completely free.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <TurtleButton
-              href="tel:+919876543210"
-              variant="call_now"
-              className="rounded-xl px-10"
-            >
+            <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-10">
               <Phone className="w-4 h-4" /> Get Free Consultation
             </TurtleButton>
             <a
@@ -866,7 +1034,6 @@ const Products = () => {
               <MessageCircle className="w-4 h-4" /> WhatsApp Us
             </a>
           </div>
-
           <div className="flex flex-wrap justify-center gap-6 mt-12 pt-10 border-t border-white/10">
             {["Certified Quality", "Precision Engineering", "Timely Delivery"].map((b) => (
               <div key={b} className="flex items-center gap-2 text-sm text-white/40 font-medium">

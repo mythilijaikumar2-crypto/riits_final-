@@ -22,7 +22,6 @@ import win3 from "../assets/aluminiumwind/window2.webp";
 import win4 from "../assets/aluminiumwind/window3.webp";
 import win5 from "../assets/aluminiumwind/window4.webp";
 
-
 import fac1 from "../assets/facard/Glass facades1.jpg";
 import fac3 from "../assets/facard/facade3.jpg";
 import fac4 from "../assets/facard/facade4.jpg";
@@ -102,6 +101,8 @@ import roof7 from "../assets/roofing/roofimg5.webp";
 
 type ProjectCategory = {
   title: string;
+  seoHeading: string;
+  seoDesc: string;
   projects: Project[];
 };
 
@@ -112,77 +113,150 @@ type Project = {
   images?: string[];
 };
 
+/* ══════════════════════════════════════════════════════════
+   PROJECT CATEGORIES — SEO headings & descriptions added
+   to each category without touching any UI logic
+══════════════════════════════════════════════════════════ */
 const projectCategories: ProjectCategory[] = [
   {
     title: "Residential",
+    /* H2 — targets: balcony railing work, staircase railing work,
+       steel gate work in Trichy, gate fabrication designs,
+       aluminium window work */
+    seoHeading: "Residential Steel Gate, Railing & Aluminium Window Works",
+    seoDesc:
+      "Our residential portfolio includes completed steel gate work in Trichy, custom gate fabrication designs, balcony railing work, staircase railing work and aluminium window work — all built and installed by our own team.",
     projects: [
-      { 
-        title: "SS Railing & Staircase – Trichy", 
-        desc: "Custom-fabricated stainless steel staircase railings with ergonomic handrails and precision-welded supports for modern homes.", 
-        images: [stair1, stair2, stair3, stair4, stair_img5] 
+      {
+        title: "SS Railing & Staircase – Trichy",
+        desc: "Custom-fabricated stainless steel staircase railings with ergonomic handrails and precision-welded supports for modern homes. This balcony railing work and staircase railing work project showcases our welding quality.",
+        images: [stair1, stair2, stair3, stair4, stair_img5],
       },
-      { 
-        title: "Modern MS Gate – Srirangam", 
-        desc: "Geometric-patterned mild steel main gate with motorized operation, premium powder coating, and precision laser-cut designs.", 
-        images: [res2_1, res2_2, res2_3, res2_4, res2_5] 
+      {
+        title: "Modern MS Gate – Srirangam",
+        desc: "Geometric-patterned mild steel main gate with motorized operation, premium powder coating and precision laser-cut gate fabrication designs — a complete metal gate work project for a residential compound.",
+        images: [res2_1, res2_2, res2_3, res2_4, res2_5],
       },
-      { 
-        title: "Aluminium Windows – Thillai Nagar", 
-        desc: "Premium aluminium sliding and casement window systems with high-quality gaskets, tinted toughened glass, and smooth-operating hardware for residences.", 
-        images: [win1, win2, win3, win4, win5] 
+      {
+        title: "Aluminium Windows – Thillai Nagar",
+        desc: "Premium aluminium window work — sliding and casement systems with high-quality gaskets, tinted toughened glass and smooth-operating hardware, a complete aluminium window installation for a Trichy residence.",
+        images: [win1, win2, win3, win4, win5],
       },
-      { title: "Elevation Work – KK Nagar", desc: "ACP cladding and decorative louvers for a residential villa.", images: [elw1, elw2, elw3, elw4, elw5] },
+      {
+        title: "Elevation Work – KK Nagar",
+        desc: "ACP cladding and decorative louvers for a residential villa in KK Nagar — part of our full building elevation and metal fabrication work portfolio in Trichy.",
+        images: [elw1, elw2, elw3, elw4, elw5],
+      },
     ],
   },
   {
     title: "Commercial",
+    /* H2 — targets: rolling shutter installation, shop shutter work,
+       glass partition work, glass door installation,
+       rolling shutter work in Trichy */
+    seoHeading: "Commercial Rolling Shutter, Glass Partition & Facade Projects",
+    seoDesc:
+      "Our commercial projects include rolling shutter installation, shop shutter work, office glass partition work and glass door installation across Trichy — all delivered on time with full warranty.",
     projects: [
-      { title: "Showroom Facade – Trichy Main Road", desc: "Structural glazing with ACP cladding for a multi-brand showroom.", images: [fac1, fac3, fac4, fac5, fac6] },
-      { 
-        title: "Rolling Shutters – Commercial Complex", 
-        desc: "Heavy-duty motorized rolling shutters for 12 shop units in a high-traffic urban complex, featuring remote operation and security locks.", 
-        images: [shut1, shut2, shut3, shut5] 
+      {
+        title: "Showroom Facade – Trichy Main Road",
+        desc: "Structural glazing with ACP cladding for a multi-brand showroom — a steel fabrication work and facade project completed on Trichy Main Road.",
+        images: [fac1, fac3, fac4, fac5, fac6],
       },
-      { title: "Office Partition – IT Park", desc: "Frameless toughened glass partitions for corporate office space.", images: [part1, part2, part3, part4, part5] },
-      { title: "Glass Entrance – Hotel Lobby", desc: "Toughened glass swing doors with SS hardware and canopy.", images: [lobby1, lobby2, lobby3] },
+      {
+        title: "Rolling Shutters – Commercial Complex",
+        desc: "Heavy-duty motorized rolling shutter installation for 12 shop units in a high-traffic commercial complex — rolling shutter work in Trichy with remote operation and security locks.",
+        images: [shut1, shut2, shut3, shut5],
+      },
+      {
+        title: "Office Partition – IT Park",
+        desc: "Frameless toughened glass partition work for a corporate IT Park office space — clean office glass partitions that create an open and professional workspace.",
+        images: [part1, part2, part3, part4, part5],
+      },
+      {
+        title: "Glass Entrance – Hotel Lobby",
+        desc: "Toughened glass door installation with SS hardware and canopy for a hotel lobby — a premium glass door work project with elegant frameless design.",
+        images: [lobby1, lobby2, lobby3],
+      },
     ],
   },
   {
     title: "Industrial",
+    /* H2 — targets: metal fabrication work in Trichy,
+       steel fabrication work, welding work, fabrication projects in Trichy */
+    seoHeading: "Industrial Steel Fabrication & Warehouse Projects in Trichy",
+    seoDesc:
+      "Our industrial portfolio covers heavy steel fabrication work, welding work and structural metal fabrication work in Trichy — factory sheds, warehouse shutters and structural steel frames built for long-term durability.",
     projects: [
-      { title: "Factory Shed – SIDCO Industrial Estate", desc: "Large-span MS structural shed with GI roofing sheets.", images: [shed1, shed2, shed3, shed4, shed5] },
-      { title: "Warehouse Shutters – Manachanallur", desc: "Heavy-duty industrial rolling shutters for warehouse complex.", images: [wh1, wh2, wh3, wh4, wh5] },
-      { title: "Structural Steel – Construction Site", desc: "MS I-beam and column fabrication for multi-storey building.", images: [ss1, ss2, ss3, ss4, ss5] },
+      {
+        title: "Factory Shed – SIDCO Industrial Estate",
+        desc: "Large-span MS structural shed with GI roofing sheets — a complete industrial steel fabrication work project at SIDCO Industrial Estate, Trichy.",
+        images: [shed1, shed2, shed3, shed4, shed5],
+      },
+      {
+        title: "Warehouse Shutters – Manachanallur",
+        desc: "Heavy-duty industrial rolling shutter installation for a warehouse complex in Manachanallur — part of our fabrication projects in Trichy for the industrial sector.",
+        images: [wh1, wh2, wh3, wh4, wh5],
+      },
+      {
+        title: "Structural Steel – Construction Site",
+        desc: "MS I-beam and column metal fabrication work for a multi-storey building — precision welding work and structural steel fabrication by our in-house team.",
+        images: [ss1, ss2, ss3, ss4, ss5],
+      },
     ],
   },
   {
     title: "Elevation",
+    /* H2 — targets: grill work in Trichy, fabrication work photos,
+       gate fabrication designs */
+    seoHeading: "Building Elevation, Facade & Decorative Fabrication Works",
+    seoDesc:
+      "Browse our elevation and facade fabrication work photos — ACP cladding, HPL panels, decorative gate fabrication designs and heritage grill work in Trichy that blend aesthetics with structural strength.",
     projects: [
-      { title: "Full Elevation – Residential Complex", desc: "Complete ACP + HPL cladding with aluminium louvers and SS railings.", images: [ele1_1, ele1_2, ele1_3, ele1_4, ele1_5, ele1] },
-      { title: "Facade Upgrade – Commercial Building", desc: "Decorative laser-cut panels with LED backlighting integration.", images: [fcMain, fc1, fc2, fc3, fc4] },
-      { title: "Heritage Restoration – Temple Town", desc: "MS decorative gates and railings matching traditional Trichy architecture.", images: [her1, her2, her3, her4] },
+      {
+        title: "Full Elevation – Residential Complex",
+        desc: "Complete ACP + HPL cladding with aluminium louvers and SS railings — a full building elevation and metal fabrication work project for a residential complex in Trichy.",
+        images: [ele1_1, ele1_2, ele1_3, ele1_4, ele1_5, ele1],
+      },
+      {
+        title: "Facade Upgrade – Commercial Building",
+        desc: "Decorative laser-cut panels with LED backlighting integration — a premium facade and steel fabrication work project showcasing custom gate fabrication designs.",
+        images: [fcMain, fc1, fc2, fc3, fc4],
+      },
+      {
+        title: "Heritage Restoration – Temple Town",
+        desc: "MS decorative gates and grill work in Trichy matching traditional Trichy architecture — heritage-style gate fabrication designs and welding work for Temple Town.",
+        images: [her1, her2, her3, her4],
+      },
     ],
   },
   {
     title: "Roofing",
+    /* H2 — targets: fabrication projects in Trichy,
+       metal fabrication work, steel fabrication work */
+    seoHeading: "Industrial & Residential Roofing Fabrication Projects",
+    seoDesc:
+      "Our roofing portfolio is part of our wider fabrication projects in Trichy — covering industrial warehouse roofing and residential terrace roofing using GI, Galvalume and polycarbonate systems.",
     projects: [
-      { 
-        title: "Industrial & Warehouse Roofing", 
-        desc: "High-durability GI and Galvalume roofing sheets for large industrial spans and warehouses.", 
-        images: [whr1, whr2, whr3, whr4, whr5] 
+      {
+        title: "Industrial & Warehouse Roofing",
+        desc: "High-durability GI and Galvalume roofing sheets for large industrial spans and warehouses — a steel fabrication work project built for decades of performance.",
+        images: [whr1, whr2, whr3, whr4, whr5],
       },
-      { 
-        title: "Residential Terrace Roofing", 
-        desc: "Polycarbonate and aesthetic metal roofing solutions for home terraces and sit-outs.", 
-        images: [roof1, roof2, roof3, roof5, roof6, roof7] 
+      {
+        title: "Residential Terrace Roofing",
+        desc: "Polycarbonate and aesthetic metal roofing solutions for home terraces and sit-outs — quality metal fabrication work in Trichy for residential properties.",
+        images: [roof1, roof2, roof3, roof5, roof6, roof7],
       },
     ],
   },
 ];
 
+/* ══════════════════════════════════════════════════════════
+   PROJECTS PAGE COMPONENT
+══════════════════════════════════════════════════════════ */
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  // Single global tick — all sliders advance together at the same moment
   const [globalTick, setGlobalTick] = useState(0);
 
   useEffect(() => {
@@ -190,23 +264,25 @@ const Projects = () => {
     return () => clearInterval(id);
   }, []);
 
-  // Prevent scroll when modal is open
   useEffect(() => {
     if (selectedProject) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
-    return () => { document.body.style.overflow = 'unset'; };
+    return () => {
+      document.body.style.overflow = "unset";
+    };
   }, [selectedProject]);
 
   return (
     <main className="pt-20">
-      <SEO 
-        title="Recent Metal Fabrication Projects in Trichy | RIITS Portfolio"
-        description="View our portfolio of successful metal fabrication projects in Trichy. From residential gates to industrial sheds and commercial facades, see our craftsmanship in action."
-        keywords="fabrication projects trichy, ss railing portfolio, ms gate designs tamil nadu"
+      <SEO
+        title="Steel Gate, Grill, Railing & Fabrication Projects in Trichy | RITS Metal Craft Our Works"
+        description="Browse 800+ real fabrication projects in Trichy by RITS Metal Craft — steel gate work, grill work, rolling shutter installation, aluminium window work, glass partition work and more."
+        keywords="steel gate work in Trichy, grill work in Trichy, rolling shutter work in Trichy, fabrication projects in Trichy, metal fabrication work in Trichy, balcony railing work, staircase railing work, rolling shutter installation, shop shutter work, aluminium door installation, aluminium window work, glass door installation, glass partition work, steel fabrication work, metal fabrication work, welding work, fabrication work photos, gate fabrication designs"
       />
+
       <style>{`
         .projects-hero {
           position: relative;
@@ -237,7 +313,7 @@ const Projects = () => {
         .hero-grid-lines {
           position: absolute;
           inset: 0;
-          background-image: 
+          background-image:
             linear-gradient(rgba(29, 78, 216, 0.1) 1px, transparent 1px),
             linear-gradient(90deg, rgba(29, 78, 216, 0.1) 1px, transparent 1px);
           background-size: 50px 50px;
@@ -254,20 +330,25 @@ const Projects = () => {
         @keyframes shimmer {
           to { background-position: 200% center; }
         }
-
         @media (max-width: 768px) {
-          .projects-hero {
-            min-height: 70vh;
-          }
+          .projects-hero { min-height: 70vh; }
         }
       `}</style>
 
-      {/* ── PROJECTS HERO ── */}
+      {/* ══════════════════════════════════════════
+          HERO
+      ══════════════════════════════════════════ */}
       <section className="projects-hero">
+
+        {/* Visually hidden H1 — primary SEO heading for Google */}
+        <h1 className="sr-only">
+          Steel Gate, Grill, Railing, Rolling Shutter &amp; Fabrication Projects in Trichy | RITS Metal Craft Our Works
+        </h1>
+
         <div className="absolute inset-0 z-0 overflow-hidden opacity-80">
           <img
             src="/src/assets/heropage/our work hero page .webp"
-            alt="RIITS Metal Craft Portfolio - Showcasing Our Excellence in Fabrication"
+            alt="RITS Metal Craft — completed steel gate, railing, rolling shutter and fabrication projects in Trichy"
             className="hero-bg-img"
             loading="eager"
           />
@@ -275,8 +356,6 @@ const Projects = () => {
         <div className="hero-overlay" />
         <div className="hero-grid-lines" />
 
-
-        {/* Floating stat badges */}
         <div className="absolute top-24 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10 animate-float-slow">
           <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
           Residential · Commercial · Industrial
@@ -288,23 +367,35 @@ const Projects = () => {
 
         <div className="container-main relative z-10">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
-            {/* Left copy */}
             <div>
+              {/* Badge — local keyword */}
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-widest mb-4">
                 <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-                Our Masterpieces
+                Fabrication Projects in Trichy
               </div>
 
-              <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-black uppercase leading-none tracking-tight text-white mb-4">
-                Projects<br />
-                <span className="shimmer-text">
-                  Portfolio.
-                </span><br />
+              {/* Decorative display heading — aria-hidden; real H1 is sr-only above */}
+              <p
+                aria-hidden="true"
+                className="font-heading text-4xl sm:text-5xl lg:text-6xl font-black uppercase leading-none tracking-tight text-white mb-4"
+              >
+                Projects
+                <br />
+                <span className="shimmer-text">Portfolio.</span>
+                <br />
                 Our Best Work.
-              </h1>
+              </p>
 
+              {/* SEO-rich hero paragraph */}
               <p className="text-white/70 text-base leading-relaxed max-w-md mb-7">
-                From complex industrial structures to elegant residential gates — explore how we blend precision engineering with architectural vision across Tamil Nadu.
+                Browse our real completed{" "}
+                <strong className="text-white/85">fabrication work photos</strong> — from{" "}
+                <strong className="text-white/85">steel gate work in Trichy</strong> and{" "}
+                <strong className="text-white/85">grill work in Trichy</strong> to{" "}
+                <strong className="text-white/85">rolling shutter installation</strong>,{" "}
+                <strong className="text-white/85">glass partition work</strong> and full{" "}
+                <strong className="text-white/85">metal fabrication work in Trichy</strong>{" "}
+                — every photo is a real project we built and installed.
               </p>
 
               <div className="flex flex-wrap gap-3">
@@ -316,16 +407,50 @@ const Projects = () => {
                 </TurtleButton>
               </div>
             </div>
-
-
           </div>
         </div>
       </section>
 
+      {/* ══════════════════════════════════════════
+          SEO INTRO — Our Completed Fabrication Works
+      ══════════════════════════════════════════ */}
+      <section className="bg-white border-b border-slate-100 py-14 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <span className="inline-block text-[0.68rem] font-bold uppercase tracking-[0.22em] text-blue-700 bg-blue-50 border border-blue-100 px-4 py-1.5 rounded-full mb-4">
+            Portfolio
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-black text-slate-950 uppercase tracking-tight mb-4">
+            Our Completed Fabrication Works
+          </h2>
+          <p className="text-slate-500 text-[0.95rem] leading-relaxed max-w-2xl mx-auto">
+            RITS Metal Craft has completed 800+{" "}
+            <strong className="text-slate-700">fabrication projects in Trichy</strong> across
+            homes, shops, offices and industries. Every piece of{" "}
+            <strong className="text-slate-700">steel fabrication work</strong> and{" "}
+            <strong className="text-slate-700">metal fabrication work</strong> you see here
+            was built and installed by our own team using Grade-A materials and expert{" "}
+            <strong className="text-slate-700">welding work</strong>.
+          </p>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          PROJECT CATEGORY SECTIONS
+      ══════════════════════════════════════════ */}
       {projectCategories.map((cat, catIdx) => (
-        <section key={cat.title} className={`section-padding ${catIdx % 2 === 0 ? "bg-background" : "bg-muted"}`}>
+        <section
+          key={cat.title}
+          className={`section-padding ${catIdx % 2 === 0 ? "bg-background" : "bg-muted"}`}
+        >
           <div className="container-main">
-            <SectionHeading subtitle={`${cat.title} Projects`} title={cat.title} />
+            {/* SEO H2 + description paragraph above the project cards */}
+            <div className="mb-10">
+              <SectionHeading subtitle={`${cat.title} Projects`} title={cat.seoHeading} />
+              <p className="mt-4 text-slate-500 text-[0.95rem] leading-relaxed max-w-3xl">
+                {cat.seoDesc}
+              </p>
+            </div>
+
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 lg:gap-12">
               {cat.projects.map((p) => (
                 <div
@@ -355,9 +480,9 @@ const Projects = () => {
                     </p>
 
                     <div className="mt-auto">
-                      <TurtleButton 
-                        variant="outline" 
-                        size="sm" 
+                      <TurtleButton
+                        variant="outline"
+                        size="sm"
                         className="rounded-xl border-primary text-primary hover:bg-primary hover:text-white px-6"
                         onClick={() => setSelectedProject(p)}
                       >
@@ -372,11 +497,12 @@ const Projects = () => {
         </section>
       ))}
 
-      {/* ── PROJECT DETAIL MODAL ── */}
+      {/* ══════════════════════════════════════════
+          PROJECT DETAIL MODAL
+      ══════════════════════════════════════════ */}
       <AnimatePresence>
         {selectedProject && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-10">
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -384,8 +510,6 @@ const Projects = () => {
               onClick={() => setSelectedProject(null)}
               className="absolute inset-0 bg-slate-950/80 backdrop-blur-md cursor-zoom-out"
             />
-
-            {/* Modal Content */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -394,7 +518,6 @@ const Projects = () => {
               className="relative w-full max-w-5xl max-h-[90vh] bg-white dark:bg-slate-900 rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close Button */}
               <button
                 onClick={() => setSelectedProject(null)}
                 aria-label="Close project details"
@@ -404,12 +527,9 @@ const Projects = () => {
               </button>
 
               <div className="flex flex-col lg:flex-row h-full overflow-y-auto lg:overflow-hidden">
-                {/* Image Side */}
                 <div className="lg:w-3/5 h-[300px] sm:h-[400px] lg:h-auto relative overflow-hidden bg-slate-100 dark:bg-slate-800">
                   <ProjectImageSlider p={selectedProject} isModal />
                 </div>
-
-                {/* Content Side */}
                 <div className="lg:w-2/5 p-8 sm:p-12 flex flex-col justify-center bg-white dark:bg-slate-900">
                   <div className="inline-flex items-center gap-2 mb-6">
                     <div className="w-8 h-[2px] bg-primary" />
@@ -417,29 +537,21 @@ const Projects = () => {
                       Project Overview
                     </span>
                   </div>
-
                   <h2 className="font-heading text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
                     {selectedProject.title}
                   </h2>
-
                   <div className="space-y-4">
                     <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg leading-relaxed">
                       {selectedProject.desc}
                     </p>
-                    
                     <div className="pt-8 border-t border-slate-100 dark:border-slate-800">
                       <p className="text-slate-500 dark:text-slate-500 text-sm italic">
                         "Delivering precision and excellence in every structure we build."
                       </p>
                     </div>
                   </div>
-
                   <div className="mt-10">
-                    <TurtleButton
-                      variant="call_now"
-                      className="rounded-2xl px-10"
-                      href="tel:+919876543210"
-                    >
+                    <TurtleButton variant="call_now" className="rounded-2xl px-10" href="tel:+919876543210">
                       Enquire Now
                     </TurtleButton>
                   </div>
@@ -450,15 +562,14 @@ const Projects = () => {
         )}
       </AnimatePresence>
 
-
-
-      {/* ── CTA ── */}
-      <section 
+      {/* ══════════════════════════════════════════
+          CTA
+      ══════════════════════════════════════════ */}
+      <section
         className="bg-slate-950 py-24 relative overflow-hidden text-center"
-        style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 400px' }}
+        style={{ contentVisibility: "auto", containIntrinsicSize: "auto 400px" }}
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)]" />
-        
         <div className="mx-auto max-w-7xl px-6 relative z-10 md:px-8">
           <p className="font-heading text-sm font-semibold uppercase tracking-[0.25em] text-blue-300 mb-4">
             Next Steps
@@ -466,16 +577,14 @@ const Projects = () => {
           <h2 className="text-4xl font-black uppercase tracking-tight text-white mb-6">
             Want Similar Results <br className="hidden sm:block" /> for Your Building?
           </h2>
-          <p className="mx-auto max-w-lg text-base text-white/60 mb-10 leading-relaxed">
-            From precision fabrication to expert installation, we bring your vision to life. Get a free site visit and feasibility report today.
+          <p className="mx-auto max-w-xl text-base text-white/60 mb-10 leading-relaxed">
+            Need <strong className="text-white/75">steel gate work in Trichy</strong>,{" "}
+            <strong className="text-white/75">rolling shutter work</strong> or any{" "}
+            <strong className="text-white/75">fabrication work in Trichy</strong>?
+            Call us for a free site visit and written quotation — no hidden charges.
           </p>
-          
           <div className="flex flex-wrap justify-center gap-4">
-            <TurtleButton
-              href="tel:+919876543210"
-              variant="call_now"
-              className="rounded-xl px-10"
-            >
+            <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-10">
               <span>📞</span> Call Our Expert
             </TurtleButton>
             <a
@@ -487,7 +596,6 @@ const Projects = () => {
               <span>💬</span> WhatsApp Details
             </a>
           </div>
-
           <div className="flex flex-wrap justify-center gap-6 mt-12 pt-10 border-t border-white/10">
             {["Premium Finish", "Structural Integrity", "On-Time Completion"].map((b) => (
               <div key={b} className="flex items-center gap-2 text-sm text-white/40 font-medium">
@@ -502,6 +610,9 @@ const Projects = () => {
   );
 };
 
+/* ══════════════════════════════════════════════════════════
+   IMAGE SLIDER — unchanged logic
+══════════════════════════════════════════════════════════ */
 const ProjectImageSlider = ({
   p,
   isModal = false,
@@ -514,12 +625,11 @@ const ProjectImageSlider = ({
   const images = p.images || (p.image ? [p.image] : []);
   const [current, setCurrent] = useState(0);
 
-  // Advance on each global tick (only for card sliders, not modal)
   useEffect(() => {
-    if (isModal) return;          // modal has its own manual-only navigation
+    if (isModal) return;
     if (images.length <= 1) return;
     setCurrent((prev) => (prev + 1) % images.length);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tick]);
 
   const paginate = (dir: number) => {
@@ -529,20 +639,9 @@ const ProjectImageSlider = ({
   if (images.length === 0) return null;
 
   const variants = {
-    enter: {
-      opacity: 0,
-      scale: 1.05,
-    },
-    center: {
-      zIndex: 1,
-      opacity: 1,
-      scale: 1,
-    },
-    exit: {
-      zIndex: 0,
-      opacity: 0,
-      scale: 0.95,
-    }
+    enter: { opacity: 0, scale: 1.05 },
+    center: { zIndex: 1, opacity: 1, scale: 1 },
+    exit: { zIndex: 0, opacity: 0, scale: 0.95 },
   };
 
   return (
@@ -558,22 +657,21 @@ const ProjectImageSlider = ({
           exit="exit"
           transition={{
             opacity: { duration: 0.3, ease: "easeInOut" },
-            scale: { duration: 0.3, ease: "easeInOut" }
+            scale: { duration: 0.3, ease: "easeInOut" },
           }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={1}
           onDragEnd={(_, { offset }) => {
             const swipe = Math.abs(offset.x) > 50;
-            if (swipe) {
-              paginate(offset.x > 0 ? -1 : 1);
-            }
+            if (swipe) paginate(offset.x > 0 ? -1 : 1);
           }}
-          className={`absolute inset-0 w-full h-full object-cover select-none cursor-grab active:cursor-grabbing ${!isModal ? 'transition-transform duration-1000 group-hover:scale-105' : ''}`}
+          className={`absolute inset-0 w-full h-full object-cover select-none cursor-grab active:cursor-grabbing ${
+            !isModal ? "transition-transform duration-1000 group-hover:scale-105" : ""
+          }`}
         />
       </AnimatePresence>
-      
-      {/* Navigation Arrows - Visible in Modal or on Hover in Card */}
+
       {images.length > 1 && (
         <>
           <button
@@ -593,7 +691,6 @@ const ProjectImageSlider = ({
         </>
       )}
 
-      {/* Progress Indicators */}
       {images.length > 1 && (
         <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-20 pt-4 px-4 bg-gradient-to-t from-black/50 to-transparent">
           {images.map((_, i) => (
@@ -603,8 +700,12 @@ const ProjectImageSlider = ({
               onClick={(e) => { e.stopPropagation(); setCurrent(i); }}
               className="group/dot p-1 transition-all"
             >
-              <div 
-                className={`h-1 rounded-full transition-all duration-500 ${current === i ? 'w-6 bg-white shadow-[0_0_10px_rgba(255,255,255,0.5)]' : 'w-2 bg-white/40 group-hover/dot:bg-white/60'}`}
+              <div
+                className={`h-1 rounded-full transition-all duration-500 ${
+                  current === i
+                    ? "w-6 bg-white shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+                    : "w-2 bg-white/40 group-hover/dot:bg-white/60"
+                }`}
               />
             </button>
           ))}
