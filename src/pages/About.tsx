@@ -56,7 +56,6 @@ const FontLoader = () => (
     .sec { padding: clamp(4rem, 8vw, 7.5rem) 0; }
     .ctr { width: 90%; max-width: 1240px; margin: 0 auto; }
 
-    /* About Hero (Enhanced) */
     .about-hero-sec {
       position: relative;
       min-height: 90vh;
@@ -76,99 +75,12 @@ const FontLoader = () => (
       filter: blur(40px);
       will-change: transform, opacity;
     }
-    .about-hero-grid {
-      display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 60px;
-      position: relative;
-      z-index: 5;
-    }
-    .about-hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 20px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 100px;
-      margin-bottom: 24px;
-    }
-    .about-hero-badge span {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--blue-3);
-    }
-    .about-hero-h1 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(3.2rem, 8vw, 6.5rem);
-      font-weight: 900;
-      line-height: 0.9;
-      color: #ffffff;
-      text-transform: uppercase;
-      margin-bottom: 30px;
-      letter-spacing: -0.02em;
-    }
-    .about-hero-h1 span {
-      -webkit-text-stroke: 1.5px rgba(255,255,255,0.4);
-      color: transparent;
-    }
-    .about-hero-p {
-      font-size: 1.15rem;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 45px;
-      max-width: 600px;
-    }
-    .about-cta-group {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .about-btn-main {
-      padding: 18px 40px;
-      background: var(--blue-6);
-      color: #ffffff;
-      font-weight: 700;
-      border-radius: 12px;
-      text-decoration: none;
-      transition: 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-      box-shadow: 0 20px 40px -10px rgba(37,99,235,0.3);
-    }
-    .about-btn-main:hover {
-      background: var(--blue-7);
-      transform: translateY(-5px);
-      box-shadow: 0 25px 50px -12px rgba(37,99,235,0.5);
-    }
-    .about-btn-sec {
-      padding: 18px 40px;
-      background: transparent;
-      color: #ffffff;
-      border: 1px solid rgba(255,255,255,0.2);
-      font-weight: 700;
-      border-radius: 12px;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    .about-btn-sec:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.4);
-    }
 
-    @media (max-width: 1024px) {
-      .about-hero-grid { grid-template-columns: 1fr; gap: 80px; text-align: center; }
-      .about-hero-p { margin: 0 auto 45px; }
-      .about-cta-group { justify-content: center; }
-    }
-
-    /* Workflow - Cold Bat Inspired */
     .wf-grid { 
       display: grid; 
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
       gap: 2.5rem; 
     }
-    /* ── Workflow Cards — fixed height removed, proper centering ── */
     .wf-card {
       min-height: 300px;
       display: flex;
@@ -186,7 +98,6 @@ const FontLoader = () => (
       border: 1px solid rgba(226,232,240,0.8);
       padding: 36px 28px 32px;
       box-shadow: 0 4px 24px -4px rgba(13,37,87,0.06), 0 1px 4px rgba(0,0,0,0.04);
-      /* GPU-friendly — only transform & opacity animate */
       will-change: transform;
       transform: translateZ(0);
       transition: transform 0.28s cubic-bezier(0.23, 1, 0.32, 1),
@@ -265,7 +176,6 @@ const FontLoader = () => (
       margin: 8px auto 0;
       transition: color 0.28s;
     }
-    /* Hover state — GPU only (transform + opacity) */
     .wf-card:hover {
       transform: translateY(-8px) translateZ(0);
       box-shadow: 0 28px 56px -12px rgba(13,37,87,0.18), 0 8px 20px -4px rgba(13,37,87,0.10);
@@ -308,11 +218,8 @@ const FontLoader = () => (
 
     @media (max-width: 768px) {
       .cov-row { flex-direction: column !important; gap: 2rem !important; }
-      .about-vision { max-width: 55%; }
-      .about-mission { max-width: 52%; }
     }
 
-    /* Premium Stats Grid Styles */
     .stat-grid-row {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -325,17 +232,17 @@ const FontLoader = () => (
       }
     }
     .about-stat-card {
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255,255,255,0.7);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       padding: 45px 25px;
       border-radius: 36px;
-      border: 1px solid rgba(37, 99, 235, 0.1);
+      border: 1px solid rgba(37,99,235,0.1);
       text-align: center;
       position: relative;
       overflow: hidden;
-      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-      box-shadow: 0 15px 35px -5px rgba(13, 37, 87, 0.05);
+      transition: all 0.6s cubic-bezier(0.23,1,0.32,1);
+      box-shadow: 0 15px 35px -5px rgba(13,37,87,0.05);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -344,9 +251,9 @@ const FontLoader = () => (
     }
     .about-stat-card:hover {
       transform: translateY(-15px) scale(1.02);
-      border-color: rgba(37, 99, 235, 0.4);
+      border-color: rgba(37,99,235,0.4);
       background: white;
-      box-shadow: 0 45px 90px -20px rgba(37, 99, 235, 0.2);
+      box-shadow: 0 45px 90px -20px rgba(37,99,235,0.2);
     }
     .about-stat-val {
       font-family: 'Barlow Condensed', sans-serif;
@@ -357,11 +264,9 @@ const FontLoader = () => (
       background: linear-gradient(135deg, var(--navy) 0%, var(--blue-6) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);
     }
-    .about-stat-card:hover .about-stat-val {
-      transform: scale(1.1) translateY(-2px);
-    }
+    .about-stat-card:hover .about-stat-val { transform: scale(1.1) translateY(-2px); }
     .about-stat-lbl {
       font-size: 0.75rem;
       font-weight: 800;
@@ -371,9 +276,7 @@ const FontLoader = () => (
       max-width: 140px;
       transition: color 0.4s ease;
     }
-    .about-stat-card:hover .about-stat-lbl {
-      color: var(--navy);
-    }
+    .about-stat-card:hover .about-stat-lbl { color: var(--navy); }
     .about-stat-card::after {
       content: '';
       position: absolute;
@@ -383,9 +286,7 @@ const FontLoader = () => (
       transition: opacity 0.6s ease;
       z-index: -1;
     }
-    .about-stat-card:hover::after {
-      opacity: 0.05;
-    }
+    .about-stat-card:hover::after { opacity: 0.05; }
     .about-stat-card::before {
       content: '';
       position: absolute;
@@ -396,7 +297,7 @@ const FontLoader = () => (
       background: linear-gradient(90deg, var(--blue-6), var(--blue-3), var(--blue-6));
       background-size: 200% 100%;
       transform: scaleX(0);
-      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);
       transform-origin: left;
     }
     .about-stat-card:hover::before {
@@ -407,6 +308,91 @@ const FontLoader = () => (
       0% { background-position: 100% 0; }
       100% { background-position: -100% 0; }
     }
+
+    /* ── SEO Content Section ── */
+    .seo-section { background: #ffffff; padding: clamp(4rem,8vw,7rem) 0; border-top: 1px solid #f1f5f9; }
+    .seo-intro { font-size: 1.05rem; line-height: 1.85; color: #64748b; max-width: 780px; }
+    .seo-intro strong { color: #334155; font-weight: 600; }
+    .seo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+    .seo-card {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 1.6rem 1.4rem;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    }
+    .seo-card:hover {
+      border-color: #bfdbfe;
+      box-shadow: 0 12px 32px -8px rgba(37,99,235,0.10);
+      transform: translateY(-4px);
+    }
+    .seo-card-icon { font-size: 1.6rem; margin-bottom: 0.75rem; display: block; }
+    .seo-card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #0d2557;
+      margin-bottom: 0.5rem;
+    }
+    .seo-card-body { font-size: 0.83rem; color: #64748b; line-height: 1.7; }
+    .seo-card-body strong { color: #334155; font-weight: 600; }
+    .seo-near-bar {
+      margin-top: 2.5rem;
+      background: #0d2557;
+      border-radius: 18px;
+      padding: 1.4rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .seo-near-bar p { font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.65; margin: 0; }
+    .seo-near-bar strong { color: #93c5fd; font-weight: 700; }
+    .seo-near-btn {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #f59e0b;
+      color: #0f172a;
+      font-weight: 800;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .seo-near-btn:hover { background: #fbbf24; }
+
+    /* ── Why Choose Us ── */
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.4rem; margin-top: 2.5rem; }
+    .why-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 18px;
+      padding: 1.6rem;
+      backdrop-filter: blur(6px);
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .why-card:hover { background: rgba(255,255,255,0.13); border-color: rgba(255,255,255,0.28); }
+    .why-card-icon { font-size: 1.5rem; margin-bottom: 0.8rem; display: block; }
+    .why-card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+    .why-card-body { font-size: 0.82rem; color: rgba(255,255,255,0.62); line-height: 1.7; }
+    .why-card-body strong { color: rgba(255,255,255,0.85); font-weight: 600; }
   `}</style>
 );
 
@@ -468,12 +454,12 @@ const CoverageMap = () => {
 
 /* ── Execution Workflow Data ── */
 const workflow = [
-  { step: "01", Icon: Search, title: "Consultation", desc: "Understanding project requirements, specifications and budget." },
-  { step: "02", Icon: Ruler, title: "Site Visit", desc: "Accurate on-site measurements and feasibility assessment." },
-  { step: "03", Icon: Layers, title: "Design Planning", desc: "Detailed drawings and material selection for approval." },
-  { step: "04", Icon: Wrench, title: "Fabrication", desc: "Precision manufacturing at our Trichy workshop facility." },
-  { step: "05", Icon: Shield, title: "Installation", desc: "Expert on-site installation by trained professionals." },
-  { step: "06", Icon: CheckCircle2, title: "Completion", desc: "Quality inspection, finishing and project handover." },
+  { step: "01", Icon: Search, title: "Consultation", desc: "Understanding your steel gate, railing or shutter requirements, specifications and budget." },
+  { step: "02", Icon: Ruler, title: "Site Visit", desc: "Accurate on-site measurements and feasibility assessment at your location." },
+  { step: "03", Icon: Layers, title: "Design Planning", desc: "Detailed drawings and material selection — MS, SS or aluminium — for your approval." },
+  { step: "04", Icon: Wrench, title: "Fabrication", desc: "Precision welding work and metal fabrication at our Trichy workshop facility." },
+  { step: "05", Icon: Shield, title: "Installation", desc: "Expert on-site installation of gates, railings, shutters and glass works by trained professionals." },
+  { step: "06", Icon: CheckCircle2, title: "Completion", desc: "Quality inspection, finishing and project handover — on time, every time." },
 ];
 
 const materials = [
@@ -488,8 +474,6 @@ const districts = [
   { name: "Dindigul", main: false }
 ];
 
-
-
 const Counter = ({ value, duration = 2 }: { value: string; duration?: number }) => {
   const [displayValue, setDisplayValue] = useState(0);
   const numericValue = parseInt(value, 10);
@@ -503,7 +487,6 @@ const Counter = ({ value, duration = 2 }: { value: string; duration?: number }) 
         const end = numericValue;
         const range = end - start;
         const stepTime = Math.abs(Math.floor((duration * 1000) / range));
-        
         const timer = setInterval(() => {
           start += 1;
           setDisplayValue(start);
@@ -518,22 +501,29 @@ const Counter = ({ value, duration = 2 }: { value: string; duration?: number }) 
   );
 };
 
-
-
 /* ════════════════ MAIN ABOUT PAGE ════════════════ */
 const About = () => {
   const navigate = useNavigate();
+
   return (
     <main className="ap pt-20" style={{ transform: 'translateZ(0)' }}>
-      <SEO 
-        title="About RIITS Metal Craft | Leading Metal Fabricators in Trichy"
-        description="Learn about RIITS Metal Craft, Trichy's premier metal fabrication studio. With 15+ years of experience, we specialize in high-quality SS/MS fabrication, elevation, and industrial works."
-        keywords="about rits metal craft, metal fabricators trichy history, stainless steel experts tamil nadu"
+      <SEO
+        title="About RITS Metal Craft | Trusted Fabrication Company in Trichy, Tamil Nadu"
+        description="RITS Metal Craft is a leading fabrication shop in Trichy with 15+ years in metal fabrication. We build steel gates, railings, rolling shutters, aluminium windows, glass doors & more."
+        keywords="fabrication company in Trichy, fabrication shop in Trichy, metal fabrication, steel fabrication, welding work, steel gate, metal gate, grill work, balcony railing, staircase railing, window grill, rolling shutter, shop shutter, aluminium door, aluminium window, glass door, glass partition, steel gate near me, grill work near me, steel gate fabrication in Trichy"
       />
       <FontLoader />
 
-      {/* ── HERO / ABOUT US SECTION ── */}
+      {/* ══════════════════════════════════════════
+          HERO — About Our Company
+      ══════════════════════════════════════════ */}
       <section className="relative min-h-[85vh] lg:min-h-screen flex flex-col justify-center bg-[var(--navy)] overflow-hidden">
+
+        {/* Visually hidden H1 — read by Google, invisible to users */}
+        <h1 className="sr-only">
+          About RITS Metal Craft — Trusted Metal Fabrication Company in Trichy, Tamil Nadu
+        </h1>
+
         {/* Background image */}
         <div className="absolute inset-0 z-0">
           <motion.img
@@ -541,7 +531,7 @@ const About = () => {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 2, ease: "easeOut" }}
             src="/src/assets/heropage/about page hero.webp"
-            alt="RIITS Metal Craft Workshop - Precision Fabrication in Progress"
+            alt="RITS Metal Craft fabrication workshop — steel gate, railing and welding work in Trichy"
             className="w-full h-full object-cover opacity-30 mix-blend-overlay"
             style={{ willChange: "transform" }}
             loading="eager"
@@ -549,15 +539,11 @@ const About = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--navy)] via-[var(--navy)]/60 to-transparent z-[1]" />
         </div>
 
-        {/* Animated mesh */}
         <div className="about-mesh animate-mesh-pulse" />
 
-
-        {/* Grid overlay */}
         <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
           style={{ backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)", backgroundSize: "48px 48px" }} />
 
-        {/* Floating stat badges */}
         <div className="absolute top-24 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10 animate-float-slow">
           <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
           Est. 2009 — Trichy, Tamil Nadu
@@ -569,7 +555,6 @@ const About = () => {
 
         <div className="ctr relative z-10 lg:-translate-y-12">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
-            {/* Left copy */}
             <motion.div
               initial="hidden"
               animate="visible"
@@ -580,10 +565,12 @@ const About = () => {
                 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-widest mb-4"
               >
                 <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-                The Art of Fabrication
+                Fabrication Company in Trichy
               </motion.div>
 
-              <motion.h1
+              {/* Decorative display heading — aria-hidden, real H1 is sr-only above */}
+              <motion.p
+                aria-hidden="true"
                 variants={{ hidden: { opacity: 0, x: -30 }, visible: { opacity: 1, x: 0 } }}
                 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-black uppercase leading-none tracking-tight text-white mb-4"
               >
@@ -592,45 +579,54 @@ const About = () => {
                   Steelcraft.
                 </span><br />
                 Proven Trust.
-              </motion.h1>
+              </motion.p>
 
+              {/* ── SEO-rich hero paragraph — About Our Company ── */}
               <motion.p
                 variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
                 className="text-white/65 text-base leading-relaxed max-w-md mb-7"
               >
-                RIITS Metal Craft is a premier metal fabrication and architectural elevation leader in Trichy.
-                We fuse advanced engineering with master craftsmanship to build structures that endure for generations.
+                RITS Metal Craft is a trusted{" "}
+                <strong className="text-white/85">fabrication shop in Trichy</strong> with over
+                15 years of experience in{" "}
+                <strong className="text-white/85">metal fabrication</strong> and{" "}
+                <strong className="text-white/85">steel fabrication</strong>. We serve
+                homeowners, builders and businesses across Trichy, Thanjavur and Tamil Nadu —
+                delivering every project with precision and care.
               </motion.p>
 
-
+              <motion.div
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                className="flex flex-wrap gap-3"
+              >
+                <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-10">
+                  <Phone className="w-4 h-4" /> Call Now
+                </TurtleButton>
+              </motion.div>
             </motion.div>
-
-
           </div>
         </div>
       </section>
 
-      {/* ── AT A GLANCE STATS GRID ── */}
+      {/* ══════════════════════════════════════════
+          STATS GRID
+      ══════════════════════════════════════════ */}
       <section className="relative z-20 -mt-20 lg:-mt-24 mb-10">
         <div className="ctr">
           <div className="stat-grid-row">
             {[
               { val: "800+", lbl: "Projects Completed", delay: 0.1 },
-              { val: "15+", lbl: "Years Experience", delay: 0.2 },
+              { val: "15+",  lbl: "Years Experience",   delay: 0.2 },
               { val: "100%", lbl: "Client Satisfaction", delay: 0.3 },
-              { val: "Pan TN", lbl: "Areas Served", delay: 0.4 }
+              { val: "Pan TN", lbl: "Areas Served",      delay: 0.4 }
             ].map((stat, i) => (
               <R key={i} delay={stat.delay} dir="up">
                 <div className="about-stat-card group">
-                  {/* Decorative background glow */}
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-50/80 via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                  
                   <div className="about-stat-val">
                     <Counter value={stat.val} duration={1.5 + (i * 0.2)} />
                   </div>
                   <div className="about-stat-lbl">{stat.lbl}</div>
-
-                  {/* Micro-interaction ring */}
                   <div className="absolute top-4 right-4 w-3 h-3 rounded-full bg-blue-500/10 border border-blue-500/20 animate-pulse opacity-0 group-hover:opacity-100 transition-all duration-500" />
                 </div>
               </R>
@@ -639,14 +635,133 @@ const About = () => {
         </div>
       </section>
 
-      {/* ── WORKFLOW ── */}
+      {/* ══════════════════════════════════════════
+          WHAT WE DO — SEO Content Section
+      ══════════════════════════════════════════ */}
+      <section className="seo-section" style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 600px' }}>
+        <div className="ctr">
+
+          {/* Section header */}
+          <R>
+            <span className="ltag" style={{ marginBottom: 14 }}>Products &amp; Services</span>
+            <h2 className="dlg" style={{ color: "#0d2557", marginBottom: 14 }}>What We Do</h2>
+            <p className="seo-intro">
+              We fabricate and install everything from a single{" "}
+              <strong>steel gate</strong> to complete building elevations. If you're searching for{" "}
+              <strong>steel gate fabrication in Trichy</strong>,{" "}
+              <strong>grill work near me</strong> or a trusted{" "}
+              <strong>fabrication shop near me</strong> — RITS Metal Craft has it all.
+            </p>
+          </R>
+
+          {/* Product cards */}
+          <div className="seo-grid">
+
+            <R delay={0.05}>
+              <div className="seo-card">
+                <span className="seo-card-icon">🚪</span>
+                <p className="seo-card-title">Gates &amp; Grills</p>
+                <p className="seo-card-body">
+                  Custom <strong>steel gates</strong>, <strong>metal gates</strong>,{" "}
+                  <strong>window grills</strong> and decorative <strong>grill work</strong> for
+                  homes and commercial buildings.
+                </p>
+              </div>
+            </R>
+
+            <R delay={0.08}>
+              <div className="seo-card">
+                <span className="seo-card-icon">🛡️</span>
+                <p className="seo-card-title">Railings</p>
+                <p className="seo-card-body">
+                  Precision-welded <strong>balcony railings</strong> and{" "}
+                  <strong>staircase railings</strong> in stainless steel and mild steel —
+                  safe, durable and stylish.
+                </p>
+              </div>
+            </R>
+
+            <R delay={0.11}>
+              <div className="seo-card">
+                <span className="seo-card-icon">🏗️</span>
+                <p className="seo-card-title">Rolling Shutters</p>
+                <p className="seo-card-body">
+                  Heavy-duty <strong>rolling shutters</strong> and{" "}
+                  <strong>shop shutters</strong> for retail outlets, warehouses and
+                  industrial facilities.
+                </p>
+              </div>
+            </R>
+
+            <R delay={0.14}>
+              <div className="seo-card">
+                <span className="seo-card-icon">🪟</span>
+                <p className="seo-card-title">Aluminium Works</p>
+                <p className="seo-card-body">
+                  Modern <strong>aluminium doors</strong> and{" "}
+                  <strong>aluminium windows</strong> — lightweight, weather-resistant and
+                  elegantly finished for any space.
+                </p>
+              </div>
+            </R>
+
+            <R delay={0.17}>
+              <div className="seo-card">
+                <span className="seo-card-icon">🏢</span>
+                <p className="seo-card-title">Glass Works</p>
+                <p className="seo-card-body">
+                  Toughened <strong>glass doors</strong> and{" "}
+                  <strong>glass partitions</strong> for offices, showrooms and modern
+                  residential interiors.
+                </p>
+              </div>
+            </R>
+
+            <R delay={0.20}>
+              <div className="seo-card">
+                <span className="seo-card-icon">⚙️</span>
+                <p className="seo-card-title">Welding &amp; Structural</p>
+                <p className="seo-card-body">
+                  Industrial <strong>welding work</strong>, steel frames, sheds, ACP
+                  cladding and building elevation across Tamil Nadu.
+                </p>
+              </div>
+            </R>
+
+          </div>
+
+          {/* Near-me CTA bar */}
+          <R delay={0.25}>
+            <div className="seo-near-bar">
+              <p>
+                Searching for <strong>steel gate near me</strong>,{" "}
+                <strong>grill work near me</strong> or the best{" "}
+                <strong>fabrication company in Trichy</strong>?{" "}
+                We're right here — serving Trichy, Thanjavur, Pudukottai &amp; all of Tamil Nadu.
+              </p>
+              <a href="tel:+919876543210" className="seo-near-btn">
+                📞 Call Now
+              </a>
+            </div>
+          </R>
+
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          OUR WORK QUALITY — Execution Workflow
+      ══════════════════════════════════════════ */}
       <section className="sec" style={{ background: "white", contentVisibility: 'auto', containIntrinsicSize: 'auto 500px' }}>
         <div className="ctr">
           <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
             <R>
-              <span className="ltag" style={{ justifyContent: "center", marginBottom: 14 }}>How We Work</span>
-              <h2 className="dlg" style={{ color: "#0d2557", marginBottom: 12 }}>Execution Workflow</h2>
-              <p className="body" style={{ maxWidth: 500, margin: "0 auto" }}>A structured, professional approach — from first call to final handover.</p>
+              <span className="ltag" style={{ justifyContent: "center", marginBottom: 14 }}>Our Work Quality</span>
+              <h2 className="dlg" style={{ color: "#0d2557", marginBottom: 12 }}>How We Work</h2>
+              <p className="body" style={{ maxWidth: 560, margin: "0 auto" }}>
+                Every product — from a <strong>window grill</strong> to a{" "}
+                <strong>staircase railing</strong> — is quality-checked before delivery.
+                A structured, professional approach from first call to final handover.
+              </p>
             </R>
           </div>
           <div className="wf-grid">
@@ -671,7 +786,9 @@ const About = () => {
         </div>
       </section>
 
-      {/* ── MATERIALS ── */}
+      {/* ══════════════════════════════════════════
+          MATERIALS
+      ══════════════════════════════════════════ */}
       <section className="sec" style={{ background: "linear-gradient(180deg,#f8fafc 0%,#f0f6ff 100%)", contentVisibility: 'auto', containIntrinsicSize: 'auto 400px' }}>
         <div className="ctr">
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
@@ -693,20 +810,23 @@ const About = () => {
         </div>
       </section>
 
-      {/* ── COVERAGE ── */}
+      {/* ══════════════════════════════════════════
+          COVERAGE
+      ══════════════════════════════════════════ */}
       <section className="sec coverage-bg" style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 600px' }}>
         <div className="ctr">
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
             <R>
               <span className="ltag" style={{ justifyContent: "center", marginBottom: 14 }}>Service Coverage</span>
               <h2 className="dlg" style={{ color: "#0d2557", marginBottom: 12 }}>Trichy &amp; Surrounding Districts</h2>
-              <p className="body" style={{ maxWidth: 520, margin: "0 auto" }}>We serve Tiruchirappalli and surrounding districts with our own team, tools, and materials — no middlemen, no subcontracting.</p>
+              <p className="body" style={{ maxWidth: 520, margin: "0 auto" }}>
+                We serve Tiruchirappalli and surrounding districts with our own team, tools and
+                materials — no middlemen, no subcontracting.
+              </p>
             </R>
           </div>
           <div className="cov-row" style={{ display: "flex", gap: "3rem", alignItems: "center", flexWrap: "wrap", maxWidth: 900, margin: "0 auto" }}>
-            {/* LEFT — Map */}
             <R dir="left"><div style={{ flex: "1 1 280px", minWidth: 260 }}><CoverageMap /></div></R>
-            {/* RIGHT — Text + districts */}
             <R dir="right">
               <div style={{ flex: "1 1 260px" }}>
                 <p style={{ fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#64748b", marginBottom: "1.2rem" }}>Districts We Serve</p>
@@ -718,7 +838,12 @@ const About = () => {
                   ))}
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "2rem" }}>
-                  {["Our own mobile crew — no subcontracting", "Tools & materials transported to your site", "Site visit within 48 hours on request", "Post-installation support included"].map((point, i) => (
+                  {[
+                    "Our own mobile crew — no subcontracting",
+                    "Tools & materials transported to your site",
+                    "Site visit within 48 hours on request",
+                    "Post-installation support included"
+                  ].map((point, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
                       <div style={{ width: 20, height: 20, borderRadius: 6, background: "#eff6ff", border: "1.5px solid #dbeafe", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 2 }}>
                         <CheckCircle2 style={{ width: 11, height: 11, color: "#1d4ed8" }} strokeWidth={2.5} />
@@ -736,33 +861,93 @@ const About = () => {
         </div>
       </section>
 
+      {/* ══════════════════════════════════════════
+          WHY CHOOSE US
+      ══════════════════════════════════════════ */}
+      <section className="navy-bg sec" style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 500px' }}>
+        <div className="ctr">
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <R>
+              <span className="ltag" style={{ justifyContent: "center", marginBottom: 14, color: "#93c5fd" }}
+                    /* override ltag blue to lighter on dark bg */
+              >Our Advantage</span>
+              <h2 className="dlg" style={{ color: "#ffffff", marginBottom: 14 }}>Why Choose Us</h2>
+              <p style={{ fontSize: "1rem", lineHeight: 1.78, color: "rgba(255,255,255,0.6)", maxWidth: 540, margin: "0 auto" }}>
+                Searching for a <strong style={{ color: "rgba(255,255,255,0.85)" }}>steel gate near me</strong>,{" "}
+                <strong style={{ color: "rgba(255,255,255,0.85)" }}>grill work near me</strong> or the best{" "}
+                <strong style={{ color: "rgba(255,255,255,0.85)" }}>fabrication company in Trichy</strong>?
+                Here's why 800+ clients chose RITS Metal Craft.
+              </p>
+            </R>
+          </div>
 
+          <div className="why-grid">
+            {[
+              {
+                icon: "✅",
+                title: "15+ Years of Local Trust",
+                body: <>A locally rooted <strong>metal fabrication</strong> team in Trichy — reliable, experienced and community-trusted since 2009.</>
+              },
+              {
+                icon: "📋",
+                title: "Transparent Written Quotes",
+                body: <>Every <strong>shop shutter</strong> and <strong>steel fabrication</strong> job gets a detailed written quote — zero hidden costs, ever.</>
+              },
+              {
+                icon: "🔩",
+                title: "Premium Grade Materials",
+                body: <>Grade-A steel, aluminium and glass on every job — from <strong>aluminium door</strong> installs to full <strong>glass partition</strong> fit-outs.</>
+              },
+              {
+                icon: "🚚",
+                title: "On-Time Delivery",
+                body: <>Every project delivered and installed on schedule with full post-job support across Trichy and Tamil Nadu.</>
+              },
+            ].map((card, i) => (
+              <R key={i} delay={i * 0.06}>
+                <div className="why-card">
+                  <span className="why-card-icon">{card.icon}</span>
+                  <p className="why-card-title">{card.title}</p>
+                  <p className="why-card-body">{card.body}</p>
+                </div>
+              </R>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      {/* ── CTA FOOTER — navy ── */}
-      <section className="navy-bg" style={{ padding: "clamp(3.5rem,7vw,6rem) clamp(1.5rem,5vw,5rem)", textAlign: "center", position: "relative", overflow: "hidden", contentVisibility: 'auto', containIntrinsicSize: 'auto 400px' }}>
-        <div style={{
-          position: "absolute", inset: 0, pointerEvents: "none",
-          background: "radial-gradient(ellipse 60% 70% at 50% 50%, rgba(29,78,216,0.22) 0%, transparent 70%)"
-        }} />
+      {/* ══════════════════════════════════════════
+          CTA FOOTER
+      ══════════════════════════════════════════ */}
+      <section className="navy-bg" style={{ padding: "clamp(3.5rem,7vw,6rem) clamp(1.5rem,5vw,5rem)", textAlign: "center", position: "relative", overflow: "hidden", borderTop: "1px solid rgba(255,255,255,0.06)", contentVisibility: 'auto', containIntrinsicSize: 'auto 400px' }}>
+        <div style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "radial-gradient(ellipse 60% 70% at 50% 50%, rgba(29,78,216,0.22) 0%, transparent 70%)" }} />
         <div className="ctr" style={{ position: "relative", zIndex: 1 }}>
           <R>
             <p style={{ fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase", color: "#93c5fd", marginBottom: "1.2rem" }}>Start Your Project</p>
             <h2 className="dlg" style={{ color: "white", marginBottom: "1rem" }}>Ready to Build?</h2>
-            <p style={{ fontSize: "1rem", lineHeight: 1.75, color: "rgba(255,255,255,0.58)", maxWidth: 460, margin: "0 auto 2.2rem" }}>
-              Get a free consultation and detailed written quotation for your next metal fabrication or elevation project.
+            <p style={{ fontSize: "1rem", lineHeight: 1.75, color: "rgba(255,255,255,0.58)", maxWidth: 500, margin: "0 auto 2.2rem" }}>
+              Get a free consultation and detailed written quotation for your{" "}
+              <span style={{ color: "rgba(255,255,255,0.75)" }}>steel gate</span>,{" "}
+              <span style={{ color: "rgba(255,255,255,0.75)" }}>railing</span>,{" "}
+              <span style={{ color: "rgba(255,255,255,0.75)" }}>rolling shutter</span> or{" "}
+              <span style={{ color: "rgba(255,255,255,0.75)" }}>glass door</span> project in Trichy.
             </p>
             <div style={{ display: "flex", justifyContent: "center", gap: 14, flexWrap: "wrap" }}>
               <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-10">
                 <Phone className="w-4 h-4" /> Call +91 98765 43210
               </TurtleButton>
-              <motion.button whileHover={{ background: "rgba(255,255,255,0.09)" }} onClick={() => navigate("/projects")}
-                style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 34px", borderRadius: 9, background: "transparent", color: "rgba(255,255,255,0.82)", fontWeight: 500, fontSize: "0.92rem", cursor: "pointer", border: "1px solid rgba(255,255,255,0.24)" }}>
+              <motion.button
+                whileHover={{ background: "rgba(255,255,255,0.09)" }}
+                onClick={() => navigate("/projects")}
+                style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 34px", borderRadius: 9, background: "transparent", color: "rgba(255,255,255,0.82)", fontWeight: 500, fontSize: "0.92rem", cursor: "pointer", border: "1px solid rgba(255,255,255,0.24)" }}
+              >
                 View Our Work <ArrowRight style={{ width: 16, height: 16 }} />
               </motion.button>
             </div>
           </R>
         </div>
       </section>
+
     </main>
   );
 };
