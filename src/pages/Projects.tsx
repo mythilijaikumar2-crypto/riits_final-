@@ -33,12 +33,10 @@ import shut2 from "../assets/shutters/shutter1.webp";
 import shut3 from "../assets/shutters/shutter2.webp";
 import shut5 from "../assets/shutters/shutter4.webp";
 
-import com3 from "../assets/service page/our works/Office Partition – IT Park.webp";
 import lobby1 from "../assets/hotellabby/lobby2.webp";
 import lobby2 from "../assets/hotellabby/lobby3.jpg";
 import lobby3 from "../assets/hotellabby/lobby4.jpg";
 
-import ind1 from "../assets/service page/our works/Factory Shed – SIDCO Industrial Estate.webp";
 import wh1 from "../assets/warehouse/warehouse shutter.webp";
 import wh2 from "../assets/warehouse/warehouse shutter1.webp";
 import wh3 from "../assets/warehouse/warehouse shutter2.webp";
@@ -72,8 +70,6 @@ import shed2 from "../assets/factoryshed/factory shut1.webp";
 import shed3 from "../assets/factoryshed/factory shut2.webp";
 import shed4 from "../assets/factoryshed/factory shut3.webp";
 import shed5 from "../assets/factoryshed/factory shut4.webp";
-
-import glass1_3 from "../assets/glasses/glass5.webp";
 
 import part1 from "../assets/partition/glass partition1.webp";
 import part2 from "../assets/partition/glass partition2.jpg";
