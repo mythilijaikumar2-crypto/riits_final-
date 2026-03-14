@@ -33,6 +33,12 @@ import SectionHeading from "../components/SectionHeading";
 import { TurtleButton } from "../components/TurtleButton";
 import ProcessSection from "../components/ProcessSection";
 import SEO from "../components/SEO";
+import { GiTempleGate, Gi3dStairs, GiCrackedGlass } from "react-icons/gi";
+import { HiMiniHomeModern } from "react-icons/hi2";
+import { TiArchive } from "react-icons/ti";
+import { FaBuildingCircleCheck } from "react-icons/fa6";
+import { AiFillOpenAI } from "react-icons/ai";
+import { LiaIndustrySolid } from "react-icons/lia";
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -59,14 +65,14 @@ const localBusinessSchema = {
 };
 
 const services = [
-  { icon: "🚪", title: "Gates & Grills", desc: "Custom MS & SS gates with modern geometric designs", category: "MS / SS Fabrication", image: gates, productCategory: "ss" },
-  { icon: "🛡️", title: "Railings & Handrails", desc: "Brushed stainless steel balcony & staircase railings", category: "Stainless Steel", image: railings, productCategory: "ss" },
-  { icon: "🪜", title: "Staircases & Pergolas", desc: "Structural steel staircases and decorative pergolas", category: "Structural Steel", image: staircase, productCategory: "ss" },
-  { icon: "🏗️", title: "Rolling Shutters", desc: "Heavy-duty commercial & industrial rolling systems", category: "Industrial", image: roll, productCategory: "shutters" },
-  { icon: "🪟", title: "Aluminium & Glass", desc: "Sliding windows, glass partitions & structural glazing", category: "Aluminium & Glass", image: aluminium, productCategory: "glass" },
-  { icon: "🏢", title: "Elevation & Cladding", desc: "ACP panels, HPL cladding & decorative facades", category: "Facade & Cladding", image: elevation, productCategory: "elevation" },
-  { icon: "⚙️", title: "Structural Fabrication", desc: "Steel frames, sheds, roofing & support beams", category: "Structural Works", image: struct, productCategory: "ms" },
-  { icon: "🏭", title: "Industrial Works", desc: "Large-scale industrial metal fabrication projects", category: "Industrial", image: industry, productCategory: "ms" },
+  { Icon: GiTempleGate, title: "Gates & Grills", desc: "Custom MS & SS gates with modern geometric designs", category: "MS / SS Fabrication", image: gates, productCategory: "ss" },
+  { Icon: Gi3dStairs, title: "Railings & Handrails", desc: "Brushed stainless steel balcony & staircase railings", category: "Stainless Steel", image: railings, productCategory: "ss" },
+  { Icon: HiMiniHomeModern, title: "Staircases & Pergolas", desc: "Structural steel staircases and decorative pergolas", category: "Structural Steel", image: staircase, productCategory: "ss" },
+  { Icon: TiArchive, title: "Rolling Shutters", desc: "Heavy-duty commercial & industrial rolling systems", category: "Industrial", image: roll, productCategory: "shutters" },
+  { Icon: GiCrackedGlass, title: "Aluminium & Glass", desc: "Sliding windows, glass partitions & structural glazing", category: "Aluminium & Glass", image: aluminium, productCategory: "glass" },
+  { Icon: FaBuildingCircleCheck, title: "Elevation & Cladding", desc: "ACP panels, HPL cladding & decorative facades", category: "Facade & Cladding", image: elevation, productCategory: "elevation" },
+  { Icon: AiFillOpenAI, title: "Structural Fabrication", desc: "Steel frames, sheds, roofing & support beams", category: "Structural Works", image: struct, productCategory: "ms" },
+  { Icon: LiaIndustrySolid, title: "Industrial Works", desc: "Large-scale industrial metal fabrication projects", category: "Industrial", image: industry, productCategory: "ms" },
 ];
 
 const whyUs = [
@@ -281,25 +287,25 @@ const WhyUsSection = () => {
               className="group why-card relative overflow-hidden rounded-[2rem] cursor-default shadow-lg bg-slate-900"
               style={{ minHeight: "420px", transform: 'translateZ(0)' }}
             >
-              <img 
-                src={bg} 
-                alt={title} 
+              <img
+                src={bg}
+                alt={title}
                 loading="lazy"
                 decoding="async"
-                className="why-card-img absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60 group-hover:opacity-40" 
+                className="why-card-img absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60 group-hover:opacity-40"
               />
-              
+
               <div className="why-card-overlay absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-transparent" />
               <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ backgroundColor: accent }} />
-              
+
               <div className="relative z-10 h-full flex flex-col justify-end p-7">
                 <div className="mb-5 w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 bg-white/20 border border-white/30 group-hover:bg-white group-hover:text-blue-900">
                   <Icon className="w-5 h-5 text-white group-hover:text-blue-900" />
                 </div>
-                
+
                 <h3 className="text-xl font-bold text-white font-display mb-2">{title}</h3>
                 <p className="text-sm text-white/70 leading-relaxed mb-4 max-w-sm line-clamp-2">{desc}</p>
-                
+
                 <motion.ul initial={false}
                   animate={{ height: hovered === i ? "auto" : 0, opacity: hovered === i ? 1 : 0 }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
@@ -311,7 +317,7 @@ const WhyUsSection = () => {
                     </li>
                   ))}
                 </motion.ul>
-                
+
                 <a href="tel:+919876543210"
                   className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-white/90 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                   Contact Us <ArrowRight className="w-4 h-4 group-hover:translate-x-1" />
@@ -346,7 +352,7 @@ const TestimonialCard = ({ name, initial, text, rating, verified }: typeof testi
     <div className="relative flex flex-col justify-between h-full bg-white/90 backdrop-blur-sm rounded-2xl border border-slate-200/70 px-6 py-6 shadow-sm overflow-hidden group/card transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-2 hover:shadow-[0_20px_48px_-12px_rgba(37,99,235,0.12)] hover:border-blue-300/50">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200/60 to-transparent" />
       <Quote className="absolute top-3 right-3 w-12 h-12 text-slate-100 group-hover/card:text-blue-100/70 transition-colors duration-500 pointer-events-none" aria-hidden="true" />
-      
+
       <div className="relative z-10">
         <div className="flex items-center gap-0.5 mb-3">
           {[...Array(rating)].map((_, i) => (
@@ -492,7 +498,7 @@ const Index = () => {
 
   return (
     <main className="overflow-hidden" style={{ scrollBehavior: 'smooth' }}>
-      <SEO 
+      <SEO
         title="Best Metal Fabricators in Trichy | Gates, Railings & Structural Works"
         description="RIITS Metal Craft is Trichy's premium fabrication studio. We specialize in custom SS/MS gates, railings, aluminium glazing, ACP cladding, and industrial structural works."
         keywords="metal fabrication trichy, gate fabricators trichy, stainless steel railings trichy, industrial fabrication tamil nadu, ACP cladding trichy"
@@ -554,8 +560,8 @@ const Index = () => {
                         className="w-full max-w-lg bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden flex flex-col absolute"
                       >
                         <div className="bg-[hsl(225,73%,35%)] p-6 text-center flex flex-col items-center">
-                          <span className="text-4xl mb-3 bg-white/10 p-4 rounded-xl backdrop-blur-md">
-                            {services[currentSlide].icon}
+                          <span className="text-4xl mb-3 bg-white/10 p-4 rounded-xl backdrop-blur-md flex items-center justify-center">
+                            {(() => { const IC = services[currentSlide].Icon; return <IC className="w-9 h-9 text-white" />; })()}
                           </span>
                           <h3 className="font-heading text-lg font-bold uppercase text-white tracking-[0.15em]">
                             {services[currentSlide].title}

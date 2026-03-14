@@ -267,7 +267,7 @@ const Products = () => {
 
   return (
     <main className="min-h-screen bg-white">
-      <SEO 
+      <SEO
         title="Premium Metal Products in Trichy | SS, MS & Aluminium Catalouge"
         description="Browse our catalogue of premium metal products in Trichy. We offer stainless steel gates, mild steel structures, aluminium windows, and high-security rolling shutters."
         keywords="metal products trichy, ss gate designs, rolling shutter types, aluminium window price trichy"
@@ -565,6 +565,127 @@ const Products = () => {
         .letter-image.active .mail-shadow {
           width: 250px;
         }
+
+        /* ── 3D Neon Nav Buttons ── */
+        .fab-nav {
+          display: flex;
+          flex-wrap: nowrap;
+          justify-content: center;
+          align-items: center;
+          gap: 12px;
+          padding: 4px 1rem 8px;
+          overflow-x: auto;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+
+        .fab-nav::-webkit-scrollbar {
+          display: none;
+        }
+
+        .fab-btn {
+          position: relative;
+          flex-shrink: 0;
+          padding: 12px 22px;
+          border-radius: 40px;
+          border: 1px solid rgba(0, 195, 255, 0.35);
+          border-top: 1px solid rgba(0, 220, 255, 0.55);
+          border-bottom: 1px solid rgba(0, 50, 130, 0.7);
+          font-size: 0.62rem;
+          font-weight: 800;
+          letter-spacing: 0.13em;
+          text-transform: uppercase;
+          color: rgba(200, 230, 255, 0.9);
+          cursor: pointer;
+          background: linear-gradient(180deg, #0d2050 0%, #071335 60%, #040d25 100%);
+          box-shadow:
+            0 6px 0 0 #020b1e,
+            0 10px 18px rgba(0, 0, 0, 0.6),
+            0 0 10px rgba(0, 180, 255, 0.25),
+            0 0 20px rgba(0, 80, 220, 0.2),
+            inset 0 1px 0 rgba(0, 220, 255, 0.3),
+            inset 0 0 14px rgba(0, 120, 220, 0.15);
+          transition: transform 0.18s ease, box-shadow 0.18s ease;
+          outline: none;
+          white-space: nowrap;
+        }
+
+        .fab-btn:hover {
+          transform: translateY(-4px);
+          color: #fff;
+          box-shadow:
+            0 10px 0 0 #020b1e,
+            0 14px 22px rgba(0, 0, 0, 0.65),
+            0 0 14px rgba(0, 210, 255, 0.5),
+            0 0 28px rgba(0, 100, 255, 0.35),
+            inset 0 1px 0 rgba(0, 235, 255, 0.45),
+            inset 0 0 20px rgba(0, 140, 240, 0.25);
+        }
+
+        .fab-btn:active {
+          transform: translateY(3px);
+          box-shadow:
+            0 2px 0 0 #020b1e,
+            0 4px 8px rgba(0, 0, 0, 0.5),
+            0 0 8px rgba(0, 180, 255, 0.3),
+            inset 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .fab-btn.fab-active {
+          color: #fff;
+          background: linear-gradient(160deg, #1840ff 0%, #006fd6 50%, #00b8e8 100%);
+          border: 1px solid rgba(0, 210, 255, 0.7);
+          border-top: 1px solid rgba(140, 220, 255, 0.8);
+          border-bottom: 1px solid rgba(0, 60, 160, 0.9);
+          /* pressed-in slightly → depth shadow smaller = looks pushed down / lit up */
+          box-shadow:
+            0 4px 0 0 #010a1a,
+            0 7px 16px rgba(0, 0, 0, 0.5),
+            /* strong outer cyan glow = active state */
+            0 0 16px rgba(0, 200, 255, 0.75),
+            0 0 32px rgba(0, 110, 255, 0.55),
+            0 0 55px rgba(0, 60, 220, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4),
+            inset 0 0 18px rgba(255, 255, 255, 0.12);
+          transform: translateY(0px);
+        }
+
+        .fab-btn.fab-active:hover {
+          transform: translateY(-3px);
+          box-shadow:
+            0 7px 0 0 #010a1a,
+            0 11px 22px rgba(0, 0, 0, 0.55),
+            0 0 20px rgba(0, 215, 255, 0.9),
+            0 0 40px rgba(0, 120, 255, 0.65),
+            0 0 65px rgba(0, 70, 230, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5),
+            inset 0 0 22px rgba(255, 255, 255, 0.18);
+        }
+
+        /* Progress bar inside active button */
+        .fab-progress {
+          position: absolute;
+          bottom: 0;
+          left: 6px;
+          right: 6px;
+          height: 3px;
+          background: rgba(255, 255, 255, 0.15);
+          border-radius: 0 0 40px 40px;
+          overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+          .fab-nav {
+            justify-content: flex-start;
+            padding-left: 1rem;
+            padding-right: 1rem;
+          }
+          .fab-btn {
+            font-size: 0.56rem;
+            padding: 10px 16px;
+            letter-spacing: 0.1em;
+          }
+        }
       `}</style>
 
       {/* ─── Hero ─── */}
@@ -651,14 +772,15 @@ const Products = () => {
         </div>
       </section>
 
-      {/* ─── Premium Tab Navigation (Automated) ─── */}
+      {/* ─── Neon Tab Navigation (Automated) ─── */}
       <nav
-        className="sticky top-[64px] lg:top-[80px] z-40 bg-slate-950/90 backdrop-blur-md border-b border-white/10 shadow-2xl py-4 transition-all duration-300"
+        className="sticky top-[64px] lg:top-[80px] z-40 backdrop-blur-md border-b border-white/10 shadow-2xl py-5 transition-all duration-300"
+        style={{ background: "linear-gradient(180deg, #0b1a33 0%, #132a4f 100%)" }}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
         <div className="mx-auto max-w-7xl px-4">
-          <div className="flex flex-wrap justify-center items-center gap-2 md:gap-4">
+          <div className="fab-nav">
             {productCategories.map((cat) => {
               const isActive = activeTab === cat.id;
               return (
@@ -666,40 +788,23 @@ const Products = () => {
                   key={cat.id}
                   onClick={() => {
                     setActiveTab(cat.id);
-                    setIsPaused(true); // Pause on manual interaction
+                    setIsPaused(true);
                   }}
-                  className="relative group px-5 py-2.5 rounded-xl transition-all duration-500 outline-none"
+                  className={`fab-btn${isActive ? " fab-active" : ""}`}
                 >
-                  {/* Active Indicator (Animated Pill) */}
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeTabPill"
-                      className="absolute inset-0 bg-white rounded-xl shadow-[0_10px_25px_-4px_rgba(255,255,255,0.3)] overflow-hidden"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                    >
-                      {/* Automation Progress Indicator */}
-                      {!isPaused && (
-                        <motion.div
-                          key={`progress-${cat.id}`}
-                          initial={{ scaleX: 0 }}
-                          animate={{ scaleX: 1 }}
-                          transition={{ duration: 4, ease: "linear" }}
-                          className="absolute bottom-0 left-0 right-0 h-1 bg-blue-500/20 origin-left"
-                        />
-                      )}
-                    </motion.div>
+                  {cat.title}
+                  {/* Automation progress bar on active button */}
+                  {isActive && !isPaused && (
+                    <div className="fab-progress">
+                      <motion.div
+                        key={`progress-${cat.id}`}
+                        initial={{ scaleX: 0, transformOrigin: "left" }}
+                        animate={{ scaleX: 1 }}
+                        transition={{ duration: 4, ease: "linear" }}
+                        style={{ height: "100%", background: "rgba(255,255,255,0.55)", transformOrigin: "left" }}
+                      />
+                    </div>
                   )}
-
-                  {/* Hover State Background */}
-                  {!isActive && (
-                    <div className="absolute inset-0 bg-white/5 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 scale-95 group-hover:scale-100 border border-white/5" />
-                  )}
-
-                  {/* Content */}
-                  <span className={`relative z-10 text-[0.7rem] sm:text-[0.75rem] font-black uppercase tracking-[0.18em] transition-colors duration-300 ${isActive ? "text-slate-950" : "text-white/60 group-hover:text-white"
-                    }`}>
-                    {cat.title}
-                  </span>
                 </button>
               );
             })}
@@ -727,12 +832,12 @@ const Products = () => {
       </div>
 
       {/* ─── CTA ─── */}
-      <section 
+      <section
         className="bg-slate-950 py-24 relative overflow-hidden text-center"
         style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 400px' }}
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)]" />
-        
+
         <div className="mx-auto max-w-7xl px-6 relative z-10 md:px-8">
           <p className="font-heading text-sm font-semibold uppercase tracking-[0.25em] text-blue-300 mb-4">
             Get In Touch
@@ -743,7 +848,7 @@ const Products = () => {
           <p className="mx-auto max-w-lg text-base text-white/60 mb-10 leading-relaxed">
             Tell us about your project requirements and our team will prepare a detailed consultation and quotation.
           </p>
-          
+
           <div className="flex flex-wrap justify-center gap-4">
             <TurtleButton
               href="tel:+919876543210"
