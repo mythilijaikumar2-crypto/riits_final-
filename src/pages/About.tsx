@@ -1097,6 +1097,7 @@ const About = () => {
           {/* ── Animated grid — data-index reversed stagger ── */}
           <SeoCardGrid />
 
+<<<<<<< HEAD
           {/* Near-me CTA */}
           <R delay={0.25}>
             <div className="seo-near-bar">
@@ -1109,6 +1110,81 @@ const About = () => {
               <a href="tel:+919876543210" className="seo-near-btn">📞 Call Now</a>
             </div>
           </R>
+=======
+            <R delay={0.05}>
+              <div className="seo-card">
+                <span className="seo-card-icon">🚪</span>
+                <p className="seo-card-title">Gates &amp; Grills</p>
+                <p className="seo-card-body">
+                  Custom <strong>steel gates</strong>, <strong>metal gates</strong>,{" "}
+                  <strong>window grills</strong> and decorative <strong>grill work</strong> for
+                  homes and commercial buildings.
+                </p>
+              </div>
+            </R>
+
+            <R delay={0.08}>
+              <div className="seo-card">
+                <span className="seo-card-icon">🛡️</span>
+                <p className="seo-card-title">Railings</p>
+                <p className="seo-card-body">
+                  Precision-welded <strong>balcony railings</strong> and{" "}
+                  <strong>staircase railings</strong> in stainless steel and mild steel —
+                  safe, durable and stylish.
+                </p>
+              </div>
+            </R>
+
+            <R delay={0.11}>
+              <div className="seo-card">
+                <span className="seo-card-icon">🏗️</span>
+                <p className="seo-card-title">Rolling Shutters</p>
+                <p className="seo-card-body">
+                  Heavy-duty <strong>rolling shutters</strong> and{" "}
+                  <strong>shop shutters</strong> for retail outlets, warehouses and
+                  industrial facilities.
+                </p>
+              </div>
+            </R>
+
+            <R delay={0.14}>
+              <div className="seo-card">
+                <span className="seo-card-icon">🪟</span>
+                <p className="seo-card-title">Aluminium Works</p>
+                <p className="seo-card-body">
+                  Modern <strong>aluminium doors</strong> and{" "}
+                  <strong>aluminium windows</strong> — lightweight, weather-resistant and
+                  elegantly finished for any space.
+                </p>
+              </div>
+            </R>
+
+            <R delay={0.17}>
+              <div className="seo-card">
+                <span className="seo-card-icon">🏢</span>
+                <p className="seo-card-title">Glass Works</p>
+                <p className="seo-card-body">
+                  Toughened <strong>glass doors</strong> and{" "}
+                  <strong>glass partitions</strong> for offices, showrooms and modern
+                  residential interiors.
+                </p>
+              </div>
+            </R>
+
+            <R delay={0.20}>
+              <div className="seo-card">
+                <span className="seo-card-icon">⚙️</span>
+                <p className="seo-card-title">Welding &amp; Structural</p>
+                <p className="seo-card-body">
+                  Industrial <strong>welding work</strong>, steel frames, sheds, ACP
+                  cladding and building elevation across Tamil Nadu.
+                </p>
+              </div>
+            </R>
+
+          </div>
+
+>>>>>>> 5bd6166f1b7b8c0e2cfd8b3c5deb47c1b9f95a33
         </div>
       </section>
 

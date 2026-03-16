@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, memo } from "react";
+import { useState, useEffect, memo, useRef, type MouseEvent, type ReactNode } from "react";
 import { Phone, MessageCircle, CheckCircle2 } from "lucide-react";
 import { TurtleButton } from "../components/TurtleButton";
 import SEO from "../components/SEO";
@@ -61,7 +61,7 @@ const benefitDetails: Record<string, { icon: string; desc: string }> = {
 const productCategories = [
   {
     id: "ss",
-    title: "Stainless Steel Fabrication",
+    title: "SS Works",
     subtitle: "STAINLESS STEEL FABRICATION",
     /* H2 maps to: Steel Gates & Metal Gates / Grills & Railings */
     seoHeading: "Steel Gates, Grills & Railings in Trichy",
@@ -114,7 +114,7 @@ const productCategories = [
   },
   {
     id: "ms",
-    title: "Mild Steel Fabrication",
+    title: "MS Works",
     subtitle: "MILD STEEL FABRICATION",
     /* H2 maps to: Staircases & Structural Fabrication */
     seoHeading: "MS Gates, Staircases & Structural Steel Fabrication in Trichy",
@@ -153,7 +153,7 @@ const productCategories = [
   },
   {
     id: "glass",
-    title: "Glass & Aluminium System",
+    title: "Glass & Alum",
     subtitle: "GLASS & ALUMINIUM SYSTEM",
     /* H2 maps to: Aluminium Doors & Windows / Glass Doors & Partitions */
     seoHeading: "Aluminium Doors, Windows, Glass Doors & Partitions in Trichy",
@@ -199,7 +199,7 @@ const productCategories = [
   },
   {
     id: "elevation",
-    title: "Exterior Elevation & Cladding",
+    title: "Cladding",
     subtitle: "EXTERIOR ELEVATION & CLADDING",
     seoHeading: "ACP Cladding, Facade Panels & Building Elevation in Trichy",
     overview: "Transform your building's exterior with modern cladding and facade systems. Our elevation solutions — ACP panels, HPL cladding, louvers and decorative facade panels — combine architectural aesthetics with long-term weather protection across Trichy and Tamil Nadu.",
@@ -237,7 +237,7 @@ const productCategories = [
   },
   {
     id: "shutters",
-    title: "Rolling Shutter",
+    title: "Shutters",
     subtitle: "ROLLING SHUTTER",
     /* H2 maps to: Rolling Shutters */
     seoHeading: "Rolling Shutters & Shop Shutters in Trichy",
@@ -271,6 +271,149 @@ const productCategories = [
 
 type Product = (typeof productCategories)[0]["products"][0];
 type Category = (typeof productCategories)[0];
+
+interface AnimatedButtonProps {
+  children: ReactNode;
+  isActive?: boolean;
+  isPaused?: boolean;
+  onClick?: () => void;
+  onHoverStart?: () => void;
+  onHoverEnd?: () => void;
+}
+
+export function AnimatedButton({ 
+  children, 
+  isActive = false,
+  isPaused = false,
+  onClick,
+  onHoverStart,
+  onHoverEnd
+}: AnimatedButtonProps) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const handleMouseMove = (e: MouseEvent<HTMLButtonElement>) => {
+    if (!buttonRef.current || !isHovered) return;
+
+    const rect = buttonRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const rotateXValue = ((y - centerY) / centerY) * -15;
+    const rotateYValue = ((x - centerX) / centerX) * 15;
+    
+    setRotateX(rotateXValue);
+    setRotateY(rotateYValue);
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    onHoverStart?.();
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setRotateX(0);
+    setRotateY(0);
+    onHoverEnd?.();
+  };
+
+  return (
+    <motion.button
+      ref={buttonRef}
+      className={`relative group px-3 sm:px-4 py-2 md:py-2.5 rounded-xl transition-all duration-500 outline-none whitespace-nowrap overflow-hidden ${
+        isActive ? "shadow-[0_15px_30px_-10px_rgba(37,99,235,0.4)]" : "hover:shadow-2xl"
+      }`}
+      style={{
+        transformStyle: "preserve-3d",
+        perspective: "1000px",
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={onClick}
+      animate={{
+        rotateX: rotateX,
+        rotateY: rotateY,
+        scale: isHovered ? 1.05 : 1,
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 400,
+        damping: 30,
+      }}
+      whileTap={{ 
+        scale: 0.95,
+        rotateX: 0,
+        rotateY: 0,
+      }}
+      tabIndex={0}
+    >
+      {/* Background Layer */}
+      <div className={`absolute inset-0 transition-colors duration-500 ${isActive ? "bg-white" : "bg-white/5 border border-white/10"}`} />
+
+      {/* Shimmer effect layer */}
+      <div
+        className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none"
+        style={{ transform: "translateZ(-10px)" }}
+      >
+        <motion.div
+          className="absolute inset-0 -skew-x-12 z-0 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)",
+            width: "50%",
+          }}
+          initial={{ opacity: 0, x: "-100%" }}
+          animate={isHovered ? {
+            opacity: [0, 1, 0],
+            x: ["0%", "200%"],
+          } : {
+            opacity: 0,
+            x: "-100%"
+          }}
+          transition={{
+            duration: 1.2,
+            ease: "easeInOut",
+          }}
+        />
+      </div>
+
+      {/* Progress Bar (Autoplay Timer Indicator) */}
+      {isActive && (
+        <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-slate-200 overflow-hidden">
+          <motion.div
+            key={isPaused ? "paused" : "running"}
+            initial={{ scaleX: 0 }}
+            animate={!isPaused ? { scaleX: 1 } : { scaleX: 0 }}
+            transition={{ duration: 4, ease: "linear" }}
+            className="h-full bg-blue-600 origin-left"
+          />
+        </div>
+      )}
+
+      {/* Text content */}
+      <div style={{ transform: "translateZ(20px)" }}>
+        <span
+          className={`relative z-10 text-[0.65rem] sm:text-[0.75rem] font-black uppercase tracking-[0.14em] transition-colors duration-500 drop-shadow-md ${
+            isActive
+              ? "text-slate-950"
+              : isHovered
+              ? "text-white"
+              : "text-white/50"
+          }`}
+        >
+          {children}
+        </span>
+      </div>
+    </motion.button>
+  );
+}
 
 /* ── Benefit Card ── */
 const BenefitCard = memo(({ label, index, isActive }: { label: string; index: number; isActive: boolean }) => {
@@ -384,22 +527,6 @@ const CategorySection = memo(({ category }: { category: Category }) => {
         </div>
       </div>
 
-      {/* ── Near-me CTA bar — local SEO keywords ── */}
-      <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-950 rounded-2xl px-7 py-5">
-        <p className="text-sm font-medium text-white/70 leading-relaxed">
-          {category.id === "ss" && <>Need a <strong className="text-blue-300">steel gate in Trichy</strong> or <strong className="text-blue-300">grill work in Trichy</strong>? RITS Metal Craft is your trusted fabrication shop.</>}
-          {category.id === "ms" && <>Looking for a <strong className="text-blue-300">metal gate or steel staircase</strong> in Trichy? Our steel fabrication team delivers on time.</>}
-          {category.id === "glass" && <>Searching for an <strong className="text-blue-300">aluminium window in Trichy</strong> or a <strong className="text-blue-300">glass door</strong> for your office? Call us for a free quote.</>}
-          {category.id === "elevation" && <>Transform your building with the best <strong className="text-blue-300">ACP cladding and facade work</strong> in Trichy — call for a free site visit.</>}
-          {category.id === "shutters" && <>Need a <strong className="text-blue-300">rolling shutter in Trichy</strong>? We supply and install <strong className="text-blue-300">shop shutters</strong> for all types of businesses.</>}
-        </p>
-        <a
-          href="tel:+919876543210"
-          className="shrink-0 inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs uppercase tracking-widest px-6 py-3 rounded-xl transition-colors duration-200 whitespace-nowrap"
-        >
-          📞 Call Now
-        </a>
-      </div>
     </section>
   );
 });
@@ -825,57 +952,21 @@ const Products = () => {
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="flex flex-wrap justify-center items-center gap-2 md:gap-4">
+        <div className="mx-auto max-w-7xl px-2 sm:px-4">
+          <div className="flex flex-nowrap justify-center items-center gap-1.5 sm:gap-3">
             {productCategories.map((cat) => {
               const isActive = activeTab === cat.id;
               return (
-                <motion.button
+                <AnimatedButton
                   key={cat.id}
+                  isActive={isActive}
+                  isPaused={isPaused}
                   onClick={() => { setActiveTab(cat.id); setIsPaused(true); }}
-                  className="relative group px-5 py-2.5 rounded-xl transition-all duration-500 outline-none"
-                  style={{ transformStyle: "preserve-3d", perspective: 1000 }}
-                  whileHover={{ 
-                    scale: 1.05, 
-                    rotateX: 10, 
-                    rotateY: -10, 
-                    y: -5,
-                    boxShadow: "0px 20px 30px -10px rgba(0, 0, 0, 0.5)"
-                  }}
-                  whileTap={{ scale: 0.95, rotateX: 0, rotateY: 0, y: 0 }}
+                  onHoverStart={() => setIsPaused(true)}
+                  onHoverEnd={() => setIsPaused(false)}
                 >
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeTabPill"
-                      className="absolute inset-0 bg-white rounded-xl overflow-hidden shadow-[0_10px_25px_-4px_rgba(255,255,255,0.3)]"
-                      style={{ 
-                        transform: "translateZ(-10px)" 
-                      }}
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                    >
-                      {!isPaused && (
-                        <motion.div
-                          key={`progress-${cat.id}`}
-                          initial={{ scaleX: 0 }}
-                          animate={{ scaleX: 1 }}
-                          transition={{ duration: 4, ease: "linear" }}
-                          className="absolute bottom-0 left-0 right-0 h-1 bg-blue-500/20 origin-left"
-                        />
-                      )}
-                    </motion.div>
-                  )}
-                  {!isActive && (
-                    <div 
-                      className="absolute inset-0 bg-white/5 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 scale-95 group-hover:scale-100 border border-white/10" 
-                      style={{ transform: "translateZ(-10px)" }}
-                    />
-                  )}
-                  <div style={{ transform: "translateZ(20px)" }}>
-                    <span className={`relative z-10 text-[0.7rem] sm:text-[0.75rem] font-black uppercase tracking-[0.18em] transition-colors duration-300 drop-shadow-md ${isActive ? "text-slate-950" : "text-white/60 group-hover:text-white"}`}>
-                      {cat.title}
-                    </span>
-                  </div>
-                </motion.button>
+                  {cat.title}
+                </AnimatedButton>
               );
             })}
           </div>

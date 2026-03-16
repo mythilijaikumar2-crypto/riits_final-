@@ -435,6 +435,7 @@ const Services = () => {
             ))}
           </div>
 
+<<<<<<< HEAD
           {/* CTA bar — slides up after rows */}
           <motion.div
             initial={{ opacity: 0, y: 28 }}
@@ -456,6 +457,8 @@ const Services = () => {
               📞 Call Now
             </a>
           </motion.div>
+=======
+>>>>>>> 5bd6166f1b7b8c0e2cfd8b3c5deb47c1b9f95a33
         </div>
       </section>
 
