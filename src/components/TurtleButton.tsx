@@ -23,10 +23,10 @@ const buttonVariants = cva(
         call_now: "bg-gradient-to-r from-orange-500 via-orange-600 to-red-600 text-white shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 animate-call-pulse border-none",
       },
       size: {
-        default: "px-8 py-3",
-        sm: "px-4 py-2 text-xs",
-        lg: "px-10 py-4 text-base",
-        icon: "h-10 w-10 p-0",
+        default: "px-8 h-[52px]",
+        sm: "px-4 h-[40px] text-xs",
+        lg: "px-10 h-[60px] text-base",
+        icon: "h-12 w-12 p-0",
       },
     },
     defaultVariants: {

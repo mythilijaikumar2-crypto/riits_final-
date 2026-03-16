@@ -1,6 +1,10 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { Phone, MessageCircle, ArrowRight, Star, CheckCircle2, Wrench, Home, Building2, Factory, Zap } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import {
+  Phone, MessageCircle, ArrowRight, Star, CheckCircle2,
+  Wrench, Home, Building2, Factory, Zap,
+} from "lucide-react";
 import { TurtleButton } from "../components/TurtleButton";
 import SEO from "../components/SEO";
 import resSvcImg from "../assets/residental.jpeg";
@@ -16,11 +20,11 @@ const serviceAreas = [
     gradient: "from-blue-600 to-indigo-800",
     image: comSvcImg,
     items: [
-      { name: "Steel Gate & Grill Work", slug: "ms-works" },
-      { name: "Balcony Railing Work", slug: "ss-works" },
-      { name: "Staircase Railing Work", slug: "ss-works" },
-      { name: "Aluminium Window Work", slug: "aluminium-windows" },
-      { name: "Elevation & Cladding Work", slug: "elevation-work" },
+      { name: "Steel Gate & Grill Work",    slug: "ms-works" },
+      { name: "Balcony Railing Work",        slug: "ss-works" },
+      { name: "Staircase Railing Work",      slug: "ss-works" },
+      { name: "Aluminium Window Work",       slug: "aluminium-windows" },
+      { name: "Elevation & Cladding Work",   slug: "elevation-work" },
     ],
   },
   {
@@ -31,10 +35,10 @@ const serviceAreas = [
     image: indSvcImg,
     items: [
       { name: "Showroom Facade & ACP Cladding", slug: "elevation-work" },
-      { name: "Glass Partition Work", slug: "aluminium-partition" },
-      { name: "Toughened Glass Door Work", slug: "aluminium-windows" },
-      { name: "Rolling Shutter Installation", slug: "general-fabrication" },
-      { name: "Aluminium Door Work", slug: "aluminium-windows" },
+      { name: "Glass Partition Work",            slug: "aluminium-partition" },
+      { name: "Toughened Glass Door Work",       slug: "aluminium-windows" },
+      { name: "Rolling Shutter Installation",    slug: "general-fabrication" },
+      { name: "Aluminium Door Work",             slug: "aluminium-windows" },
     ],
   },
   {
@@ -44,23 +48,22 @@ const serviceAreas = [
     gradient: "from-amber-600 to-orange-800",
     image: resSvcImg,
     items: [
-      { name: "Factory Shed Fabrication", slug: "roofing-work" },
-      { name: "Warehouse Steel Fabrication", slug: "steel-fabrication" },
-      { name: "Heavy-Duty Shop Shutter", slug: "general-fabrication" },
-      { name: "Structural Metal Fabrication", slug: "steel-fabrication" },
-      { name: "Industrial Gate Fabrication", slug: "ms-works" },
+      { name: "Factory Shed Fabrication",      slug: "roofing-work" },
+      { name: "Warehouse Steel Fabrication",   slug: "steel-fabrication" },
+      { name: "Heavy-Duty Shop Shutter",        slug: "general-fabrication" },
+      { name: "Structural Metal Fabrication",  slug: "steel-fabrication" },
+      { name: "Industrial Gate Fabrication",   slug: "ms-works" },
     ],
   },
 ];
 
 const stats = [
-  { val: "800+", label: "Projects Completed", icon: <Wrench className="w-5 h-5" /> },
-  { val: "15+",  label: "Years Experience",   icon: <Zap className="w-5 h-5" /> },
-  { val: "100%", label: "Client Satisfaction", icon: <Star className="w-5 h-5" /> },
-  { val: "Pan TN", label: "Areas Served",      icon: <CheckCircle2 className="w-5 h-5" /> },
+  { val: "800+",   label: "Projects Completed", icon: <Wrench className="w-5 h-5" /> },
+  { val: "15+",    label: "Years Experience",   icon: <Zap className="w-5 h-5" /> },
+  { val: "100%",   label: "Client Satisfaction", icon: <Star className="w-5 h-5" /> },
+  { val: "Pan TN", label: "Areas Served",        icon: <CheckCircle2 className="w-5 h-5" /> },
 ];
 
-/* ── SEO service sections data ── */
 const serviceSections = [
   {
     number: "01",
@@ -145,10 +148,109 @@ const serviceSections = [
   },
 ];
 
-/* ─── SIMPLE COUNTER (STATIC TEXT) ──────────────────────────────────── */
+/* ─── COUNTER ────────────────────────────────────────────────────────── */
 const AnimatedCounter = ({ text }: { text: string }) => {
   const ref = useRef<HTMLSpanElement>(null);
   return <span ref={ref}>{text}</span>;
+};
+
+/* ─── ANIMATED SERVICE ROW ───────────────────────────────────────────── */
+interface ServiceRowProps {
+  svc: (typeof serviceSections)[0];
+  index: number;
+  isLast: boolean;
+}
+
+const ServiceRow = ({ svc, index, isLast }: ServiceRowProps) => {
+  const rowRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(rowRef, { once: true, margin: "-80px 0px" });
+
+  /* Responsive slide distance — smaller on narrow viewports */
+  const slideX = typeof window !== "undefined" && window.innerWidth < 640 ? 30 : 60;
+
+  const leftVariants = {
+    hidden:  { opacity: 0, x: -slideX },
+    visible: { opacity: 1, x: 0 },
+  };
+
+  const rightVariants = {
+    hidden:  { opacity: 0, x: slideX },
+    visible: { opacity: 1, x: 0 },
+  };
+
+  const dividerVariants = {
+    hidden:  { scaleX: 0, originX: 0 },
+    visible: { scaleX: 1, originX: 0 },
+  };
+
+  const easing = [0.22, 1, 0.36, 1] as const;
+
+  return (
+    <div ref={rowRef}>
+      {/* Row wrapper — hover lift */}
+      <motion.div
+        animate={inView ? "visible" : "hidden"}
+        initial="hidden"
+        className="flex items-start gap-5 group rounded-2xl px-4 py-2 -mx-4
+          hover:-translate-y-1 hover:bg-slate-50/70 transition-all duration-300"
+      >
+        {/* LEFT — Number badge + heading */}
+        <motion.div
+          variants={leftVariants}
+          transition={{ duration: 0.62, ease: easing, delay: index * 0.06 }}
+          className="flex items-start gap-4 flex-1 min-w-0"
+        >
+          {/* Animated number badge */}
+          <motion.div
+            variants={{
+              hidden:  { opacity: 0, scale: 0.7, rotate: -8 },
+              visible: { opacity: 1, scale: 1,   rotate: 0 },
+            }}
+            transition={{ duration: 0.55, ease: easing, delay: index * 0.06 + 0.05 }}
+            className="shrink-0 w-10 h-10 rounded-xl bg-[hsl(225,73%,35%)] text-white
+              text-xs font-black flex items-center justify-center mt-1
+              group-hover:bg-blue-700 group-hover:scale-110 transition-all duration-300
+              shadow-sm group-hover:shadow-blue-500/30 group-hover:shadow-lg"
+          >
+            {svc.number}
+          </motion.div>
+
+          <div className="flex-1 min-w-0">
+            <motion.h2
+              variants={leftVariants}
+              transition={{ duration: 0.62, ease: easing, delay: index * 0.06 + 0.08 }}
+              className="text-xl sm:text-2xl font-black text-slate-950 uppercase
+                tracking-tight mb-2 group-hover:text-blue-800 transition-colors duration-300"
+            >
+              {svc.heading}
+            </motion.h2>
+
+            {/* RIGHT — Description slides from right */}
+            <motion.p
+              variants={rightVariants}
+              transition={{ duration: 0.65, ease: easing, delay: index * 0.06 + 0.14 }}
+              className="text-slate-600 text-[0.95rem] leading-relaxed"
+            >
+              {svc.body}
+            </motion.p>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Animated divider */}
+      {!isLast && (
+        <motion.hr
+          variants={dividerVariants}
+          animate={inView ? "visible" : "hidden"}
+          initial="hidden"
+          transition={{ duration: 0.7, ease: easing, delay: index * 0.06 + 0.25 }}
+          className="mt-8 mb-0 border-0 h-px bg-gradient-to-r
+            from-slate-200 via-blue-100 to-transparent"
+          style={{ transformOrigin: "left" }}
+        />
+      )}
+    </div>
+  );
 };
 
 /* ─── PAGE COMPONENT ─────────────────────────────────────────────────── */
@@ -165,13 +267,10 @@ const Services = () => {
           HERO
       ══════════════════════════════════════════ */}
       <section className="relative h-screen flex flex-col justify-center overflow-hidden bg-slate-950">
-
-        {/* Visually hidden H1 — primary SEO heading for Google */}
         <h1 className="sr-only">
           Steel Fabrication, Gate Work, Railing, Rolling Shutter &amp; Aluminium Services in Trichy | RITS Metal Craft
         </h1>
 
-        {/* Background image */}
         <div className="absolute inset-0 z-0">
           <img
             src="/src/assets/heropage/services hero page .webp"
@@ -182,7 +281,6 @@ const Services = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/30 to-transparent" />
         </div>
 
-        {/* Grid overlay */}
         <div
           className="absolute inset-0 opacity-[0.04] pointer-events-none"
           style={{
@@ -192,7 +290,6 @@ const Services = () => {
           }}
         />
 
-        {/* Floating badges */}
         <div className="absolute top-20 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium animate-float-slow">
           <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
           15+ Years of Expertise
@@ -205,26 +302,19 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <div>
-              {/* Badge — local keyword */}
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-widest mb-4">
                 <Zap className="w-3 h-3" /> Fabrication Shop in Trichy
               </div>
-
-              {/* Decorative display heading — aria-hidden; real H1 is sr-only above */}
               <p
                 aria-hidden="true"
                 className="font-heading text-4xl sm:text-5xl lg:text-5xl font-black uppercase leading-none tracking-tight text-white mb-4"
               >
-                Expert
-                <br />
+                Expert<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600">
                   Metal &amp; Glass
-                </span>
-                <br />
+                </span><br />
                 Services
               </p>
-
-              {/* SEO-rich hero paragraph */}
               <p className="text-white/65 text-base leading-relaxed max-w-md mb-7">
                 RITS Metal Craft is your trusted{" "}
                 <strong className="text-white/85">fabrication shop in Trichy</strong> —
@@ -236,7 +326,6 @@ const Services = () => {
                 <strong className="text-white/85">glass partition work</strong> for
                 residential, commercial and industrial projects across Tamil Nadu.
               </p>
-
               <div className="flex flex-wrap gap-3">
                 <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-10">
                   <Phone className="w-4 h-4" /> Call Now
@@ -303,15 +392,22 @@ const Services = () => {
       </section>
 
       {/* ══════════════════════════════════════════
-          SEO SERVICE SECTIONS — 6 H2 blocks
+          SEO SERVICE SECTIONS — animated
       ══════════════════════════════════════════ */}
       <section
         className="bg-white py-20 px-6 border-b border-slate-100"
         style={{ contentVisibility: "auto", containIntrinsicSize: "auto 700px" }}
       >
         <div className="max-w-5xl mx-auto">
-          {/* Section header */}
-          <div className="text-center mb-14">
+
+          {/* Section header animates in from bottom */}
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="text-center mb-14"
+          >
             <span className="inline-block text-[0.68rem] font-bold uppercase tracking-[0.22em] text-blue-700 bg-blue-50 border border-blue-100 px-4 py-1.5 rounded-full mb-3">
               What We Offer
             </span>
@@ -325,34 +421,28 @@ const Services = () => {
               <strong className="text-slate-700">fabrication work</strong> across
               every category, on time and at transparent prices.
             </p>
-          </div>
+          </motion.div>
 
-          {/* 6 service blocks */}
-          <div className="space-y-12">
+          {/* Service rows — each animates independently */}
+          <div className="space-y-8">
             {serviceSections.map((svc, i) => (
-              <div key={svc.number}>
-                <div className="flex items-start gap-5">
-                  {/* Number pill */}
-                  <div className="shrink-0 w-10 h-10 rounded-xl bg-[hsl(225,73%,35%)] text-white text-xs font-black flex items-center justify-center mt-1">
-                    {svc.number}
-                  </div>
-                  <div className="flex-1">
-                    <h2 className="text-xl sm:text-2xl font-black text-slate-950 uppercase tracking-tight mb-2">
-                      {svc.heading}
-                    </h2>
-                    <p className="text-slate-600 text-[0.95rem] leading-relaxed">{svc.body}</p>
-                  </div>
-                </div>
-                {/* Divider — skip after last */}
-                {i < serviceSections.length - 1 && (
-                  <hr className="mt-10 border-slate-100" />
-                )}
-              </div>
+              <ServiceRow
+                key={svc.number}
+                svc={svc}
+                index={i}
+                isLast={i === serviceSections.length - 1}
+              />
             ))}
           </div>
 
-          {/* Near-me CTA bar */}
-          <div className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[hsl(225,73%,35%)] rounded-2xl px-7 py-5">
+          {/* CTA bar — slides up after rows */}
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+            className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[hsl(225,73%,35%)] rounded-2xl px-7 py-5"
+          >
             <p className="text-sm font-semibold text-white/80 leading-relaxed">
               Looking for trusted{" "}
               <strong className="text-amber-300">steel fabrication in Trichy</strong> or{" "}
@@ -365,7 +455,7 @@ const Services = () => {
             >
               📞 Call Now
             </a>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -426,7 +516,10 @@ const Services = () => {
                 <div className="bg-white p-8 border border-slate-100 rounded-b-3xl">
                   <ul className="space-y-3">
                     {area.items.map((item) => (
-                      <li key={item.name} className="flex items-center gap-3 text-sm text-slate-600 group-hover:gap-4 transition-all duration-300">
+                      <li
+                        key={item.name}
+                        className="flex items-center gap-3 text-sm text-slate-600 group-hover:gap-4 transition-all duration-300"
+                      >
                         <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: area.color }} />
                         <Link to={`/services/${item.slug}`} className="hover:text-blue-600 transition-colors">
                           {item.name}
@@ -461,9 +554,7 @@ const Services = () => {
             Get In Touch
           </p>
           <h2 className="font-heading text-4xl sm:text-5xl font-black uppercase tracking-tight mb-6">
-            Ready to Start
-            <br />
-            Your Project?
+            Ready to Start<br />Your Project?
           </h2>
           <p className="text-white/60 text-base leading-relaxed max-w-xl mx-auto mb-10">
             Need <strong className="text-white/80">steel gate work</strong>,{" "}
@@ -471,7 +562,6 @@ const Services = () => {
             <strong className="text-white/80">glass partition work</strong> for your
             property? Contact us for a free site visit and written quotation — no hidden charges.
           </p>
-
           <div className="flex flex-wrap justify-center gap-4">
             <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-10">
               <Phone className="w-4 h-4" /> Call Now
@@ -485,7 +575,6 @@ const Services = () => {
               <MessageCircle className="w-4 h-4" /> WhatsApp Us
             </a>
           </div>
-
           <div className="flex flex-wrap justify-center gap-6 mt-12 pt-10 border-t border-white/10">
             {["Free Consultation", "On-Time Delivery", "Quality Assured", "Pan Tamil Nadu"].map((b) => (
               <div key={b} className="flex items-center gap-2 text-sm text-white/50 font-medium">
