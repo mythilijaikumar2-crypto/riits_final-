@@ -730,21 +730,6 @@ const About = () => {
 
           </div>
 
-          {/* Near-me CTA bar */}
-          <R delay={0.25}>
-            <div className="seo-near-bar">
-              <p>
-                Searching for <strong>steel gate near me</strong>,{" "}
-                <strong>grill work near me</strong> or the best{" "}
-                <strong>fabrication company in Trichy</strong>?{" "}
-                We're right here — serving Trichy, Thanjavur, Pudukottai &amp; all of Tamil Nadu.
-              </p>
-              <a href="tel:+919876543210" className="seo-near-btn">
-                📞 Call Now
-              </a>
-            </div>
-          </R>
-
         </div>
       </section>
 

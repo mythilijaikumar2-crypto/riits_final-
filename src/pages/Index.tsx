@@ -526,23 +526,6 @@ const SEOContentSection = () => (
         </div>
       </div>
 
-      {/* Location trust bar */}
-      <div className="bg-[hsl(225,73%,35%)] rounded-2xl px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-3 text-white">
-          <MapPin className="w-5 h-5 text-amber-300 shrink-0" />
-          <p className="text-sm font-semibold">
-            Looking for <span className="text-amber-300">metal fabrication near me</span> or a{" "}
-            <span className="text-amber-300">fabrication shop near me</span> in Trichy?{" "}
-            We're right here — serving Trichy, Thanjavur, Pudukottai &amp; all of Tamil Nadu.
-          </p>
-        </div>
-        <a
-          href="tel:+919876543210"
-          className="shrink-0 inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs uppercase tracking-widest px-6 py-3 rounded-xl transition-colors duration-200"
-        >
-          <Phone className="w-4 h-4" /> Call Now
-        </a>
-      </div>
     </div>
   </section>
 );
@@ -566,6 +549,7 @@ const TestimonialCard = ({ name, initial, text, rating, verified }: typeof testi
         </div>
         <p
           className={`text-slate-600 leading-relaxed text-[0.88rem] font-medium line-clamp-4 italic ${
+            // eslint-disable-next-line no-control-regex
             text.match(/[^\x00-\x7F]/) ? "font-serif" : ""
           }`}
         >
