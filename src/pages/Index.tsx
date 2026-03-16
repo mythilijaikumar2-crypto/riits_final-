@@ -31,6 +31,7 @@ import materialsImg from "../assets/whychoiseus/premium material.webp";
 import deliveryImg from "../assets/whychoiseus/on time delevery.webp";
 import SectionHeading from "../components/SectionHeading";
 import { TurtleButton } from "../components/TurtleButton";
+import { PremiumServiceCards } from "../components/PremiumServiceCards/PremiumServiceCards";
 import ProcessSection from "../components/ProcessSection";
 import SEO from "../components/SEO";
 
@@ -264,7 +265,7 @@ const HeroSection = () => (
         className="w-full h-full object-cover object-center opacity-35 mix-blend-overlay"
         style={{ willChange: "transform" }}
         loading="eager"
-        fetchPriority="high"
+        fetchpriority="high"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/50 to-transparent" />
     </div>
@@ -469,62 +470,8 @@ const SEOContentSection = () => (
         </p>
       </div>
 
-      {/* 3-column product info grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-        {/* Column 1 — Gates, Grills & Railings */}
-        <div className="bg-slate-50 rounded-2xl p-7 border border-slate-100">
-          <h3 className="text-base font-black text-slate-900 uppercase tracking-wide mb-3 flex items-center gap-2">
-            <span className="text-xl">🚪</span> Gates, Grills &amp; Railings
-          </h3>
-          <p className="text-sm text-slate-600 leading-relaxed mb-4">
-            We fabricate and install <strong>steel gates</strong>, <strong>stainless steel gates</strong>,{" "}
-            <strong>MS gates</strong>, <strong>sliding gates</strong> and <strong>compound gates</strong> for
-            residential and commercial properties. Our <strong>window grills</strong> and{" "}
-            <strong>steel grills</strong> are precision-cut for exact fitment.
-          </p>
-          <p className="text-sm text-slate-600 leading-relaxed">
-            For safety and aesthetics, we craft <strong>balcony railings</strong>,{" "}
-            <strong>stainless steel railings</strong>, <strong>staircase railings</strong> and{" "}
-            <strong>steel handrails</strong> using Grade-A SS and MS material.
-          </p>
-        </div>
-
-        {/* Column 2 — Shutters, Aluminium & Glass */}
-        <div className="bg-slate-50 rounded-2xl p-7 border border-slate-100">
-          <h3 className="text-base font-black text-slate-900 uppercase tracking-wide mb-3 flex items-center gap-2">
-            <span className="text-xl">🏗️</span> Shutters, Aluminium &amp; Glass
-          </h3>
-          <p className="text-sm text-slate-600 leading-relaxed mb-4">
-            RIITS supplies and installs <strong>rolling shutters</strong>, <strong>shop shutters</strong> and{" "}
-            <strong>industrial shutters</strong> built for years of high-frequency use. We're the go-to team for{" "}
-            <strong>rolling shutter work near me</strong> across Trichy.
-          </p>
-          <p className="text-sm text-slate-600 leading-relaxed">
-            Our <strong>aluminium work</strong> covers <strong>aluminium doors</strong>,{" "}
-            <strong>aluminium sliding windows</strong>, <strong>aluminium partitions</strong>,{" "}
-            <strong>toughened glass doors</strong>, <strong>frameless glass doors</strong> and{" "}
-            <strong>glass partitions</strong> for modern interiors.
-          </p>
-        </div>
-
-        {/* Column 3 — Cladding & Structural */}
-        <div className="bg-slate-50 rounded-2xl p-7 border border-slate-100">
-          <h3 className="text-base font-black text-slate-900 uppercase tracking-wide mb-3 flex items-center gap-2">
-            <span className="text-xl">🏢</span> Cladding &amp; Structural Works
-          </h3>
-          <p className="text-sm text-slate-600 leading-relaxed mb-4">
-            Transform your building's exterior with <strong>ACP cladding panels</strong>,{" "}
-            <strong>aluminium cladding panels</strong> and <strong>building facade panels</strong> that are
-            weather-resistant and visually striking.
-          </p>
-          <p className="text-sm text-slate-600 leading-relaxed">
-            For outdoor and structural needs, we install <strong>steel pergolas</strong>,{" "}
-            <strong>metal canopies</strong>, <strong>steel staircases</strong> and{" "}
-            <strong>metal staircases</strong>. Our structural fabrication team handles large industrial
-            projects across Tamil Nadu.
-          </p>
-        </div>
-      </div>
+      {/* Premium Product Info Grid */}
+      <PremiumServiceCards />
 
     </div>
   </section>

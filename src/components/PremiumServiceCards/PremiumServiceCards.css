@@ -1,0 +1,108 @@
+/* Premium Service Cards - 60fps GPU Accelerated Animations */
+
+.premium-card-container {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), 
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+  position: relative;
+  background: #f8fafc;
+  border-radius: 1.5rem;
+  padding: 1.75rem;
+  border: 1px solid #f1f5f9;
+  height: 100%;
+}
+
+.premium-card-container.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Background Decoration */
+.premium-card-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.05), transparent 70%);
+  border-radius: 0 1.5rem 0 100%;
+  transform: scale(0);
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-delay: 800ms;
+  pointer-events: none;
+}
+
+.is-visible .premium-card-bg {
+  transform: scale(1);
+}
+
+/* Icon Animation */
+.premium-card-icon {
+  display: inline-flex;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  transform: scale(0) rotate(-45deg);
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-delay: 300ms;
+}
+
+.is-visible .premium-card-icon {
+  transform: scale(1) rotate(0deg);
+}
+
+.is-visible .premium-card-icon.is-floating {
+  animation: float-loop 3s ease-in-out infinite;
+}
+
+@keyframes float-loop {
+  0%, 100% { transform: translateY(0) scale(1.05); }
+  50% { transform: translateY(-8px) scale(1); }
+}
+
+/* Text Animations */
+.premium-card-title {
+  font-size: 1rem;
+  font-weight: 900;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition-delay: 500ms;
+}
+
+.is-visible .premium-card-title {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.premium-card-p1, .premium-card-p2 {
+  font-size: 0.875rem;
+  color: #475569;
+  line-height: 1.625;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.premium-card-p1 { transition-delay: 600ms; margin-bottom: 1rem; }
+.premium-card-p2 { transition-delay: 700ms; }
+
+.is-visible .premium-card-p1,
+.is-visible .premium-card-p2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Strong Tag Highlights */
+.premium-card-container strong {
+  color: #1e293b;
+  font-weight: 600;
+}

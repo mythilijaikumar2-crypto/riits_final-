@@ -435,30 +435,7 @@ const Services = () => {
             ))}
           </div>
 
-<<<<<<< HEAD
-          {/* CTA bar — slides up after rows */}
-          <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-            className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[hsl(225,73%,35%)] rounded-2xl px-7 py-5"
-          >
-            <p className="text-sm font-semibold text-white/80 leading-relaxed">
-              Looking for trusted{" "}
-              <strong className="text-amber-300">steel fabrication in Trichy</strong> or{" "}
-              <strong className="text-amber-300">gate fabrication in Trichy</strong>?
-              Call RITS Metal Craft for a free site visit and written quote — no hidden charges.
-            </p>
-            <a
-              href="tel:+919876543210"
-              className="shrink-0 inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs uppercase tracking-widest px-6 py-3 rounded-xl transition-colors duration-200 whitespace-nowrap"
-            >
-              📞 Call Now
-            </a>
-          </motion.div>
-=======
->>>>>>> 5bd6166f1b7b8c0e2cfd8b3c5deb47c1b9f95a33
+
         </div>
       </section>
 
