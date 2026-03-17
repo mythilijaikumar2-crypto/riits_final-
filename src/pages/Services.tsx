@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import {
@@ -149,11 +149,10 @@ const serviceSections = [
   },
 ];
 
-/* ─── COUNTER ────────────────────────────────────────────────────────── */
-const AnimatedCounter = ({ text }: { text: string }) => {
+const AnimatedCounter = React.memo(({ text }: { text: string }) => {
   const ref = useRef<HTMLSpanElement>(null);
   return <span ref={ref}>{text}</span>;
-};
+});
 
 /* ─── ANIMATED SERVICE ROW ───────────────────────────────────────────── */
 interface ServiceRowProps {
@@ -162,7 +161,7 @@ interface ServiceRowProps {
   isLast: boolean;
 }
 
-const ServiceRow = ({ svc, index, isLast }: ServiceRowProps) => {
+const ServiceRow = React.memo(({ svc, index, isLast }: ServiceRowProps) => {
   const rowRef = useRef<HTMLDivElement>(null);
   const inView = useInView(rowRef, { once: true, margin: "-80px 0px" });
 
@@ -193,7 +192,9 @@ const ServiceRow = ({ svc, index, isLast }: ServiceRowProps) => {
         animate={inView ? "visible" : "hidden"}
         initial="hidden"
         className="flex items-start gap-5 group rounded-2xl px-4 py-2 -mx-4
-          hover:-translate-y-1 hover:bg-slate-50/70 transition-all duration-300"
+          hover:-translate-y-1 hover:bg-slate-50/70 transition-all duration-300
+          will-change-transform"
+        style={{ willChange: "transform, opacity" }}
       >
         {/* LEFT — Number badge + heading */}
         <motion.div
@@ -252,7 +253,7 @@ const ServiceRow = ({ svc, index, isLast }: ServiceRowProps) => {
       )}
     </div>
   );
-};
+});
 
 /* ─── PAGE COMPONENT ─────────────────────────────────────────────────── */
 const Services = () => {
@@ -278,6 +279,7 @@ const Services = () => {
             className="w-full h-full object-cover opacity-60"
             alt={`${COMPANY_NAME} services — steel fabrication, gate work, rolling shutter and aluminium works in Trichy`}
             loading="eager"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/30 to-transparent" />
         </div>
@@ -475,6 +477,7 @@ const Services = () => {
                       loading="lazy"
                       decoding="async"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      style={{ willChange: "transform" }}
                     />
                   </div>
                   <div className={`absolute inset-0 bg-gradient-to-br ${area.gradient} mix-blend-multiply opacity-20 group-hover:opacity-40 transition-opacity duration-500`} />

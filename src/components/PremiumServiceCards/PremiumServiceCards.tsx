@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import './PremiumServiceCards.css';
 
@@ -10,7 +11,8 @@ interface ServiceCardProps {
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, p1, p2 }) => {
-  const { targetRef, isIntersecting } = useIntersectionObserver({ threshold: 0.15 });
+  const { targetRef, isIntersecting } = useIntersectionObserver({ threshold: 0.2 });
+  const [isHovered, setIsHovered] = useState(false);
   const [startFloating, setStartFloating] = useState(false);
 
   useEffect(() => {
@@ -22,10 +24,19 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, p1, p2 }) => {
     }
   }, [isIntersecting]);
 
+  // Card opens if hovered OR if it's visible on mobile (scroll-based reveal)
+  const isOpened = isHovered || (isIntersecting && typeof window !== 'undefined' && window.innerWidth < 1024);
+
   return (
     <div 
       ref={targetRef} 
-      className={`premium-card-container ${isIntersecting ? 'is-visible' : ''}`}
+      className={`premium-card-container ${isIntersecting ? 'is-visible' : ''} ${isOpened ? 'is-opened' : ''}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{ 
+        cursor: 'default',
+        transition: 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)'
+      }}
     >
       <div className="premium-card-bg" />
       <span className={`premium-card-icon ${startFloating ? 'is-floating' : ''}`}>
@@ -35,7 +46,22 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, p1, p2 }) => {
         {title}
       </h3>
       <div className="premium-card-p1">{p1}</div>
-      <div className="premium-card-p2">{p2}</div>
+      
+      <AnimatePresence>
+        {isOpened && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            style={{ overflow: 'hidden' }}
+          >
+            <div className="premium-card-p2 pt-4 mt-4 border-t border-slate-200/60">
+              {p2}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

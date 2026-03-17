@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Layers, Ruler, Shield, Search, Wrench, ArrowRight,
-  CheckCircle2, MapPin, Phone, ChevronRight,
+  CheckCircle2, MapPin, Phone, ChevronDown,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import SEO from "../components/SEO";
@@ -13,7 +13,7 @@ import { CONTACT_DETAILS, formatTelLink, COMPANY_NAME, BRAND_NAME } from "../con
 /* ══════════════════════════════════════════
     SCROLL REVEAL WRAPPER
 ══════════════════════════════════════════ */
-const R = ({ children, delay = 0, dir = "up" }: any) => {
+const R = ({ children, delay = 0, dir = "up", margin = "-100px" }: any) => {
   const v = {
     up:    { y: 24, x: 0 },
     down:  { y: -24, x: 0 },
@@ -25,7 +25,7 @@ const R = ({ children, delay = 0, dir = "up" }: any) => {
     <motion.div
       initial={{ opacity: 0, ...v }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin }}
       transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
@@ -61,19 +61,10 @@ const FontLoader = () => (
     .ltag { font-size:0.68rem; font-weight:700; letter-spacing:0.24em; text-transform:uppercase; color:var(--blue-6); display:inline-flex; align-items:center; gap:10px; }
     .ltag::before { content:''; display:block; width:26px; height:2px; background:var(--blue-6); flex-shrink:0; }
     .navy-bg { background-color: var(--navy); }
-    .sec { padding: clamp(4rem, 8vw, 7.5rem) 0; }
-    .ctr { width: 90%; max-width: 1240px; margin: 0 auto; }
+    .sec { padding: clamp(4rem, 8vw, 7.5rem) 0; overflow: hidden; contain: content; }
+    .ctr { width: 90%; max-width: 1240px; margin: 0 auto; position: relative; z-index: 10; }
 
     /* ── Hero ── */
-    .about-hero-sec {
-      position: relative;
-      min-height: 90vh;
-      display: flex;
-      align-items: center;
-      padding: 100px 0;
-      background: var(--navy);
-      overflow: hidden;
-    }
     .about-mesh {
       position: absolute;
       inset: 0;
@@ -114,6 +105,8 @@ const FontLoader = () => (
       align-items: center;
       justify-content: center;
       z-index: 1;
+      will-change: transform, opacity;
+      transform: translateZ(0);
     }
     .about-stat-card:hover {
       transform: translateY(-15px) scale(1.02);
@@ -259,6 +252,7 @@ const FontLoader = () => (
     .WhyOurWork-box { position: relative; }
     .animate-call-pulse {
       animation: call-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      will-change: transform, box-shadow;
     }
   `}</style>
 );
@@ -326,6 +320,8 @@ const CoverageMap = () => {
     </div>
   );
 };
+
+const MemoizedCoverageMap = React.memo(CoverageMap);
 
 /* ══════════════════════════════════════════
     COUNTER
@@ -417,7 +413,7 @@ const workflowSteps: WorkflowStep[] = [
   },
 ];
 
-const WorkflowAccordion = () => {
+const WorkflowAccordion = React.memo(() => {
   const [active, setActive] = useState<number | null>(null);
 
   return (
@@ -427,12 +423,16 @@ const WorkflowAccordion = () => {
           const isOpen: boolean = active === idx;
 
           return (
-            <div
+            <motion.div
               key={item.step}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
               onMouseEnter={() => { if (window.innerWidth >= 768) setActive(idx); }}
               onMouseLeave={() => { if (window.innerWidth >= 768) setActive(null); }}
-              onClick={() => { if (window.innerWidth < 768) setActive(isOpen ? null : idx); }}
-              className="py-2 md:py-3 px-0 md:px-0"
+              onClick={() => { if (window.innerWidth < 768) setActive(active === idx ? null : idx); }}
+              className="py-2.5 md:py-4 px-0"
             >
               <div
                 className={`transition-all duration-300 md:duration-500 rounded-xl md:rounded-[20px] overflow-hidden bg-white border ${
@@ -447,52 +447,60 @@ const WorkflowAccordion = () => {
                 }}
               >
               <button
-                className="acc-trigger-btn w-full flex items-center justify-between gap-3 md:gap-5 px-4 md:px-8 py-3 md:py-6 text-left transition-all duration-300"
+                className={`acc-trigger-btn w-full flex items-center justify-between gap-4 md:gap-5 px-4 py-3 md:px-6 md:py-5 text-left transition-all duration-300 min-h-[60px] md:min-h-[72px] rounded-xl group/trigger ${
+                  !isOpen ? "hover:bg-slate-50" : ""
+                }`}
                 style={{
                   background: isOpen
                     ? `linear-gradient(100deg, ${item.from}, ${item.to})`
                     : "#ffffff",
                 }}
               >
+                {/* ICON BOX */}
                 <div 
-                  className="shrink-0 flex items-center justify-center rounded-lg md:rounded-xl transition-all duration-300"
+                  className="shrink-0 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-xl transition-all duration-300"
                   style={{
-                    width: typeof window !== "undefined" && window.innerWidth < 768 ? 32 : 42,
-                    height: typeof window !== "undefined" && window.innerWidth < 768 ? 32 : 42,
                     background: isOpen
-                      ? "rgba(255,255,255,0.15)"
-                      : `linear-gradient(140deg, ${item.from}, ${item.to})`,
-                    border: isOpen ? "1px solid rgba(255,255,255,0.22)" : "none",
-                    boxShadow: isOpen ? "none" : `0 6px 16px -4px ${item.to}55`,
+                      ? "rgba(255,255,255,0.2)"
+                      : `linear-gradient(140deg, ${item.from}e0, ${item.to})`,
+                    border: isOpen ? "1px solid rgba(255,255,255,0.3)" : "none",
+                    boxShadow: isOpen 
+                      ? `0 0 20px ${item.accent}40` 
+                      : `0 8px 20px -4px ${item.to}40`,
                   }}
                 >
-                  <item.Icon size={typeof window !== "undefined" && window.innerWidth < 768 ? 16 : 19} strokeWidth={1.6} color="white" />
+                  <item.Icon size={typeof window !== "undefined" && window.innerWidth < 768 ? 16 : 20} strokeWidth={2} color="white" />
                 </div>
 
-                <div className="flex-1 min-w-0">
+                {/* TEXT BLOCK */}
+                <div className="flex-1 flex flex-col justify-center min-w-0 gap-0.5">
                   <p 
-                    className="text-[10px] md:text-xs font-extrabold uppercase tracking-[0.15em] md:tracking-[0.22em] mb-0.5 md:mb-1 transition-colors duration-300"
-                    style={{ color: isOpen ? "rgba(255,255,255,0.6)" : "#94a3b8" }}
+                    className="text-[10px] md:text-xs font-extrabold uppercase tracking-[0.1em] md:tracking-[0.2em] transition-colors duration-300"
+                    style={{ color: isOpen ? "rgba(255,255,255,0.7)" : "#64748b" }}
                   >
                     Step {item.step} — {item.short}
                   </p>
-                  <p 
-                    className="font-heading text-lg md:text-xl lg:text-2xl font-black uppercase leading-tight truncate transition-colors duration-300"
-                    style={{ color: isOpen ? "#ffffff" : "#0d2557" }}
+                  <h3 
+                    className="font-heading text-base md:text-xl lg:text-2xl font-black uppercase leading-tight transition-all duration-300"
+                    style={{ 
+                      color: isOpen ? "#ffffff" : "#0f172a",
+                      letterSpacing: isOpen ? "0.02em" : "0"
+                    }}
                   >
                     {item.title}
-                  </p>
+                  </h3>
                 </div>
 
+                {/* ARROW */}
                 <motion.div
-                  animate={{ rotate: isOpen ? 90 : 0 }}
-                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                  animate={{ rotate: isOpen ? 180 : 0 }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  className="shrink-0 w-5 h-5 flex items-center justify-center transition-colors duration-300"
                   style={{
-                    flexShrink: 0,
-                    color: isOpen ? "rgba(255,255,255,0.7)" : "#cbd5e1",
+                    color: isOpen ? "rgba(255,255,255,0.8)" : "#94a3b8",
                   }}
                 >
-                  <ChevronRight size={20} />
+                  <ChevronDown size={20} />
                 </motion.div>
               </button>
 
@@ -537,26 +545,35 @@ const WorkflowAccordion = () => {
                           >
                             <div 
                               className="shrink-0 flex items-center justify-center w-5 h-5 rounded-md border"
-                              style={{ background: `${item.to}10`, borderColor: `${item.to}25` }}
+                             style={{ 
+                                background: `${item.to}15`, 
+                                borderColor: `${item.to}30`,
+                                transform: "rotate(45deg)"
+                              }}
                             >
                               <div className="w-1.5 h-1.5 rounded-full" style={{ background: item.to }} />
                             </div>
-                            {d}
+                            <span className="group-hover/detail:translate-x-1 transition-transform duration-300">
+                              {d}
+                            </span>
                           </motion.div>
                         ))}
                       </div>
 
-                      <div className="pt-2 md:pt-4">
+                      <div className="pt-6 md:pt-8 flex justify-center md:justify-end">
                         <TurtleButton
-                          href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
-                          className="w-full md:w-auto rounded-xl justify-center h-[48px] md:h-[52px]"
+                          href="/contact"
+                          className="w-full md:w-auto rounded-2xl justify-center h-[52px] md:h-[60px] px-8 md:px-12 text-base md:text-lg font-bold group/btn shadow-2xl relative overflow-hidden transition-all duration-500 hover:scale-105 active:scale-95"
                           style={{
                             background: `linear-gradient(135deg, ${item.from}, ${item.to})`,
-                            boxShadow: `0 8px 22px -4px ${item.to}55`,
+                            boxShadow: `0 12px 30px -6px ${item.to}60`,
                           }}
                         >
-                          <Phone size={14} className="stroke-[2.5]" />
-                          Get a Quote
+                          <span className="relative z-10 flex items-center gap-3">
+                            Get a Specific Quote
+                            <ArrowRight size={20} className="group-hover/btn:translate-x-1.5 transition-transform duration-300" />
+                          </span>
+                          <div className="absolute inset-0 bg-white/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
                         </TurtleButton>
                       </div>
                     </div>
@@ -564,13 +581,13 @@ const WorkflowAccordion = () => {
                 )}
               </AnimatePresence>
               </div>
-            </div>
+            </motion.div>
           );
         })}
       </div>
     </div>
   );
-};
+});
 
 /* ══════════════════════════════════════════
     STATIC DATA
@@ -589,6 +606,9 @@ const districts = [
   { name: "Ariyalur",    main: false },
   { name: "Dindigul",    main: false },
 ];
+
+
+
 
 
 /* ════════════════════════════════════════════
@@ -689,8 +709,6 @@ const About = () => {
                 homeowners, builders and businesses across Trichy, Thanjavur and Tamil Nadu —
                 delivering every project with precision and care.
               </motion.p>
-
-
             </motion.div>
           </div>
         </div>
@@ -723,6 +741,8 @@ const About = () => {
         </div>
       </section>
 
+
+
       {/* ══════════════════════════════════════════
           WHAT WE DO — animated SEO cards
       ══════════════════════════════════════════ */}
@@ -738,9 +758,11 @@ const About = () => {
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
             <R>
               <span className="ltag" style={{ justifyContent: "center", marginBottom: 14 }}>
-                Our Work Quality
+                Our Process & Quality
               </span>
-              <h2 className="dlg" style={{ color: "#0d2557", marginBottom: 12 }}>How We Work</h2>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#0d2557] uppercase tracking-tight mb-6">
+                How We Deliver Excellence
+              </h2>
               <p className="body" style={{ maxWidth: 540, margin: "0 auto" }}>
                 Every product — from a <strong>window grill</strong> to a{" "}
                 <strong>staircase railing</strong> — is quality-checked before delivery.
@@ -797,14 +819,14 @@ const About = () => {
             </R>
           </div>
 
-          <div className="cov-row" style={{ display: "flex", gap: "3rem", alignItems: "center", flexWrap: "wrap", maxWidth: 900, margin: "0 auto" }}>
+        <div className="cov-row" style={{ display: "flex", gap: "3rem", alignItems: "center", flexWrap: "wrap", maxWidth: 900, margin: "0 auto" }}>
+          <div className="flex-1 min-w-[300px]">
             <R dir="left">
-              <div style={{ flex: "1 1 280px", minWidth: 260 }}>
-                <CoverageMap />
-              </div>
+               <MemoizedCoverageMap />
             </R>
+          </div>
+          <div style={{ flex: "1 1 260px" }}>
             <R dir="right">
-              <div style={{ flex: "1 1 260px" }}>
                 <p style={{ fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#64748b", marginBottom: "1.2rem" }}>
                   Districts We Serve
                 </p>
@@ -837,11 +859,11 @@ const About = () => {
                 >
                   <MapPin style={{ width: 16, height: 16 }} /> Book a Site Visit
                 </TurtleButton>
-              </div>
             </R>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* ══════════════════════════════════════════
           WHY CHOOSE US

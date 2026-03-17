@@ -1,5 +1,5 @@
-import { motion, useScroll, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { motion, useScroll, AnimatePresence, useInView } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import gates from "../assets/gatesandgrills.jpg";
 import railings from "../assets/railingsandhandrails.avif";
@@ -341,8 +341,68 @@ const HeroSection = ({ isMobile }: { isMobile: boolean }) => (
 
 /* ================= WHY US ================= */
 
+const WhyCard = ({ Icon, title, desc, highlights, accent, bg, isMobile }: any) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { 
+    margin: isMobile ? "-45% 0px -45% 0px" : "-25% 0px -25% 0px"
+  });
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Auto-expand on mobile when in center-view, otherwise use hover
+  const isOpened = isHovered || (isMobile && isInView);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: isMobile ? 15 : 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: isMobile ? "-50px" : "-100px" }}
+      transition={{ duration: isMobile ? 0.35 : 0.5, ease: "easeOut" }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      className="group why-card relative overflow-hidden rounded-[2rem] cursor-default shadow-lg bg-slate-900"
+      style={{ minHeight: "420px", transform: "translateZ(0)" }}
+    >
+      <img
+        src={bg}
+        alt={title}
+        loading="lazy"
+        decoding="async"
+        className="why-card-img absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60 group-hover:opacity-40"
+      />
+      <div className="why-card-overlay absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ backgroundColor: accent }} />
+      <div className="relative z-10 h-full flex flex-col justify-end p-7">
+        <div className="mb-5 w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 bg-white/20 border border-white/30 group-hover:bg-white group-hover:text-blue-900">
+          <Icon className="w-5 h-5 text-white group-hover:text-blue-900" />
+        </div>
+        <h3 className="text-xl font-bold text-white font-display mb-2">{title}</h3>
+        <p className="text-sm text-white/70 leading-relaxed mb-4 max-w-sm line-clamp-2">{desc}</p>
+        <motion.ul
+          initial={false}
+          animate={{ height: isOpened ? "auto" : 0, opacity: isOpened ? 1 : 0 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="overflow-hidden flex flex-col gap-2 mb-4"
+        >
+          {highlights.map((h: string, j: number) => (
+            <li key={j} className="flex items-center gap-2 text-xs font-semibold text-white/80">
+              <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+              {h}
+            </li>
+          ))}
+        </motion.ul>
+        <a
+          href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
+          className={`inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-white/90 transition-all duration-300 ${isOpened ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}
+        >
+          Contact Us <ArrowRight className="w-4 h-4 group-hover:translate-x-1" />
+        </a>
+      </div>
+    </motion.div>
+  );
+};
+
 const WhyUsSection = ({ isMobile }: { isMobile: boolean }) => {
-  const [hovered, setHovered] = useState<number | null>(null);
   return (
     <section
       className="min-h-screen flex items-center py-[8vh] md:py-16 lg:py-0 bg-muted relative overflow-hidden"
@@ -358,77 +418,31 @@ const WhyUsSection = ({ isMobile }: { isMobile: boolean }) => {
       <div className="container-main relative">
         <SectionHeading subtitle={`Why ${BRAND_NAME}`} title="Why Choose Us" />
         <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {whyUs.map(({ Icon, title, desc, highlights, accent, bg }, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: isMobile ? 15 : 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: isMobile ? "-50px" : "-100px" }}
-              transition={{ duration: isMobile ? 0.35 : 0.5, ease: "easeOut" }}
-              onHoverStart={() => setHovered(i)}
-              onHoverEnd={() => setHovered(null)}
-              className="group why-card relative overflow-hidden rounded-[2rem] cursor-default shadow-lg bg-slate-900"
-              style={{ minHeight: "420px", transform: "translateZ(0)" }}
-            >
-              <img
-                src={bg}
-                alt={title}
-                loading="lazy"
-                decoding="async"
-                className="why-card-img absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60 group-hover:opacity-40"
-              />
-              <div className="why-card-overlay absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-transparent" />
-              <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ backgroundColor: accent }} />
-              <div className="relative z-10 h-full flex flex-col justify-end p-7">
-                <div className="mb-5 w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 bg-white/20 border border-white/30 group-hover:bg-white group-hover:text-blue-900">
-                  <Icon className="w-5 h-5 text-white group-hover:text-blue-900" />
-                </div>
-                <h3 className="text-xl font-bold text-white font-display mb-2">{title}</h3>
-                <p className="text-sm text-white/70 leading-relaxed mb-4 max-w-sm line-clamp-2">{desc}</p>
-                <motion.ul
-                  initial={false}
-                  animate={{ height: hovered === i ? "auto" : 0, opacity: hovered === i ? 1 : 0 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="overflow-hidden flex flex-col gap-2 mb-4"
-                >
-                  {highlights.map((h, j) => (
-                    <li key={j} className="flex items-center gap-2 text-xs font-semibold text-white/80">
-                      <CheckCircle2 className="w-3 h-3 text-emerald-400" />
-                      {h}
-                    </li>
-                  ))}
-                </motion.ul>
-                <a
-                  href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
-                  className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-white/90 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300"
-                >
-                  Contact Us <ArrowRight className="w-4 h-4 group-hover:translate-x-1" />
-                </a>
-              </div>
-            </motion.div>
+          {whyUs.map((props, i) => (
+            <WhyCard key={i} {...props} isMobile={isMobile} />
           ))}
         </div>
         <motion.div
-          initial={{ opacity: 0, y: isMobile ? 12 : 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: isMobile ? 0.35 : 0.6, delay: isMobile ? 0.1 : 0.5 }}
-          className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 px-[4vw] md:px-0"
-        >
-          {[
-            { val: "800+", label: "Projects Completed" },
-            { val: "15+", label: "Years Experience" },
-            { val: "100%", label: "Client Satisfaction" },
-            { val: "Pan TN", label: "Areas Served" },
-          ].map((s, i) => (
-            <div key={i} className="py-6 text-center rounded-2xl border border-border/60 bg-background shadow-sm">
-              <div className="text-2xl font-black font-display text-primary">{s.val}</div>
-              <div className="text-[10px] uppercase tracking-widest text-muted-foreground mt-1">{s.label}</div>
-            </div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
+           initial={{ opacity: 0, y: isMobile ? 12 : 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           transition={{ duration: isMobile ? 0.35 : 0.6, delay: isMobile ? 0.1 : 0.5 }}
+           className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 px-[4vw] md:px-0"
+         >
+           {[
+             { val: "800+", label: "Projects Completed" },
+             { val: "15+", label: "Years Experience" },
+             { val: "100%", label: "Client Satisfaction" },
+             { val: "Pan TN", label: "Areas Served" },
+           ].map((s, i) => (
+             <div key={i} className="py-6 text-center rounded-2xl border border-border/60 bg-background shadow-sm">
+               <div className="text-2xl font-black font-display text-primary">{s.val}</div>
+               <div className="text-[10px] uppercase tracking-widest text-muted-foreground mt-1">{s.label}</div>
+             </div>
+           ))}
+         </motion.div>
+       </div>
+     </section>
   );
 };
 
@@ -614,9 +628,13 @@ const CTASection = ({ isMobile }: { isMobile: boolean }) => (
           >
             <Phone className="w-[clamp(18px,5vw,20px)] h-[clamp(18px,5vw,20px)]" /> Call {CONTACT_DETAILS.primaryPhone.display}
           </TurtleButton>
-          <button className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-white/20 bg-white/5 text-white/80 font-medium text-[clamp(13px,3.8vw,15px)] hover:bg-white/10 transition-all duration-300 w-full sm:w-auto min-h-[48px]">
+          <TurtleButton
+            to="/projects"
+            variant="premium_outline_shimmer"
+            className="rounded-xl px-10 py-4 h-auto text-[clamp(14px,4vw,16px)] w-full sm:w-auto min-h-[48px]"
+          >
             View Our Work <ArrowRight className="w-[clamp(18px,5vw,20px)] h-[clamp(18px,5vw,20px)]" />
-          </button>
+          </TurtleButton>
         </div>
       </motion.div>
     </div>
