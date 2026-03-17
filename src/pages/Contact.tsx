@@ -79,6 +79,52 @@ const Contact = () => {
           50% { transform: scale(1.1) rotate(6deg); }
           100% { transform: scale(1) rotate(0deg); }
         }
+        .btn-whatsapp {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: #25D366;
+          color: white;
+          padding: 12px 32px;
+          border-radius: 12px;
+          font-family: 'Barlow Condensed', sans-serif;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          font-size: 0.875rem;
+          transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+          box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.3);
+          text-decoration: none;
+        }
+        .btn-whatsapp:hover {
+          background: #22c35e;
+          box-shadow: 0 20px 40px -10px rgba(37, 211, 102, 0.4);
+          transform: translateY(-2px);
+          color: white;
+        }
+        .btn-email {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: #0d2557;
+          color: white;
+          padding: 12px 32px;
+          border-radius: 12px;
+          font-family: 'Barlow Condensed', sans-serif;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          font-size: 0.875rem;
+          transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+          box-shadow: 0 10px 25px -5px rgba(13, 37, 87, 0.2);
+          text-decoration: none;
+        }
+        .btn-email:hover {
+          background: #1d4ed8;
+          box-shadow: 0 20px 40px -10px rgba(13, 37, 87, 0.3);
+          transform: translateY(-2px);
+          color: white;
+        }
       `}</style>
 
       {/* ══════════════════════════════════════════
@@ -328,7 +374,7 @@ const Contact = () => {
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               href="mailto:info@ritsmetalcraft.com"
-              className="btn-outline"
+              className="btn-email"
             >
               <Mail className="w-5 h-5" /> Email Us
             </motion.a>

@@ -1,5 +1,5 @@
-import { motion, AnimatePresence, useInView } from "framer-motion";
-import React, { useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Layers, Ruler, Shield, Search, Wrench, ArrowRight,
@@ -417,28 +417,31 @@ const WorkflowAccordion = () => {
   const [active, setActive] = useState<number | null>(null);
 
   return (
-    <div style={{ maxWidth: 860, margin: "0 auto" }}>
-      <div style={{ display: "flex", flexDirection: "column" }}>
+    <div className="w-full max-w-6xl mx-auto px-4 md:px-6">
+      <div className="flex flex-col">
         {workflowSteps.map((item: WorkflowStep, idx: number) => {
           const isOpen: boolean = active === idx;
-          const isLast: boolean = idx === workflowSteps.length - 1;
 
           return (
             <div
               key={item.step}
               onMouseEnter={() => setActive(idx)}
               onMouseLeave={() => setActive(null)}
-              style={{
-                borderRadius: isOpen ? 16 : 0,
-                overflow: "hidden",
-                marginBottom: isOpen ? 6 : 0,
-                marginTop: isOpen ? 6 : 0,
-                boxShadow: isOpen ? `0 16px 48px -12px ${item.to}40` : "none",
-                transition: "box-shadow 0.3s ease, border-radius 0.3s ease, margin 0.3s ease",
-                borderBottom: !isOpen && !isLast ? "1px solid rgba(226,232,240,0.9)" : "none",
-                cursor: "default",
-              }}
+              className="py-3"
             >
+              <div
+                style={{
+                  borderRadius: 20,
+                  overflow: "hidden",
+                  boxShadow: isOpen 
+                    ? `0 25px 50px -12px ${item.to}35` 
+                    : "0 10px 15px -3px rgba(0,0,0,0.06), 0 4px 6px -4px rgba(0,0,0,0.06)",
+                  border: isOpen ? `1.5px solid ${item.to}40` : "1px solid rgba(226, 232, 240, 0.6)",
+                  background: "white",
+                  transition: "all 0.5s cubic-bezier(0.23, 1, 0.32, 1)",
+                  cursor: "pointer",
+                }}
+              >
               <button
                 className="acc-trigger-btn"
                 tabIndex={-1}
@@ -582,6 +585,7 @@ const WorkflowAccordion = () => {
                   </motion.div>
                 )}
               </AnimatePresence>
+              </div>
             </div>
           );
         })}
@@ -665,7 +669,7 @@ const About = () => {
           800+ Projects Completed
         </div>
 
-        <div className="ctr relative z-10 lg:-translate-y-12">
+        <div className="ctr relative z-10 lg:-translate-y-6">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <motion.div
               initial="hidden"
@@ -686,7 +690,7 @@ const About = () => {
               <motion.p
                 aria-hidden="true"
                 variants={{ hidden: { opacity: 0, x: -30 }, visible: { opacity: 1, x: 0 } }}
-                className="font-heading text-4xl sm:text-5xl lg:text-6xl font-black uppercase leading-none tracking-tight text-white mb-4"
+                className="font-heading text-4xl sm:text-5xl lg:text-7xl font-black uppercase leading-[0.9] tracking-tighter text-white mb-6"
               >
                 Precision<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600">
@@ -697,7 +701,7 @@ const About = () => {
 
               <motion.p
                 variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-                className="text-white/65 text-base leading-relaxed max-w-md mb-7"
+                className="text-white/70 text-lg leading-relaxed max-w-2xl mb-0"
               >
                 RITS Metal Craft is a trusted{" "}
                 <strong className="text-white/85">fabrication shop in Trichy</strong> with over
@@ -708,26 +712,7 @@ const About = () => {
                 delivering every project with precision and care.
               </motion.p>
 
-              <motion.div
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-                className="flex flex-wrap gap-4 mt-2"
-              >
-                <TurtleButton
-                  href="tel:+919876543210"
-                  variant="call_now"
-                  className="rounded-xl px-12 text-sm font-bold shadow-xl shadow-orange-600/20 hover:shadow-orange-600/40 transition-all duration-300 min-w-[200px]"
-                >
-                  <Phone className="w-4 h-4" /> Call Now
-                </TurtleButton>
-                <TurtleButton
-                  href="https://wa.me/919876543210"
-                  variant="whatsapp"
-                  external
-                  className="rounded-xl px-12 text-sm font-bold shadow-xl shadow-emerald-600/10 hover:shadow-emerald-600/30 transition-all duration-300 min-w-[200px]"
-                >
-                  WhatsApp
-                </TurtleButton>
-              </motion.div>
+
             </motion.div>
           </div>
         </div>
