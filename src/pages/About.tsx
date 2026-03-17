@@ -8,6 +8,7 @@ import {
 import type { LucideIcon } from "lucide-react";
 import SEO from "../components/SEO";
 import { TurtleButton } from "../components/TurtleButton";
+import { CONTACT_DETAILS, formatTelLink, COMPANY_NAME, BRAND_NAME } from "../config/contact";
 
 /* ══════════════════════════════════════════
     SCROLL REVEAL WRAPPER
@@ -53,9 +54,9 @@ const FontLoader = () => (
     }
     .ap * { box-sizing: border-box; margin: 0; padding: 0; }
     .ap { font-family: 'DM Sans', sans-serif; color: var(--sl7); background: var(--white); overflow-x: hidden; }
-    .dxl { font-family:'Barlow Condensed',sans-serif; font-size:clamp(3rem,6.5vw,5.8rem); font-weight:900; line-height:0.95; letter-spacing:-0.01em; text-transform:uppercase; }
-    .dlg { font-family:'Barlow Condensed',sans-serif; font-size:clamp(2rem,4vw,3.4rem); font-weight:800; line-height:1.05; letter-spacing:0.01em; text-transform:uppercase; }
-    .dsm { font-family:'Barlow Condensed',sans-serif; font-size:clamp(1.2rem,2.5vw,1.65rem); font-weight:700; letter-spacing:0.04em; text-transform:uppercase; }
+    .dxl { font-family:'Barlow Condensed',sans-serif; font-size:clamp(2.2rem,8vw,5.8rem); font-weight:900; line-height:0.95; letter-spacing:-0.01em; text-transform:uppercase; }
+    .dlg { font-family:'Barlow Condensed',sans-serif; font-size:clamp(1.75rem,6vw,3.4rem); font-weight:800; line-height:1.05; letter-spacing:0.01em; text-transform:uppercase; }
+    .dsm { font-family:'Barlow Condensed',sans-serif; font-size:clamp(1.1rem,4vw,1.65rem); font-weight:700; letter-spacing:0.04em; text-transform:uppercase; }
     .body { font-size:1rem; line-height:1.78; color:var(--sl5); }
     .ltag { font-size:0.68rem; font-weight:700; letter-spacing:0.24em; text-transform:uppercase; color:var(--blue-6); display:inline-flex; align-items:center; gap:10px; }
     .ltag::before { content:''; display:block; width:26px; height:2px; background:var(--blue-6); flex-shrink:0; }
@@ -87,8 +88,11 @@ const FontLoader = () => (
     /* ── Stats ── */
     .stat-grid-row {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 480px) {
+      .stat-grid-row { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
     }
     @media (min-width: 1024px) {
       .stat-grid-row { grid-template-columns: repeat(4, 1fr); gap: 2rem; }
@@ -97,7 +101,7 @@ const FontLoader = () => (
       background: rgba(255,255,255,0.7);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      padding: 45px 25px;
+      padding: clamp(25px, 8vw, 45px) 20px;
       border-radius: 36px;
       border: 1px solid rgba(37,99,235,0.1);
       text-align: center;
@@ -425,65 +429,57 @@ const WorkflowAccordion = () => {
           return (
             <div
               key={item.step}
-              onMouseEnter={() => setActive(idx)}
-              onMouseLeave={() => setActive(null)}
-              className="py-3"
+              onMouseEnter={() => { if (window.innerWidth >= 768) setActive(idx); }}
+              onMouseLeave={() => { if (window.innerWidth >= 768) setActive(null); }}
+              onClick={() => { if (window.innerWidth < 768) setActive(isOpen ? null : idx); }}
+              className="py-2 md:py-3 px-0 md:px-0"
             >
               <div
+                className={`transition-all duration-300 md:duration-500 rounded-xl md:rounded-[20px] overflow-hidden bg-white border ${
+                  isOpen 
+                    ? "shadow-xl md:shadow-2xl border-primary/40" 
+                    : "shadow-sm md:shadow-md border-slate-200/60"
+                }`}
                 style={{
-                  borderRadius: 20,
-                  overflow: "hidden",
-                  boxShadow: isOpen 
+                  boxShadow: isOpen && window.innerWidth >= 768
                     ? `0 25px 50px -12px ${item.to}35` 
-                    : "0 10px 15px -3px rgba(0,0,0,0.06), 0 4px 6px -4px rgba(0,0,0,0.06)",
-                  border: isOpen ? `1.5px solid ${item.to}40` : "1px solid rgba(226, 232, 240, 0.6)",
-                  background: "white",
-                  transition: "all 0.5s cubic-bezier(0.23, 1, 0.32, 1)",
-                  cursor: "pointer",
+                    : undefined,
                 }}
               >
               <button
-                className="acc-trigger-btn"
-                tabIndex={-1}
+                className="acc-trigger-btn w-full flex items-center justify-between gap-3 md:gap-5 px-4 md:px-8 py-3 md:py-6 text-left transition-all duration-300"
                 style={{
                   background: isOpen
                     ? `linear-gradient(100deg, ${item.from}, ${item.to})`
                     : "#ffffff",
-                  pointerEvents: "none",
                 }}
               >
-                <div style={{
-                  flexShrink: 0, width: 42, height: 42, borderRadius: 12,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  background: isOpen
-                    ? "rgba(255,255,255,0.15)"
-                    : `linear-gradient(140deg, ${item.from}, ${item.to})`,
-                  border: isOpen ? "1px solid rgba(255,255,255,0.22)" : "none",
-                  transition: "background 0.35s ease",
-                  boxShadow: isOpen ? "none" : `0 6px 16px -4px ${item.to}55`,
-                }}>
-                  <item.Icon size={19} strokeWidth={1.6} color="white" />
+                <div 
+                  className="shrink-0 flex items-center justify-center rounded-lg md:rounded-xl transition-all duration-300"
+                  style={{
+                    width: typeof window !== "undefined" && window.innerWidth < 768 ? 32 : 42,
+                    height: typeof window !== "undefined" && window.innerWidth < 768 ? 32 : 42,
+                    background: isOpen
+                      ? "rgba(255,255,255,0.15)"
+                      : `linear-gradient(140deg, ${item.from}, ${item.to})`,
+                    border: isOpen ? "1px solid rgba(255,255,255,0.22)" : "none",
+                    boxShadow: isOpen ? "none" : `0 6px 16px -4px ${item.to}55`,
+                  }}
+                >
+                  <item.Icon size={typeof window !== "undefined" && window.innerWidth < 768 ? 16 : 19} strokeWidth={1.6} color="white" />
                 </div>
 
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <p style={{
-                    margin: 0,
-                    fontSize: "0.58rem", fontWeight: 800, letterSpacing: "0.22em",
-                    textTransform: "uppercase",
-                    color: isOpen ? "rgba(255,255,255,0.6)" : "#94a3b8",
-                    marginBottom: 2, transition: "color 0.3s",
-                  }}>
+                <div className="flex-1 min-w-0">
+                  <p 
+                    className="text-[10px] md:text-xs font-extrabold uppercase tracking-[0.15em] md:tracking-[0.22em] mb-0.5 md:mb-1 transition-colors duration-300"
+                    style={{ color: isOpen ? "rgba(255,255,255,0.6)" : "#94a3b8" }}
+                  >
                     Step {item.step} — {item.short}
                   </p>
-                  <p style={{
-                    margin: 0,
-                    fontFamily: "'Barlow Condensed',sans-serif",
-                    fontSize: "1.25rem", fontWeight: 900,
-                    textTransform: "uppercase", lineHeight: 1.1,
-                    color: isOpen ? "#ffffff" : "#0d2557",
-                    transition: "color 0.3s",
-                    whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
-                  }}>
+                  <p 
+                    className="font-heading text-lg md:text-xl lg:text-2xl font-black uppercase leading-tight truncate transition-colors duration-300"
+                    style={{ color: isOpen ? "#ffffff" : "#0d2557" }}
+                  >
                     {item.title}
                   </p>
                 </div>
@@ -507,79 +503,61 @@ const WorkflowAccordion = () => {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                     style={{ overflow: "hidden" }}
                   >
                     <div
-                      className="acc-body-inner"
-                      style={{
-                        background: "#ffffff",
-                        padding: "24px 20px 28px 78px",
-                        display: "flex", flexDirection: "column", gap: 20,
-                      }}
+                      className="acc-body-inner flex flex-col gap-5 md:gap-6 bg-white pt-4 md:pt-6 pr-4 md:pr-10 pb-6 md:pb-8 pl-4 md:pl-[78px]"
                     >
-                      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                        <div style={{
-                          width: 32, height: 3, borderRadius: 2, flexShrink: 0,
-                          background: `linear-gradient(90deg, ${item.to}, ${item.accent})`,
-                        }} />
-                        <p style={{
-                          margin: 0, fontSize: "0.75rem", fontWeight: 600,
-                          color: item.to, letterSpacing: "0.04em", fontStyle: "italic",
-                        }}>
+                      <div className="flex items-center gap-3">
+                        <div 
+                          className="h-[2px] md:h-[3px] rounded-full shrink-0"
+                          style={{ 
+                            width: typeof window !== "undefined" && window.innerWidth < 768 ? 20 : 32,
+                            background: `linear-gradient(90deg, ${item.to}, ${item.accent})` 
+                          }} 
+                        />
+                        <p className="text-xs md:text-sm font-semibold italic tracking-wide" style={{ color: item.to }}>
                           {item.tagline}
                         </p>
                       </div>
 
-                      <p style={{ margin: 0, fontSize: "0.9rem", lineHeight: 1.78, color: "#475569" }}>
+                      <p className="text-sm md:text-base leading-relaxed text-slate-600">
                         {item.desc}
                       </p>
 
-                      <div style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-                        gap: "10px 20px",
-                      }}>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-x-12 md:gap-y-4">
                         {item.details.map((d: string, i: number) => (
                           <motion.div
                             key={i}
-                            initial={{ opacity: 0, x: -8 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.06 + i * 0.05 }}
-                            style={{
-                              display: "flex", alignItems: "center", gap: 10,
-                              fontSize: "0.82rem", fontWeight: 500, color: "#334155",
-                            }}
+                            initial={{ opacity: 0, y: 5 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: i * 0.05, duration: 0.3 }}
+                            className="flex items-center gap-3 text-[13px] md:text-sm font-medium text-slate-700"
                           >
-                            <div style={{
-                              width: 20, height: 20, borderRadius: 6, flexShrink: 0,
-                              display: "flex", alignItems: "center", justifyContent: "center",
-                              background: `${item.to}14`, border: `1.5px solid ${item.to}30`,
-                            }}>
-                              <div style={{ width: 6, height: 6, borderRadius: "50%", background: item.to }} />
+                            <div 
+                              className="shrink-0 flex items-center justify-center w-5 h-5 rounded-md border"
+                              style={{ background: `${item.to}10`, borderColor: `${item.to}25` }}
+                            >
+                              <div className="w-1.5 h-1.5 rounded-full" style={{ background: item.to }} />
                             </div>
                             {d}
                           </motion.div>
                         ))}
                       </div>
 
-                      <div style={{ paddingTop: 4 }}>
-                        <a
-                          href="tel:+919876543210"
+                      <div className="pt-2 md:pt-4">
+                        <TurtleButton
+                          href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
+                          className="w-full md:w-auto rounded-xl justify-center h-[48px] md:h-[52px]"
                           style={{
-                            display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 10,
-                            height: "52px", padding: "0 32px", borderRadius: 12,
                             background: `linear-gradient(135deg, ${item.from}, ${item.to})`,
-                            color: "white", fontWeight: 700,
-                            fontSize: "0.75rem", letterSpacing: "0.1em",
-                            textTransform: "uppercase", textDecoration: "none",
                             boxShadow: `0 8px 22px -4px ${item.to}55`,
-                            transition: "all 0.3s ease",
                           }}
                         >
-                          <Phone size={14} strokeWidth={2.5} />
+                          <Phone size={14} className="stroke-[2.5]" />
                           Get a Quote
-                        </a>
+                        </TurtleButton>
                       </div>
                     </div>
                   </motion.div>
@@ -622,8 +600,8 @@ const About = () => {
   return (
     <main className="ap pt-20" style={{ transform: "translateZ(0)" }}>
       <SEO
-        title="About RITS Metal Craft | Trusted Fabrication Company in Trichy, Tamil Nadu"
-        description="RITS Metal Craft is a leading fabrication shop in Trichy with 15+ years in metal fabrication. We build steel gates, railings, rolling shutters, aluminium windows, glass doors & more."
+        title={`About ${COMPANY_NAME} | Trusted Fabrication Company in Trichy, Tamil Nadu`}
+        description={`${COMPANY_NAME} is a leading fabrication shop in Trichy with 15+ years in metal fabrication. We build steel gates, railings, rolling shutters, aluminium windows, glass doors & more.`}
         keywords="fabrication company in Trichy, fabrication shop in Trichy, metal fabrication, steel fabrication, welding work, steel gate, metal gate, grill work, balcony railing, staircase railing, window grill, rolling shutter, shop shutter, aluminium door, aluminium window, glass door, glass partition, steel gate near me, grill work near me, steel gate fabrication in Trichy"
       />
       <FontLoader />
@@ -633,7 +611,7 @@ const About = () => {
       ══════════════════════════════════════════ */}
       <section className="relative min-h-[85vh] lg:min-h-screen flex flex-col justify-center bg-[var(--navy)] overflow-hidden">
         <h1 className="sr-only">
-          About RITS Metal Craft — Trusted Metal Fabrication Company in Trichy, Tamil Nadu
+          About {COMPANY_NAME} — Trusted Metal Fabrication Company in Trichy, Tamil Nadu
         </h1>
 
         <div className="absolute inset-0 z-0">
@@ -642,7 +620,7 @@ const About = () => {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 2, ease: "easeOut" }}
             src="/src/assets/heropage/about page hero.webp"
-            alt="RITS Metal Craft fabrication workshop — steel gate, railing and welding work in Trichy"
+            alt={`${COMPANY_NAME} fabrication workshop — steel gate, railing and welding work in Trichy`}
             className="w-full h-full object-cover opacity-30 mix-blend-overlay"
             style={{ willChange: "transform" }}
             loading="eager"
@@ -690,7 +668,7 @@ const About = () => {
               <motion.p
                 aria-hidden="true"
                 variants={{ hidden: { opacity: 0, x: -30 }, visible: { opacity: 1, x: 0 } }}
-                className="font-heading text-4xl sm:text-5xl lg:text-7xl font-black uppercase leading-[0.9] tracking-tighter text-white mb-6"
+                className="font-heading text-3xl sm:text-5xl lg:text-7xl font-black uppercase leading-[0.9] tracking-tighter text-white mb-6"
               >
                 Precision<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600">
@@ -703,7 +681,7 @@ const About = () => {
                 variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
                 className="text-white/70 text-lg leading-relaxed max-w-2xl mb-0"
               >
-                RITS Metal Craft is a trusted{" "}
+                {COMPANY_NAME} is a trusted{" "}
                 <strong className="text-white/85">fabrication shop in Trichy</strong> with over
                 15 years of experience in{" "}
                 <strong className="text-white/85">metal fabrication</strong> and{" "}
@@ -853,7 +831,7 @@ const About = () => {
                   ))}
                 </div>
                 <TurtleButton
-                  href="tel:+919876543210"
+                  href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
                   variant="call_now"
                   className="rounded-xl px-10 text-sm font-bold min-w-[220px]"
                 >
@@ -873,14 +851,14 @@ const About = () => {
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
             <R>
               <span className="ltag" style={{ justifyContent: "center", marginBottom: 14, color: "#93c5fd" }}>
-                Our Advantage
+                The {BRAND_NAME} Advantage
               </span>
               <h2 className="dlg" style={{ color: "#ffffff", marginBottom: 14 }}>Why Choose Us</h2>
               <p style={{ fontSize: "1rem", lineHeight: 1.78, color: "rgba(255,255,255,0.6)", maxWidth: 540, margin: "0 auto" }}>
                 Searching for a <strong style={{ color: "rgba(255,255,255,0.85)" }}>steel gate near me</strong>,{" "}
                 <strong style={{ color: "rgba(255,255,255,0.85)" }}>grill work near me</strong> or the best{" "}
                 <strong style={{ color: "rgba(255,255,255,0.85)" }}>fabrication company in Trichy</strong>?
-                Here's why 800+ clients chose RITS Metal Craft.
+                Here's why 800+ clients chose {COMPANY_NAME}.
               </p>
             </R>
           </div>
@@ -944,8 +922,8 @@ const About = () => {
               <span style={{ color: "rgba(255,255,255,0.75)" }}>glass door</span> project in Trichy.
             </p>
             <div style={{ display: "flex", justifyContent: "center", gap: 16, flexWrap: "wrap", marginTop: "2rem" }}>
-              <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-12 text-base font-bold min-w-[220px]">
-                <Phone className="w-5 h-5" /> Call +91 98765 43210
+              <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-12 text-base font-bold min-w-[220px]">
+                <Phone className="w-5 h-5" /> Call {CONTACT_DETAILS.primaryPhone.display}
               </TurtleButton>
               <motion.button
                 whileHover={{ background: "rgba(255,255,255,0.09)", scale: 1.05 }}

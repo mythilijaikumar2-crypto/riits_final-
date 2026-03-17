@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { BRAND_NAME } from "../config/contact";
 
 /* ─── assets ────────────────────────────────────────────────────────── */
 import consultationImg from "../assets/our process/consultation.webp";
@@ -39,7 +40,7 @@ const STEPS: Step[] = [
     {
         num: "04",
         title: "Fabrication",
-        desc: "CNC cutting, expert welding, and quality-grade materials at our Trichy workshop.",
+        desc: `CNC cutting, expert welding, and quality-grade materials at the ${BRAND_NAME} workshop in Trichy.`,
         image: fabricationImg,
     },
     {

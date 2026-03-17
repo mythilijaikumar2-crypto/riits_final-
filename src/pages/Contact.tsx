@@ -3,13 +3,14 @@ import SectionHeading from "../components/SectionHeading";
 import { Phone, MessageCircle, MapPin, Mail, Clock, Facebook } from "lucide-react";
 import { TurtleButton } from "../components/TurtleButton";
 import SEO from "../components/SEO";
+import { CONTACT_DETAILS, formatTelLink, getWhatsAppUrl, getMailtoLink, COMPANY_NAME, BRAND_NAME } from "../config/contact";
 
 const Contact = () => {
   return (
     <main className="pt-20">
       <SEO
-        title="Contact RITS Metal Craft — Fabrication Shop in Trichy for Steel Gate, Railing, Rolling Shutter & Aluminium Works"
-        description="Contact RITS Metal Craft, the trusted fabrication shop in Trichy. Get a free quote for steel gate work, grill work, rolling shutter installation, aluminium window work and glass partition work. Call now."
+        title={`Contact ${COMPANY_NAME} — Fabrication Shop in Trichy for Steel Gate, Railing, Rolling Shutter & Aluminium Works`}
+        description={`Contact ${COMPANY_NAME}, the trusted fabrication shop in Trichy. Get a free quote for steel gate work, grill work, rolling shutter installation, aluminium window work and glass partition work. Call now.`}
         keywords="fabrication shop in Trichy, steel fabrication in Trichy, gate fabrication in Trichy, rolling shutter shop in Trichy, aluminium window work in Trichy, fabrication shop near me, steel gate work near me, rolling shutter near me, grill work near me, steel fabrication, metal fabrication, gate fabrication, steel gate work, grill work, balcony railing work, staircase railing work, rolling shutter installation, aluminium door work, aluminium window work, glass door work, glass partition work, welding work, fabrication services"
       />
       <style>{`
@@ -134,7 +135,7 @@ const Contact = () => {
 
         {/* Visually hidden H1 — primary SEO heading for Google */}
         <h1 className="sr-only">
-          Contact RITS Metal Craft — Fabrication Shop in Trichy for Steel Gate, Grill, Railing, Rolling Shutter &amp; Aluminium Works
+          Contact {COMPANY_NAME} — Fabrication Shop in Trichy for Steel Gate, Grill, Railing, Rolling Shutter &amp; Aluminium Works
         </h1>
 
         <motion.div
@@ -145,7 +146,7 @@ const Contact = () => {
         >
           <img
             src="/src/assets/heropage/contack page hero .webp"
-            alt="Contact RITS Metal Craft — fabrication shop in Trichy for steel gate work, rolling shutter and aluminium works"
+            alt={`Contact ${COMPANY_NAME} — fabrication shop in Trichy for steel gate work, rolling shutter and aluminium works`}
             className="hero-bg-img"
             loading="eager"
           />
@@ -180,14 +181,14 @@ const Contact = () => {
                 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-widest mb-4"
               >
                 <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-                Fabrication Shop in Trichy
+                {BRAND_NAME} — Fabrication Shop in Trichy
               </motion.div>
 
               {/* Decorative display heading — aria-hidden; real H1 is sr-only above */}
               <motion.p
                 aria-hidden="true"
                 variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-                className="font-heading text-4xl sm:text-5xl lg:text-6xl font-black uppercase leading-none tracking-tight text-white mb-4"
+                className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-none tracking-tight text-white mb-4"
               >
                 Let's Talk<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600">
@@ -204,7 +205,7 @@ const Contact = () => {
               >
                 Looking for a trusted{" "}
                 <strong className="text-white/85">fabrication shop near me</strong> in Trichy?
-                RITS Metal Craft offers complete{" "}
+                {COMPANY_NAME} offers complete{" "}
                 <strong className="text-white/85">steel fabrication</strong>,{" "}
                 <strong className="text-white/85">metal fabrication</strong> and{" "}
                 <strong className="text-white/85">fabrication services in Trichy</strong> —
@@ -213,15 +214,15 @@ const Contact = () => {
 
               <motion.div
                 variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-                className="flex flex-wrap gap-3"
+                className="flex flex-col sm:flex-row gap-3"
               >
-                <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-10">
+                <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-10 w-full sm:w-auto">
                   <Phone className="w-4 h-4" /> Call Now
                 </TurtleButton>
-                <TurtleButton href="https://wa.me/919876543210" variant="whatsapp" external className="rounded-xl">
+                <TurtleButton href={getWhatsAppUrl()} variant="whatsapp" external className="rounded-xl w-full sm:w-auto">
                   <MessageCircle className="w-4 h-4" /> WhatsApp
                 </TurtleButton>
-                <TurtleButton href="https://facebook.com" variant="premium_outline_shimmer" external className="rounded-xl border-blue-400 text-blue-300">
+                <TurtleButton href={CONTACT_DETAILS.socials.facebook} variant="premium_outline_shimmer" external className="rounded-xl border-blue-400 text-blue-300 w-full sm:w-auto">
                   <Facebook className="w-4 h-4" /> Facebook
                 </TurtleButton>
               </motion.div>
@@ -261,14 +262,14 @@ const Contact = () => {
               {
                 icon: <MapPin className="w-6 h-6" />,
                 title: "Address",
-                lines: ["RITS Metal Craft", "Trichy, Tamil Nadu", "India"],
+                lines: [COMPANY_NAME, CONTACT_DETAILS.address.city + ", " + CONTACT_DETAILS.address.state, "India"],
                 accent: "bg-blue-500/10 text-blue-600",
                 hoverAccent: "group-hover:bg-blue-600 group-hover:text-white",
               },
               {
                 icon: <Phone className="w-6 h-6" />,
                 title: "Phone",
-                lines: ["+91 98765 43210", "+91 98765 43211"],
+                lines: [CONTACT_DETAILS.primaryPhone.display, CONTACT_DETAILS.secondaryPhone.display],
                 isLink: true,
                 prefix: "tel:",
                 accent: "bg-emerald-500/10 text-emerald-600",
@@ -346,35 +347,35 @@ const Contact = () => {
 
           {/* ── Quick Actions ── */}
           <SectionHeading subtitle="Reach Out" title="Quick Contact" />
-          <div className="flex flex-wrap justify-center gap-4 mb-16">
-            <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-10">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
+            <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-10 w-full sm:w-auto">
               <Phone className="w-5 h-5" /> Call Now
             </TurtleButton>
             <motion.a
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              href="https://wa.me/919876543210"
+              href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-whatsapp"
+              className="btn-whatsapp justify-center w-full sm:w-auto"
             >
               <MessageCircle className="w-5 h-5" /> WhatsApp
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              href="https://facebook.com"
+              href={CONTACT_DETAILS.socials.facebook}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#1877F2] text-white px-8 py-3 rounded-lg font-heading font-semibold uppercase tracking-wider text-sm transition-all duration-300 hover:shadow-xl hover:shadow-[#1877F2]/25"
+              className="inline-flex items-center justify-center gap-2 bg-[#1877F2] text-white px-8 py-3 rounded-lg font-heading font-semibold uppercase tracking-wider text-sm transition-all duration-300 hover:shadow-xl hover:shadow-[#1877F2]/25 w-full sm:w-auto"
             >
               <Facebook className="w-5 h-5" /> Facebook
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              href="mailto:info@ritsmetalcraft.com"
-              className="btn-email"
+              href={getMailtoLink()}
+              className="btn-email justify-center w-full sm:w-auto"
             >
               <Mail className="w-5 h-5" /> Email Us
             </motion.a>
@@ -383,7 +384,7 @@ const Contact = () => {
           {/* ── Map ── */}
           <div className="rounded-xl overflow-hidden border border-border">
             <iframe
-              title="RITS Metal Craft Location — Fabrication Shop in Trichy, Tamil Nadu"
+              title={`${COMPANY_NAME} Location — Fabrication Shop in Trichy, Tamil Nadu`}
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125323.40216379421!2d78.60046027439085!3d10.790483438378789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baaf50ff2aab191%3A0xb64cd312cafc3438!2sTiruchirappalli%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
               width="100%"
               height="400"
@@ -420,15 +421,15 @@ const Contact = () => {
             Our team is just a call away — free site visit, transparent quote, no hidden charges.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-4">
-            <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-10">
-              <Phone className="w-4 h-4" /> Call +91 98765 43210
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-10 w-full sm:w-auto">
+              <Phone className="w-4 h-4" /> Call {CONTACT_DETAILS.primaryPhone.display}
             </TurtleButton>
             <a
-              href="https://wa.me/919876543210"
+              href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-emerald-600/30 hover:shadow-2xl hover:-translate-y-1"
+              className="inline-flex items-center justify-center gap-2.5 bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-emerald-600/30 hover:shadow-2xl hover:-translate-y-1 w-full sm:w-auto"
             >
               <MessageCircle className="w-4 h-4" /> WhatsApp Now
             </a>
