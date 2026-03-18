@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { COMPANY_NAME } from '../config/contact';
 
 interface SEOProps {
   title: string;
@@ -21,9 +22,9 @@ const SEO = ({
   twitterCard = 'summary_large_image',
   schemaData,
 }: SEOProps) => {
-  const siteName = 'RITS Metal Craft';
+  const siteName = COMPANY_NAME;
   const fullTitle = `${title} | ${siteName}`;
-  const siteUrl = 'https://ritsmetalcraft.com';
+  const siteUrl = 'https://riits.in';
   const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
 
   return (

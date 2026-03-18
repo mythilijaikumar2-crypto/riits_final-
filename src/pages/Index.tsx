@@ -35,23 +35,26 @@ import { TurtleButton } from "../components/TurtleButton";
 import { PremiumServiceCards } from "../components/PremiumServiceCards/PremiumServiceCards";
 import ProcessSection from "../components/ProcessSection";
 import SEO from "../components/SEO";
+import MovingTags from "../components/MovingTags";
+import { CONTACT_DETAILS, formatTelLink, getWhatsAppUrl, COMPANY_NAME, BRAND_NAME } from "../config/contact";
 
 /* ================= SCHEMA ================= */
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "RIITS Metal Craft",
-  "image": "https://riits.in/og-image.webp",
+  "name": COMPANY_NAME,
+  "image": `https://riits.in/og-image.webp`,
   "url": "https://riits.in",
-  "telephone": "+919894794557",
+  "telephone": CONTACT_DETAILS.primaryPhone.value,
+
   "priceRange": "₹₹",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Trichy",
-    "addressLocality": "Tiruchirappalli",
-    "addressRegion": "Tamil Nadu",
-    "postalCode": "620001",
+    "streetAddress": CONTACT_DETAILS.address.city,
+    "addressLocality": CONTACT_DETAILS.address.city,
+    "addressRegion": CONTACT_DETAILS.address.state,
+    "postalCode": CONTACT_DETAILS.address.pincode,
     "addressCountry": "IN"
   },
   "geo": {
@@ -211,7 +214,7 @@ const testimonials = [
   { name: "Shanmugam", initial: "S", text: "தரமான வேலை மற்றும் சரியான நேரத்தில் முடித்துக் கொடுத்தார்கள். மிக்க நன்றி.", rating: 5, verified: true },
   { name: "Priya S.", initial: "P", text: "The stainless steel railings installed at my home are top-notch. Highly recommended!", rating: 5, verified: true },
   { name: "Revathi", initial: "R", text: "எங்கள் வீட்டிற்கு அமைத்த ஸ்டெயின்லெஸ் ஸ்டீல் கைப்பிடிகள் மிகவும் அழகாக உள்ளது.", rating: 5, verified: true },
-  { name: "Arun Enterprises", initial: "A", text: "RIITS Metal Craft delivered our industrial shed ahead of schedule. Great project management.", rating: 5, verified: true },
+  { name: "Arun Enterprises", initial: "A", text: `${COMPANY_NAME} delivered our industrial shed ahead of schedule. Great project management.`, rating: 5, verified: true },
   { name: "Karthik", initial: "K", text: "திருச்சியில் சிறந்த இரும்பு வேலை செய்யும் இடம். நம்பகமான சேவை.", rating: 5, verified: true },
   { name: "Murali Dharan", initial: "M", text: "Best metal fabricators in Trichy. Their attention to detail is remarkable.", rating: 5, verified: true },
   { name: "Selvam Krishna", initial: "S", text: "வேலைப்பாடு மிகவும் நுணுக்கமாக உள்ளது. விலையும் நியாயமானதாக இருக்கிறது.", rating: 5, verified: true },
@@ -223,41 +226,25 @@ const testimonials = [
 // Visually subtle — renders as a small muted tag cloud below hero.
 // Rich in product + near-me keywords for Google crawlers.
 
-const KeywordTagStrip = () => {
-  const tags = [
-    "Steel Gate", "MS Gate", "SS Gate", "Sliding Gate", "Compound Gate",
-    "Window Grill", "Steel Grill", "Balcony Railing", "Staircase Railing",
-    "Steel Handrail", "Rolling Shutter", "Aluminium Window",
-    "Glass Door", "Toughened Glass", "ACP Cladding", "Facade Panels",
-    "Steel Pergola", "Metal Canopy", "Fabrication Near Me",
-  ];
-  return (
-    <div
-      className="bg-slate-900 border-t border-white/5 py-3 overflow-hidden"
-      aria-label="Products and services offered"
-    >
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex flex-wrap gap-2 justify-center">
-          {tags.map((tag) => (
-            <span
-              key={tag}
-              className="text-[10px] font-semibold uppercase tracking-widest text-white/30 px-3 py-1 rounded-full border border-white/10 bg-white/5"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
+const serviceTags = [
+  "Steel Gate", "MS Gate", "SS Gate", "Sliding Gate", "Compound Gate",
+  "Window Grill", "Steel Grill", "Balcony Railing", "Staircase Railing",
+  "Steel Handrail", "Rolling Shutter", "Shop Shutter", "Aluminium Window",
+  "Glass Door", "Toughened Glass", "ACP Cladding", "Facade Panels",
+  "Steel Pergola", "Metal Canopy", "Fabrication Near Me",
+];
+
 
 /* ================= HERO ================= */
 
-const HeroSection = () => (
+const HeroSection = ({ isMobile }: { isMobile: boolean }) => (
   <section
     className="relative h-screen flex flex-col justify-center bg-slate-950 overflow-hidden"
-    style={{ contentVisibility: "auto" }}
+    style={{ 
+      contentVisibility: "auto",
+      paddingTop: isMobile ? "12vh" : "0",
+      paddingBottom: isMobile ? "8vh" : "0"
+    }}
   >
     {/* Visually hidden H1 for Google — primary SEO heading */}
     <h1 className="sr-only">
@@ -267,11 +254,11 @@ const HeroSection = () => (
     {/* Background image */}
     <div className="absolute inset-0 z-0">
       <motion.img
-        initial={{ scale: 1.15, opacity: 0 }}
+        initial={{ scale: isMobile ? 1.05 : 1.15, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: isMobile ? 1.2 : 2.5, ease: [0.22, 1, 0.36, 1] }}
         src={heroImage}
-        alt="RIITS Metal Craft — steel gate, railing and metal fabrication workshop in Trichy"
+        alt={`${COMPANY_NAME} — steel gate, railing and metal fabrication workshop in Trichy`}
         className="w-full h-full object-cover object-center opacity-35 mix-blend-overlay"
         style={{ willChange: "transform" }}
         loading="eager"
@@ -305,10 +292,10 @@ const HeroSection = () => (
         {/* Left copy */}
         <div>
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: isMobile ? 10 : 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/30 text-amber-300 text-xs font-semibold uppercase tracking-widest mb-4"
+            transition={{ duration: isMobile ? 0.3 : 0.4 }}
+            className="inline-flex items-center gap-2 px-[4vw] md:px-4 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/30 text-amber-300 text-[clamp(10px,2.5vw,12px)] font-semibold uppercase tracking-widest mb-4"
           >
             <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
             Trichy's #1 Metal Fabricators
@@ -317,10 +304,10 @@ const HeroSection = () => (
           {/* Decorative display heading — aria-hidden because real H1 is sr-only above */}
           <motion.p
             aria-hidden="true"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: isMobile ? 12 : 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.05 }}
-            className="font-heading text-4xl sm:text-5xl lg:text-6xl font-black uppercase leading-none tracking-tight text-white mb-4"
+            transition={{ duration: isMobile ? 0.35 : 0.5, delay: 0.05 }}
+            className="font-heading text-[clamp(1.875rem,8vw,3.75rem)] sm:text-5xl lg:text-6xl font-black uppercase leading-[1.1] sm:leading-none tracking-tight text-white mb-4"
           >
             Where Steel
             <br />
@@ -332,10 +319,10 @@ const HeroSection = () => (
           </motion.p>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: isMobile ? 12 : 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-white/65 text-base leading-relaxed max-w-md mb-7"
+            transition={{ duration: isMobile ? 0.35 : 0.5, delay: 0.1 }}
+            className="text-white/65 text-[clamp(14px,4vw,16px)] leading-relaxed max-w-md mb-7"
           >
             Trichy's most trusted metal fabrication studio — crafting{" "}
             <strong className="text-white/80 font-semibold">steel gates</strong>,{" "}
@@ -346,16 +333,17 @@ const HeroSection = () => (
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: isMobile ? 12 : 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="flex flex-wrap gap-3"
+            transition={{ duration: isMobile ? 0.35 : 0.7, delay: 0.15 }}
+            className="flex flex-col sm:flex-row gap-3"
           >
-            <TurtleButton href="tel:+919894794557" variant="call_now" className="rounded-xl px-10">
-              <Phone className="w-4 h-4" /> Call Now
+            <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-10 w-full sm:w-auto h-[clamp(48px,12vw,56px)]">
+              <Phone className="w-[clamp(16px,4vw,18px)] h-[clamp(16px,4vw,18px)]" /> Call Now
             </TurtleButton>
-            <TurtleButton href="https://wa.me/919894794557" variant="whatsapp" external className="rounded-xl">
-              <MessageCircle className="w-4 h-4" /> WhatsApp
+            <TurtleButton href={getWhatsAppUrl()} variant="whatsapp" external className="rounded-xl w-full sm:w-auto h-[clamp(48px,12vw,56px)]">
+              <MessageCircle className="w-[clamp(16px,4vw,18px)] h-[clamp(16px,4vw,18px)]" /> WhatsApp
+
             </TurtleButton>
           </motion.div>
         </div>
@@ -366,11 +354,11 @@ const HeroSection = () => (
 
 /* ================= WHY US ================= */
 
-const WhyUsSection = () => {
-  const [hovered, setHovered] = useState<number | null>(null);
+
+const WhyUsSection = ({ isMobile }: { isMobile: boolean }) => {
   return (
     <section
-      className="min-h-screen flex items-center py-16 lg:py-0 bg-muted relative overflow-hidden"
+      className="min-h-screen flex items-center py-[8vh] md:py-16 lg:py-0 bg-muted relative overflow-hidden"
       style={{ contentVisibility: "auto", containIntrinsicSize: "auto 100vh" }}
     >
       <div
@@ -381,7 +369,7 @@ const WhyUsSection = () => {
         }}
       />
       <div className="container-main relative">
-        <SectionHeading subtitle="Why RITS" title="Why Choose Us" />
+        <SectionHeading subtitle={`Why ${BRAND_NAME}`} title="Why Choose Us" />
         <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {whyUs.map(({ Icon, title, desc, highlights, accent, bg }, i) => (
             <motion.div
@@ -390,8 +378,6 @@ const WhyUsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              onHoverStart={() => setHovered(i)}
-              onHoverEnd={() => setHovered(null)}
               className="group why-card relative overflow-hidden rounded-[2rem] cursor-default shadow-lg bg-slate-900"
               style={{ minHeight: "420px", transform: "translateZ(0)" }}
             >
@@ -411,9 +397,6 @@ const WhyUsSection = () => {
                 <h3 className="text-xl font-bold text-white font-display mb-2">{title}</h3>
                 <p className="text-sm text-white/70 leading-relaxed mb-4 max-w-sm line-clamp-2">{desc}</p>
                 <motion.ul
-                  initial={false}
-                  animate={{ height: hovered === i ? "auto" : 0, opacity: hovered === i ? 1 : 0 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
                   className="overflow-hidden flex flex-col gap-2 mb-4"
                 >
                   {highlights.map((h, j) => (
@@ -424,36 +407,37 @@ const WhyUsSection = () => {
                   ))}
                 </motion.ul>
                 <a
-                  href="tel:+919894794557"
+                  href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
                   className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-white/90 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300"
                 >
                   Contact Us <ArrowRight className="w-4 h-4 group-hover:translate-x-1" />
                 </a>
               </div>
             </motion.div>
+
           ))}
         </div>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4"
-        >
-          {[
-            { val: "800+", label: "Projects Completed" },
-            { val: "15+", label: "Years Experience" },
-            { val: "100%", label: "Client Satisfaction" },
-            { val: "Pan TN", label: "Areas Served" },
-          ].map((s, i) => (
-            <div key={i} className="py-6 text-center rounded-2xl border border-border/60 bg-background shadow-sm">
-              <div className="text-2xl font-black font-display text-primary">{s.val}</div>
-              <div className="text-[10px] uppercase tracking-widest text-muted-foreground mt-1">{s.label}</div>
-            </div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
+           initial={{ opacity: 0, y: isMobile ? 12 : 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           transition={{ duration: isMobile ? 0.35 : 0.6, delay: isMobile ? 0.1 : 0.5 }}
+           className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 px-[4vw] md:px-0"
+         >
+           {[
+             { val: "800+", label: "Projects Completed" },
+             { val: "15+", label: "Years Experience" },
+             { val: "100%", label: "Client Satisfaction" },
+             { val: "Pan TN", label: "Areas Served" },
+           ].map((s, i) => (
+             <div key={i} className="py-6 text-center rounded-2xl border border-border/60 bg-background shadow-sm">
+               <div className="text-2xl font-black font-display text-primary">{s.val}</div>
+               <div className="text-[10px] uppercase tracking-widest text-muted-foreground mt-1">{s.label}</div>
+             </div>
+           ))}
+         </motion.div>
+       </div>
+     </section>
   );
 };
 
@@ -475,7 +459,7 @@ const SEOContentSection = () => (
         <p className="text-slate-500 text-sm mt-3 max-w-2xl mx-auto leading-relaxed">
           Whether you're searching for <strong>steel gate fabrication near me</strong>, a reliable{" "}
           <strong>railing fabrication shop near me</strong>, or professional{" "}
-          <strong>aluminium work near me</strong> — RIITS Metal Craft is Trichy's one-stop solution
+          <strong>aluminium work near me</strong> — {COMPANY_NAME} is Trichy's one-stop solution
           for all metal, glass and elevation needs.
         </p>
       </div>
@@ -552,7 +536,7 @@ const TestimonialsSection = () => {
               Trusted by Hundreds of Happy Clients
             </h2>
             <p className="text-slate-500 text-[0.95rem] max-w-lg mx-auto leading-relaxed font-medium">
-              Over 800 families and businesses in Trichy trust RIITS Metal Craft for steel gates,
+              Over 800 families and businesses in Trichy trust {COMPANY_NAME} for steel gates,
               railings, rolling shutters and aluminium works. Here's what they say.
             </p>
             <div className="flex items-center justify-center gap-6 sm:gap-10 mt-6 pt-6 border-t border-slate-200 w-full max-w-sm mx-auto">
@@ -598,9 +582,9 @@ const TestimonialsSection = () => {
 
 /* ================= CTA ================= */
 
-const CTASection = () => (
+const CTASection = ({ isMobile }: { isMobile: boolean }) => (
   <section
-    className="bg-slate-950 relative overflow-hidden py-24 px-6 text-center border-t border-white/5"
+    className="bg-slate-950 relative overflow-hidden py-[8vh] px-[4vw] text-center border-t border-white/5"
     style={{ contentVisibility: "auto", containIntrinsicSize: "auto 400px" }}
   >
     <div
@@ -612,18 +596,18 @@ const CTASection = () => (
     />
     <div className="max-w-4xl mx-auto relative z-10">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: isMobile ? 12 : 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: isMobile ? 0.35 : 0.6 }}
       >
-        <p className="text-blue-300 text-[0.68rem] font-bold uppercase tracking-[0.24em] mb-4">
+        <p className="text-blue-300 text-[clamp(10px,2.5vw,12px)] font-bold uppercase tracking-[0.24em] mb-4">
           Start Your Project
         </p>
-        <h2 className="text-white text-3xl sm:text-5xl font-black uppercase tracking-tight mb-4">
+        <h2 className="text-white text-[clamp(1.75rem,8vw,3rem)] sm:text-5xl font-black uppercase tracking-tight mb-4">
           Ready to Build?
         </h2>
-        <p className="text-white/50 text-base sm:text-lg leading-relaxed max-w-[520px] mx-auto mb-10 font-medium">
+        <p className="text-white/50 text-[clamp(14px,3.8vw,18px)] leading-relaxed max-w-[520px] mx-auto mb-10 font-medium">
           Get a free consultation and detailed written quotation for your{" "}
           <span className="text-white/70">steel gate</span>,{" "}
           <span className="text-white/70">railing</span>,{" "}
@@ -631,17 +615,22 @@ const CTASection = () => (
           <span className="text-white/70">aluminium work</span> or{" "}
           <span className="text-white/70">ACP cladding</span> project in Trichy.
         </p>
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="flex flex-col sm:flex-row justify-center gap-4 px-[4vw] md:px-0">
           <TurtleButton
-            href="tel:+919894794557"
+            href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
             variant="call_now"
-            className="rounded-xl px-10 py-4 h-auto text-base"
+            className="rounded-xl px-10 py-4 h-auto text-[clamp(14px,4vw,16px)] w-full sm:w-auto min-h-[48px]"
           >
-            <Phone className="w-5 h-5" /> Call +91 98947 94557 / 63839 98574
+            <Phone className="w-[clamp(18px,5vw,20px)] h-[clamp(18px,5vw,20px)]" /> Call {CONTACT_DETAILS.primaryPhone.display} / {CONTACT_DETAILS.secondaryPhone.display}
           </TurtleButton>
-          <Link to="/projects" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-white/20 bg-white/5 text-white/80 font-medium text-[0.92rem] hover:bg-white/10 transition-all duration-300">
-            View Our Work <ArrowRight className="w-5 h-5" />
-          </Link>
+          <TurtleButton
+            to="/projects"
+            variant="premium_outline_shimmer"
+            className="rounded-xl px-10 py-4 h-auto text-[clamp(14px,4vw,16px)] w-full sm:w-auto min-h-[48px]"
+          >
+            View Our Work <ArrowRight className="w-[clamp(18px,5vw,20px)] h-[clamp(18px,5vw,20px)]" />
+          </TurtleButton>
+
         </div>
       </motion.div>
     </div>
@@ -653,6 +642,14 @@ const CTASection = () => (
 const Index = () => {
   const { scrollYProgress } = useScroll();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -664,8 +661,8 @@ const Index = () => {
   return (
     <main className="overflow-hidden" style={{ scrollBehavior: "smooth" }}>
       <SEO
-        title="Steel Gates, Railings & Metal Fabrication in Trichy | RIITS Metal Craft"
-        description="RIITS Metal Craft – Trichy's trusted fabricators of SS/MS gates, railings, rolling shutters, aluminium windows, ACP cladding & industrial structures. Free quote today!"
+        title={`Steel Gates, Railings & Metal Fabrication in Trichy | ${COMPANY_NAME}`}
+        description={`${COMPANY_NAME} – Trichy's trusted fabricators of SS/MS gates, railings, rolling shutters, aluminium windows, ACP cladding & industrial structures. Free quote today!`}
         keywords="steel gate, stainless steel gate, MS gate, metal gate, sliding gate, compound gate, window grill, steel grill, balcony railing, stainless steel railing, staircase railing, steel handrail, steel staircase, metal staircase, rolling shutter, shop shutter, industrial shutter, aluminium door, aluminium window, aluminium sliding window, aluminium partition, glass door, toughened glass door, frameless glass door, glass partition, ACP cladding panel, aluminium cladding panel, building facade panels, steel pergola, metal canopy, steel gate near me, fabrication shop near me, metal fabrication near me, steel fabrication near me, rolling shutter near me, aluminium work near me, glass work near me, railing fabrication near me, gate fabrication near me, grill fabrication near me, metal fabrication trichy, gate fabricators trichy, stainless steel railings trichy, ACP cladding trichy, industrial fabrication tamil nadu"
         schemaData={localBusinessSchema}
       />
@@ -677,14 +674,14 @@ const Index = () => {
       />
 
       {/* ── HERO ── */}
-      <HeroSection />
+      <HeroSection isMobile={isMobile} />
 
       {/* ── KEYWORD TAG STRIP ── */}
-      <KeywordTagStrip />
+      <MovingTags tags={serviceTags} speed={50} />
 
       {/* ── SERVICES SLIDER ── */}
       <section
-        className="section-padding bg-slate-100 py-8 overflow-hidden"
+        className="section-padding bg-slate-100 py-[5vh] overflow-hidden"
         style={{ contentVisibility: "auto", containIntrinsicSize: "auto 600px" }}
       >
         <div className="container-main max-w-6xl">
@@ -696,10 +693,12 @@ const Index = () => {
                   key={item.title}
                   onClick={() => setCurrentSlide(index)}
                   onMouseEnter={() => setCurrentSlide(index)}
-                  className={`w-full text-left px-5 py-2.5 rounded-xl font-heading text-xs font-bold uppercase tracking-[0.15em] transition-all duration-150 border-2 ${currentSlide === index
-                    ? "bg-[hsl(225,73%,35%)] text-white border-[hsl(225,73%,35%)] shadow-lg scale-105"
-                    : "bg-white text-[hsl(225,73%,35%)]/85 border-transparent hover:bg-slate-50 hover:text-[hsl(225,73%,35%)]"
-                    }`}
+                  className={`w-full text-left px-5 py-2.5 rounded-xl font-heading text-xs font-bold uppercase tracking-[0.15em] transition-all duration-150 border-2 ${
+                    currentSlide === index
+                      ? "bg-[hsl(225,73%,35%)] text-white border-[hsl(225,73%,35%)] shadow-lg sm:scale-105"
+                      : "bg-white text-[hsl(225,73%,35%)]/85 border-transparent hover:bg-slate-50 hover:text-[hsl(225,73%,35%)]"
+                  }`}
+
                   whileHover={{ x: 8 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -721,7 +720,7 @@ const Index = () => {
                     <SectionHeading
                       subtitle="What We Offer"
                       title="Core Services"
-                      description="Comprehensive metal fabrication and architectural solutions for every construction need."
+                      description="Comprehensive metal fabrication and architectural solutions."
                     />
                   </motion.div>
 
@@ -787,7 +786,7 @@ const Index = () => {
       </section>
 
       {/* ── WHY US ── */}
-      <WhyUsSection />
+      <WhyUsSection isMobile={isMobile} />
 
       {/* ── PROCESS ── */}
       <ProcessSection />
@@ -799,7 +798,7 @@ const Index = () => {
       <TestimonialsSection />
 
       {/* ── CTA ── */}
-      <CTASection />
+      <CTASection isMobile={isMobile} />
 
       {/* ── FOOTER ── */}
       <footer
@@ -812,7 +811,7 @@ const Index = () => {
         >
           {/* Brand */}
           <div>
-            <h3 className="font-display text-xl font-bold uppercase mb-4">RIITS Metal Craft</h3>
+            <h3 className="font-display text-xl font-bold uppercase mb-4">{COMPANY_NAME}</h3>
             <p className="text-sm opacity-60 leading-relaxed">
               The Art of Metal. Premium steel gate fabrication, railing, rolling shutter, aluminium &amp;
               ACP cladding solutions based in Trichy, Tamil Nadu.
@@ -860,21 +859,22 @@ const Index = () => {
             <div className="flex flex-col gap-4 text-sm">
               <div className="flex items-start gap-2 opacity-80">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                <span>Tiruchirappalli (Trichy), Tamil Nadu, India</span>
+                <span>{CONTACT_DETAILS.address.full}</span>
               </div>
               <a
-                href="tel:+919894794557"
+                href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
                 className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity"
               >
                 <Phone className="w-4 h-4 shrink-0" />
-                <span>+91 98947 94557 / 63839 98574</span>
+                <span>{CONTACT_DETAILS.primaryPhone.display} / {CONTACT_DETAILS.secondaryPhone.display}</span>
               </a>
+
               <a
-                href="mailto:info@riits.in"
+                href={`mailto:${CONTACT_DETAILS.email}`}
                 className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity"
               >
                 <MessageCircle className="w-4 h-4 shrink-0" />
-                <span>info@riits.in</span>
+                <span>{CONTACT_DETAILS.email}</span>
               </a>
             </div>
           </div>
@@ -882,7 +882,7 @@ const Index = () => {
 
         {/* Bottom bar */}
         <div className="px-8 sm:px-12 lg:px-20 py-6 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-sm opacity-40">
-          <span>&copy; {new Date().getFullYear()} RIITS Metal Craft. All rights reserved.</span>
+          <span>&copy; {new Date().getFullYear()} {COMPANY_NAME}. All rights reserved.</span>
           <span>Steel Gate · Railing · Rolling Shutter · ACP Cladding · Trichy</span>
         </div>
       </footer>

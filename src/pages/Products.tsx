@@ -3,6 +3,7 @@ import { useState, useEffect, memo, useRef, type MouseEvent, type ReactNode } fr
 import { Phone, MessageCircle, CheckCircle2 } from "lucide-react";
 import { TurtleButton } from "../components/TurtleButton";
 import SEO from "../components/SEO";
+import { CONTACT_DETAILS, formatTelLink, getWhatsAppUrl, COMPANY_NAME, BRAND_NAME } from "../config/contact";
 
 
 /* ── Local image imports ── */
@@ -65,7 +66,7 @@ const productCategories = [
     subtitle: "STAINLESS STEEL FABRICATION",
     /* H2 maps to: Steel Gates & Metal Gates / Grills & Railings */
     seoHeading: "Steel Gates, Grills & Railings in Trichy",
-    overview: "Looking for a custom steel gate or stainless steel gate in Trichy? RITS Metal Craft offers premium SS 304 and SS 202 gate fabrication, grill work, balcony railings and staircase railings for residential and commercial properties. All products feature brushed or mirror-polished finishes with precision welding.",
+    overview: `Looking for a custom steel gate or stainless steel gate in Trichy? ${COMPANY_NAME} offers premium SS 304 and SS 202 gate fabrication, grill work, balcony railings and staircase railings for residential and commercial properties. All products feature brushed or mirror-polished finishes with precision welding.`,
     products: [
       {
         name: "SS Gates",
@@ -241,7 +242,7 @@ const productCategories = [
     subtitle: "ROLLING SHUTTER",
     /* H2 maps to: Rolling Shutters */
     seoHeading: "Rolling Shutters & Shop Shutters in Trichy",
-    overview: "Need a rolling shutter in Trichy for your shop, showroom or warehouse? RITS Metal Craft supplies and installs heavy-duty rolling shutters and shop shutters — motorized and manual — built for commercial, industrial and residential security with long operational life.",
+    overview: `Need a rolling shutter in Trichy for your shop, showroom or warehouse? ${COMPANY_NAME} supplies and installs heavy-duty rolling shutters and shop shutters — motorized and manual — built for commercial, industrial and residential security with long operational life.`,
     products: [
       {
         name: "Commercial Shutters",
@@ -326,7 +327,7 @@ export function AnimatedButton({
   return (
     <motion.button
       ref={buttonRef}
-      className={`relative group px-3 sm:px-4 py-2 md:py-2.5 rounded-xl transition-all duration-500 outline-none whitespace-nowrap overflow-hidden ${
+      className={`relative group px-3 sm:px-4 py-3 md:py-2.5 rounded-xl transition-all duration-500 outline-none whitespace-nowrap overflow-hidden ${
         isActive ? "shadow-[0_15px_30px_-10px_rgba(37,99,235,0.4)]" : "hover:shadow-2xl"
       }`}
       style={{
@@ -518,7 +519,7 @@ const CategorySection = memo(({ category }: { category: Category }) => {
       </div>
       <div className="mb-6">
         <h3 className="text-sm font-semibold tracking-wider text-slate-500 uppercase mb-5">
-          Key Benefits
+          {BRAND_NAME} Benefits
         </h3>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {category.benefits.map((b, i) => (
@@ -553,8 +554,8 @@ const Products = () => {
   return (
     <main className="min-h-screen bg-white">
       <SEO
-        title="Fabrication Products in Trichy — Steel Gates, Railings, Shutters & More | RITS Metal Craft"
-        description="Browse RITS Metal Craft's full range of fabrication products in Trichy — steel gates, stainless steel gates, railings, rolling shutters, aluminium windows, glass doors, ACP cladding and more."
+        title={`Fabrication Products in Trichy — Steel Gates, Railings, Shutters & More | ${COMPANY_NAME}`}
+        description={`Browse ${COMPANY_NAME}'s full range of fabrication products in Trichy — steel gates, stainless steel gates, railings, rolling shutters, aluminium windows, glass doors, ACP cladding and more.`}
         keywords="steel gate, metal gate, stainless steel gate, window grill, grill work, balcony railing, staircase railing, steel railing, rolling shutter, shop shutter, aluminium door, aluminium window, aluminium sliding window, glass door, toughened glass door, glass partition, office glass partition, steel staircase, metal staircase, fabrication products, metal fabrication, steel fabrication, gate fabrication, steel gate in Trichy, grill work in Trichy, rolling shutter in Trichy, aluminium window in Trichy, fabrication shop in Trichy"
       />
 
@@ -858,7 +859,7 @@ const Products = () => {
 
         {/* Visually hidden H1 — primary SEO heading for Google */}
         <h1 className="sr-only">
-          Fabrication Products in Trichy — Steel Gates, Railings, Rolling Shutters, Aluminium Windows &amp; Glass Doors | RITS Metal Craft
+          Fabrication Products in Trichy — Steel Gates, Railings, Rolling Shutters, Aluminium Windows &amp; Glass Doors | {COMPANY_NAME}
         </h1>
 
         <div className="hero-bg-media">
@@ -867,7 +868,7 @@ const Products = () => {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 2, ease: "easeOut" }}
             src="/src/assets/heropage/products page hero.webp"
-            alt="RITS Metal Craft fabrication products — steel gates, railings, rolling shutters and aluminium works in Trichy"
+            alt={`${COMPANY_NAME} fabrication products — steel gates, railings, rolling shutters and aluminium works in Trichy`}
             className="w-full h-full object-cover opacity-30 mix-blend-overlay"
             style={{ willChange: "transform" }}
             loading="eager"
@@ -905,7 +906,7 @@ const Products = () => {
               <motion.p
                 aria-hidden="true"
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.05 }}
-                className="font-heading text-4xl sm:text-5xl lg:text-6xl font-black uppercase leading-none tracking-tight text-white mb-4"
+                className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-none tracking-tight text-white mb-4"
               >
                 Product<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600">
@@ -932,12 +933,13 @@ const Products = () => {
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
-                className="flex flex-wrap gap-3"
+                className="flex flex-col sm:flex-row gap-3"
               >
-                <TurtleButton href="tel:+919894794557" variant="call_now" className="rounded-xl px-10">
+                <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-10 w-full sm:w-auto">
                   <Phone className="w-4 h-4" /> Call Now
                 </TurtleButton>
-                <TurtleButton href="https://wa.me/919894794557" variant="whatsapp" external className="rounded-xl">
+                <TurtleButton href={getWhatsAppUrl()} variant="whatsapp" external className="rounded-xl w-full sm:w-auto">
+
                   <MessageCircle className="w-4 h-4" /> WhatsApp
                 </TurtleButton>
               </motion.div>
@@ -1012,15 +1014,16 @@ const Products = () => {
             <strong className="text-white/80">glass door</strong> in Trichy?
             Our team will visit your site, measure and provide a detailed, written quotation — completely free.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <TurtleButton href="tel:+919894794557" variant="call_now" className="rounded-xl px-10">
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-10 w-full sm:w-auto">
               <Phone className="w-4 h-4" /> Get Free Consultation
             </TurtleButton>
             <a
-              href="https://wa.me/919894794557"
+              href={getWhatsAppUrl()}
+
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-emerald-600/30 hover:shadow-2xl hover:-translate-y-1"
+              className="inline-flex items-center justify-center gap-2.5 bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-emerald-600/30 hover:shadow-2xl hover:-translate-y-1 w-full sm:w-auto"
             >
               <MessageCircle className="w-4 h-4" /> WhatsApp Us
             </a>

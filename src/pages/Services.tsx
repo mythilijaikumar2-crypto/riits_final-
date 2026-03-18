@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import {
@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { TurtleButton } from "../components/TurtleButton";
 import SEO from "../components/SEO";
+import { CONTACT_DETAILS, formatTelLink, getWhatsAppUrl, COMPANY_NAME, BRAND_NAME } from "../config/contact";
 import resSvcImg from "../assets/residental.jpeg";
 import comSvcImg from "../assets/commercial.jpeg";
 import indSvcImg from "../assets/industial.jpeg";
@@ -112,7 +113,7 @@ const serviceSections = [
     heading: "Rolling Shutter Installation",
     body: (
       <>
-        RITS Metal Craft provides professional{" "}
+        {COMPANY_NAME} provides professional{" "}
         <strong className="text-slate-800">rolling shutter work in Trichy</strong> and{" "}
         <strong className="text-slate-800">shop shutter installation</strong> for retail
         outlets, showrooms, warehouses and industrial units — motorized or manual,
@@ -148,11 +149,10 @@ const serviceSections = [
   },
 ];
 
-/* ─── COUNTER ────────────────────────────────────────────────────────── */
-const AnimatedCounter = ({ text }: { text: string }) => {
+const AnimatedCounter = React.memo(({ text }: { text: string }) => {
   const ref = useRef<HTMLSpanElement>(null);
   return <span ref={ref}>{text}</span>;
-};
+});
 
 /* ─── ANIMATED SERVICE ROW ───────────────────────────────────────────── */
 interface ServiceRowProps {
@@ -161,7 +161,7 @@ interface ServiceRowProps {
   isLast: boolean;
 }
 
-const ServiceRow = ({ svc, index, isLast }: ServiceRowProps) => {
+const ServiceRow = React.memo(({ svc, index, isLast }: ServiceRowProps) => {
   const rowRef = useRef<HTMLDivElement>(null);
   const inView = useInView(rowRef, { once: true, margin: "-80px 0px" });
 
@@ -192,7 +192,9 @@ const ServiceRow = ({ svc, index, isLast }: ServiceRowProps) => {
         animate={inView ? "visible" : "hidden"}
         initial="hidden"
         className="flex items-start gap-5 group rounded-2xl px-4 py-2 -mx-4
-          hover:-translate-y-1 hover:bg-slate-50/70 transition-all duration-300"
+          hover:-translate-y-1 hover:bg-slate-50/70 transition-all duration-300
+          will-change-transform"
+        style={{ willChange: "transform, opacity" }}
       >
         {/* LEFT — Number badge + heading */}
         <motion.div
@@ -251,15 +253,15 @@ const ServiceRow = ({ svc, index, isLast }: ServiceRowProps) => {
       )}
     </div>
   );
-};
+});
 
 /* ─── PAGE COMPONENT ─────────────────────────────────────────────────── */
 const Services = () => {
   return (
     <main className="overflow-hidden" style={{ transform: "translateZ(0)" }}>
       <SEO
-        title="Steel Fabrication, Gate Work, Railing & Rolling Shutter Services in Trichy | RITS Metal Craft"
-        description="RITS Metal Craft offers expert steel fabrication, gate work, grill work, railing, rolling shutter installation, aluminium door & window work and glass partition services in Trichy."
+        title={`Steel Fabrication, Gate Work, Railing & Rolling Shutter Services in Trichy | ${COMPANY_NAME}`}
+        description={`${COMPANY_NAME} offers expert steel fabrication, gate work, grill work, railing, rolling shutter installation, aluminium door & window work and glass partition services in Trichy.`}
         keywords="steel fabrication, metal fabrication, fabrication work, gate fabrication, steel gate work, metal gate work, grill work, window grill work, balcony railing work, staircase railing work, rolling shutter work, shop shutter installation, aluminium door work, aluminium window work, aluminium sliding window, glass door work, toughened glass door, glass partition work, welding work, fabrication shop, metal work, steel work, fabrication shop in Trichy, steel fabrication in Trichy, gate fabrication in Trichy, grill work in Trichy, rolling shutter work in Trichy"
       />
 
@@ -268,15 +270,16 @@ const Services = () => {
       ══════════════════════════════════════════ */}
       <section className="relative h-screen flex flex-col justify-center overflow-hidden bg-slate-950">
         <h1 className="sr-only">
-          Steel Fabrication, Gate Work, Railing, Rolling Shutter &amp; Aluminium Services in Trichy | RITS Metal Craft
+          Steel Fabrication, Gate Work, Railing, Rolling Shutter &amp; Aluminium Services in Trichy | {COMPANY_NAME}
         </h1>
 
         <div className="absolute inset-0 z-0">
           <img
             src="/src/assets/heropage/services hero page .webp"
             className="w-full h-full object-cover opacity-60"
-            alt="RITS Metal Craft services — steel fabrication, gate work, rolling shutter and aluminium works in Trichy"
+            alt={`${COMPANY_NAME} services — steel fabrication, gate work, rolling shutter and aluminium works in Trichy`}
             loading="eager"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/30 to-transparent" />
         </div>
@@ -307,7 +310,7 @@ const Services = () => {
               </div>
               <p
                 aria-hidden="true"
-                className="font-heading text-4xl sm:text-5xl lg:text-5xl font-black uppercase leading-none tracking-tight text-white mb-4"
+                className="font-heading text-3xl sm:text-5xl lg:text-5xl font-black uppercase leading-none tracking-tight text-white mb-4"
               >
                 Expert<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600">
@@ -316,7 +319,7 @@ const Services = () => {
                 Services
               </p>
               <p className="text-white/65 text-base leading-relaxed max-w-md mb-7">
-                RITS Metal Craft is your trusted{" "}
+                {COMPANY_NAME} is your trusted{" "}
                 <strong className="text-white/85">fabrication shop in Trichy</strong> —
                 delivering expert{" "}
                 <strong className="text-white/85">steel fabrication</strong>,{" "}
@@ -326,11 +329,11 @@ const Services = () => {
                 <strong className="text-white/85">glass partition work</strong> for
                 residential, commercial and industrial projects across Tamil Nadu.
               </p>
-              <div className="flex flex-wrap gap-3">
-                <TurtleButton href="tel:+919894794557" variant="call_now" className="rounded-xl px-10">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-10 w-full sm:w-auto">
                   <Phone className="w-4 h-4" /> Call Now
                 </TurtleButton>
-                <TurtleButton href="https://wa.me/919894794557" variant="whatsapp" external className="rounded-xl">
+                <TurtleButton href={getWhatsAppUrl()} variant="whatsapp" external className="rounded-xl w-full sm:w-auto">
                   <MessageCircle className="w-4 h-4" /> WhatsApp
                 </TurtleButton>
               </div>
@@ -409,7 +412,7 @@ const Services = () => {
             className="text-center mb-14"
           >
             <span className="inline-block text-[0.68rem] font-bold uppercase tracking-[0.22em] text-blue-700 bg-blue-50 border border-blue-100 px-4 py-1.5 rounded-full mb-3">
-              What We Offer
+              What {BRAND_NAME} Offers
             </span>
             <h2 className="text-3xl sm:text-4xl font-black text-slate-950 uppercase tracking-tight mt-2 mb-3">
               Our Fabrication Services in Trichy
@@ -417,7 +420,7 @@ const Services = () => {
             <p className="text-slate-500 text-[0.95rem] max-w-2xl mx-auto leading-relaxed">
               From <strong className="text-slate-700">steel fabrication in Trichy</strong> to{" "}
               <strong className="text-slate-700">gate fabrication in Trichy</strong> —
-              RITS Metal Craft delivers complete{" "}
+              {COMPANY_NAME} delivers complete{" "}
               <strong className="text-slate-700">fabrication work</strong> across
               every category, on time and at transparent prices.
             </p>
@@ -474,6 +477,7 @@ const Services = () => {
                       loading="lazy"
                       decoding="async"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      style={{ willChange: "transform" }}
                     />
                   </div>
                   <div className={`absolute inset-0 bg-gradient-to-br ${area.gradient} mix-blend-multiply opacity-20 group-hover:opacity-40 transition-opacity duration-500`} />
@@ -542,15 +546,15 @@ const Services = () => {
             <strong className="text-white/80">glass partition work</strong> for your
             property? Contact us for a free site visit and written quotation — no hidden charges.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <TurtleButton href="tel:+919894794557" variant="call_now" className="rounded-xl px-10">
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-10 w-full sm:w-auto">
               <Phone className="w-4 h-4" /> Call Now
             </TurtleButton>
             <a
-              href="https://wa.me/919894794557"
+              href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-emerald-600/30 hover:shadow-2xl hover:-translate-y-1"
+              className="inline-flex items-center justify-center gap-2.5 bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-emerald-600/30 hover:shadow-2xl hover:-translate-y-1 w-full sm:w-auto"
             >
               <MessageCircle className="w-4 h-4" /> WhatsApp Us
             </a>

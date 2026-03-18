@@ -1,4 +1,7 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { CheckCircle2, Phone } from "lucide-react";
+import { BRAND_NAME, CONTACT_DETAILS, formatTelLink } from "../config/contact";
+import { TurtleButton } from "./TurtleButton";
 
 /* ─── assets ────────────────────────────────────────────────────────── */
 import consultationImg from "../assets/our process/consultation.webp";
@@ -11,48 +14,64 @@ import completionImg from "../assets/our process/completetion.webp";
 /* ─── Types ─────────────────────────────────────────────────────────── */
 interface Step {
     num: string;
+    label: string;
     title: string;
     desc: string;
     image: string;
+    tagline?: string;
+    bullets?: string[];
 }
 
 /* ─── Data ───────────────────────────────────────────────────────────── */
 const STEPS: Step[] = [
     {
         num: "01",
-        title: "Consultation",
+        label: "Consultation",
+        title: "Step 01 — Initial Brief",
         desc: "Detailed discussion of requirements, design preferences, and budget with expert guidance.",
         image: consultationImg,
     },
     {
         num: "02",
-        title: "Site Visit",
+        label: "Site Visit",
+        title: "Step 02 — On-Site Survey",
         desc: "Accurate measurements, structural assessment, and feasibility evaluation by our technical team.",
         image: siteVisitImg,
     },
     {
         num: "03",
-        title: "Design Planning",
+        label: "Design Planning",
+        title: "Step 03 — Drawings & Sign-off",
         desc: "3D visualizations, material specs, and full cost breakdowns prepared for your approval.",
         image: designImg,
     },
     {
         num: "04",
-        title: "Fabrication",
-        desc: "Cutting, expert welding, and quality-grade materials at our Trichy workshop.",
+        label: "Fabrication",
+        title: "Step 04 — Workshop Build",
+        desc: `CNC cutting, expert welding, and quality-grade materials at the ${BRAND_NAME} workshop in Trichy.`,
         image: fabricationImg,
     },
     {
         num: "05",
-        title: "Installation",
+        label: "Installation",
+        title: "Step 05 — Expert Fitting",
         desc: "Professional on-site fitting with accurate alignment, secure fixing, and clean finishing.",
         image: installationImg,
     },
     {
         num: "06",
-        title: "Completion",
-        desc: "Final inspection, surface finishing, cleanup, project handover, and after-service support.",
+        label: "Completion",
+        title: "Step 06 — Handover & Care",
+        desc: "After a rigorous quality inspection and final finishing, we hand over your project on schedule — with post-installation support always included.",
         image: completionImg,
+        tagline: "On time. Every time.",
+        bullets: [
+            "Full quality inspection",
+            "Final surface finishing",
+            "On-time project handover",
+            "Post-install support",
+        ],
     },
 ];
 
@@ -87,7 +106,7 @@ const ProcessSection: React.FC = () => {
     };
 
     return (
-        <section className="w-full bg-slate-950 h-screen flex flex-col justify-center px-4 sm:px-8 lg:px-16 overflow-hidden">
+        <section className="w-full bg-slate-950 min-h-screen py-16 sm:py-24 flex flex-col justify-center px-4 sm:px-8 lg:px-16 overflow-hidden">
             <div className="max-w-7xl mx-auto">
 
                 {/* ── Section title ─────────────────────────────────── */}
@@ -183,12 +202,32 @@ const ProcessSection: React.FC = () => {
                                             <div
                                                 className={[
                                                     "overflow-hidden transition-all duration-500",
-                                                    isActive ? "max-h-20 mt-1 opacity-100" : "max-h-0 opacity-0",
+                                                    isActive ? "max-h-[500px] mt-1 opacity-100 pb-2" : "max-h-0 opacity-0",
                                                 ].join(" ")}
                                             >
-                                                <p className="text-sm text-[#084158] font-medium leading-relaxed">
+                                                <p className="text-[0.8rem] text-[#084158] font-medium leading-relaxed mb-2">
                                                     {step.desc}
                                                 </p>
+                                                
+                                                {isActive && step.bullets && (
+                                                    <div className="flex flex-col gap-1.5 mb-4">
+                                                        {step.bullets.map((bullet, idx) => (
+                                                            <div key={idx} className="flex items-center gap-2">
+                                                                <CheckCircle2 className="w-3.5 h-3.5 text-[#084158]" />
+                                                                <span className="text-[0.75rem] font-bold text-[#084158]/80">{bullet}</span>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                )}
+
+                                                {isActive && step.num === "06" && (
+                                                    <TurtleButton 
+                                                        href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
+                                                        className="w-full sm:w-auto h-9 text-[10px] font-black uppercase tracking-widest rounded-lg bg-[#084158] text-white hover:bg-[#0d2557]"
+                                                    >
+                                                        <Phone className="w-3 h-3" /> Get a Specific Quote
+                                                    </TurtleButton>
+                                                )}
                                             </div>
                                         </div>
                                     </button>
@@ -239,10 +278,10 @@ const ProcessSection: React.FC = () => {
                                     }}
                                 >
                                     <span className="text-blue-400 text-[10px] font-black uppercase tracking-[0.2em]">
-                                        Step {STEPS[displayed].num}
+                                        {STEPS[displayed].num === "06" ? STEPS[displayed].tagline : `Step ${STEPS[displayed].num}`}
                                     </span>
                                     <span className="text-white text-[0.8rem] font-black uppercase tracking-[0.1em] leading-none">
-                                        {STEPS[displayed].title}
+                                        {STEPS[displayed].label}
                                     </span>
                                 </div>
                             </div>

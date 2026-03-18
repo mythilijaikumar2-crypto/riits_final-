@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { TurtleButton } from "./TurtleButton";
+import { CONTACT_DETAILS, formatTelLink, COMPANY_NAME, BRAND_NAME } from "../config/contact";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -78,7 +79,7 @@ const Navbar = () => {
         <div className="container-main flex items-center justify-between h-16 lg:h-20 px-4 sm:px-6 lg:px-8">
 
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group" aria-label="RIITS Metal Craft Home">
+          <Link to="/" className="flex items-center gap-2 group" aria-label={`${COMPANY_NAME} Home`}>
             <motion.div
               className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-white font-black text-lg select-none"
               whileHover={{ rotate: 360, scale: 1.15 }}
@@ -88,7 +89,7 @@ const Navbar = () => {
             </motion.div>
             <span className="font-heading text-xl lg:text-2xl font-bold tracking-tighter text-primary uppercase flex flex-col leading-none">
               <span className="text-sm font-medium tracking-[0.3em] text-muted-foreground opacity-70">Industrial</span>
-              RIITS Metal Craft
+              {BRAND_NAME} Metal Craft
             </span>
           </Link>
 
@@ -133,7 +134,8 @@ const Navbar = () => {
 
             {/* CTA Button with shimmer */}
             <TurtleButton
-                href="tel:+919894794557"
+                href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
+
                 variant="call_now"
                 size="sm"
                 className="rounded-xl px-5"
@@ -228,7 +230,8 @@ const Navbar = () => {
                   className="mt-3"
                 >
                   <TurtleButton
-                    href="tel:+919894794557"
+                    href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
+
                     variant="call_now"
                     size="sm"
                     className="w-full rounded-xl"

@@ -4,6 +4,7 @@ import SectionHeading from "../components/SectionHeading";
 import { TurtleButton } from "../components/TurtleButton";
 import { X, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import SEO from "../components/SEO";
+import { CONTACT_DETAILS, formatTelLink, getWhatsAppUrl, COMPANY_NAME, BRAND_NAME } from "../config/contact";
 
 import stair1 from "../assets/staircase/stairs.webp";
 import stair2 from "../assets/staircase/stairs1.webp";
@@ -274,8 +275,8 @@ const Projects = () => {
   return (
     <main className="pt-20">
       <SEO
-        title="Steel Gate, Grill, Railing & Fabrication Projects in Trichy | RITS Metal Craft Our Works"
-        description="Browse 800+ real fabrication projects in Trichy by RITS Metal Craft — steel gate work, grill work, rolling shutter installation, aluminium window work, glass partition work and more."
+        title={`Steel Gate, Grill, Railing & Fabrication Projects in Trichy | ${COMPANY_NAME} Our Works`}
+        description={`Browse 800+ real fabrication projects in Trichy by ${COMPANY_NAME} — steel gate work, grill work, rolling shutter installation, aluminium window work, glass partition work and more.`}
         keywords="steel gate work in Trichy, grill work in Trichy, rolling shutter work in Trichy, fabrication projects in Trichy, metal fabrication work in Trichy, balcony railing work, staircase railing work, rolling shutter installation, shop shutter work, aluminium door installation, aluminium window work, glass door installation, glass partition work, steel fabrication work, metal fabrication work, welding work, fabrication work photos, gate fabrication designs"
       />
 
@@ -338,13 +339,13 @@ const Projects = () => {
 
         {/* Visually hidden H1 — primary SEO heading for Google */}
         <h1 className="sr-only">
-          Steel Gate, Grill, Railing, Rolling Shutter &amp; Fabrication Projects in Trichy | RITS Metal Craft Our Works
+          Steel Gate, Grill, Railing, Rolling Shutter &amp; Fabrication Projects in Trichy | {COMPANY_NAME} Our Works
         </h1>
 
         <div className="absolute inset-0 z-0 overflow-hidden opacity-80">
           <img
             src="/src/assets/heropage/our work hero page .webp"
-            alt="RITS Metal Craft — completed steel gate, railing, rolling shutter and fabrication projects in Trichy"
+            alt={`${COMPANY_NAME} — completed steel gate, railing, rolling shutter and fabrication projects in Trichy`}
             className="hero-bg-img"
             loading="eager"
           />
@@ -367,13 +368,13 @@ const Projects = () => {
               {/* Badge — local keyword */}
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-widest mb-4">
                 <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-                Fabrication Projects in Trichy
+                {BRAND_NAME} — Fabrication Projects in Trichy
               </div>
 
               {/* Decorative display heading — aria-hidden; real H1 is sr-only above */}
               <p
                 aria-hidden="true"
-                className="font-heading text-4xl sm:text-5xl lg:text-6xl font-black uppercase leading-none tracking-tight text-white mb-4"
+                className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-none tracking-tight text-white mb-4"
               >
                 Projects
                 <br />
@@ -394,11 +395,11 @@ const Projects = () => {
                 — every photo is a real project we built and installed.
               </p>
 
-              <div className="flex flex-wrap gap-3">
-                <TurtleButton href="tel:+919894794557" variant="call_now" className="rounded-xl px-10">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-10 w-full sm:w-auto">
                   <span>📞</span> Call Now
                 </TurtleButton>
-                <TurtleButton href="https://wa.me/919894794557" variant="whatsapp" external className="rounded-xl">
+                <TurtleButton href={getWhatsAppUrl()} variant="whatsapp" external className="rounded-xl w-full sm:w-auto">
                   <span>💬</span> WhatsApp
                 </TurtleButton>
               </div>
@@ -419,7 +420,7 @@ const Projects = () => {
             Our Completed Fabrication Works
           </h2>
           <p className="text-slate-500 text-[0.95rem] leading-relaxed max-w-2xl mx-auto">
-            RITS Metal Craft has completed 800+{" "}
+            {COMPANY_NAME} has completed 800+{" "}
             <strong className="text-slate-700">fabrication projects in Trichy</strong> across
             homes, shops, offices and industries. Every piece of{" "}
             <strong className="text-slate-700">steel fabrication work</strong> and{" "}
@@ -547,7 +548,7 @@ const Projects = () => {
                     </div>
                   </div>
                   <div className="mt-10">
-                    <TurtleButton variant="call_now" className="rounded-2xl px-10" href="tel:+919894794557">
+                    <TurtleButton variant="call_now" className="rounded-2xl px-10" href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}>
                       Enquire Now
                     </TurtleButton>
                   </div>
@@ -579,15 +580,15 @@ const Projects = () => {
             <strong className="text-white/75">fabrication work in Trichy</strong>?
             Call us for a free site visit and written quotation — no hidden charges.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <TurtleButton href="tel:+919894794557" variant="call_now" className="rounded-xl px-10">
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-10 w-full sm:w-auto">
               <span>📞</span> Call Our Expert
             </TurtleButton>
             <a
-              href="https://wa.me/919894794557"
+              href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-emerald-600/30 hover:shadow-2xl hover:-translate-y-1"
+              className="inline-flex items-center justify-center gap-2.5 bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-emerald-600/30 hover:shadow-2xl hover:-translate-y-1 w-full sm:w-auto"
             >
               <span>💬</span> WhatsApp Details
             </a>
