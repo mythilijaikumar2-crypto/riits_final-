@@ -150,3 +150,726 @@
   will-change: transform;
   transform: translateZ(0);
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE FIXES - RIITS METAL CRAFT WEBSITE
+   
+   Add this CSS to your src/index.css file at the end.
+   These styles ONLY affect mobile devices (< 768px).
+   Desktop layout remains unchanged.
+═══════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────
+   HOMEPAGE MOBILE FIXES
+───────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  
+  /* Hero Section Mobile Adjustments */
+  .projects-hero,
+  .products-hero,
+  .contact-hero,
+  .about-hero {
+    min-height: 85vh !important;
+    padding-top: 14vh !important;
+    padding-bottom: 10vh !important;
+  }
+
+  /* Mobile Hero Content Spacing */
+  .projects-hero .max-w-3xl,
+  .products-hero .max-w-3xl,
+  .contact-hero .max-w-3xl {
+    padding: 0 1.5rem;
+  }
+
+  /* Mobile Heading Size Reduction */
+  .font-heading.text-3xl,
+  .font-heading.text-4xl,
+  .font-heading.text-5xl {
+    font-size: clamp(1.75rem, 7vw, 2.5rem) !important;
+    line-height: 1.15 !important;
+  }
+
+  /* Mobile Button Size Reduction */
+  .btn,
+  button[class*="btn-"],
+  a[class*="btn-"],
+  .inline-flex.items-center.justify-center {
+    padding: 0.65rem 1.25rem !important;
+    font-size: 0.8rem !important;
+    min-height: 42px !important;
+    height: auto !important;
+  }
+
+  /* TurtleButton Mobile Size */
+  button[class*="TurtleButton"],
+  a[class*="TurtleButton"] {
+    padding: 0.65rem 1.5rem !important;
+    font-size: 0.75rem !important;
+    height: 44px !important;
+  }
+
+  /* Call Now Button Mobile */
+  button[class*="call_now"],
+  a[class*="call_now"] {
+    padding: 0.7rem 1.75rem !important;
+    font-size: 0.8rem !important;
+    height: 46px !important;
+  }
+
+  /* Card Animation Speed Adjustment */
+  .card,
+  .why-card,
+  .product-card,
+  .service-card {
+    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out !important;
+  }
+
+  .card:active,
+  .why-card:active {
+    transform: scale(0.98) !important;
+  }
+
+  /* Mobile Card Grid Spacing */
+  .cards-grid,
+  .product-grid,
+  .why-grid {
+    gap: 1.25rem !important;
+  }
+
+  /* Mobile Stats Grid */
+  .stat-grid-row {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+
+  /* Mobile Stat Card */
+  .about-stat-card {
+    padding: 1.5rem 1rem !important;
+    min-height: auto !important;
+  }
+
+  .about-stat-val {
+    font-size: 2.5rem !important;
+  }
+
+  .about-stat-lbl {
+    font-size: 0.65rem !important;
+  }
+
+}
+
+/* ─────────────────────────────────────────────────────────────
+   ABOUT PAGE MOBILE FIXES
+───────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+
+  /* About Hero Mobile */
+  .ap .hero-content h1,
+  .ap .hero-content .dxl {
+    font-size: clamp(2rem, 8vw, 3rem) !important;
+  }
+
+  /* About Stats Mobile Layout */
+  .ap .stat-grid-row {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Vision Mission Cards Mobile */
+  .vm-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .vm-card {
+    padding: 1.75rem !important;
+  }
+
+  .vm-icon {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .vm-title {
+    font-size: clamp(1.35rem, 5vw, 1.65rem) !important;
+  }
+
+  /* How We Deliver Cards Mobile */
+  .hwd-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  .hwd-card {
+    padding: 1.5rem !important;
+  }
+
+  .hwd-icon {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  /* Why Choose Us Cards Mobile */
+  .why-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .why-card {
+    min-height: 340px !important;
+    padding: 2rem 1.5rem !important;
+  }
+
+  /* Coverage Map Mobile */
+  .cov-row {
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+
+  /* Mobile Button in Coverage */
+  .cov-row .inline-flex {
+    min-width: 100% !important;
+    justify-content: center !important;
+  }
+
+}
+
+/* ─────────────────────────────────────────────────────────────
+   PRODUCTS PAGE MOBILE FIXES
+───────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+
+  /* Products Nav Tabs Mobile */
+  nav[onmouseenter] .flex {
+    gap: 0.5rem !important;
+    padding: 0.5rem !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+  }
+
+  nav[onmouseenter] .flex::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* Products Tab Button Mobile */
+  nav[onmouseenter] button {
+    padding: 0.6rem 1rem !important;
+    font-size: 0.7rem !important;
+    white-space: nowrap !important;
+    min-width: auto !important;
+  }
+
+  /* Products Grid Mobile */
+  .products-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  /* Product Card Mobile */
+  .product-card {
+    min-height: auto !important;
+  }
+
+  .card-img {
+    height: 200px !important;
+  }
+
+  .project-info {
+    padding: 0 1.25rem 1.5rem !important;
+  }
+
+  .project-title {
+    font-size: 1.35rem !important;
+  }
+
+  /* Product Buttons Mobile Alignment */
+  .product-buttons {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.65rem !important;
+    width: 100% !important;
+  }
+
+  .product-buttons .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* Benefit Card Mobile */
+  .benefit-wrapper {
+    height: 220px !important;
+  }
+
+  .letter-image {
+    width: 180px !important;
+    height: 180px !important;
+  }
+
+  .animated-mail {
+    width: 180px !important;
+  }
+
+}
+
+/* ─────────────────────────────────────────────────────────────
+   SERVICES & PROJECTS MOBILE FIXES
+───────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+
+  /* Service Area Cards Mobile */
+  .service-area-card,
+  .project-card {
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Service List Items Mobile */
+  .service-list li {
+    font-size: 0.85rem !important;
+    padding: 0.5rem 0 !important;
+  }
+
+  /* Projects Grid Mobile */
+  .project-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Project Modal Mobile */
+  .fixed.inset-0 .relative {
+    max-width: 95vw !important;
+    max-height: 92vh !important;
+    margin: 0 !important;
+  }
+
+  .fixed.inset-0 [class*="lg:w-3/5"] {
+    height: 250px !important;
+  }
+
+  .fixed.inset-0 [class*="lg:w-2/5"] {
+    padding: 1.5rem !important;
+  }
+
+}
+
+/* ─────────────────────────────────────────────────────────────
+   CONTACT PAGE MOBILE FIXES
+───────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+
+  /* Contact Cards Mobile */
+  .contact-card {
+    padding: 1.75rem !important;
+  }
+
+  .contact-card h3 {
+    font-size: 1rem !important;
+  }
+
+  /* Contact Map Mobile */
+  iframe[title*="Location"] {
+    height: 320px !important;
+  }
+
+  /* Contact Form Mobile */
+  .contact-form {
+    padding: 1.5rem !important;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.95rem !important;
+    padding: 0.75rem !important;
+  }
+
+}
+
+/* ─────────────────────────────────────────────────────────────
+   NAVBAR MOBILE FIXES
+───────────────────────────────────────────────────────────── */
+
+@media (max-width: 1023px) {
+
+  /* Mobile Navbar Height */
+  nav.fixed {
+    height: auto !important;
+  }
+
+  .nav-container,
+  .container-main.flex.items-center {
+    height: 64px !important;
+    padding: 0 1rem !important;
+  }
+
+  /* Logo Mobile Size */
+  .nav-container .flex.items-center.gap-2 span {
+    font-size: 1.1rem !important;
+  }
+
+  .nav-container .w-9.h-9 {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* Mobile Menu Items */
+  .lg\:hidden .flex.flex-col a {
+    padding: 0.75rem 1rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* Mobile Menu Button */
+  .lg\:hidden button[class*="TurtleButton"] {
+    height: 42px !important;
+    font-size: 0.75rem !important;
+    padding: 0 1.25rem !important;
+  }
+
+}
+
+/* ─────────────────────────────────────────────────────────────
+   FOOTER MOBILE FIXES
+───────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+
+  /* Footer Grid Mobile */
+  footer .grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  footer h3,
+  footer h4 {
+    font-size: 1rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  footer p,
+  footer a,
+  footer span {
+    font-size: 0.85rem !important;
+  }
+
+  /* Footer Bottom Bar Mobile */
+  footer .flex.flex-col.sm\:flex-row {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 0.5rem !important;
+  }
+
+}
+
+/* ─────────────────────────────────────────────────────────────
+   MOVING TAGS MOBILE OPTIMIZATION
+───────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+
+  /* Moving Tags Container Mobile */
+  .relative.bg-slate-950.border-y {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  /* Tag Size Mobile */
+  .relative.bg-slate-950.border-y span {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.65rem !important;
+    letter-spacing: 0.12em !important;
+  }
+
+  /* Animation Speed Mobile */
+  .animate-marquee-left {
+    animation-duration: 30s !important;
+  }
+
+  .animate-marquee-right {
+    animation-duration: 35s !important;
+  }
+
+}
+
+/* ─────────────────────────────────────────────────────────────
+   TESTIMONIAL CARDS MOBILE
+───────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+
+  /* Testimonial Card Mobile */
+  .w-\[300px\] {
+    width: 280px !important;
+  }
+
+  .testimonial-card {
+    padding: 1.25rem !important;
+  }
+
+  .testimonial-card p {
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Testimonial Avatar Mobile */
+  .testimonial-card .w-10 {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 0.9rem !important;
+  }
+
+}
+
+/* ─────────────────────────────────────────────────────────────
+   CTA SECTION MOBILE
+───────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+
+  /* CTA Padding Mobile */
+  .cta,
+  section[class*="cta"] {
+    padding: 3rem 1.5rem !important;
+  }
+
+  /* CTA Title Mobile */
+  .cta-title,
+  .cta h2 {
+    font-size: clamp(1.75rem, 6vw, 2.25rem) !important;
+  }
+
+  /* CTA Description Mobile */
+  .cta-description,
+  .cta p {
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+  }
+
+  /* CTA Buttons Mobile */
+  .cta .flex {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .cta button,
+  .cta a[class*="btn"] {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+}
+
+/* ─────────────────────────────────────────────────────────────
+   PROCESS SECTION MOBILE
+───────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+
+  /* Process Section Padding */
+  .process-section {
+    padding: 3rem 1rem !important;
+  }
+
+  /* Process Timeline Mobile */
+  .process-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Process Step Mobile */
+  .process-step {
+    padding: 1.5rem !important;
+  }
+
+  .process-step h3 {
+    font-size: 1.1rem !important;
+  }
+
+  .process-step p {
+    font-size: 0.85rem !important;
+  }
+
+  /* Process Image Circle Mobile */
+  .process-image {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+}
+
+/* ─────────────────────────────────────────────────────────────
+   UTILITY MOBILE FIXES
+───────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+
+  /* General Spacing Reduction */
+  .section-padding {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  /* Container Padding Mobile */
+  .container-main {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Hide Desktop-Only Elements */
+  .hidden.lg\:flex,
+  .hidden.lg\:block {
+    display: none !important;
+  }
+
+  /* Mobile-Only Flex Column */
+  .flex.flex-wrap {
+    flex-direction: column !important;
+  }
+
+  /* Gap Reduction Mobile */
+  .gap-8 {
+    gap: 1.5rem !important;
+  }
+
+  .gap-6 {
+    gap: 1rem !important;
+  }
+
+  .gap-4 {
+    gap: 0.75rem !important;
+  }
+
+  /* Image Optimization Mobile */
+  img {
+    image-rendering: auto !important;
+  }
+
+}
+
+/* ─────────────────────────────────────────────────────────────
+   ANIMATION PERFORMANCE MOBILE
+───────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+
+  /* Reduce Motion for Performance */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* GPU Acceleration Mobile */
+  .card,
+  .why-card,
+  .product-card,
+  button,
+  a {
+    will-change: transform !important;
+    transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+  }
+
+  /* Smooth Scrolling Mobile */
+  html {
+    scroll-behavior: smooth !important;
+  }
+
+}
+
+/* ─────────────────────────────────────────────────────────────
+   HORIZONTAL SCROLL WITH DOT INDICATORS
+   Modern, Instagram-style scroll with position dots
+───────────────────────────────────────────────────────────── */
+ 
+@media (max-width: 767px) {
+  
+  /* Wrapper with scroll indicators */
+  nav.sticky .mx-auto.max-w-7xl {
+    position: relative;
+    padding-bottom: 2.5rem !important;
+  }
+ 
+  /* Main tabs container - horizontal scroll */
+  nav.sticky .flex.flex-nowrap {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    gap: 0.75rem !important;
+    padding: 0.75rem 1rem !important;
+    justify-content: flex-start !important;
+    
+    /* Hide scrollbar but keep functionality */
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+ 
+  nav.sticky .flex.flex-nowrap::-webkit-scrollbar {
+    display: none !important;
+  }
+ 
+  /* Individual tab buttons */
+  nav.sticky button {
+    scroll-snap-align: start !important;
+    flex-shrink: 0 !important;
+    min-width: 110px !important;
+    padding: 0.85rem 1.25rem !important;
+    font-size: 0.7rem !important;
+    letter-spacing: 0.1em !important;
+  }
+ 
+  /* Active tab - more prominent */
+  nav.sticky button[class*="shadow-[0_15px"] {
+    min-width: 130px !important;
+    transform: scale(1.08) !important;
+  }
+ 
+  /* Scroll position indicators (dots) */
+  nav.sticky .mx-auto.max-w-7xl::after {
+    content: '';
+    position: absolute;
+    bottom: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.35rem;
+    pointer-events: none;
+  }
+ 
+  /* Gradient fade edges */
+  nav.sticky .mx-auto.max-w-7xl::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(15, 23, 42, 0.9) 0%,
+      transparent 8%,
+      transparent 92%,
+      rgba(15, 23, 42, 0.9) 100%
+    );
+    pointer-events: none;
+    z-index: 10;
+  }
+ 
+  /* Scroll indicator dots */
+  nav.sticky .mx-auto.max-w-7xl {
+    padding-bottom: 2.5rem !important;
+  }
+ 
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   END OF MOBILE RESPONSIVE FIXES
+═══════════════════════════════════════════════════════════════ */
+

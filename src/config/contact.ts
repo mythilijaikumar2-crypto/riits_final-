@@ -18,6 +18,10 @@ export const CONTACT_DETAILS = {
     state: "Tamil Nadu",
     pincode: "620001",
   },
+  location: {
+    latitude: 10.805431,
+    longitude: 78.743805,
+  },
   whatsapp: {
     number: "919894794557", // with country code, no +
     display: "98947 94557",
