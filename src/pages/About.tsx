@@ -3,7 +3,7 @@ import React, { useState, memo } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   ArrowRight, CheckCircle2, MapPin, Phone, Award, Shield, Heart, Settings,
-  Users, Target, Wrench, Clock, ThumbsUp, FileCheck, Headphones
+  Users, Target, Wrench, Clock, ThumbsUp, FileCheck, Headphones, ClipboardList, Truck
 } from "lucide-react";
 import SEO from "../components/SEO";
 import { TurtleButton } from "../components/TurtleButton";
@@ -190,12 +190,12 @@ const FontLoader = () => (
     }
     .why-grid > div { display: flex; }
     .why-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 24px;
-      padding: 2.2rem 1.8rem;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 28px;
+      padding: 2.5rem 2rem;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
       display: flex;
       flex-direction: column;
@@ -203,35 +203,56 @@ const FontLoader = () => (
       position: relative;
       overflow: hidden;
       width: 100%;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
     }
     .why-card:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.25);
-      transform: translateY(-10px);
-      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 30px 60px -12px rgba(0,0,0,0.6);
     }
     .why-card::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, transparent, rgba(255,255,255,0.05), transparent);
+      background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.05), transparent);
       transform: translateX(-100%);
-      transition: transform 0.6s ease;
+      transition: transform 0.8s ease;
     }
     .why-card:hover::before { transform: translateX(100%); }
-    .why-card-icon { font-size: 2rem; margin-bottom: 1.2rem; display: block; transition: transform 0.4s ease; }
-    .why-card:hover .why-card-icon { transform: scale(1.15) rotate(-5deg); }
+    .why-card-icon { 
+      background: rgba(255,255,255,0.05);
+      width: 64px;
+      height: 64px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.4s ease;
+    }
+    .why-card:hover .why-card-icon { 
+      transform: scale(1.1) rotate(-5deg);
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.3);
+    }
     .why-card-title {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.2rem;
+      font-size: 1.35rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       color: #ffffff;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
     }
-    .why-card-body { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.75; }
-    .why-card-body strong { color: rgba(255,255,255,0.9); font-weight: 600; }
+    .why-card-body { 
+      font-size: 0.95rem; 
+      color: rgba(255,255,255,0.6); 
+      line-height: 1.7; 
+      font-weight: 400;
+    }
 
     /* ── Utility ── */
     .text-navy { color: #0d2557 !important; }
@@ -937,11 +958,18 @@ const About = () => {
           </div>
 
           <div className="why-grid">
-            {[{ icon: <Award />, title: "15+ Years Trust", body: "A legacy of precision metalwork in the Trichy market since 2009." }, { icon: <Shield />, title: "Grade-A Metals", body: "We never compromise on material thickness or certification grades." }, { icon: <Heart />, title: "Client First", body: "Transparent written quotes and direct communication with our team." }, { icon: <Settings />, title: "Own Workshop", body: "Zero subcontracting. Everything is forged in our local workshop." }].map((card, i) => (
+            {[
+              { icon: <CheckCircle2 />, title: "15+ Years of Local Trust", body: "A locally rooted metal fabrication team in Trichy — reliable, experienced and community-trusted since 2009." },
+              { icon: <ClipboardList />, title: "Transparent Written Quotes", body: "Every shop shutter and steel fabrication job gets a detailed written quote — zero hidden costs, ever." },
+              { icon: <Wrench />, title: "Premium Grade Materials", body: "Grade-A steel, aluminium and glass on every job — from aluminium door installs to full glass partition fit-outs." },
+              { icon: <Truck />, title: "On-Time Delivery", body: "Every project delivered and installed on schedule with full post-job support across Trichy and Tamil Nadu." }
+            ].map((card, i) => (
               <R key={i} delay={i * 0.06}>
                 <div className="why-card">
-                  <div className="text-blue-400 mb-6 w-10 h-10">{card.icon}</div>
-                  <p className="why-card-title">{card.title}</p>
+                  <div className="why-card-icon">
+                    {React.cloneElement(card.icon as React.ReactElement, { className: "w-8 h-8 text-blue-400" })}
+                  </div>
+                  <h3 className="why-card-title">{card.title}</h3>
                   <p className="why-card-body">{card.body}</p>
                 </div>
               </R>
