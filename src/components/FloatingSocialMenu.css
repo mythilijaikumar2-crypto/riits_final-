@@ -1,0 +1,191 @@
+/* ─── Container ─────────────────────────────────────────── */
+#button-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  z-index: 100;
+}
+
+/* ─── Keyframes ─────────────────────────────────────────── */
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 0.7; }
+  100% { transform: scale(1.9); opacity: 0;   }
+}
+
+@keyframes icon-shake {
+  0%, 100% { transform: rotate(0deg); }
+  20%       { transform: rotate(-12deg); }
+  50%       { transform: rotate(12deg); }
+  75%       { transform: rotate(-8deg); }
+}
+
+@keyframes share-pulse {
+  0%   { box-shadow: 0 0 0 0    rgba(100,116,139,0.6); }
+  70%  { box-shadow: 0 0 0 12px rgba(100,116,139,0);   }
+  100% { box-shadow: 0 0 0 0    rgba(100,116,139,0);   }
+}
+
+/* ─── Social buttons base ───────────────────────────────── */
+.social-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  transition: all 0.3s ease-in;
+  opacity: 0;
+  z-index: 1;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transform: translate(0, 0) rotate(0deg);
+  text-decoration: none;
+}
+
+.social-btn:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+}
+
+.social-btn:hover svg {
+  animation: icon-shake 0.45s ease-in-out;
+}
+
+/* ─── Share button ───────────────────────────────────────── */
+.btn-share {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #1e293b;
+  color: white;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transform: rotate(0deg);
+}
+
+#button-container:hover .btn-share,
+#button-container.active .btn-share {
+  transform: rotate(270deg);
+  background: #0f172a;
+  animation: share-pulse 1.4s infinite;
+}
+
+/* ─── Button colors ──────────────────────────────────────── */
+.btn-ig {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+.btn-fb {
+  background: linear-gradient(135deg, #1877F2, #0d5cce);
+}
+.btn-wa {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+}
+.btn-mail {
+  background: linear-gradient(135deg, #ea4335, #c5221f);
+}
+.btn-call {
+  background: linear-gradient(135deg, #00A3FF, #0077cc);
+}
+
+/* ─── Per-button glow on hover ───────────────────────────── */
+.btn-ig:hover {
+  box-shadow:
+    0 0 0 3px   rgba(188,24,136,0.4),
+    0 0 18px 6px rgba(220,39,67,0.55),
+    0 0 36px 10px rgba(240,148,51,0.3) !important;
+}
+.btn-fb:hover {
+  box-shadow:
+    0 0 0 3px   rgba(24,119,242,0.4),
+    0 0 18px 6px rgba(24,119,242,0.6),
+    0 0 36px 10px rgba(13,92,206,0.3) !important;
+}
+.btn-wa:hover {
+  box-shadow:
+    0 0 0 3px   rgba(37,211,102,0.4),
+    0 0 18px 6px rgba(37,211,102,0.6),
+    0 0 36px 10px rgba(18,140,126,0.3) !important;
+}
+.btn-mail:hover {
+  box-shadow:
+    0 0 0 3px   rgba(234,67,53,0.4),
+    0 0 18px 6px rgba(234,67,53,0.6),
+    0 0 36px 10px rgba(197,34,31,0.3) !important;
+}
+.btn-call:hover {
+  box-shadow:
+    0 0 0 3px   rgba(0,163,255,0.4),
+    0 0 18px 6px rgba(0,163,255,0.6),
+    0 0 36px 10px rgba(0,119,204,0.3) !important;
+}
+
+/* drop-shadow boost on hover while expanded */
+#button-container:hover .btn-fb:hover,
+#button-container.active .btn-fb:hover,
+#button-container:hover .btn-ig:hover,
+#button-container.active .btn-ig:hover,
+#button-container:hover .btn-wa:hover,
+#button-container.active .btn-wa:hover,
+#button-container:hover .btn-mail:hover,
+#button-container.active .btn-mail:hover,
+#button-container:hover .btn-call:hover,
+#button-container.active .btn-call:hover {
+  filter: brightness(1.25) saturate(1.4) drop-shadow(0 0 10px currentColor);
+  z-index: 10;
+}
+
+/* ─── Arc fan positions ──────────────────────────────────── */
+/*
+  Bottom-left anchor. Arc fans UP and to the RIGHT.
+  5 buttons at equal 22.5° intervals: 0° → 22.5° → 45° → 67.5° → 90°
+  Radius ≈ 175px (292% of 60px container).
+*/
+
+/* Facebook — 180° (straight left) */
+#button-container:hover .btn-fb,
+#button-container.active .btn-fb {
+  opacity: 1;
+  transform: translate(-292%, 0%) rotate(360deg);
+}
+
+/* Instagram — 157.5° */
+#button-container:hover .btn-ig,
+#button-container.active .btn-ig {
+  opacity: 1;
+  transform: translate(-270%, -112%) rotate(360deg);
+}
+
+/* WhatsApp — 135° (diagonal) */
+#button-container:hover .btn-wa,
+#button-container.active .btn-wa {
+  opacity: 1;
+  transform: translate(-206%, -206%) rotate(360deg);
+}
+
+/* Mail — 112.5° */
+#button-container:hover .btn-mail,
+#button-container.active .btn-mail {
+  opacity: 1;
+  transform: translate(-112%, -270%) rotate(360deg);
+}
+
+/* Call — 90° (straight up) */
+#button-container:hover .btn-call,
+#button-container.active .btn-call {
+  opacity: 1;
+  transform: translate(0%, -292%) rotate(360deg);
+}

@@ -3,6 +3,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { useEffect, lazy, Suspense } from "react";
 
+import FloatingSocialMenu from "./components/FloatingSocialMenu";
+
 // Lazy load pages for performance
 const Index = lazy(() => import("./pages/Index"));
 const About = lazy(() => import("./pages/About"));
@@ -60,6 +62,7 @@ const AppLayout = () => {
         </Routes>
       </Suspense>
       {pathname !== "/" && <Footer />}
+      <FloatingSocialMenu />
     </>
   );
 };
