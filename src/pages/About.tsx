@@ -951,7 +951,7 @@ const About = () => {
       </section>
 
       {/* ── CTA FOOTER ── */}
-      <section className="bg-slate-50 border-t border-slate-100" style={{ padding: "clamp(3.5rem,7vw,6rem) clamp(1.5rem,5vw,5rem)", textAlign: "center" }}>
+      <section className="navy-bg sec" style={{ textAlign: "center", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div className="ctr">
           <R>
             <p style={{ fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase", color: "#93c5fd", marginBottom: "1.2rem" }}>
