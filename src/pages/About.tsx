@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import React, { useState, memo } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  ArrowRight, CheckCircle2, MapPin, Phone, Award, Shield, Heart, Settings,
+  ArrowRight, CheckCircle2, MapPin, Phone,
   Users, Target, Wrench, Clock, ThumbsUp, FileCheck, Headphones, ClipboardList, Truck
 } from "lucide-react";
 import SEO from "../components/SEO";
@@ -959,15 +959,15 @@ const About = () => {
 
           <div className="why-grid">
             {[
-              { icon: <CheckCircle2 />, title: "15+ Years of Local Trust", body: "A locally rooted metal fabrication team in Trichy — reliable, experienced and community-trusted since 2009." },
-              { icon: <ClipboardList />, title: "Transparent Written Quotes", body: "Every shop shutter and steel fabrication job gets a detailed written quote — zero hidden costs, ever." },
-              { icon: <Wrench />, title: "Premium Grade Materials", body: "Grade-A steel, aluminium and glass on every job — from aluminium door installs to full glass partition fit-outs." },
-              { icon: <Truck />, title: "On-Time Delivery", body: "Every project delivered and installed on schedule with full post-job support across Trichy and Tamil Nadu." }
+              { icon: <CheckCircle2 />, title: "15+ Years of Local Trust", color: "text-blue-400", body: "A locally rooted metal fabrication team in Trichy — reliable, experienced and community-trusted since 2009." },
+              { icon: <ClipboardList />, title: "Transparent Written Quotes", color: "text-amber-400", body: "Every shop shutter and steel fabrication job gets a detailed written quote — zero hidden costs, ever." },
+              { icon: <Wrench />, title: "Premium Grade Materials", color: "text-emerald-400", body: "Grade-A steel, aluminium and glass on every job — from aluminium door installs to full glass partition fit-outs." },
+              { icon: <Truck />, title: "On-Time Delivery", color: "text-indigo-400", body: "Every project delivered and installed on schedule with full post-job support across Trichy and Tamil Nadu." }
             ].map((card, i) => (
               <R key={i} delay={i * 0.06}>
                 <div className="why-card">
                   <div className="why-card-icon">
-                    {React.cloneElement(card.icon as React.ReactElement, { className: "w-8 h-8 text-blue-400" })}
+                    {React.cloneElement(card.icon as React.ReactElement, { className: `w-8 h-8 ${card.color}` })}
                   </div>
                   <h3 className="why-card-title">{card.title}</h3>
                   <p className="why-card-body">{card.body}</p>
