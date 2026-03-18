@@ -15,7 +15,7 @@ const SectionHeading = ({ subtitle, title, description, light }: SectionHeadingP
     transition={{ duration: 0.6 }}
     className="text-center mb-14"
   >
-    <p className={`section-subtitle mb-3 ${light ? "text-silver" : ""}`}>{subtitle}</p>
+    <p className={`section-subtitle mb-3 font-bold text-[1.85rem] leading-[1.75rem] ${light ? "text-silver" : ""}`}>{subtitle}</p>
     <h2 className={`heading-lg ${light ? "text-primary-foreground" : "text-foreground"}`}>{title}</h2>
     {description && (
       <p className={`mt-4 max-w-2xl mx-auto text-body ${light ? "text-silver" : "text-muted-foreground"}`}>

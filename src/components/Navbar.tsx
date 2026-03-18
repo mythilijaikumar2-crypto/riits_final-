@@ -133,7 +133,7 @@ const Navbar = () => {
 
             {/* CTA Button with shimmer */}
             <TurtleButton
-                href="tel:+919876543210"
+                href="tel:+919894794557"
                 variant="call_now"
                 size="sm"
                 className="rounded-xl px-5"
@@ -228,7 +228,7 @@ const Navbar = () => {
                   className="mt-3"
                 >
                   <TurtleButton
-                    href="tel:+919876543210"
+                    href="tel:+919894794557"
                     variant="call_now"
                     size="sm"
                     className="w-full rounded-xl"

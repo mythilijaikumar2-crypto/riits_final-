@@ -39,7 +39,7 @@ const STEPS: Step[] = [
     {
         num: "04",
         title: "Fabrication",
-        desc: "CNC cutting, expert welding, and quality-grade materials at our Trichy workshop.",
+        desc: "Cutting, expert welding, and quality-grade materials at our Trichy workshop.",
         image: fabricationImg,
     },
     {

@@ -215,10 +215,10 @@ const Contact = () => {
                 variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
                 className="flex flex-wrap gap-3"
               >
-                <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-10">
+                <TurtleButton href="tel:+919894794557" variant="call_now" className="rounded-xl px-10">
                   <Phone className="w-4 h-4" /> Call Now
                 </TurtleButton>
-                <TurtleButton href="https://wa.me/919876543210" variant="whatsapp" external className="rounded-xl">
+                <TurtleButton href="https://wa.me/919894794557" variant="whatsapp" external className="rounded-xl">
                   <MessageCircle className="w-4 h-4" /> WhatsApp
                 </TurtleButton>
                 <TurtleButton href="https://facebook.com" variant="premium_outline_shimmer" external className="rounded-xl border-blue-400 text-blue-300">
@@ -268,7 +268,7 @@ const Contact = () => {
               {
                 icon: <Phone className="w-6 h-6" />,
                 title: "Phone",
-                lines: ["+91 98765 43210", "+91 98765 43211"],
+                lines: ["+91 98947 94557", "+91 63839 98574"],
                 isLink: true,
                 prefix: "tel:",
                 accent: "bg-emerald-500/10 text-emerald-600",
@@ -347,13 +347,13 @@ const Contact = () => {
           {/* ── Quick Actions ── */}
           <SectionHeading subtitle="Reach Out" title="Quick Contact" />
           <div className="flex flex-wrap justify-center gap-4 mb-16">
-            <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-10">
+            <TurtleButton href="tel:+919894794557" variant="call_now" className="rounded-xl px-10">
               <Phone className="w-5 h-5" /> Call Now
             </TurtleButton>
             <motion.a
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              href="https://wa.me/919876543210"
+              href="https://wa.me/919894794557"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-whatsapp"
@@ -421,11 +421,11 @@ const Contact = () => {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-10">
-              <Phone className="w-4 h-4" /> Call +91 98765 43210
-            </TurtleButton>
+            <TurtleButton href="tel:+919894794557" variant="call_now" className="rounded-xl px-10">
+              <Phone className="w-4 h-4" /> Call +91 98947 94557 / 63839 98574
+          </TurtleButton>
             <a
-              href="https://wa.me/919876543210"
+              href="https://wa.me/919894794557"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-emerald-600/30 hover:shadow-2xl hover:-translate-y-1"

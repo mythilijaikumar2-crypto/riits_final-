@@ -9,6 +9,7 @@ import struct from "../assets/structfabric.jpg";
 import industry from "../assets/industryworks.jpg";
 import aluminium from "../assets/aluminium.jpg";
 import elevation from "../assets/elevation.avif";
+import roofing from "../assets/roofing/roof1.webp";
 
 import {
   Phone,
@@ -43,7 +44,7 @@ const localBusinessSchema = {
   "name": "RIITS Metal Craft",
   "image": "https://riits.in/og-image.webp",
   "url": "https://riits.in",
-  "telephone": "+919876543210",
+  "telephone": "+919894794557",
   "priceRange": "₹₹",
   "address": {
     "@type": "PostalAddress",
@@ -159,6 +160,15 @@ const services = [
     image: industry,
     productCategory: "ms",
   },
+  {
+    icon: "🏠",
+    title: "Roofing Works",
+    desc: "Premium roofing solutions for residential and industrial projects",
+    seoDesc: "Expert roofing installation, Car shed roofing, Kerala style roofing,shettle court, warehouse roofing, and residential terrace roofing works in Trichy.",
+    category: "Roofing Solutions",
+    image: roofing,
+    productCategory: "roofing",
+  },
 ];
 
 const whyUs = [
@@ -217,7 +227,7 @@ const KeywordTagStrip = () => {
   const tags = [
     "Steel Gate", "MS Gate", "SS Gate", "Sliding Gate", "Compound Gate",
     "Window Grill", "Steel Grill", "Balcony Railing", "Staircase Railing",
-    "Steel Handrail", "Rolling Shutter", "Shop Shutter", "Aluminium Window",
+    "Steel Handrail", "Rolling Shutter", "Aluminium Window",
     "Glass Door", "Toughened Glass", "ACP Cladding", "Facade Panels",
     "Steel Pergola", "Metal Canopy", "Fabrication Near Me",
   ];
@@ -265,7 +275,7 @@ const HeroSection = () => (
         className="w-full h-full object-cover object-center opacity-35 mix-blend-overlay"
         style={{ willChange: "transform" }}
         loading="eager"
-        fetchpriority="high"
+        fetchPriority="high"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/50 to-transparent" />
     </div>
@@ -341,10 +351,10 @@ const HeroSection = () => (
             transition={{ duration: 0.7, delay: 0.3 }}
             className="flex flex-wrap gap-3"
           >
-            <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-10">
+            <TurtleButton href="tel:+919894794557" variant="call_now" className="rounded-xl px-10">
               <Phone className="w-4 h-4" /> Call Now
             </TurtleButton>
-            <TurtleButton href="https://wa.me/919876543210" variant="whatsapp" external className="rounded-xl">
+            <TurtleButton href="https://wa.me/919894794557" variant="whatsapp" external className="rounded-xl">
               <MessageCircle className="w-4 h-4" /> WhatsApp
             </TurtleButton>
           </motion.div>
@@ -414,7 +424,7 @@ const WhyUsSection = () => {
                   ))}
                 </motion.ul>
                 <a
-                  href="tel:+919876543210"
+                  href="tel:+919894794557"
                   className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-white/90 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300"
                 >
                   Contact Us <ArrowRight className="w-4 h-4 group-hover:translate-x-1" />
@@ -498,7 +508,7 @@ const TestimonialCard = ({ name, initial, text, rating, verified }: typeof testi
           className={`text-slate-600 leading-relaxed text-[0.88rem] font-medium line-clamp-4 italic ${
             // eslint-disable-next-line no-control-regex
             text.match(/[^\x00-\x7F]/) ? "font-serif" : ""
-          }`}
+            }`}
         >
           "{text}"
         </p>
@@ -623,15 +633,15 @@ const CTASection = () => (
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <TurtleButton
-            href="tel:+919876543210"
+            href="tel:+919894794557"
             variant="call_now"
             className="rounded-xl px-10 py-4 h-auto text-base"
           >
-            <Phone className="w-5 h-5" /> Call +91 98765 43210
+            <Phone className="w-5 h-5" /> Call +91 98947 94557 / 63839 98574
           </TurtleButton>
-          <button className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-white/20 bg-white/5 text-white/80 font-medium text-[0.92rem] hover:bg-white/10 transition-all duration-300">
+          <Link to="/projects" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-white/20 bg-white/5 text-white/80 font-medium text-[0.92rem] hover:bg-white/10 transition-all duration-300">
             View Our Work <ArrowRight className="w-5 h-5" />
-          </button>
+          </Link>
         </div>
       </motion.div>
     </div>
@@ -686,11 +696,10 @@ const Index = () => {
                   key={item.title}
                   onClick={() => setCurrentSlide(index)}
                   onMouseEnter={() => setCurrentSlide(index)}
-                  className={`w-full text-left px-5 py-2.5 rounded-xl font-heading text-xs font-bold uppercase tracking-[0.15em] transition-all duration-150 border-2 ${
-                    currentSlide === index
-                      ? "bg-[hsl(225,73%,35%)] text-white border-[hsl(225,73%,35%)] shadow-lg scale-105"
-                      : "bg-white text-[hsl(225,73%,35%)]/85 border-transparent hover:bg-slate-50 hover:text-[hsl(225,73%,35%)]"
-                  }`}
+                  className={`w-full text-left px-5 py-2.5 rounded-xl font-heading text-xs font-bold uppercase tracking-[0.15em] transition-all duration-150 border-2 ${currentSlide === index
+                    ? "bg-[hsl(225,73%,35%)] text-white border-[hsl(225,73%,35%)] shadow-lg scale-105"
+                    : "bg-white text-[hsl(225,73%,35%)]/85 border-transparent hover:bg-slate-50 hover:text-[hsl(225,73%,35%)]"
+                    }`}
                   whileHover={{ x: 8 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -762,11 +771,10 @@ const Index = () => {
                         className="p-4 transition-all duration-300 hover:scale-110 active:scale-95 outline-none group"
                       >
                         <div
-                          className={`h-2 rounded-full transition-all duration-300 ${
-                            currentSlide === i
-                              ? "bg-[hsl(225,73%,35%)] w-6"
-                              : "bg-slate-300 w-2"
-                          }`}
+                          className={`h-2 rounded-full transition-all duration-300 ${currentSlide === i
+                            ? "bg-[hsl(225,73%,35%)] w-6"
+                            : "bg-slate-300 w-2"
+                            }`}
                         />
                       </button>
                     ))}
@@ -815,10 +823,16 @@ const Index = () => {
           <div>
             <h4 className="text-sm font-semibold uppercase tracking-wider mb-5">Quick Links</h4>
             <div className="flex flex-col gap-3">
-              {["About Us", "Products", "Services", "Our Work", "Contact"].map((item) => (
-                <a key={item} href="#" className="text-sm opacity-60 hover:opacity-100 transition-opacity">
-                  {item}
-                </a>
+              {[
+                { name: "About Us", path: "/about" },
+                { name: "Products", path: "/products" },
+                { name: "Services", path: "/services" },
+                { name: "Our Work", path: "/projects" },
+                { name: "Contact", path: "/contact" }
+              ].map((item) => (
+                <Link key={item.name} to={item.path} className="text-sm opacity-60 hover:opacity-100 transition-opacity">
+                  {item.name}
+                </Link>
               ))}
             </div>
           </div>
@@ -849,11 +863,11 @@ const Index = () => {
                 <span>Tiruchirappalli (Trichy), Tamil Nadu, India</span>
               </div>
               <a
-                href="tel:+919876543210"
+                href="tel:+919894794557"
                 className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity"
               >
                 <Phone className="w-4 h-4 shrink-0" />
-                <span>+91 98765 43210</span>
+                <span>+91 98947 94557 / 63839 98574</span>
               </a>
               <a
                 href="mailto:info@riits.in"

@@ -934,10 +934,10 @@ const Products = () => {
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
                 className="flex flex-wrap gap-3"
               >
-                <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-10">
+                <TurtleButton href="tel:+919894794557" variant="call_now" className="rounded-xl px-10">
                   <Phone className="w-4 h-4" /> Call Now
                 </TurtleButton>
-                <TurtleButton href="https://wa.me/919876543210" variant="whatsapp" external className="rounded-xl">
+                <TurtleButton href="https://wa.me/919894794557" variant="whatsapp" external className="rounded-xl">
                   <MessageCircle className="w-4 h-4" /> WhatsApp
                 </TurtleButton>
               </motion.div>
@@ -1013,11 +1013,11 @@ const Products = () => {
             Our team will visit your site, measure and provide a detailed, written quotation — completely free.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-10">
+            <TurtleButton href="tel:+919894794557" variant="call_now" className="rounded-xl px-10">
               <Phone className="w-4 h-4" /> Get Free Consultation
             </TurtleButton>
             <a
-              href="https://wa.me/919876543210"
+              href="https://wa.me/919894794557"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-emerald-600/30 hover:shadow-2xl hover:-translate-y-1"

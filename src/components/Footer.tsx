@@ -44,9 +44,9 @@ const Footer = () => (
               <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
               <span>Trichy, Tamil Nadu, India</span>
             </div>
-            <a href="tel:+919876543210" className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity" aria-label="Call RIITS Metal Craft">
+            <a href="tel:+919894794557" className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity" aria-label="Call RIITS Metal Craft">
               <Phone className="w-4 h-4" />
-              <span>+91 98765 43210</span>
+              <span>+91 98947 94557 / 63839 98574</span>
             </a>
             <a href="mailto:info@ritsmetalcraft.com" className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity" aria-label="Send email to RIITS Metal Craft">
               <Mail className="w-4 h-4" />

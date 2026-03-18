@@ -395,10 +395,10 @@ const Projects = () => {
               </p>
 
               <div className="flex flex-wrap gap-3">
-                <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-10">
+                <TurtleButton href="tel:+919894794557" variant="call_now" className="rounded-xl px-10">
                   <span>📞</span> Call Now
                 </TurtleButton>
-                <TurtleButton href="https://wa.me/919876543210" variant="whatsapp" external className="rounded-xl">
+                <TurtleButton href="https://wa.me/919894794557" variant="whatsapp" external className="rounded-xl">
                   <span>💬</span> WhatsApp
                 </TurtleButton>
               </div>
@@ -442,7 +442,7 @@ const Projects = () => {
             {/* SEO H2 + description paragraph above the project cards */}
             <div className="mb-10">
               <SectionHeading subtitle={`${cat.title} Projects`} title={cat.seoHeading} />
-              <p className="mt-4 text-slate-500 text-[0.95rem] leading-relaxed max-w-3xl">
+              <p className="mt-4 text-slate-600 text-[0.95rem] leading-relaxed max-w-3xl mx-auto text-center">
                 {cat.seoDesc}
               </p>
             </div>
@@ -547,7 +547,7 @@ const Projects = () => {
                     </div>
                   </div>
                   <div className="mt-10">
-                    <TurtleButton variant="call_now" className="rounded-2xl px-10" href="tel:+919876543210">
+                    <TurtleButton variant="call_now" className="rounded-2xl px-10" href="tel:+919894794557">
                       Enquire Now
                     </TurtleButton>
                   </div>
@@ -580,11 +580,11 @@ const Projects = () => {
             Call us for a free site visit and written quotation — no hidden charges.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <TurtleButton href="tel:+919876543210" variant="call_now" className="rounded-xl px-10">
+            <TurtleButton href="tel:+919894794557" variant="call_now" className="rounded-xl px-10">
               <span>📞</span> Call Our Expert
             </TurtleButton>
             <a
-              href="https://wa.me/919876543210"
+              href="https://wa.me/919894794557"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-emerald-600/30 hover:shadow-2xl hover:-translate-y-1"
@@ -662,9 +662,8 @@ const ProjectImageSlider = ({
             const swipe = Math.abs(offset.x) > 50;
             if (swipe) paginate(offset.x > 0 ? -1 : 1);
           }}
-          className={`absolute inset-0 w-full h-full object-cover select-none cursor-grab active:cursor-grabbing ${
-            !isModal ? "transition-transform duration-1000 group-hover:scale-105" : ""
-          }`}
+          className={`absolute inset-0 w-full h-full object-cover select-none cursor-grab active:cursor-grabbing ${!isModal ? "transition-transform duration-1000 group-hover:scale-105" : ""
+            }`}
         />
       </AnimatePresence>
 
@@ -697,11 +696,10 @@ const ProjectImageSlider = ({
               className="group/dot p-1 transition-all"
             >
               <div
-                className={`h-1 rounded-full transition-all duration-500 ${
-                  current === i
+                className={`h-1 rounded-full transition-all duration-500 ${current === i
                     ? "w-6 bg-white shadow-[0_0_10px_rgba(255,255,255,0.5)]"
                     : "w-2 bg-white/40 group-hover/dot:bg-white/60"
-                }`}
+                  }`}
               />
             </button>
           ))}

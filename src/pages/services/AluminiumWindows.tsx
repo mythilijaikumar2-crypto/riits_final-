@@ -108,8 +108,8 @@ const AluminiumWindows = () => {
                   Contact us for a catalog of our latest aluminium window designs and glass textures.
                 </p>
                 <div className="flex flex-wrap gap-4 relative z-10">
-                  <TurtleButton href="tel:+919876543210" variant="call_now" size="sm" className="rounded-xl px-6"><Phone className="w-3.5 h-3.5" /> Call Now</TurtleButton>
-                  <a href="https://wa.me/919876543210" className="flex items-center gap-2 bg-emerald-500 text-white px-5 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider hover:bg-emerald-400 transition-colors">
+                  <TurtleButton href="tel:+919894794557" variant="call_now" size="sm" className="rounded-xl px-6"><Phone className="w-3.5 h-3.5" /> Call Now</TurtleButton>
+                  <a href="https://wa.me/919894794557" className="flex items-center gap-2 bg-emerald-500 text-white px-5 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider hover:bg-emerald-400 transition-colors">
                     <MessageCircle className="w-3.5 h-3.5" /> WhatsApp
                   </a>
                 </div>
