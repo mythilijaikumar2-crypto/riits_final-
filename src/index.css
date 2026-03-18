@@ -89,9 +89,9 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  /* ✅ PERFORMANCE: font-display swap prevents invisible text */
-  @font-face {
-    font-display: swap;
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
@@ -102,6 +102,11 @@
 
 .container-main {
   @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.section-subtitle {
+  font-size: 1.85rem;
+  font-weight: 800;
 }
 
 /* Animation utilities */

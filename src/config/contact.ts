@@ -3,12 +3,12 @@ export const BRAND_NAME = "RIITS";
 
 export const CONTACT_DETAILS = {
   primaryPhone: {
-    display: "+91 98765 43210",
-    value: "+919876543210",
+    display: "98947 94557",
+    value: "+919894794557",
   },
   secondaryPhone: {
-    display: "+91 91234 56789",
-    value: "+919123456789",
+    display: "63839 98574",
+    value: "+916383998574",
   },
   email: "info@riits.in",
   address: {
@@ -19,8 +19,8 @@ export const CONTACT_DETAILS = {
     pincode: "620001",
   },
   whatsapp: {
-    number: "919876543210", // with country code, no +
-    display: "+91 98765 43210",
+    number: "919894794557", // with country code, no +
+    display: "98947 94557",
   },
   socials: {
     facebook: "https://facebook.com/riitsmetalcraft",
@@ -36,10 +36,10 @@ export const formatTelLink = (phone: string) => {
 };
 
 /**
- * Generates a WhatsApp chat URL
+ * Generates a WhatsApp chat URL with a pre-filled message
  */
 export const getWhatsAppUrl = (number: string = CONTACT_DETAILS.whatsapp.number) => {
-  return `https://wa.me/${number}`;
+  return `https://wa.me/${number}?text=Hi%2C%20I'm%20interested%20in%20your%20fabrication%20services`;
 };
 
 /**

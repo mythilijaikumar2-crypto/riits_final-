@@ -1,11 +1,11 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  Layers, Ruler, Shield, Search, Wrench, ArrowRight,
-  CheckCircle2, MapPin, Phone, ChevronDown,
+  ArrowRight, CheckCircle2, MapPin, Phone,
+  Users, Target, Wrench, Clock, ThumbsUp, FileCheck, Headphones
 } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+
 import SEO from "../components/SEO";
 import { TurtleButton } from "../components/TurtleButton";
 import { CONTACT_DETAILS, formatTelLink, COMPANY_NAME, BRAND_NAME } from "../config/contact";
@@ -61,7 +61,7 @@ const FontLoader = () => (
     .ltag { font-size:0.68rem; font-weight:700; letter-spacing:0.24em; text-transform:uppercase; color:var(--blue-6); display:inline-flex; align-items:center; gap:10px; }
     .ltag::before { content:''; display:block; width:26px; height:2px; background:var(--blue-6); flex-shrink:0; }
     .navy-bg { background-color: var(--navy); }
-    .sec { padding: clamp(4rem, 8vw, 7.5rem) 0; overflow: hidden; contain: content; }
+    .sec { padding: clamp(4rem, 8vw, 7.5rem) 0; overflow: hidden; }
     .ctr { width: 90%; max-width: 1240px; margin: 0 auto; position: relative; z-index: 10; }
 
     /* ── Hero ── */
@@ -254,6 +254,277 @@ const FontLoader = () => (
       animation: call-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
       will-change: transform, box-shadow;
     }
+    /* ── Utility ── */
+    .text-navy { color: #0d2557 !important; }
+
+    /* ══ Vision & Mission ══ */
+    .vm-section {
+      padding: clamp(4rem, 8vw, 5rem) 0;
+      background: linear-gradient(135deg, #eff6ff 0%, #ffffff 50%, #f8fafc 100%);
+    }
+    .vm-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 4vw, 2rem);
+    }
+    @media (min-width: 768px) {
+      .vm-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; align-items: stretch; }
+    }
+    .vm-card-outer {
+      position: relative;
+      display: flex;
+    }
+    .vm-card-glow {
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    .vm-card-outer:hover .vm-card-glow { opacity: 0.08; }
+    .vm-card {
+      position: relative;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 24px -4px rgba(13,37,87,0.08);
+      transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), box-shadow 0.35s cubic-bezier(0.23,1,0.32,1);
+      will-change: transform;
+    }
+    .vm-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 48px -8px rgba(13,37,87,0.14);
+    }
+    .vm-card.blue  { border: 1.5px solid #dbeafe; }
+    .vm-card.slate { border: 1.5px solid #e2e8f0; }
+    .vm-card.blue:hover  { border-color: #93c5fd; }
+    .vm-card.slate:hover { border-color: #94a3b8; }
+    .vm-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .vm-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 8px 20px -4px rgba(0,0,0,0.2);
+    }
+    .vm-icon.blue  { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+    .vm-icon.slate { background: linear-gradient(135deg, #64748b, #334155); }
+    .vm-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 1;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .vm-title.blue  { background-image: linear-gradient(135deg, #2563eb, #1e40af); }
+    .vm-title.slate { background-image: linear-gradient(135deg, #475569, #1e293b); }
+    .vm-content {
+      font-size: 1.05rem;
+      line-height: 1.78;
+      color: #475569;
+      flex: 1;
+      margin: 0;
+    }
+    .vm-content strong { color: #0d2557; font-weight: 600; }
+    .vm-tags {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #f1f5f9;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .vm-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.85rem;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .vm-tag.blue  { background: #eff6ff; color: #1d4ed8; }
+    .vm-tag.slate { background: #f1f5f9; color: #334155; }
+
+    /* ══ How We Deliver ══ */
+    .hwd-section {
+      width: 100%;
+      padding: clamp(4rem, 8vw, 6rem) 0;
+      background: #ffffff;
+    }
+    .hwd-header {
+      text-align: center;
+      margin: 0 auto 3.5rem;
+      max-width: 800px;
+    }
+    .hwd-badge {
+      display: inline-block;
+      padding: 0.35rem 1.1rem;
+      background: linear-gradient(135deg, #2563eb, #334155);
+      color: #fff;
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 4px 14px -2px rgba(37,99,235,0.35);
+    }
+    .hwd-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #0d2557 0%, #1d4ed8 60%, #334155 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hwd-subtitle {
+      font-size: 1.05rem;
+      line-height: 1.78;
+      color: #64748b;
+      margin: 0;
+    }
+    .hwd-subtitle strong { color: #0d2557; font-weight: 600; }
+    .hwd-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 640px) {
+      .hwd-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .hwd-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    }
+    .hwd-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1.5px solid #e2e8f0;
+      background: #f8fafc;
+      transition: transform 0.35s cubic-bezier(0.23,1,0.32,1),
+                  box-shadow 0.35s cubic-bezier(0.23,1,0.32,1),
+                  border-color 0.25s ease,
+                  background 0.25s ease;
+      overflow: hidden;
+      will-change: transform;
+    }
+    .hwd-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.23,1,0.32,1);
+      border-radius: 0 0 20px 20px;
+    }
+    .hwd-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 44px -8px rgba(13,37,87,0.13);
+      background: #ffffff;
+    }
+    .hwd-card:hover::after { transform: scaleX(1); }
+    /* per‑card accent colours — applied inline via style prop */
+    .hwd-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      align-self: flex-start;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 6px 16px -3px rgba(0,0,0,0.18);
+    }
+    .hwd-card-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #0d2557;
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+    .hwd-card-desc {
+      font-size: 0.92rem;
+      line-height: 1.72;
+      color: #64748b;
+      flex: 1;
+      margin: 0 0 1rem;
+    }
+    .hwd-card-step {
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .hwd-step-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .hwd-cta {
+      margin-top: 4rem;
+      display: flex;
+      justify-content: center;
+    }
+    .hwd-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.25rem;
+      background: linear-gradient(135deg, #2563eb, #334155);
+      color: #fff;
+      font-size: 0.98rem;
+      font-weight: 700;
+      border-radius: 100px;
+      text-decoration: none;
+      box-shadow: 0 8px 28px -4px rgba(37,99,235,0.45);
+      transition: transform 0.3s cubic-bezier(0.23,1,0.32,1),
+                  box-shadow 0.3s ease;
+    }
+    .hwd-cta-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 16px 40px -6px rgba(37,99,235,0.55);
+    }
+    .hwd-cta-btn svg { transition: transform 0.3s ease; }
+    .hwd-cta-btn:hover svg:last-child { transform: translateX(4px); }
   `}</style>
 );
 
@@ -352,242 +623,7 @@ const Counter = ({ value, duration = 2 }: { value: string; duration?: number }) 
   );
 };
 
-/* ══════════════════════════════════════════
-    ACCORDION — HOW WE WORK
-══════════════════════════════════════════ */
-interface WorkflowStep {
-  step: string;
-  Icon: LucideIcon;
-  title: string;
-  short: string;
-  tagline: string;
-  desc: string;
-  details: string[];
-  from: string;
-  to: string;
-  accent: string;
-}
 
-const workflowSteps: WorkflowStep[] = [
-  {
-    step: "01", Icon: Search, title: "Consultation", short: "Initial Brief",
-    tagline: "We listen before we build",
-    desc: "We begin with a thorough consultation — understanding your design preferences, material requirements, and budget to create a fully tailored plan.",
-    details: ["Free initial consultation", "Material & design advice", "Budget-conscious planning", "Clear timeline estimate"],
-    from: "#0d2557", to: "#1d4ed8", accent: "#60a5fa",
-  },
-  {
-    step: "02", Icon: Ruler, title: "Site Visit", short: "On-Site Survey",
-    tagline: "Precision starts on-site",
-    desc: "Our team arrives at your location within 48 hours for precise measurements and a full feasibility assessment — eliminating guesswork at every stage.",
-    details: ["Site visit within 48 hours", "Precision measurements", "Structural feasibility check", "Detailed survey report"],
-    from: "#042c53", to: "#0369a1", accent: "#38bdf8",
-  },
-  {
-    step: "03", Icon: Layers, title: "Design Planning", short: "Drawings & Sign-off",
-    tagline: "Every line matters",
-    desc: "Detailed technical drawings and material selection — MS, SS 304/202, or aluminium — presented for your approval before a single weld is made.",
-    details: ["Technical drawings prepared", "Material selection guide", "Client review & approval", "Revision support included"],
-    from: "#1e1b4b", to: "#3730a3", accent: "#a5b4fc",
-  },
-  {
-    step: "04", Icon: Wrench, title: "Fabrication", short: "Workshop Build",
-    tagline: "Crafted with precision",
-    desc: "Grade-A steel, aluminium and glass are shaped and welded at our Trichy workshop using precision equipment and experienced fabricators.",
-    details: ["Grade-A certified materials", "Precision CNC welding", "Multi-stage quality checks", "Powder coat & finishing"],
-    from: "#431407", to: "#b45309", accent: "#fbbf24",
-  },
-  {
-    step: "05", Icon: Shield, title: "Installation", short: "Expert Fitting",
-    tagline: "Installed by professionals",
-    desc: "Our trained crew arrives on-site with all tools and materials to install your gates, railings, shutters and glass works cleanly and safely.",
-    details: ["Trained installation crew", "All equipment supplied", "Clean worksite maintained", "Safety compliance assured"],
-    from: "#052e16", to: "#166534", accent: "#4ade80",
-  },
-  {
-    step: "06", Icon: CheckCircle2, title: "Completion", short: "Handover & Care",
-    tagline: "On time. Every time.",
-    desc: "After a rigorous quality inspection and final finishing, we hand over your project on schedule — with post-installation support always included.",
-    details: ["Full quality inspection", "Final surface finishing", "On-time project handover", "Post-install support"],
-    from: "#0d2557", to: "#0f766e", accent: "#2dd4bf",
-  },
-];
-
-const WorkflowAccordion = React.memo(() => {
-  const [active, setActive] = useState<number | null>(null);
-
-  return (
-    <div className="w-full max-w-6xl mx-auto px-4 md:px-6">
-      <div className="flex flex-col">
-        {workflowSteps.map((item: WorkflowStep, idx: number) => {
-          const isOpen: boolean = active === idx;
-
-          return (
-            <motion.div
-              key={item.step}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              onMouseEnter={() => { if (window.innerWidth >= 768) setActive(idx); }}
-              onMouseLeave={() => { if (window.innerWidth >= 768) setActive(null); }}
-              onClick={() => { if (window.innerWidth < 768) setActive(active === idx ? null : idx); }}
-              className="py-2.5 md:py-4 px-0"
-            >
-              <div
-                className={`transition-all duration-300 md:duration-500 rounded-xl md:rounded-[20px] overflow-hidden bg-white border ${
-                  isOpen 
-                    ? "shadow-xl md:shadow-2xl border-primary/40" 
-                    : "shadow-sm md:shadow-md border-slate-200/60"
-                }`}
-                style={{
-                  boxShadow: isOpen && window.innerWidth >= 768
-                    ? `0 25px 50px -12px ${item.to}35` 
-                    : undefined,
-                }}
-              >
-              <button
-                className={`acc-trigger-btn w-full flex items-center justify-between gap-4 md:gap-5 px-4 py-3 md:px-6 md:py-5 text-left transition-all duration-300 min-h-[60px] md:min-h-[72px] rounded-xl group/trigger ${
-                  !isOpen ? "hover:bg-slate-50" : ""
-                }`}
-                style={{
-                  background: isOpen
-                    ? `linear-gradient(100deg, ${item.from}, ${item.to})`
-                    : "#ffffff",
-                }}
-              >
-                {/* ICON BOX */}
-                <div 
-                  className="shrink-0 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-xl transition-all duration-300"
-                  style={{
-                    background: isOpen
-                      ? "rgba(255,255,255,0.2)"
-                      : `linear-gradient(140deg, ${item.from}e0, ${item.to})`,
-                    border: isOpen ? "1px solid rgba(255,255,255,0.3)" : "none",
-                    boxShadow: isOpen 
-                      ? `0 0 20px ${item.accent}40` 
-                      : `0 8px 20px -4px ${item.to}40`,
-                  }}
-                >
-                  <item.Icon size={typeof window !== "undefined" && window.innerWidth < 768 ? 16 : 20} strokeWidth={2} color="white" />
-                </div>
-
-                {/* TEXT BLOCK */}
-                <div className="flex-1 flex flex-col justify-center min-w-0 gap-0.5">
-                  <p 
-                    className="text-[10px] md:text-xs font-extrabold uppercase tracking-[0.1em] md:tracking-[0.2em] transition-colors duration-300"
-                    style={{ color: isOpen ? "rgba(255,255,255,0.7)" : "#64748b" }}
-                  >
-                    Step {item.step} — {item.short}
-                  </p>
-                  <h3 
-                    className="font-heading text-base md:text-xl lg:text-2xl font-black uppercase leading-tight transition-all duration-300"
-                    style={{ 
-                      color: isOpen ? "#ffffff" : "#0f172a",
-                      letterSpacing: isOpen ? "0.02em" : "0"
-                    }}
-                  >
-                    {item.title}
-                  </h3>
-                </div>
-
-                {/* ARROW */}
-                <motion.div
-                  animate={{ rotate: isOpen ? 180 : 0 }}
-                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                  className="shrink-0 w-5 h-5 flex items-center justify-center transition-colors duration-300"
-                  style={{
-                    color: isOpen ? "rgba(255,255,255,0.8)" : "#94a3b8",
-                  }}
-                >
-                  <ChevronDown size={20} />
-                </motion.div>
-              </button>
-
-              <AnimatePresence initial={false}>
-                {isOpen && (
-                  <motion.div
-                    key="body"
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                    style={{ overflow: "hidden" }}
-                  >
-                    <div
-                      className="acc-body-inner flex flex-col gap-5 md:gap-6 bg-white pt-4 md:pt-6 pr-4 md:pr-10 pb-6 md:pb-8 pl-4 md:pl-[78px]"
-                    >
-                      <div className="flex items-center gap-3">
-                        <div 
-                          className="h-[2px] md:h-[3px] rounded-full shrink-0"
-                          style={{ 
-                            width: typeof window !== "undefined" && window.innerWidth < 768 ? 20 : 32,
-                            background: `linear-gradient(90deg, ${item.to}, ${item.accent})` 
-                          }} 
-                        />
-                        <p className="text-xs md:text-sm font-semibold italic tracking-wide" style={{ color: item.to }}>
-                          {item.tagline}
-                        </p>
-                      </div>
-
-                      <p className="text-sm md:text-base leading-relaxed text-slate-600">
-                        {item.desc}
-                      </p>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-x-12 md:gap-y-4">
-                        {item.details.map((d: string, i: number) => (
-                          <motion.div
-                            key={i}
-                            initial={{ opacity: 0, y: 5 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.05, duration: 0.3 }}
-                            className="flex items-center gap-3 text-[13px] md:text-sm font-medium text-slate-700"
-                          >
-                            <div 
-                              className="shrink-0 flex items-center justify-center w-5 h-5 rounded-md border"
-                             style={{ 
-                                background: `${item.to}15`, 
-                                borderColor: `${item.to}30`,
-                                transform: "rotate(45deg)"
-                              }}
-                            >
-                              <div className="w-1.5 h-1.5 rounded-full" style={{ background: item.to }} />
-                            </div>
-                            <span className="group-hover/detail:translate-x-1 transition-transform duration-300">
-                              {d}
-                            </span>
-                          </motion.div>
-                        ))}
-                      </div>
-
-                      <div className="pt-6 md:pt-8 flex justify-center md:justify-end">
-                        <TurtleButton
-                          href="/contact"
-                          className="w-full md:w-auto rounded-2xl justify-center h-[52px] md:h-[60px] px-8 md:px-12 text-base md:text-lg font-bold group/btn shadow-2xl relative overflow-hidden transition-all duration-500 hover:scale-105 active:scale-95"
-                          style={{
-                            background: `linear-gradient(135deg, ${item.from}, ${item.to})`,
-                            boxShadow: `0 12px 30px -6px ${item.to}60`,
-                          }}
-                        >
-                          <span className="relative z-10 flex items-center gap-3">
-                            Get a Specific Quote
-                            <ArrowRight size={20} className="group-hover/btn:translate-x-1.5 transition-transform duration-300" />
-                          </span>
-                          <div className="absolute inset-0 bg-white/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
-                        </TurtleButton>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-              </div>
-            </motion.div>
-          );
-        })}
-      </div>
-    </div>
-  );
-});
 
 /* ══════════════════════════════════════════
     STATIC DATA
@@ -610,6 +646,193 @@ const districts = [
 
 
 
+/* ══════════════════════════════════════════
+    VISION & MISSION
+══════════════════════════════════════════ */
+export function VisionMission() {
+  return (
+    <section className="vm-section">
+      <div className="vm-grid">
+
+        {/* Vision */}
+        <div className="vm-card-outer">
+          <div className="vm-card-glow" style={{ background: "linear-gradient(135deg,#3b82f6,#1d4ed8)" }} />
+          <div className="vm-card blue">
+            <div>
+              <div className="vm-header">
+                <div className="vm-icon blue">
+                  <Target style={{ width: 28, height: 28, color: "#fff" }} />
+                </div>
+                <h2 className="vm-title blue">Our Vision</h2>
+              </div>
+              <p className="vm-content">
+                To be Tamil Nadu's most trusted{" "}
+                <strong>metal fabrication company</strong>, known for precision
+                steelcraft, honest pricing and customer satisfaction. We envision
+                every home, shop and factory in Trichy having access to
+                world-class <strong>steel gates</strong>,{" "}
+                <strong>railings</strong>, <strong>shutters</strong> and{" "}
+                <strong>structural steel work</strong> — built to last
+                generations.
+              </p>
+            </div>
+            <div className="vm-tags">
+              {["Quality First", "Local Trust", "Built to Last"].map((t) => (
+                <span key={t} className="vm-tag blue">{t}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Mission */}
+        <div className="vm-card-outer">
+          <div className="vm-card-glow" style={{ background: "linear-gradient(135deg,#64748b,#334155)" }} />
+          <div className="vm-card slate">
+            <div>
+              <div className="vm-header">
+                <div className="vm-icon slate">
+                  <Wrench style={{ width: 28, height: 28, color: "#fff" }} />
+                </div>
+                <h2 className="vm-title slate">Our Mission</h2>
+              </div>
+              <p className="vm-content">
+                To deliver premium <strong>fabrication work</strong> with complete
+                transparency — from written quotations to on-time installation.
+                Every <strong>steel gate</strong>, <strong>aluminium window</strong>,{" "}
+                <strong>glass partition</strong> and{" "}
+                <strong>rolling shutter</strong> we build is crafted with
+                grade-A materials, skilled craftsmanship and a warranty you can
+                trust.
+              </p>
+            </div>
+            <div className="vm-tags">
+              {["Transparency", "Craftsmanship", "Warranty Backed"].map((t) => (
+                <span key={t} className="vm-tag slate">{t}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+
+/* ══════════════════════════════════════════
+    HOW WE DELIVER
+══════════════════════════════════════════ */
+const deliveryPoints = [
+  {
+    icon: FileCheck,
+    title: "Detailed Written Quote",
+    description: "Every steel gate, railing or shutter project gets a transparent written quotation with material breakdown, labour costs and timeline — zero hidden charges.",
+    iconBg: "linear-gradient(135deg,#2563eb,#1d4ed8)",
+    stepColor: "#2563eb",
+    stepLabel: "color:#2563eb",
+    afterBg: "#2563eb",
+  },
+  {
+    icon: Wrench,
+    title: "Premium Materials Only",
+    description: "We use grade-A stainless steel (SS 304/202), mild steel, aluminium and toughened glass — no cheap substitutes, ever. Every material is verified before installation.",
+    iconBg: "linear-gradient(135deg,#475569,#1e293b)",
+    stepColor: "#475569",
+    afterBg: "#475569",
+  },
+  {
+    icon: Users,
+    title: "Own Skilled Crew",
+    description: "Our in-house team of expert welders and fabricators handle every project — no subcontracting. 15+ years of experience in metal fabrication across Trichy.",
+    iconBg: "linear-gradient(135deg,#f59e0b,#d97706)",
+    stepColor: "#d97706",
+    afterBg: "#f59e0b",
+  },
+  {
+    icon: Clock,
+    title: "On-Time Installation",
+    description: "We deliver and install every rolling shutter, aluminium door or glass partition on schedule. Mobile crew reaches your site in Trichy within 48 hours of request.",
+    iconBg: "linear-gradient(135deg,#16a34a,#059669)",
+    stepColor: "#16a34a",
+    afterBg: "#16a34a",
+  },
+  {
+    icon: ThumbsUp,
+    title: "Quality Inspection",
+    description: "Multi-point quality checks at workshop and site — welding integrity, alignment, finish and hardware fitment. Every steel gate and grill is inspected before handover.",
+    iconBg: "linear-gradient(135deg,#6366f1,#7c3aed)",
+    stepColor: "#6366f1",
+    afterBg: "#6366f1",
+  },
+  {
+    icon: Headphones,
+    title: "Post-Install Support",
+    description: "Warranty coverage on all fabrication work with free maintenance guidance. Any issues with your shutter, railing or gate? Our team is just a call away.",
+    iconBg: "linear-gradient(135deg,#f43f5e,#e11d48)",
+    stepColor: "#f43f5e",
+    afterBg: "#f43f5e",
+  },
+];
+
+export function HowWeDeliver() {
+  return (
+    <section className="hwd-section">
+      <div className="ctr">
+        {/* Header */}
+        <div className="hwd-header">
+          <div className="hwd-badge">Our Process</div>
+          <h2 className="hwd-title">How We Deliver Every Project</h2>
+          <p className="hwd-subtitle">
+            From your first call to final installation — a proven 6-step
+            framework that ensures quality{" "}
+            <strong>metal fabrication</strong> and complete customer satisfaction
+            on every <strong>steel gate</strong>, <strong>railing</strong>,{" "}
+            <strong>shutter</strong> or <strong>glass door</strong> we build.
+          </p>
+        </div>
+
+        {/* Grid */}
+        <div className="hwd-grid">
+          {deliveryPoints.map((pt, i) => {
+            const Icon = pt.icon;
+            return (
+              <div
+                key={i}
+                className="hwd-card"
+                style={{ "--hwd-accent": pt.afterBg } as React.CSSProperties}
+              >
+                {/* bottom bar accent via inline override */}
+                <style>{`.hwd-card:nth-child(${i + 1})::after{background:${pt.afterBg};}`}</style>
+                <div className="hwd-icon" style={{ background: pt.iconBg }}>
+                  <Icon style={{ width: 22, height: 22, color: "#fff" }} />
+                </div>
+                <h3 className="hwd-card-title">{pt.title}</h3>
+                <p className="hwd-card-desc">{pt.description}</p>
+                <div className="hwd-card-step" style={{ color: pt.stepColor }}>
+                  <div className="hwd-step-dot" style={{ background: pt.stepColor }} />
+                  Step {i + 1}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* CTA */}
+        <div className="hwd-cta">
+          <a
+            href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
+            className="hwd-cta-btn"
+          >
+            <Phone style={{ width: 20, height: 20 }} />
+            <span>Get Your Free Written Quote Today</span>
+            <ArrowRight style={{ width: 20, height: 20 }} />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 
 /* ════════════════════════════════════════════
     MAIN ABOUT PAGE
@@ -618,7 +841,7 @@ const About = () => {
   const navigate = useNavigate();
 
   return (
-    <main className="ap pt-20" style={{ transform: "translateZ(0)" }}>
+    <main className="ap pt-20" style={{ transform: "translateZ(0)", overflowX: "hidden" }}>
       <SEO
         title={`About ${COMPANY_NAME} | Trusted Fabrication Company in Trichy, Tamil Nadu`}
         description={`${COMPANY_NAME} is a leading fabrication shop in Trichy with 15+ years in metal fabrication. We build steel gates, railings, rolling shutters, aluminium windows, glass doors & more.`}
@@ -717,7 +940,7 @@ const About = () => {
       {/* ══════════════════════════════════════════
           STATS GRID
       ══════════════════════════════════════════ */}
-      <section className="relative z-20 -mt-20 lg:-mt-24 mb-10">
+      <section className="relative z-20 -mt-20 lg:-mt-24 mb-10" style={{ overflow: "visible" }}>
         <div className="ctr">
           <div className="stat-grid-row">
             {[
@@ -741,40 +964,15 @@ const About = () => {
         </div>
       </section>
 
-
+      {/* ══════════════════════════════════════════
+          VISION & MISSION - FIXED
+      ══════════════════════════════════════════ */}
+      <VisionMission />
 
       {/* ══════════════════════════════════════════
-          WHAT WE DO — animated SEO cards
+          HOW WE DELIVER - FIXED
       ══════════════════════════════════════════ */}
-
-      {/* ══════════════════════════════════════════
-          HOW WE WORK — ACCORDION
-      ══════════════════════════════════════════ */}
-      <section
-        className="sec"
-        style={{ background: "white", contentVisibility: "auto", containIntrinsicSize: "auto 500px" }}
-      >
-        <div className="ctr">
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <R>
-              <span className="ltag" style={{ justifyContent: "center", marginBottom: 14 }}>
-                Our Process & Quality
-              </span>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#0d2557] uppercase tracking-tight mb-6">
-                How We Deliver Excellence
-              </h2>
-              <p className="body" style={{ maxWidth: 540, margin: "0 auto" }}>
-                Every product — from a <strong>window grill</strong> to a{" "}
-                <strong>staircase railing</strong> — is quality-checked before delivery.
-                A structured, professional approach from first call to final handover.
-              </p>
-            </R>
-          </div>
-          <R delay={0.1}>
-            <WorkflowAccordion />
-          </R>
-        </div>
-      </section>
+      <HowWeDeliver />
 
       {/* ══════════════════════════════════════════
           MATERIALS
@@ -806,7 +1004,7 @@ const About = () => {
       {/* ══════════════════════════════════════════
           COVERAGE
       ══════════════════════════════════════════ */}
-      <section className="sec coverage-bg" style={{ contentVisibility: "auto", containIntrinsicSize: "auto 600px" }}>
+      <section className="sec" style={{ background: "var(--sl05)", contentVisibility: "auto", containIntrinsicSize: "auto 600px" }}>
         <div className="ctr">
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
             <R>
@@ -818,15 +1016,14 @@ const About = () => {
               </p>
             </R>
           </div>
-
-        <div className="cov-row" style={{ display: "flex", gap: "3rem", alignItems: "center", flexWrap: "wrap", maxWidth: 900, margin: "0 auto" }}>
-          <div className="flex-1 min-w-[300px]">
-            <R dir="left">
-               <MemoizedCoverageMap />
-            </R>
-          </div>
-          <div style={{ flex: "1 1 260px" }}>
-            <R dir="right">
+          <div className="cov-row" style={{ display: "flex", gap: "3rem", alignItems: "center", flexWrap: "wrap", maxWidth: 900, margin: "0 auto" }}>
+            <div className="flex-1 min-w-[280px]">
+              <R dir="left">
+                <MemoizedCoverageMap />
+              </R>
+            </div>
+            <div style={{ flex: "1 1 260px", minWidth: 0 }}>
+              <R dir="right">
                 <p style={{ fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#64748b", marginBottom: "1.2rem" }}>
                   Districts We Serve
                 </p>
@@ -859,11 +1056,11 @@ const About = () => {
                 >
                   <MapPin style={{ width: 16, height: 16 }} /> Book a Site Visit
                 </TurtleButton>
-            </R>
+              </R>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
       {/* ══════════════════════════════════════════
           WHY CHOOSE US

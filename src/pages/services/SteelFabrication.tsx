@@ -90,7 +90,7 @@ const SteelFabrication = () => {
                     { title: "Quick Erection", desc: "Pre-fabricated sections lead to faster site completion." },
                     { title: "Highly Durable", desc: "Long lifespan with proper anti-corrosive painting." },
                     { title: "Sustainability", desc: "Steel is 100% recyclable and eco-friendly." }
-                  ].map((feature, i) => (
+                  ].map((feature) => (
                     <div key={feature.title}>
                       <h4 className="font-bold text-slate-800 text-sm mb-1">{feature.title}</h4>
                       <p className="text-xs text-slate-500">{feature.desc}</p>
@@ -108,8 +108,8 @@ const SteelFabrication = () => {
                   Speak with our engineers for structural load calculations and cost estimates.
                 </p>
                 <div className="flex flex-wrap gap-4 relative z-10">
-                  <TurtleButton href="tel:+919876543210" variant="call_now" size="sm" className="rounded-xl px-6"><Phone className="w-3.5 h-3.5" /> Call Now</TurtleButton>
-                  <a href="https://wa.me/919876543210" className="flex items-center gap-2 bg-emerald-500 text-white px-5 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider hover:bg-emerald-400 transition-colors">
+                  <TurtleButton href="tel:+919894794557" variant="call_now" size="sm" className="rounded-xl px-6"><Phone className="w-3.5 h-3.5" /> Call Now</TurtleButton>
+                  <a href="https://wa.me/919894794557?text=Hi%2C%20I'm%20interested%20in%20your%20fabrication%20services" className="flex items-center gap-2 bg-emerald-500 text-white px-5 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider hover:bg-emerald-400 transition-colors">
                     <MessageCircle className="w-3.5 h-3.5" /> WhatsApp
                   </a>
                 </div>
@@ -133,7 +133,7 @@ const SteelFabrication = () => {
               { title: "Precision Welding", desc: "Our certified welders ensure every joint is structurally sound and load-ready." },
               { title: "Structural Integrity", desc: "All fabrication follows engineering standards for load-bearing structures." },
               { title: "On-Site Management", desc: "Expert supervision during the erecting phase for maximum safety." }
-            ].map((item, i) => (
+            ].map((item) => (
               <div key={item.title} className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
                 <h4 className="font-bold text-slate-800 mb-3">{item.title}</h4>
                 <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
