@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { TurtleButton } from "./TurtleButton";
-import { CONTACT_DETAILS, formatTelLink, COMPANY_NAME, BRAND_NAME } from "../config/contact";
+import { CONTACT_DETAILS, formatTelLink, COMPANY_NAME, BRAND_NAME, LOGO_EMBLEM, LOGO_TEXT } from "../config/contact";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -79,18 +79,47 @@ const Navbar = () => {
         <div className="container-main flex items-center justify-between h-16 lg:h-20 px-4 sm:px-6 lg:px-8">
 
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group" aria-label={`${COMPANY_NAME} Home`}>
+          <Link to="/" className="flex items-center gap-0 group" aria-label={`${COMPANY_NAME} Home`}>
             <motion.div
-              className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-white font-black text-lg select-none"
-              whileHover={{ rotate: 360, scale: 1.15 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className="relative flex items-center justify-center p-0 rounded-xl bg-white/10"
+              initial={{ scale: 1 }}
+              animate={{ 
+                scale: scrolled ? 0.8 : 1
+              }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
-              R
+              <motion.img 
+                src={LOGO_EMBLEM} 
+                alt={`${BRAND_NAME} Emblem`}
+                className="w-16 h-16 lg:w-24 lg:h-24 object-contain"
+                whileHover={{ 
+                  scale: 1.1
+                }}
+                transition={{ 
+                  scale: { duration: 0.2 }
+                }}
+              />
             </motion.div>
-            <span className="font-heading text-xl lg:text-2xl font-bold tracking-tighter text-primary uppercase flex flex-col leading-none">
-              <span className="text-sm font-medium tracking-[0.3em] text-muted-foreground opacity-70">Industrial</span>
-              {BRAND_NAME} Metal Craft
-            </span>
+            <motion.div 
+              className="flex flex-col"
+              initial={{ opacity: 1, x: 0 }}
+              animate={{ 
+                scale: scrolled ? 0.8 : 1,
+                x: scrolled ? -2 : 0
+              }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <img 
+                src={LOGO_TEXT} 
+                alt={COMPANY_NAME}
+                className="h-12 lg:h-28 w-auto object-contain transition-all duration-300"
+                style={{ 
+                  filter: scrolled 
+                    ? 'drop-shadow(0.3px 0px 0px #000) drop-shadow(-0.3px 0px 0px #000) drop-shadow(0px 0.3px 0px #000) drop-shadow(0px -0.3px 0px #000) contrast(1.1)' 
+                    : 'brightness(0) saturate(100%) invert(0%) drop-shadow(0.3px 0px 0px #000) drop-shadow(-0.3px 0px 0px #000) drop-shadow(0px 0.3px 0px #000) drop-shadow(0px -0.3px 0px #000) contrast(1.1)'
+                }}
+              />
+            </motion.div>
           </Link>
 
           {/* Desktop Nav */}

@@ -36,7 +36,7 @@ import { PremiumServiceCards } from "../components/PremiumServiceCards/PremiumSe
 import ProcessSection from "../components/ProcessSection";
 import SEO from "../components/SEO";
 import MovingTags from "../components/MovingTags";
-import { CONTACT_DETAILS, formatTelLink, getWhatsAppUrl, COMPANY_NAME, BRAND_NAME } from "../config/contact";
+import { CONTACT_DETAILS, formatTelLink, getWhatsAppUrl, COMPANY_NAME, BRAND_NAME, LOGO_EMBLEM } from "../config/contact";
 
 /* ================= SCHEMA ================= */
 
@@ -811,8 +811,14 @@ const Index = () => {
           style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}
         >
           {/* Brand */}
-          <div>
-            <h3 className="font-display text-xl font-bold uppercase mb-4">{COMPANY_NAME}</h3>
+          <div className="flex flex-col">
+            <Link to="/" className="mb-8 group" aria-label={`${COMPANY_NAME} Home`}>
+              <img 
+                src={LOGO_EMBLEM} 
+                alt={`${BRAND_NAME} Emblem`}
+                className="w-20 h-20 object-contain transition-transform duration-500 group-hover:rotate-12"
+              />
+            </Link>
             <p className="text-sm opacity-60 leading-relaxed">
               The Art of Metal. Premium steel gate fabrication, railing, rolling shutter, aluminium &amp;
               ACP cladding solutions based in Trichy, Tamil Nadu.

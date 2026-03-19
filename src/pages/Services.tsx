@@ -11,6 +11,7 @@ import { CONTACT_DETAILS, formatTelLink, getWhatsAppUrl, COMPANY_NAME, BRAND_NAM
 import resSvcImg from "../assets/residental.jpeg";
 import comSvcImg from "../assets/commercial.jpeg";
 import indSvcImg from "../assets/industial.jpeg";
+import ProcessSection from "../components/ProcessSection";
 
 /* ─── DATA ──────────────────────────────────────────────────────────── */
 const serviceAreas = [
@@ -523,6 +524,11 @@ const Services = () => {
           </div>
         </div>
       </section>
+
+      {/* ══════════════════════════════════════════
+          PROCESS
+      ══════════════════════════════════════════ */}
+      <ProcessSection />
 
       {/* ══════════════════════════════════════════
           CTA

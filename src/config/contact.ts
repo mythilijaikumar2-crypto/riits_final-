@@ -1,6 +1,9 @@
 export const COMPANY_NAME = "RIITS Metal Craft";
 export const BRAND_NAME = "RIITS";
 
+export const LOGO_EMBLEM = "/src/assets/logo/Emblem_logo.webp";
+export const LOGO_TEXT = "/src/assets/logo/riits logo text .png";
+
 export const CONTACT_DETAILS = {
   primaryPhone: {
     display: "98947 94557",

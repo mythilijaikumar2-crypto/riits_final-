@@ -20,7 +20,7 @@ const buttonVariants = cva(
         index_brand_shimmer: "bg-gradient-to-r from-amber-600 via-amber-500 to-orange-600 text-slate-950 shadow-[0_0_20px_rgba(245,158,11,0.2)] hover:shadow-[0_0_30px_rgba(245,158,11,0.5)]",
         premium_shimmer: "bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 text-white shadow-[0_0_20px_rgba(59,130,246,0.2)] hover:shadow-[0_0_30px_rgba(59,130,246,0.4)]",
         premium_outline_shimmer: "bg-white/5 backdrop-blur-sm border border-white/20 text-white hover:bg-white/10 hover:border-white/40 shadow-lg",
-        call_now: "bg-gradient-to-r from-orange-500 via-orange-600 to-red-600 text-white shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 animate-call-pulse border-none",
+        call_now: "bg-gradient-to-r from-orange-500 via-orange-600 to-red-600 text-white shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 border-none",
       },
       size: {
         default: "px-8 h-[52px]",
@@ -64,13 +64,6 @@ export const TurtleButton = React.forwardRef<HTMLButtonElement | HTMLAnchorEleme
     // Inner content — shimmer span + children
     const content = (
       <>
-        <style>{`
-          @keyframes call-pulse {
-            0%   { transform: scale(1);    opacity: 1; }
-            50%  { transform: scale(1.08); opacity: 0.8; }
-            100% { transform: scale(1);    opacity: 1; }
-          }
-        `}</style>
         <motion.span
           className="absolute inset-0 -skew-x-12 z-0 pointer-events-none"
           style={{ background: "linear-gradient(90deg,transparent,rgba(255,255,255,0.22),transparent)" }}
