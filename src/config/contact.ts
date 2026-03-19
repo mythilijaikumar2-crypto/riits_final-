@@ -27,8 +27,8 @@ export const CONTACT_DETAILS = {
     display: "98947 94557",
   },
   socials: {
-    facebook: "https://facebook.com/riitsmetalcraft",
-    instagram: "https://instagram.com/riitsmetalcraft",
+    facebook: "https://www.facebook.com/profile.php?id=61580755961300",
+    instagram: "https://www.instagram.com/riitsmetalcraft/",
   }
 };
 

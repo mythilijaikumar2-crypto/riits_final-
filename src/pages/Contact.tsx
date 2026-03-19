@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import SectionHeading from "../components/SectionHeading";
-import { Phone, MessageCircle, MapPin, Mail, Clock, Facebook } from "lucide-react";
+import { Phone, MessageCircle, MapPin, Mail, Clock, Facebook, Instagram } from "lucide-react";
 import { TurtleButton } from "../components/TurtleButton";
 import SEO from "../components/SEO";
 import { CONTACT_DETAILS, formatTelLink, getWhatsAppUrl, getMailtoLink, COMPANY_NAME, BRAND_NAME } from "../config/contact";
@@ -141,6 +141,9 @@ const Contact = () => {
                 <TurtleButton href={CONTACT_DETAILS.socials.facebook} variant="premium_outline_shimmer" external className="rounded-xl border-blue-400 text-blue-300 w-full sm:w-auto">
                   <Facebook className="w-4 h-4" /> Facebook
                 </TurtleButton>
+                <TurtleButton href={CONTACT_DETAILS.socials.instagram} variant="premium_outline_shimmer" external className="rounded-xl border-pink-400 text-pink-300 w-full sm:w-auto">
+                  <Instagram className="w-4 h-4" /> Instagram
+                </TurtleButton>
               </motion.div>
             </motion.div>
           </div>
@@ -256,6 +259,16 @@ const Contact = () => {
               className="inline-flex items-center justify-center gap-2 bg-[#1877F2] text-white px-8 py-3 rounded-lg font-heading font-semibold uppercase tracking-wider text-sm transition-all duration-300 hover:shadow-xl hover:shadow-[#1877F2]/25 w-full sm:w-auto"
             >
               <Facebook className="w-5 h-5" /> Facebook
+            </motion.a>
+            <motion.a
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              href={CONTACT_DETAILS.socials.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#f09433] via-[#dc2743] to-[#bc1888] text-white px-8 py-3 rounded-lg font-heading font-semibold uppercase tracking-wider text-sm transition-all duration-300 hover:shadow-xl hover:shadow-[#dc2743]/25 w-full sm:w-auto"
+            >
+              <Instagram className="w-5 h-5" /> Instagram
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.05, y: -2 }}

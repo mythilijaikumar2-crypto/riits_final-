@@ -240,7 +240,7 @@ const serviceTags = [
 const HeroSection = ({ isMobile }: { isMobile: boolean }) => (
   <section
     className="relative h-screen flex flex-col justify-center bg-slate-950 overflow-hidden"
-    style={{ 
+    style={{
       contentVisibility: "auto",
       paddingTop: isMobile ? "12vh" : "0",
       paddingBottom: isMobile ? "8vh" : "0"
@@ -419,26 +419,26 @@ const WhyUsSection = ({ isMobile }: { isMobile: boolean }) => {
           ))}
         </div>
         <motion.div
-           initial={{ opacity: 0, y: isMobile ? 12 : 20 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true }}
-           transition={{ duration: isMobile ? 0.35 : 0.6, delay: isMobile ? 0.1 : 0.5 }}
-           className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 px-[4vw] md:px-0"
-         >
-           {[
-             { val: "800+", label: "Projects Completed" },
-             { val: "15+", label: "Years Experience" },
-             { val: "100%", label: "Client Satisfaction" },
-             { val: "Pan TN", label: "Areas Served" },
-           ].map((s, i) => (
-             <div key={i} className="py-6 text-center rounded-2xl border border-border/60 bg-background shadow-sm">
-               <div className="text-2xl font-black font-display text-primary">{s.val}</div>
-               <div className="text-[10px] uppercase tracking-widest text-muted-foreground mt-1">{s.label}</div>
-             </div>
-           ))}
-         </motion.div>
-       </div>
-     </section>
+          initial={{ opacity: 0, y: isMobile ? 12 : 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: isMobile ? 0.35 : 0.6, delay: isMobile ? 0.1 : 0.5 }}
+          className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 px-[4vw] md:px-0"
+        >
+          {[
+            { val: "800+", label: "Projects Completed" },
+            { val: "15+", label: "Years Experience" },
+            { val: "100%", label: "Client Satisfaction" },
+            { val: "Pan TN", label: "Areas Served" },
+          ].map((s, i) => (
+            <div key={i} className="py-6 text-center rounded-2xl border border-border/60 bg-background shadow-sm">
+              <div className="text-2xl font-black font-display text-primary">{s.val}</div>
+              <div className="text-[10px] uppercase tracking-widest text-muted-foreground mt-1">{s.label}</div>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
   );
 };
 
@@ -694,11 +694,10 @@ const Index = () => {
                   key={item.title}
                   onClick={() => setCurrentSlide(index)}
                   onMouseEnter={() => setCurrentSlide(index)}
-                  className={`w-full text-left px-5 py-2.5 rounded-xl font-heading text-xs font-bold uppercase tracking-[0.15em] transition-all duration-150 border-2 ${
-                    currentSlide === index
+                  className={`w-full text-left px-5 py-2.5 rounded-xl font-heading text-xs font-bold uppercase tracking-[0.15em] transition-all duration-150 border-2 ${currentSlide === index
                       ? "bg-[hsl(225,73%,35%)] text-white border-[hsl(225,73%,35%)] shadow-lg sm:scale-105"
                       : "bg-white text-[hsl(225,73%,35%)]/85 border-transparent hover:bg-slate-50 hover:text-[hsl(225,73%,35%)]"
-                  }`}
+                    }`}
 
                   whileHover={{ x: 8 }}
                   whileTap={{ scale: 0.98 }}
@@ -725,7 +724,7 @@ const Index = () => {
                     />
                   </motion.div>
 
-                  <div className="relative flex-1 flex items-center justify-center overflow-hidden min-h-[300px]">
+                  <div className="relative flex-1 flex items-center justify-center overflow-visible min-h-[300px] md:min-h-[320px] pt-8 md:pt-0">
                     <AnimatePresence>
                       <motion.div
                         key={services[currentSlide].title}
@@ -733,10 +732,11 @@ const Index = () => {
                         animate={{ x: 0, opacity: 1 }}
                         exit={{ x: -100, opacity: 0 }}
                         transition={{ duration: 0.3, ease: "circOut" }}
-                        className="w-full max-w-lg bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden flex flex-col absolute"
+                        className="w-full max-w-lg bg-white rounded-2xl shadow-lg border border-slate-100 overflow-visible flex flex-col absolute"
+                        style={{ marginTop: isMobile ? '0' : 'auto' }}
                       >
-                        <div className="bg-[hsl(225,73%,35%)] p-6 text-center flex flex-col items-center">
-                          <span className="text-4xl mb-3 bg-white/10 p-4 rounded-xl backdrop-blur-md">
+                        <div className="bg-[hsl(225,73%,35%)] px-8 py-10 md:p-6 text-center flex flex-col items-center justify-center relative overflow-visible min-h-[180px] md:min-h-[auto]">
+                          <span className="text-5xl md:text-4xl mb-5 md:mb-3 bg-white/10 p-6 md:p-4 rounded-xl backdrop-blur-md inline-flex items-center justify-center w-[90px] h-[90px] md:w-[70px] md:h-[70px] shrink-0">
                             {services[currentSlide].icon}
                           </span>
                           <h3 className="font-heading text-lg font-bold uppercase text-white tracking-[0.15em]">
