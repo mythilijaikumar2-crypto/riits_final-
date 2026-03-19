@@ -444,7 +444,7 @@ const Contact = () => {
           <div className="rounded-xl overflow-hidden border border-border shadow-lg">
             <iframe
               title={`${COMPANY_NAME} Location — Fabrication Shop in Trichy, Tamil Nadu`}
-              src="https://www.google.com/maps?q=10.805431,78.743805&hl=en&z=16&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15674.39!2d78.743805!3d10.805431!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baa58d84a7e94f3%3A0xe67caec82a13cc7c!2sRIITS%20Metal%20Craft!5e0!3m2!1sen!2sin!4v1710900000000!5m2!1sen!2sin"
               width="100%"
               height="450"
               style={{ border: 0 }}
