@@ -1,6 +1,7 @@
 import { ArrowRight, Phone, MessageCircle, CheckCircle2, Factory, Zap, Star } from "lucide-react";
 import { TurtleButton } from "../../components/TurtleButton";
 import SEO from "../../components/SEO";
+import industrialSvcHero from "../../assets/industrial-service.jpeg";
 
 const SteelFabrication = () => {
   return (
@@ -15,7 +16,7 @@ const SteelFabrication = () => {
       <section className="relative pt-32 pb-20 bg-slate-950 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/src/assets/industial.jpeg"
+            src={industrialSvcHero}
             className="w-full h-full object-cover opacity-40"
             alt="Industrial Structural Steel Fabrication Site"
           />

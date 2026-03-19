@@ -4,6 +4,7 @@ import { Phone, MessageCircle, MapPin, Mail, Clock, Facebook, Instagram, type Lu
 import { TurtleButton } from "../components/TurtleButton";
 import SEO from "../components/SEO";
 import { CONTACT_DETAILS, formatTelLink, getWhatsAppUrl, getMailtoLink, COMPANY_NAME, BRAND_NAME } from "../config/contact";
+import contactHero from "../assets/heropage/contact-hero.webp";
 
 const Contact = () => {
   const heroActionLinks: Array<{
@@ -246,7 +247,7 @@ const Contact = () => {
           className="absolute inset-0"
         >
           <img
-            src="/src/assets/heropage/contack page hero .webp"
+            src={contactHero}
             alt={`Contact ${COMPANY_NAME} — fabrication shop in Trichy for steel gate work, rolling shutter and aluminium works`}
             className="hero-bg-img"
             loading="eager"

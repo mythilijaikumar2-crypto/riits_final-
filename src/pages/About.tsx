@@ -8,6 +8,7 @@ import {
 import SEO from "../components/SEO";
 import { TurtleButton } from "../components/TurtleButton";
 import { CONTACT_DETAILS, formatTelLink, COMPANY_NAME, BRAND_NAME } from "../config/contact";
+import aboutHero from "../assets/heropage/about-hero.webp";
 
 
 /* ══════════════════════════════════════════
@@ -793,7 +794,7 @@ const About = () => {
             initial={{ scale: 1.15, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 2, ease: "easeOut" }}
-            src="/src/assets/heropage/about page hero.webp"
+            src={aboutHero}
             alt={`${COMPANY_NAME} fabrication workshop — steel gate, railing and welding work in Trichy`}
             className="w-full h-full object-cover opacity-30 mix-blend-overlay"
             style={{ willChange: "transform" }}

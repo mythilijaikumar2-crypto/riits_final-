@@ -1,6 +1,7 @@
 import { ArrowRight, Phone, MessageCircle, CheckCircle2, Building2, Zap, Star } from "lucide-react";
 import { TurtleButton } from "../../components/TurtleButton";
 import SEO from "../../components/SEO";
+import commercialSvcHero from "../../assets/commercial-service.jpeg";
 
 const ElevationWork = () => {
   return (
@@ -15,7 +16,7 @@ const ElevationWork = () => {
       <section className="relative pt-32 pb-20 bg-slate-950 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/src/assets/commercial.jpeg"
+            src={commercialSvcHero}
             className="w-full h-full object-cover opacity-40"
             alt="Modern Building Elevation and ACP Cladding Work"
           />
@@ -69,8 +70,8 @@ const ElevationWork = () => {
                     "Architectural Louvers for Ventilation & Aesthetics",
                     "Structural Glazing and Glass Facades",
                     "Modern Tile and Stone Elevation Integration"
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
                       <CheckCircle2 className="w-5 h-5 text-blue-600 mt-0.5 shrink-0" />
                       <span>{item}</span>
                     </li>
@@ -90,8 +91,8 @@ const ElevationWork = () => {
                     { title: "Low Maintenance", desc: "Easy to clean and retains finish for years." },
                     { title: "Lightweight", desc: "Does not add significant load to the building structure." },
                     { title: "Cost Effective", desc: "Long-term durability ensures high return on investment." }
-                  ].map((feature, i) => (
-                    <div key={i}>
+                  ].map((feature) => (
+                    <div key={feature.title}>
                       <h4 className="font-bold text-slate-800 text-sm mb-1">{feature.title}</h4>
                       <p className="text-xs text-slate-500">{feature.desc}</p>
                     </div>
@@ -133,8 +134,8 @@ const ElevationWork = () => {
               { title: "Expert Installation", desc: "Our team has over 15 years of experience in structural cladding and facade work." },
               { title: "Premium Materials", desc: "We use only top-grade ACP and HPL panels from leading manufacturers." },
               { title: "Timely Handover", desc: "We respect your timelines and ensure projects are completed as scheduled." }
-            ].map((item, i) => (
-              <div key={i} className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
+            ].map((item) => (
+              <div key={item.title} className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
                 <h4 className="font-bold text-slate-800 mb-3">{item.title}</h4>
                 <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
               </div>

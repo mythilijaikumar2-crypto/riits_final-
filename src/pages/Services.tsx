@@ -8,9 +8,10 @@ import {
 import { TurtleButton } from "../components/TurtleButton";
 import SEO from "../components/SEO";
 import { CONTACT_DETAILS, formatTelLink, getWhatsAppUrl, COMPANY_NAME, BRAND_NAME } from "../config/contact";
-import resSvcImg from "../assets/residental.jpeg";
-import comSvcImg from "../assets/commercial.jpeg";
-import indSvcImg from "../assets/industial.jpeg";
+import servicesHero from "../assets/heropage/services-hero.webp";
+import resSvcImg from "../assets/residential-service.jpeg";
+import comSvcImg from "../assets/commercial-service.jpeg";
+import indSvcImg from "../assets/industrial-service.jpeg";
 import ProcessSection from "../components/ProcessSection";
 
 /* ─── DATA ──────────────────────────────────────────────────────────── */
@@ -276,7 +277,7 @@ const Services = () => {
 
         <div className="absolute inset-0 z-0">
           <img
-            src="/src/assets/heropage/services hero page .webp"
+            src={servicesHero}
             className="w-full h-full object-cover opacity-60"
             alt={`${COMPANY_NAME} services — steel fabrication, gate work, rolling shutter and aluminium works in Trichy`}
             loading="eager"

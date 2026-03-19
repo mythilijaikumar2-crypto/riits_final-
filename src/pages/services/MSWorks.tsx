@@ -1,6 +1,7 @@
 import { ArrowRight, Phone, MessageCircle, CheckCircle2, Gavel, Zap, Star } from "lucide-react";
 import { TurtleButton } from "../../components/TurtleButton";
 import SEO from "../../components/SEO";
+import industrialSvcHero from "../../assets/industrial-service.jpeg";
 
 const MSWorks = () => {
   return (
@@ -15,7 +16,7 @@ const MSWorks = () => {
       <section className="relative pt-32 pb-20 bg-slate-950 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/src/assets/coms.jpg"
+            src={industrialSvcHero}
             className="w-full h-full object-cover opacity-40"
             alt="Mild Steel Gate and Grill Fabrication"
           />
@@ -69,8 +70,8 @@ const MSWorks = () => {
                     "MS Terrace Roofing & Parking Sheds",
                     "Wrought Iron Style Decorative MS Work",
                     "General MS Industrial Fabrication & Repairs"
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
                       <CheckCircle2 className="w-5 h-5 text-slate-500 mt-0.5 shrink-0" />
                       <span>{item}</span>
                     </li>
@@ -90,7 +91,7 @@ const MSWorks = () => {
                     { title: "Cost Effective", desc: "Best-in-class strength-to-price ratio." },
                     { title: "Custom Designs", desc: "Wide range of traditional and modern patterns." },
                     { title: "Great Finish", desc: "Smooth powder coating or high-gloss paint options." }
-                  ].map((feature, i) => (
+                  ].map((feature) => (
                     <div key={feature.title}>
                       <h4 className="font-bold text-slate-800 text-sm mb-1">{feature.title}</h4>
                       <p className="text-xs text-slate-500">{feature.desc}</p>
@@ -133,7 +134,7 @@ const MSWorks = () => {
               { title: "Anti-Rust Treatment", desc: "All MS works receive a high-zinc epoxy primer coat to prevent oxidation." },
               { title: "Precision Welding", desc: "Deep-penetration ARC welding for maximum joint strength and reliability." },
               { title: "Heavy Sections", desc: "We use only standardized gauge sections to ensure structural stability." }
-            ].map((item, i) => (
+            ].map((item) => (
               <div key={item.title} className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
                 <h4 className="font-bold text-slate-800 mb-3">{item.title}</h4>
                 <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>

@@ -1,6 +1,7 @@
 import { ArrowRight, Phone, MessageCircle, CheckCircle2, Shield, Zap, Star } from "lucide-react";
 import { TurtleButton } from "../../components/TurtleButton";
 import SEO from "../../components/SEO";
+import residentialSvcHero from "../../assets/residential-service.jpeg";
 
 const SSWorks = () => {
   return (
@@ -15,7 +16,7 @@ const SSWorks = () => {
       <section className="relative pt-32 pb-20 bg-slate-950 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/src/assets/residental.jpeg"
+            src={residentialSvcHero}
             className="w-full h-full object-cover opacity-40"
             alt="Stainless Steel Railing and Gate Fabrication"
           />
@@ -69,8 +70,8 @@ const SSWorks = () => {
                     "Customized SS Spiral Staircases",
                     "SS Safety Doors & Designer Window Grills",
                     "Decorative SS Architectural Accents & Interior Work"
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
                       <CheckCircle2 className="w-5 h-5 text-slate-500 mt-0.5 shrink-0" />
                       <span>{item}</span>
                     </li>

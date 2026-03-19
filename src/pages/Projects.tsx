@@ -5,6 +5,7 @@ import { TurtleButton } from "../components/TurtleButton";
 import { X, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import SEO from "../components/SEO";
 import { CONTACT_DETAILS, formatTelLink, getWhatsAppUrl, COMPANY_NAME, BRAND_NAME } from "../config/contact";
+import projectsHero from "../assets/heropage/our-work-hero.webp";
 
 import stair1 from "../assets/staircase/stairs.webp";
 import stair2 from "../assets/staircase/stairs1.webp";
@@ -344,7 +345,7 @@ const Projects = () => {
 
         <div className="absolute inset-0 z-0 overflow-hidden opacity-80">
           <img
-            src="/src/assets/heropage/our work hero page .webp"
+            src={projectsHero}
             alt={`${COMPANY_NAME} — completed steel gate, railing, rolling shutter and fabrication projects in Trichy`}
             className="hero-bg-img"
             loading="eager"

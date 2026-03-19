@@ -4,6 +4,7 @@ import { Phone, MessageCircle, CheckCircle2 } from "lucide-react";
 import { TurtleButton } from "../components/TurtleButton";
 import SEO from "../components/SEO";
 import { CONTACT_DETAILS, formatTelLink, getWhatsAppUrl, COMPANY_NAME, BRAND_NAME } from "../config/contact";
+import productsHero from "../assets/heropage/products-hero.webp";
 
 
 /* ── Local image imports ── */
@@ -867,7 +868,7 @@ const Products = () => {
             initial={{ scale: 1.1, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 2, ease: "easeOut" }}
-            src="/src/assets/heropage/products page hero.webp"
+            src={productsHero}
             alt={`${COMPANY_NAME} fabrication products — steel gates, railings, rolling shutters and aluminium works in Trichy`}
             className="w-full h-full object-cover opacity-30 mix-blend-overlay"
             style={{ willChange: "transform" }}

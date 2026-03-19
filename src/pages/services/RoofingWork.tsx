@@ -1,6 +1,7 @@
 import { ArrowRight, Phone, MessageCircle, CheckCircle2, Home, Zap, Star } from "lucide-react";
 import { TurtleButton } from "../../components/TurtleButton";
 import SEO from "../../components/SEO";
+import industrialSvcHero from "../../assets/industrial-service.jpeg";
 
 const RoofingWork = () => {
   return (
@@ -15,7 +16,7 @@ const RoofingWork = () => {
       <section className="relative pt-32 pb-20 bg-slate-950 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/src/assets/industial.jpeg"
+            src={industrialSvcHero}
             className="w-full h-full object-cover opacity-40"
             alt="Industrial and Terrace Roofing Shed Installation"
           />
@@ -72,8 +73,8 @@ const RoofingWork = () => {
                     "Polycarbonate & UV-Resistant Sheet Work",
                     "Galvalume & Color Coated Profile Sheets",
                     "Car Parking & Outdoor Utility Sheds"
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
                       <CheckCircle2 className="w-5 h-5 text-blue-600 mt-0.5 shrink-0" />
                       <span>{item}</span>
                     </li>
@@ -93,7 +94,7 @@ const RoofingWork = () => {
                     { title: "Heat Insulating", desc: "Optional thermal layers to reduce heat transfer." },
                     { title: "Storm Resistant", desc: "Heavy-duty structures built to withstand high winds." },
                     { title: "Wide Coverage", desc: "Ability to cover large industrial spans with ease." }
-                  ].map((feature, i) => (
+                  ].map((feature) => (
                     <div key={feature.title}>
                       <h4 className="font-bold text-slate-800 text-sm mb-1">{feature.title}</h4>
                       <p className="text-xs text-slate-500">{feature.desc}</p>
@@ -136,7 +137,7 @@ const RoofingWork = () => {
               { title: "High-Quality Sheets", desc: "We use only branded sheets with superior micron coating for long life." },
               { title: "Precision Framework", desc: "Steel frames are engineered to handle the load and wind pressure of your area." },
               { title: "Professional Finishing", desc: "Complete roofing solutions including gutters and down-pipes for drainage." }
-            ].map((item, i) => (
+            ].map((item) => (
               <div key={item.title} className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
                 <h4 className="font-bold text-slate-800 mb-3">{item.title}</h4>
                 <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>

@@ -1,6 +1,7 @@
 import { ArrowRight, Phone, MessageCircle, CheckCircle2, Wrench, Zap, Star } from "lucide-react";
 import { TurtleButton } from "../../components/TurtleButton";
 import SEO from "../../components/SEO";
+import industrialSvcHero from "../../assets/industrial-service.jpeg";
 
 const GeneralFabrication = () => {
   return (
@@ -15,7 +16,7 @@ const GeneralFabrication = () => {
       <section className="relative pt-32 pb-20 bg-slate-950 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/src/assets/industial.jpeg"
+            src={industrialSvcHero}
             className="w-full h-full object-cover opacity-40"
             alt="General Metal Fabrication and Welding Services"
           />
@@ -69,8 +70,8 @@ const GeneralFabrication = () => {
                     "Professional MIG, TIG, and ARC Welding",
                     "Industrial Metal Repair and Modification",
                     "Bespoke Metal Furniture and Interior Elements"
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
                       <CheckCircle2 className="w-5 h-5 text-slate-600 mt-0.5 shrink-0" />
                       <span>{item}</span>
                     </li>
@@ -90,7 +91,7 @@ const GeneralFabrication = () => {
                     { title: "Material Versatility", desc: "Expertise in MS, SS, Aluminium, and specialized alloys." },
                     { title: "Precision Tools", desc: "Use of laser cutting ensuring intricate and clean designs." },
                     { title: "Quick Turnaround", desc: "Efficient processes that meet your project deadlines." }
-                  ].map((feature, i) => (
+                  ].map((feature) => (
                     <div key={feature.title}>
                       <h4 className="font-bold text-slate-800 text-sm mb-1">{feature.title}</h4>
                       <p className="text-xs text-slate-500">{feature.desc}</p>
@@ -133,7 +134,7 @@ const GeneralFabrication = () => {
               { title: "Tailored Engineering", desc: "Every custom project includes structural design analysis for safety and performance." },
               { title: "Multi-Metal Mastery", desc: "Our workshop is equipped to handle complex multi-material fabrication with ease." },
               { title: "Bespoke Consulting", desc: "Work directly with our fabrication experts to refine your design for manufacturability." }
-            ].map((item, i) => (
+            ].map((item) => (
               <div key={item.title} className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
                 <h4 className="font-bold text-slate-800 mb-3">{item.title}</h4>
                 <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>

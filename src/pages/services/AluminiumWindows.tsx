@@ -1,6 +1,7 @@
 import { ArrowRight, Phone, MessageCircle, CheckCircle2, Wind, Zap, Star } from "lucide-react";
 import { TurtleButton } from "../../components/TurtleButton";
 import SEO from "../../components/SEO";
+import industrialSvcHero from "../../assets/industrial-service.jpeg";
 
 const AluminiumWindows = () => {
   return (
@@ -15,7 +16,7 @@ const AluminiumWindows = () => {
       <section className="relative pt-32 pb-20 bg-slate-950 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/src/assets/industial.jpeg"
+            src={industrialSvcHero}
             className="w-full h-full object-cover opacity-40"
             alt="Premium Aluminium Windows and Glass Works"
           />
@@ -69,8 +70,8 @@ const AluminiumWindows = () => {
                     "Structural Glazing & Showroom Facades",
                     "Toughened Glass Handrails & Balustrades",
                     "Spider Fitting Glass Walls & Sky Lights"
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
                       <CheckCircle2 className="w-5 h-5 text-blue-600 mt-0.5 shrink-0" />
                       <span>{item}</span>
                     </li>
@@ -90,8 +91,8 @@ const AluminiumWindows = () => {
                     { title: "Energy Efficient", desc: "Thermal break technology keeps interiors cool." },
                     { title: "Smooth Operation", desc: "High-quality rollers and hinges for effortless use." },
                     { title: "Safety Glass", desc: "Toughened glass that is 5x stronger than regular glass." }
-                  ].map((feature, i) => (
-                    <div key={i}>
+                  ].map((feature) => (
+                    <div key={feature.title}>
                       <h4 className="font-bold text-slate-800 text-sm mb-1">{feature.title}</h4>
                       <p className="text-xs text-slate-500">{feature.desc}</p>
                     </div>
@@ -133,8 +134,8 @@ const AluminiumWindows = () => {
               { title: "Durable Coatings", desc: "Anodized and powder-coated finishes that resist corrosion in coastal areas." },
               { title: "Precision Seals", desc: "EPDM gaskets ensure leak-proof performance even during heavy rains." },
               { title: "Heavy Duty Hardware", desc: "SS 304 grade handles, hinges, and friction stays for long life." }
-            ].map((item, i) => (
-              <div key={i} className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
+            ].map((item) => (
+              <div key={item.title} className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
                 <h4 className="font-bold text-slate-800 mb-3">{item.title}</h4>
                 <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
               </div>
