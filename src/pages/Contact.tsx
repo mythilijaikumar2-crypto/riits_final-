@@ -1,11 +1,81 @@
 import { motion } from "framer-motion";
 import SectionHeading from "../components/SectionHeading";
-import { Phone, MessageCircle, MapPin, Mail, Clock, Facebook, Instagram } from "lucide-react";
+import { Phone, MessageCircle, MapPin, Mail, Clock, Facebook, Instagram, type LucideIcon } from "lucide-react";
 import { TurtleButton } from "../components/TurtleButton";
 import SEO from "../components/SEO";
 import { CONTACT_DETAILS, formatTelLink, getWhatsAppUrl, getMailtoLink, COMPANY_NAME, BRAND_NAME } from "../config/contact";
 
 const Contact = () => {
+  const heroActionLinks: Array<{
+    href: string;
+    label: string;
+    Icon: LucideIcon;
+    tone: string;
+  }> = [
+    {
+      href: formatTelLink(CONTACT_DETAILS.primaryPhone.value),
+      label: "Call Now",
+      Icon: Phone,
+      tone: "social-icon-link--call",
+    },
+    {
+      href: getWhatsAppUrl(),
+      label: "WhatsApp",
+      Icon: MessageCircle,
+      tone: "social-icon-link--whatsapp",
+    },
+    {
+      href: CONTACT_DETAILS.socials.facebook,
+      label: "Facebook",
+      Icon: Facebook,
+      tone: "social-icon-link--facebook",
+    },
+    {
+      href: CONTACT_DETAILS.socials.instagram,
+      label: "Instagram",
+      Icon: Instagram,
+      tone: "social-icon-link--instagram",
+    },
+  ];
+
+  const socialLinks: Array<{
+    href: string;
+    label: string;
+    Icon: LucideIcon;
+    tone: string;
+  }> = [
+    {
+      href: getWhatsAppUrl(),
+      label: "WhatsApp",
+      Icon: MessageCircle,
+      tone: "social-icon-link--whatsapp",
+    },
+    {
+      href: CONTACT_DETAILS.socials.facebook,
+      label: "Facebook",
+      Icon: Facebook,
+      tone: "social-icon-link--facebook",
+    },
+    {
+      href: CONTACT_DETAILS.socials.instagram,
+      label: "Instagram",
+      Icon: Instagram,
+      tone: "social-icon-link--instagram",
+    },
+    {
+      href: formatTelLink(CONTACT_DETAILS.primaryPhone.value),
+      label: "Call Now",
+      Icon: Phone,
+      tone: "social-icon-link--call",
+    },
+    {
+      href: getMailtoLink(),
+      label: "Email Us",
+      Icon: Mail,
+      tone: "social-icon-link--email",
+    },
+  ];
+
   return (
     <main className="pt-20">
       <SEO
@@ -50,6 +120,116 @@ const Contact = () => {
           background-size: 60px 60px;
           z-index: 0;
           mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%);
+        }
+        .social-icon-group {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.9rem;
+          align-items: center;
+        }
+        .social-icon-link {
+          position: relative;
+          width: 58px;
+          height: 58px;
+          border-radius: 9999px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          isolation: isolate;
+          overflow: hidden;
+          border: 1px solid rgba(255, 255, 255, 0.22);
+          transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+        }
+        .social-icon-link::before {
+          content: "";
+          position: absolute;
+          inset: -30%;
+          z-index: -2;
+          opacity: 0.9;
+          filter: blur(20px);
+          transition: opacity 0.3s ease;
+        }
+        .social-icon-link::after {
+          content: "";
+          position: absolute;
+          inset: 1px;
+          border-radius: inherit;
+          z-index: -1;
+          background: linear-gradient(145deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
+          backdrop-filter: blur(14px);
+        }
+        .social-icon-link:hover {
+          transform: translateY(-4px) scale(1.06);
+          filter: saturate(1.15) brightness(1.08);
+        }
+        .social-icon-link:hover::before {
+          opacity: 1;
+        }
+        .social-icon-link--whatsapp {
+          background: linear-gradient(135deg, #16a34a, #15803d);
+          box-shadow: 0 0 24px rgba(34, 197, 94, 0.28);
+        }
+        .social-icon-link--whatsapp::before {
+          background: radial-gradient(circle, rgba(34, 197, 94, 0.75) 0%, rgba(34, 197, 94, 0) 70%);
+        }
+        .social-icon-link--whatsapp:hover {
+          box-shadow: 0 0 30px rgba(34, 197, 94, 0.55), 0 0 60px rgba(34, 197, 94, 0.25);
+        }
+        .social-icon-link--facebook {
+          background: linear-gradient(135deg, #2563eb, #1d4ed8);
+          box-shadow: 0 0 24px rgba(59, 130, 246, 0.28);
+        }
+        .social-icon-link--facebook::before {
+          background: radial-gradient(circle, rgba(59, 130, 246, 0.78) 0%, rgba(59, 130, 246, 0) 70%);
+        }
+        .social-icon-link--facebook:hover {
+          box-shadow: 0 0 30px rgba(59, 130, 246, 0.55), 0 0 60px rgba(59, 130, 246, 0.26);
+        }
+        .social-icon-link--instagram {
+          background: linear-gradient(135deg, #f59e0b 0%, #ec4899 55%, #9333ea 100%);
+          box-shadow: 0 0 24px rgba(236, 72, 153, 0.3);
+        }
+        .social-icon-link--instagram::before {
+          background: radial-gradient(circle, rgba(236, 72, 153, 0.78) 0%, rgba(147, 51, 234, 0.1) 40%, rgba(236, 72, 153, 0) 72%);
+        }
+        .social-icon-link--instagram:hover {
+          box-shadow: 0 0 30px rgba(236, 72, 153, 0.55), 0 0 60px rgba(147, 51, 234, 0.28);
+        }
+        .social-icon-link--call {
+          background: linear-gradient(135deg, #f97316, #dc2626);
+          box-shadow: 0 0 24px rgba(249, 115, 22, 0.3);
+        }
+        .social-icon-link--call::before {
+          background: radial-gradient(circle, rgba(249, 115, 22, 0.78) 0%, rgba(220, 38, 38, 0.18) 40%, rgba(249, 115, 22, 0) 72%);
+        }
+        .social-icon-link--call:hover {
+          box-shadow: 0 0 30px rgba(249, 115, 22, 0.58), 0 0 60px rgba(220, 38, 38, 0.28);
+        }
+        .social-icon-link--email {
+          background: linear-gradient(135deg, #0f172a, #1d4ed8);
+          box-shadow: 0 0 24px rgba(37, 99, 235, 0.28);
+        }
+        .social-icon-link--email::before {
+          background: radial-gradient(circle, rgba(59, 130, 246, 0.78) 0%, rgba(15, 23, 42, 0.16) 42%, rgba(59, 130, 246, 0) 72%);
+        }
+        .social-icon-link--email:hover {
+          box-shadow: 0 0 30px rgba(59, 130, 246, 0.56), 0 0 60px rgba(15, 23, 42, 0.28);
+        }
+        .hero-social-actions {
+          margin-top: 0.25rem;
+        }
+        .quick-social-actions {
+          justify-content: center;
+        }
+        @media (max-width: 640px) {
+          .social-icon-group {
+            justify-content: center;
+          }
+          .social-icon-link {
+            width: 54px;
+            height: 54px;
+          }
         }
       `}</style>
 
@@ -130,20 +310,25 @@ const Contact = () => {
 
               <motion.div
                 variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-                className="flex flex-col sm:flex-row gap-3"
+                className="flex flex-col gap-3"
               >
-                <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-10 w-full sm:w-auto">
-                  <Phone className="w-4 h-4" /> Call Now
-                </TurtleButton>
-                <TurtleButton href={getWhatsAppUrl()} variant="whatsapp" external className="rounded-xl w-full sm:w-auto">
-                  <MessageCircle className="w-4 h-4" /> WhatsApp
-                </TurtleButton>
-                <TurtleButton href={CONTACT_DETAILS.socials.facebook} variant="premium_outline_shimmer" external className="rounded-xl border-blue-400 text-blue-300 w-full sm:w-auto">
-                  <Facebook className="w-4 h-4" /> Facebook
-                </TurtleButton>
-                <TurtleButton href={CONTACT_DETAILS.socials.instagram} variant="premium_outline_shimmer" external className="rounded-xl border-pink-400 text-pink-300 w-full sm:w-auto">
-                  <Instagram className="w-4 h-4" /> Instagram
-                </TurtleButton>
+                <div className="social-icon-group hero-social-actions" aria-label="Social media links">
+                  {heroActionLinks.map(({ href, label, Icon, tone }) => (
+                    <motion.a
+                      key={label}
+                      href={href}
+                      target={href.startsWith("http") ? "_blank" : undefined}
+                      rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      aria-label={label}
+                      title={label}
+                      whileHover={{ scale: 1.08, y: -4 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`social-icon-link ${tone}`}
+                    >
+                      <Icon className="w-5 h-5" />
+                    </motion.a>
+                  ))}
+                </div>
               </motion.div>
             </motion.div>
           </div>
@@ -236,48 +421,22 @@ const Contact = () => {
 
           {/* Quick Actions */}
           <SectionHeading subtitle="Reach Out" title="Quick Contact" />
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-            <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-10 w-full sm:w-auto">
-              <Phone className="w-5 h-5" /> Call Now
-            </TurtleButton>
-            <motion.a
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              href={getWhatsAppUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2.5 bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-emerald-600/30 hover:shadow-2xl hover:-translate-y-1 w-full sm:w-auto"
-            >
-              <MessageCircle className="w-5 h-5" /> WhatsApp
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              href={CONTACT_DETAILS.socials.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-[#1877F2] text-white px-8 py-3 rounded-lg font-heading font-semibold uppercase tracking-wider text-sm transition-all duration-300 hover:shadow-xl hover:shadow-[#1877F2]/25 w-full sm:w-auto"
-            >
-              <Facebook className="w-5 h-5" /> Facebook
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              href={CONTACT_DETAILS.socials.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#f09433] via-[#dc2743] to-[#bc1888] text-white px-8 py-3 rounded-lg font-heading font-semibold uppercase tracking-wider text-sm transition-all duration-300 hover:shadow-xl hover:shadow-[#dc2743]/25 w-full sm:w-auto"
-            >
-              <Instagram className="w-5 h-5" /> Instagram
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              href={getMailtoLink()}
-              className="inline-flex items-center justify-center gap-2.5 bg-[#0d2557] hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-blue-600/30 hover:shadow-2xl hover:-translate-y-1 w-full sm:w-auto"
-            >
-              <Mail className="w-5 h-5" /> Email Us
-            </motion.a>
+          <div className="social-icon-group quick-social-actions mb-16" aria-label="Contact and social links">
+            {socialLinks.map(({ href, label, Icon, tone }) => (
+              <motion.a
+                key={`quick-${label}`}
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                aria-label={label}
+                title={label}
+                whileHover={{ scale: 1.08, y: -4 }}
+                whileTap={{ scale: 0.95 }}
+                className={`social-icon-link ${tone}`}
+              >
+                <Icon className="w-5 h-5" />
+              </motion.a>
+            ))}
           </div>
 
           {/* UPDATED MAP WITH CORRECT LOCATION */}
