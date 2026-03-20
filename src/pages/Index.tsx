@@ -10,6 +10,7 @@ import industry from "../assets/industryworks.jpg";
 import aluminium from "../assets/aluminium.jpg";
 import elevation from "../assets/elevation.avif";
 import roofing from "../assets/roofing/roof1.webp";
+import laserImg from "../assets/decopanels.jpg";
 
 import {
   Phone,
@@ -83,7 +84,8 @@ const localBusinessSchema = {
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Rolling Shutters", "description": "Shop shutters, commercial and industrial rolling shutter systems" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Aluminium & Glass Works", "description": "Aluminium sliding windows, doors, partitions, toughened glass doors and glass partitions" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ACP Cladding & Elevation", "description": "ACP cladding panels, aluminium cladding panels and building facade panels" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Structural Steel Fabrication", "description": "Steel pergolas, metal canopies, sheds, roofing and structural steel frames" } }
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Structural Steel Fabrication", "description": "Steel pergolas, metal canopies, sheds, roofing and structural steel frames" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "CNC Laser Cutting", "description": "High-precision laser cutting for SS and MS decorative gates, partitions and panels" } }
     ]
   }
 };
@@ -172,6 +174,15 @@ const services = [
     image: roofing,
     productCategory: "roofing",
   },
+  {
+    icon: "🎯",
+    title: "LASER WORKS",
+    desc: "Precision CNC laser cutting for custom metal designs",
+    seoDesc: "High-precision laser cutting for MS and SS sheets, creating intricate patterns for gates, partitions, and decorative elements.",
+    category: "CNC Laser Cutting",
+    image: laserImg,
+    productCategory: "ss",
+  },
 ];
 
 const whyUs = [
@@ -186,8 +197,8 @@ const whyUs = [
   {
     Icon: Ruler,
     title: "Precision Fabrication",
-    desc: "Every cut, weld and finish is executed with laser accuracy. We don't cut corners — only metal.",
-    highlights: ["Laser-accurate cuts", "Zero-tolerance fits", "Quality inspected"],
+    desc: "Every cut, weld and finish is executed with absolute accuracy. We don't cut corners — only metal.",
+    highlights: ["Accuracy cutting Edges", "Zero-tolerance fits", "Quality inspected"],
     accent: "#2d5a8e",
     bg: fabricationImg,
   },
@@ -231,7 +242,7 @@ const serviceTags = [
   "Window Grill", "Steel Grill", "Balcony Railing", "Staircase Railing",
   "Steel Handrail", "Rolling Shutter", "Shop Shutter", "Aluminium Window",
   "Glass Door", "Toughened Glass", "ACP Cladding", "Facade Panels",
-  "Steel Pergola", "Metal Canopy", "Fabrication Near Me",
+  "Steel Pergola", "Metal Canopy", "Fabrication Near Me", "Laser Cutting", "CNC Laser Cutting",
 ];
 
 
@@ -460,7 +471,7 @@ const SEOContentSection = () => (
         <p className="text-slate-500 text-sm mt-3 max-w-2xl mx-auto leading-relaxed">
           Whether you're searching for <strong>steel gate fabrication near me</strong>, a reliable{" "}
           <strong>railing fabrication shop near me</strong>, or professional{" "}
-          <strong>aluminium work near me</strong> — {COMPANY_NAME} is Trichy's one-stop solution
+          <strong>elevation and aluminium and glass work (acp)</strong> near me — {COMPANY_NAME} is Trichy's one-stop solution
           for all metal, glass and elevation needs.
         </p>
       </div>
