@@ -59,7 +59,7 @@ const GeneralFabrication = () => {
                   Sometimes, off-the-shelf solutions just won't cut it. At RIITS Metal Craft, our **General Fabrication** service is designed to tackle unique challenges and create bespoke metal structures tailored to your exact specifications.
                 </p>
                 <p className="mb-6">
-                  From architectural metal accents for modern interiors to large-scale structural repairs, we offer a versatile range of fabrication techniques. Our facility is equipped for precision laser cutting, CNC bending, and expert welding across various metals.
+                  From architectural metal accents for modern interiors to large-scale structural repairs, we offer a versatile range of fabrication techniques. Our facility is equipped for precision laser cutting and expert welding across various metals.
                 </p>
                 
                 <h3 className="text-xl font-bold text-slate-800 mb-4 uppercase tracking-wide">Our General Services:</h3>

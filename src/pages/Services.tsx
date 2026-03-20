@@ -12,7 +12,7 @@ import servicesHero from "../assets/heropage/services-hero.webp";
 import resSvcImg from "../assets/residential-service.jpeg";
 import comSvcImg from "../assets/commercial-service.jpeg";
 import indSvcImg from "../assets/industrial-service.jpeg";
-import ProcessSection from "../components/ProcessSection";
+
 
 /* ─── DATA ──────────────────────────────────────────────────────────── */
 const serviceAreas = [
@@ -529,7 +529,7 @@ const Services = () => {
       {/* ══════════════════════════════════════════
           PROCESS
       ══════════════════════════════════════════ */}
-      <ProcessSection />
+
 
       {/* ══════════════════════════════════════════
           CTA

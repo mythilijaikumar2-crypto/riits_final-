@@ -229,7 +229,7 @@ const productCategories = [
       },
       {
         name: "Decorative Facade Panels",
-        desc: "Custom laser-cut and CNC-routed metal panels for facades — feature walls and building exterior cladding.",
+        desc: "Custom laser-cut metal panels for facades — feature walls and building exterior cladding.",
         materials: "MS / SS / Aluminium sheets",
         applications: "Feature walls, building facades",
         image: facadePanelImg,
