@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
+
 import { motion, useInView } from "framer-motion";
 import {
   Phone, MessageCircle, ArrowRight, Star, CheckCircle2,
@@ -513,12 +514,14 @@ const Services = () => {
                       </li>
                     ))}
                   </ul>
-                  <div
+                  <Link
+                    to="/projects"
+                    state={{ filter: area.title }}
                     className="mt-6 pt-5 border-t border-slate-100 flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-opacity opacity-0 group-hover:opacity-100"
                     style={{ color: area.color }}
                   >
                     Explore Services <ArrowRight className="w-3.5 h-3.5" />
-                  </div>
+                  </Link>
                 </div>
               </div>
             ))}

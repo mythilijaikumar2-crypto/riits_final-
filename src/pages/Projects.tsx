@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 import { motion, AnimatePresence } from "framer-motion";
 import SectionHeading from "../components/SectionHeading";
 import { TurtleButton } from "../components/TurtleButton";
@@ -262,6 +264,8 @@ const Projects = () => {
     return () => clearInterval(id);
   }, []);
 
+  const location = useLocation();
+
   useEffect(() => {
     if (selectedProject) {
       document.body.style.overflow = "hidden";
@@ -272,6 +276,20 @@ const Projects = () => {
       document.body.style.overflow = "unset";
     };
   }, [selectedProject]);
+
+  // Handle scroll to category if arriving from Services page with filter state
+  useEffect(() => {
+    if (location.state?.filter) {
+      const filterId = location.state.filter.toLowerCase();
+      const element = document.getElementById(filterId);
+      if (element) {
+        // Delay slightly to ensure layout is ready and ScrollToTop has finished
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 300);
+      }
+    }
+  }, [location]);
 
   return (
     <main className="pt-20">
@@ -438,6 +456,7 @@ const Projects = () => {
       {projectCategories.map((cat, catIdx) => (
         <section
           key={cat.title}
+          id={cat.title.toLowerCase()}
           className={`section-padding ${catIdx % 2 === 0 ? "bg-background" : "bg-muted"}`}
         >
           <div className="container-main">
