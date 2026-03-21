@@ -84,7 +84,7 @@ const ProcessSection: React.FC = () => {
 
     /* Auto-advance every 3.5 s */
     useEffect(() => {
-        const t = setInterval(() => setActive((p) => (p + 1) % STEPS.length), 3500);
+        const t = setInterval(() => setActive((p) => (p + 1) % STEPS.length), 2500);
         return () => clearInterval(t);
     }, []);
 
@@ -95,7 +95,7 @@ const ProcessSection: React.FC = () => {
         const t = setTimeout(() => {
             setDisplayed(active);
             setFading(false);
-        }, 220); // half of the CSS transition
+        }, 150); // half of the CSS transition
         return () => clearTimeout(t);
     }, [active, displayed]);
 
@@ -123,20 +123,20 @@ const ProcessSection: React.FC = () => {
                 </div>
 
                 {/* ── Horizontal progress pill bar ──────────────────── */}
-                <div className="flex items-center gap-3 mb-4 max-w-lg mx-auto">
+                <div className="flex items-center gap-1.5 sm:gap-3 mb-4 max-w-lg mx-auto">
                     <div className="flex-1 h-2 rounded-full bg-white/15 overflow-hidden">
                         <div
                             className="h-full rounded-full bg-white transition-all duration-700 ease-in-out"
                             style={{ width: `${progressPct}%` }}
                         />
                     </div>
-                    <span className="text-white/90 text-xs font-semibold font-heading uppercase tracking-wider whitespace-nowrap">
+                    <span className="text-white/90 text-[10px] sm:text-xs font-semibold font-heading uppercase tracking-wider whitespace-nowrap">
                         {active + 1} / {STEPS.length}
                     </span>
                 </div>
 
                 {/* ── Main two-column layout ─────────────────────────── */}
-                <div className="grid lg:grid-cols-2 gap-6 items-center">
+                <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 items-center">
 
                     {/* LEFT — vertical timeline ─────────────────────── */}
                     <div className="relative flex flex-col">
@@ -159,10 +159,10 @@ const ProcessSection: React.FC = () => {
                                         onClick={() => handleStepClick(i)}
                                         onMouseEnter={() => handleStepClick(i)}
                                         aria-label={`Switch to ${step.title}`}
-                                        className="flex items-center gap-5 text-left group py-1.5 focus:outline-none"
+                                        className="flex items-start gap-3 sm:gap-5 text-left group py-3 focus:outline-none"
                                     >
                                         {/* ── Node circle ── */}
-                                        <div className="relative shrink-0 z-10">
+                                        <div className="relative shrink-0 z-10 mt-1">
                                             {isActive && (
                                                 <span className="absolute inset-0 rounded-full bg-white/30 animate-ping" />
                                             )}
@@ -170,10 +170,10 @@ const ProcessSection: React.FC = () => {
                                                 className={[
                                                     "w-9 h-9 rounded-full border-2 flex items-center justify-center text-xs font-black font-heading transition-all duration-300",
                                                     isActive
-                                                        ? "bg-white border-white text-[#084158]"
+                                                        ? "bg-white border-white text-[#084158] shadow-[0_0_20px_rgba(255,255,255,0.3)]"
                                                         : isPast
-                                                            ? "bg-white/40 border-white/60 text-white"
-                                                            : "bg-transparent border-white/50 text-white/90",
+                                                            ? "bg-[#084158] border-white/60 text-white"
+                                                            : "bg-[#020617] border-white/20 text-white/50",
                                                 ].join(" ")}
                                             >
                                                 {isPast && !isActive ? "✓" : step.num}
@@ -261,7 +261,7 @@ const ProcessSection: React.FC = () => {
                                     className="w-full h-full object-cover select-none"
                                     style={{
                                         opacity: fading ? 0 : 1,
-                                        transition: "opacity 220ms ease-in-out",
+                                        transition: "opacity 150ms ease-in-out",
                                     }}
                                     draggable={false}
                                 />
@@ -274,7 +274,7 @@ const ProcessSection: React.FC = () => {
                                     style={{
                                         opacity: fading ? 0 : 1,
                                         transform: fading ? "translateY(8px)" : "translateY(0)",
-                                        transition: "opacity 220ms ease-in-out, transform 220ms ease-in-out",
+                                        transition: "opacity 150ms ease-in-out, transform 150ms ease-in-out",
                                     }}
                                 >
                                     <span className="text-blue-400 text-[10px] font-black uppercase tracking-[0.2em]">
@@ -304,14 +304,14 @@ const ProcessSection: React.FC = () => {
                 </div>
 
                 {/* ── Bottom dot navigator ─────────────────────────── */}
-                <div className="flex justify-center gap-2 mt-4">
+                <div className="flex justify-center gap-1.5 sm:gap-2 mt-4">
                     {STEPS.map((_, i) => (
                         <button
                             key={i}
                             onClick={() => handleStepClick(i)}
                             title={`Step ${i + 1}`}
                             aria-label={`Go to step ${i + 1}`}
-                            className="p-3 transition-all duration-300 focus:outline-none group"
+                            className="p-2 sm:p-3 transition-all duration-300 focus:outline-none group"
                         >
                             <div
                                 className="rounded-full transition-all duration-300 group-hover:scale-110"

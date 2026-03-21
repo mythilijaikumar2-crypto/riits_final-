@@ -666,7 +666,7 @@ const Index = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % services.length);
-    }, 5000);
+    }, 3000);
     return () => clearInterval(timer);
   }, []);
 
@@ -735,7 +735,7 @@ const Index = () => {
                     />
                   </motion.div>
 
-                  <div className="relative flex-1 flex items-center justify-center overflow-visible min-h-[300px] md:min-h-[320px] pt-8 md:pt-0">
+                  <div className="relative flex-1 flex items-center justify-center overflow-visible min-h-[450px] sm:min-h-[320px] pt-8 md:pt-0">
                     <AnimatePresence>
                       <motion.div
                         key={services[currentSlide].title}
@@ -773,13 +773,13 @@ const Index = () => {
                     </AnimatePresence>
                   </div>
 
-                  <div className="flex justify-center gap-2 mt-4">
+                  <div className="flex justify-center gap-1.5 sm:gap-2 mt-10 sm:mt-4">
                     {services.map((_, i) => (
                       <button
                         key={i}
                         onClick={() => setCurrentSlide(i)}
                         aria-label={`Go to slide ${i + 1}`}
-                        className="p-4 transition-all duration-300 hover:scale-110 active:scale-95 outline-none group"
+                        className="p-1 sm:p-4 transition-all duration-300 hover:scale-110 active:scale-95 outline-none group"
                       >
                         <div
                           className={`h-2 rounded-full transition-all duration-300 ${currentSlide === i

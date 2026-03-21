@@ -100,8 +100,8 @@ const FontLoader = () => (
       text-align: center;
       position: relative;
       overflow: hidden;
-      transition: all 0.6s cubic-bezier(0.23,1,0.32,1);
-      box-shadow: 0 15px 35px -5px rgba(13,37,87,0.05);
+      transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+      box-shadow: 0 10px 25px -5px rgba(13,37,87,0.05);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -111,7 +111,7 @@ const FontLoader = () => (
       transform: translateZ(0);
     }
     .about-stat-card:hover {
-      transform: translateY(-15px) scale(1.02);
+      transform: translateY(-12px) scale(1.05);
       border-color: rgba(37,99,235,0.4);
       background: white;
       box-shadow: 0 45px 90px -20px rgba(37,99,235,0.2);
@@ -125,9 +125,9 @@ const FontLoader = () => (
       background: linear-gradient(135deg, var(--navy) 0%, var(--blue-6) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);
+      transition: transform 0.4s cubic-bezier(0.23,1,0.32,1);
     }
-    .about-stat-card:hover .about-stat-val { transform: scale(1.1) translateY(-2px); }
+    .about-stat-card:hover .about-stat-val { transform: scale(1.05) translateY(-2px); }
     .about-stat-lbl {
       font-size: 0.75rem;
       font-weight: 800;
@@ -144,10 +144,10 @@ const FontLoader = () => (
       inset: 0;
       background: radial-gradient(circle at center, var(--blue-6), transparent 70%);
       opacity: 0;
-      transition: opacity 0.6s ease;
+      transition: opacity 0.4s ease;
       z-index: -1;
     }
-    .about-stat-card:hover::after { opacity: 0.05; }
+    .about-stat-card:hover::after { opacity: 0.08; }
     .about-stat-card::before {
       content: '';
       position: absolute;
@@ -158,12 +158,12 @@ const FontLoader = () => (
       background: linear-gradient(90deg, var(--blue-6), var(--blue-3), var(--blue-6));
       background-size: 200% 100%;
       transform: scaleX(0);
-      transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);
+      transition: transform 0.4s cubic-bezier(0.23,1,0.32,1);
       transform-origin: left;
     }
     .about-stat-card:hover::before {
       transform: scaleX(1);
-      animation: side-shimmer 2s linear infinite;
+      animation: side-shimmer 1.2s linear infinite;
     }
     @keyframes side-shimmer {
       0%   { background-position: 100% 0; }
@@ -552,7 +552,7 @@ const MemoizedCoverageMap = memo(CoverageMap);
 /* ══════════════════════════════════════════
     COUNTER
 ══════════════════════════════════════════ */
-const Counter = ({ value, duration = 2 }: { value: string; duration?: number }) => {
+const Counter = ({ value, duration = 1.2 }: { value: string; duration?: number }) => {
   const [displayValue, setDisplayValue] = useState(0);
   const numericValue = parseInt(value, 10);
   const isNumeric = !isNaN(numericValue);

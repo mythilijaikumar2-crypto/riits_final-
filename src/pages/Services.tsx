@@ -471,7 +471,7 @@ const Services = () => {
                 key={area.title}
                 className="group relative rounded-3xl overflow-hidden cursor-default transition-transform duration-300 hover:-translate-y-2"
               >
-                <div className="relative overflow-hidden h-56 flex flex-col justify-end p-8">
+                <div className="relative overflow-hidden h-44 sm:h-56 flex flex-col justify-end p-5 sm:p-8">
                   <div className="absolute inset-0 bg-slate-100">
                     <img
                       src={area.image}
@@ -499,12 +499,12 @@ const Services = () => {
                   </h3>
                 </div>
 
-                <div className="bg-white p-8 border border-slate-100 rounded-b-3xl">
-                  <ul className="space-y-3">
+                <div className="bg-white p-5 sm:p-8 border border-slate-100 rounded-b-3xl">
+                  <ul className="space-y-2.5 sm:space-y-3">
                     {area.items.map((item) => (
                       <li
                         key={item.name}
-                        className="flex items-center gap-3 text-sm text-slate-600 group-hover:gap-4 transition-all duration-300"
+                        className="flex items-center gap-2.5 sm:gap-3 text-sm text-slate-600 group-hover:gap-4 transition-all duration-300"
                       >
                         <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: area.color }} />
                         <Link to={`/services/${item.slug}`} className="hover:text-blue-600 transition-colors">
