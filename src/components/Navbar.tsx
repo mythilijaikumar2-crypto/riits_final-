@@ -76,7 +76,8 @@ const Navbar = () => {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         style={{ willChange: "transform", transform: "translateZ(0)" }}
       >
-        <div className="container-main flex items-center justify-between h-16 lg:h-20 px-4 sm:px-6 lg:px-8">
+        <div className="container-main flex items-center justify-between h-20 lg:h-24 px-4 sm:px-6 lg:px-8">
+
 
           {/* Logo */}
           <Link to="/" className="flex items-center gap-0 group" aria-label={`${COMPANY_NAME} Home`}>
@@ -91,7 +92,7 @@ const Navbar = () => {
               <motion.img 
                 src={LOGO_EMBLEM} 
                 alt={`${BRAND_NAME} Emblem`}
-                className="w-16 h-16 lg:w-24 lg:h-24 object-contain"
+                className="w-20 h-20 lg:w-28 lg:h-28 object-contain"
                 whileHover={{ 
                   scale: 1.1
                 }}
@@ -112,11 +113,11 @@ const Navbar = () => {
               <img 
                 src={LOGO_TEXT} 
                 alt={COMPANY_NAME}
-                className="h-12 lg:h-28 w-auto object-contain transition-all duration-300"
+                className="h-16 lg:h-32 w-auto object-contain transition-all duration-300"
                 style={{ 
                   filter: scrolled 
-                    ? 'drop-shadow(0.3px 0px 0px #000) drop-shadow(-0.3px 0px 0px #000) drop-shadow(0px 0.3px 0px #000) drop-shadow(0px -0.3px 0px #000) contrast(1.1)' 
-                    : 'brightness(0) saturate(100%) invert(0%) drop-shadow(0.3px 0px 0px #000) drop-shadow(-0.3px 0px 0px #000) drop-shadow(0px 0.3px 0px #000) drop-shadow(0px -0.3px 0px #000) contrast(1.1)'
+                    ? 'drop-shadow(0.5px 0px 0px #000) drop-shadow(-0.5px 0px 0px #000) drop-shadow(0px 0.5px 0px #000) drop-shadow(0px -0.5px 0px #000) contrast(1.1)' 
+                    : 'brightness(0) saturate(100%) invert(0%) drop-shadow(0.5px 0px 0px #fff) drop-shadow(-0.5px 0px 0px #fff) drop-shadow(0px 0.5px 0px #fff) drop-shadow(0px -0.5px 0px #fff) contrast(1.2)'
                 }}
               />
             </motion.div>
