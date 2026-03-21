@@ -1,19 +1,12 @@
 import { Link } from "react-router-dom";
 import { Phone, MapPin, Mail } from "lucide-react";
-import { CONTACT_DETAILS, formatTelLink, getMailtoLink, COMPANY_NAME, BRAND_NAME, LOGO_EMBLEM } from "../config/contact";
+import { CONTACT_DETAILS, formatTelLink, getMailtoLink, COMPANY_NAME } from "../config/contact";
 
 const Footer = () => (
   <footer className="bg-slate-950 text-white">
     <div className="container-main section-padding">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         <div className="flex flex-col">
-          <Link to="/" className="mb-6 group" aria-label={`${COMPANY_NAME} Home`}>
-            <img 
-              src={LOGO_EMBLEM} 
-              alt={`${BRAND_NAME} Emblem`}
-              className="w-24 h-24 object-contain transition-transform duration-500 group-hover:rotate-12"
-            />
-          </Link>
           <p className="text-sm opacity-80 leading-relaxed">
             The Art of Metal. Premium fabrication, elevation & cladding solutions based in Trichy, Tamil Nadu.
           </p>

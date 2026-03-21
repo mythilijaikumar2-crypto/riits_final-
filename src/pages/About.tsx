@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import React, { useState, memo } from "react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -14,20 +14,20 @@ import aboutHero from "../assets/heropage/about-hero.webp";
 /* ══════════════════════════════════════════
     SCROLL REVEAL WRAPPER
 ══════════════════════════════════════════ */
-const R = ({ children, delay = 0, dir = "up", margin = "-100px" }: any) => {
+const R = ({ children, delay = 0, duration = 0.5, dir = "up", margin = "-50px" }: any) => {
   const v = {
-    up: { y: 24, x: 0 },
-    down: { y: -24, x: 0 },
-    left: { x: 24, y: 0 },
-    right: { x: -24, y: 0 },
-  }[dir as "up" | "down" | "left" | "right"] || { y: 24, x: 0 };
+    up: { y: 20 },
+    down: { y: -20 },
+    left: { x: 20 },
+    right: { x: -20 },
+  }[dir as "up" | "down" | "left" | "right"] || { y: 20 };
 
   return (
     <motion.div
       initial={{ opacity: 0, ...v }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, margin }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration, delay, ease: "easeOut" }}
     >
       {children}
     </motion.div>
@@ -39,7 +39,6 @@ const R = ({ children, delay = 0, dir = "up", margin = "-100px" }: any) => {
 ══════════════════════════════════════════ */
 const FontLoader = () => (
   <style>{`
-    @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap');
     :root {
       --navy:    #0d2557;
       --blue-7:  #1d4ed8;
@@ -552,14 +551,42 @@ const MemoizedCoverageMap = memo(CoverageMap);
 /* ══════════════════════════════════════════
     COUNTER
 ══════════════════════════════════════════ */
-const Counter = ({ value, duration = 1.2 }: { value: string; duration?: number }) => {
+const Counter = ({ value, duration = 2 }: { value: string; duration?: number }) => {
   const [displayValue, setDisplayValue] = useState(0);
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
   const numericValue = parseInt(value, 10);
   const isNumeric = !isNaN(numericValue);
+
+  React.useEffect(() => {
+    if (isInView && isNumeric) {
+      let start = 0;
+      const end = numericValue;
+      const totalFrames = Math.max(Math.floor((duration * 1000) / 16), 1);
+      const step = Math.ceil((end - start) / totalFrames);
+
+      const timer = setInterval(() => {
+        start += step;
+        if (start >= end) {
+          setDisplayValue(end);
+          clearInterval(timer);
+        } else {
+          setDisplayValue(start);
+        }
+      }, 16);
+      return () => clearInterval(timer);
+    }
+  }, [isInView, isNumeric, numericValue, duration]);
+
   return (
-    <motion.span onViewportEnter={() => { if (!isNumeric) return; let start = 0; const end = numericValue; const stepTime = Math.abs(Math.floor((duration * 1000) / (end - start))); const timer = setInterval(() => { start += 1; setDisplayValue(start); if (start >= end) clearInterval(timer); }, Math.max(stepTime, 16)); }}> {isNumeric ? displayValue : value} {isNumeric && value.includes("+") && "+"} {isNumeric && value.includes("%") && "%"} </motion.span>
+    <span ref={ref}>
+      {isNumeric ? displayValue : value}
+      {isNumeric && value.includes("+") && "+"}
+      {isNumeric && value.includes("%") && "%"}
+    </span>
   );
 };
+
 
 
 /* ══════════════════════════════════════════
@@ -856,8 +883,8 @@ const About = () => {
       <section className="relative z-20 -mt-20 lg:-mt-24 mb-10" style={{ overflow: "visible" }}>
         <div className="ctr">
           <div className="stat-grid-row">
-            {[{ val: "800+", lbl: "Projects Completed", delay: 0.1 }, { val: "15+", lbl: "Years Experience", delay: 0.2 }, { val: "100%", lbl: "Client Satisfaction", delay: 0.3 }, { val: "Pan TN", lbl: "Areas Served", delay: 0.4 }].map((stat, i) => (
-              <R key={i} delay={stat.delay}> <div className="about-stat-card group"> <div className="about-stat-val"> <Counter value={stat.val} /> </div> <div className="about-stat-lbl">{stat.lbl}</div> </div> </R>
+            {[{ val: "800+", lbl: "Projects Completed", delay: 0.05 }, { val: "15+", lbl: "Years Experience", delay: 0.1 }, { val: "100%", lbl: "Client Satisfaction", delay: 0.15 }, { val: "Pan TN", lbl: "Areas Served", delay: 0.2 }].map((stat, i) => (
+              <R key={i} delay={stat.delay} duration={0.4}> <div className="about-stat-card group"> <div className="about-stat-val"> <Counter value={stat.val} duration={2} /> </div> <div className="about-stat-lbl">{stat.lbl}</div> </div> </R>
             ))}
           </div>
         </div>

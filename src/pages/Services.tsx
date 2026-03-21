@@ -296,12 +296,12 @@ const Services = () => {
           }}
         />
 
-        <div className="absolute top-20 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium animate-float-slow">
-          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+        <div className="absolute top-20 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium lg:animate-float-slow">
+          <span className="w-2 h-2 rounded-full bg-green-400 lg:animate-pulse" />
           15+ Years of Expertise
         </div>
-        <div className="absolute bottom-20 left-[6%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium animate-float-medium">
-          <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+        <div className="absolute bottom-20 left-[6%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium lg:animate-float-medium">
+          <span className="w-2 h-2 rounded-full bg-blue-400 lg:animate-pulse" />
           800+ Projects Delivered
         </div>
 

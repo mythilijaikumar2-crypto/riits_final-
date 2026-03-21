@@ -37,7 +37,7 @@ import { PremiumServiceCards } from "../components/PremiumServiceCards/PremiumSe
 import ProcessSection from "../components/ProcessSection";
 import SEO from "../components/SEO";
 import MovingTags from "../components/MovingTags";
-import { CONTACT_DETAILS, formatTelLink, getWhatsAppUrl, COMPANY_NAME, BRAND_NAME, LOGO_EMBLEM } from "../config/contact";
+import { CONTACT_DETAILS, formatTelLink, getWhatsAppUrl, COMPANY_NAME, BRAND_NAME } from "../config/contact";
 
 /* ================= SCHEMA ================= */
 
@@ -290,12 +290,12 @@ const HeroSection = ({ isMobile }: { isMobile: boolean }) => (
     />
 
     {/* Floating stat badges */}
-    <div className="absolute top-24 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10 animate-float-slow">
-      <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+    <div className="absolute top-24 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10 lg:animate-float-slow">
+      <span className="w-2 h-2 rounded-full bg-amber-400 lg:animate-pulse" />
       15+ Years of Expertise
     </div>
-    <div className="absolute bottom-24 left-[6%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10 animate-float-medium">
-      <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+    <div className="absolute bottom-24 left-[6%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10 lg:animate-float-medium">
+      <span className="w-2 h-2 rounded-full bg-blue-400 lg:animate-pulse" />
       800+ Projects Delivered
     </div>
 
@@ -823,13 +823,6 @@ const Index = () => {
         >
           {/* Brand */}
           <div className="flex flex-col">
-            <Link to="/" className="mb-8 group" aria-label={`${COMPANY_NAME} Home`}>
-              <img 
-                src={LOGO_EMBLEM} 
-                alt={`${BRAND_NAME} Emblem`}
-                className="w-20 h-20 object-contain transition-transform duration-500 group-hover:rotate-12"
-              />
-            </Link>
             <p className="text-sm opacity-60 leading-relaxed">
               The Art of Metal. Premium steel gate fabrication, railing, rolling shutter, aluminium &amp;
               ACP cladding solutions based in Trichy, Tamil Nadu.
