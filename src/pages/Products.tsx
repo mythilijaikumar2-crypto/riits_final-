@@ -283,8 +283,8 @@ interface AnimatedButtonProps {
   onHoverEnd?: () => void;
 }
 
-export function AnimatedButton({ 
-  children, 
+export function AnimatedButton({
+  children,
   isActive = false,
   isPaused = false,
   onClick,
@@ -302,13 +302,13 @@ export function AnimatedButton({
     const rect = buttonRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    
+
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    
+
     const rotateXValue = ((y - centerY) / centerY) * -15;
     const rotateYValue = ((x - centerX) / centerX) * 15;
-    
+
     setRotateX(rotateXValue);
     setRotateY(rotateYValue);
   };
@@ -328,9 +328,8 @@ export function AnimatedButton({
   return (
     <motion.button
       ref={buttonRef}
-      className={`relative group px-3 sm:px-4 py-3 md:py-2.5 rounded-xl transition-all duration-500 outline-none whitespace-nowrap overflow-hidden ${
-        isActive ? "shadow-[0_15px_30px_-10px_rgba(37,99,235,0.4)]" : "hover:shadow-2xl"
-      }`}
+      className={`relative group px-3 sm:px-4 py-3 md:py-2.5 rounded-xl transition-all duration-500 outline-none whitespace-nowrap overflow-hidden ${isActive ? "shadow-[0_15px_30px_-10px_rgba(37,99,235,0.4)]" : "hover:shadow-2xl"
+        }`}
       style={{
         transformStyle: "preserve-3d",
         perspective: "1000px",
@@ -349,7 +348,7 @@ export function AnimatedButton({
         stiffness: 400,
         damping: 30,
       }}
-      whileTap={{ 
+      whileTap={{
         scale: 0.95,
         rotateX: 0,
         rotateY: 0,
@@ -402,13 +401,12 @@ export function AnimatedButton({
       {/* Text content */}
       <div style={{ transform: "translateZ(20px)" }}>
         <span
-          className={`relative z-10 text-[0.65rem] sm:text-[0.75rem] font-black uppercase tracking-[0.14em] transition-colors duration-500 drop-shadow-md ${
-            isActive
+          className={`relative z-10 text-[0.65rem] sm:text-[0.75rem] font-black uppercase tracking-[0.14em] transition-colors duration-500 drop-shadow-md ${isActive
               ? "text-slate-950"
               : isHovered
-              ? "text-white"
-              : "text-white/50"
-          }`}
+                ? "text-white"
+                : "text-white/50"
+            }`}
         >
           {children}
         </span>
@@ -418,7 +416,7 @@ export function AnimatedButton({
 }
 
 /* ── Benefit Card ── */
-const BenefitCard = memo(({ label, index, isActive }: { label: string; index: number; isActive: boolean }) => {
+const BenefitCard = memo(({ label, index, isActive, onClick, onHover }: { label: string; index: number; isActive: boolean; onClick?: () => void; onHover?: (hovering: boolean) => void }) => {
   const detail = benefitDetails[label] ?? { icon: "✅", desc: "Quality guaranteed." };
   return (
     <motion.div
@@ -427,6 +425,9 @@ const BenefitCard = memo(({ label, index, isActive }: { label: string; index: nu
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.4 }}
       className="benefit-wrapper"
+      onClick={() => onClick?.()}
+      onMouseEnter={() => onHover?.(true)}
+      onMouseLeave={() => onHover?.(false)}
     >
       <div className={`letter-image ${isActive ? "active" : ""}`}>
         <div className="animated-mail">
@@ -457,7 +458,7 @@ const ProductCard = memo(({ product, index }: { product: Product; index: number 
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
-      whileHover={{ y: -12 }}
+      whileHover={{ y: -12, zIndex: 50 }}
       className="card"
     >
       <div className="card-img">
@@ -489,13 +490,16 @@ const ProductCard = memo(({ product, index }: { product: Product; index: number 
 /* ── Category Section ── */
 const CategorySection = memo(({ category }: { category: Category }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   useEffect(() => {
+    if (!isAutoPlaying) return;
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % 4);
     }, 3000);
     return () => clearInterval(interval);
-  }, [category.id]);
+  }, [category.id, isAutoPlaying]);
 
   return (
     <section id={`section-${category.id}`} className="scroll-mt-24 pb-12" style={{ contentVisibility: 'auto' }}>
@@ -523,9 +527,22 @@ const CategorySection = memo(({ category }: { category: Category }) => {
           {BRAND_NAME} Benefits
         </h3>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {category.benefits.map((b, i) => (
-            <BenefitCard key={b} label={b} index={i} isActive={i === activeIndex} />
-          ))}
+          {category.benefits.map((b, i) => {
+            const isActuallyActive = i === activeIndex || (isAutoPlaying && i === hoveredIndex);
+            return (
+              <BenefitCard
+                key={b}
+                label={b}
+                index={i}
+                isActive={isActuallyActive}
+                onClick={() => {
+                  setActiveIndex(i);
+                  setIsAutoPlaying(false);
+                }}
+                onHover={(h) => setHoveredIndex(h ? i : null)}
+              />
+            );
+          })}
         </div>
       </div>
 
@@ -593,8 +610,8 @@ const Products = () => {
 
         .product-grid {
           display: grid;
-          gap: 4rem 2rem;
-          padding-top: 3rem;
+          gap: 4rem 4rem;
+          padding-top: 2rem;
         }
 
         .card {
@@ -613,19 +630,18 @@ const Products = () => {
         }
 
         .card:hover {
-          transform: translateY(-12px);
           box-shadow: rgba(50, 50, 93, 0.2) 0px 50px 100px -20px,
             rgba(37, 99, 235, 0.1) 0px 30px 60px -30px;
           border-color: #3b82f6;
+          z-index: 50;
         }
 
         .card-img {
           position: relative;
-          top: -25px;
           height: 220px;
           display: flex;
           justify-content: center;
-          padding: 0 0.5rem;
+          padding: 1.25rem 1.25rem 0;
         }
 
         .card-imgs {
@@ -638,18 +654,17 @@ const Products = () => {
         }
 
         .card:hover .card-imgs {
-          transform: scale(1.04);
+          transform: scale(1.02);
           box-shadow: rgba(37, 99, 235, 0.3) 0px 20px 40px -10px;
         }
 
         .project-info {
-          padding: 0 1.75rem 2rem;
+          padding: 1rem 1.75rem 2rem;
           display: flex;
           flex-direction: column;
           gap: 15px;
           position: relative;
           flex-grow: 1;
-          margin-top: -5px;
         }
 
         .project-title {
@@ -767,7 +782,6 @@ const Products = () => {
           height: 60px;
           background: white;
           z-index: 1;
-          overflow: hidden;
           transition: .4s .2s;
           border-radius: 4px;
           box-shadow: 0 2px 5px rgba(0,0,0,0.15);
@@ -826,30 +840,25 @@ const Products = () => {
           background: radial-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.0), rgba(0,0,0,0.0));
         }
 
-        .letter-image:hover .animated-mail,
         .letter-image.active .animated-mail {
           transform: translateY(20px);
         }
         
-        .letter-image:hover .animated-mail .top-fold,
         .letter-image.active .animated-mail .top-fold {
           transition: transform .4s, z-index .2s;
           transform: rotateX(180deg);
           z-index: 0;
         }
         
-        .letter-image:hover .animated-mail .letter,
         .letter-image.active .animated-mail .letter {
-          height: 195px;
+          height: 220px;
         }
 
-        .letter-image:hover .animated-mail .letter-context,
         .letter-image.active .animated-mail .letter-context {
           opacity: 1;
           transition-delay: 0.4s;
         }
         
-        .letter-image:hover .mail-shadow,
         .letter-image.active .mail-shadow {
           width: 250px;
         }

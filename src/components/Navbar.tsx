@@ -74,9 +74,17 @@ const Navbar = () => {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        style={{ willChange: "transform", transform: "translateZ(0)" }}
+        style={{
+          willChange: "transform",
+          transform: "translateZ(0)",
+          width: "100vw",
+          maxWidth: "100vw",
+          boxSizing: "border-box",
+          right: 0,
+        }}
       >
-        <div className="container-main flex items-center justify-between h-20 lg:h-24 px-4 sm:px-6 lg:px-8">
+        <div className="container-main flex items-center justify-between h-24 lg:h-32 px-4 sm:px-6 lg:px-8">
+
 
 
           {/* Logo */}
@@ -92,7 +100,7 @@ const Navbar = () => {
               <motion.img 
                 src={LOGO_EMBLEM} 
                 alt={`${BRAND_NAME} Emblem`}
-                className="w-20 h-20 lg:w-28 lg:h-28 object-contain"
+                className="w-24 h-24 lg:w-36 lg:h-36 object-contain"
                 whileHover={{ 
                   scale: 1.1
                 }}
@@ -113,7 +121,7 @@ const Navbar = () => {
               <img 
                 src={LOGO_TEXT} 
                 alt={COMPANY_NAME}
-                className="h-16 lg:h-32 w-auto object-contain transition-all duration-300"
+                className="h-20 lg:h-40 w-auto object-contain transition-all duration-300"
                 style={{ 
                   filter: scrolled 
                     ? 'drop-shadow(0.5px 0px 0px #000) drop-shadow(-0.5px 0px 0px #000) drop-shadow(0px 0.5px 0px #000) drop-shadow(0px -0.5px 0px #000) contrast(1.1)' 

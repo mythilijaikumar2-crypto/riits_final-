@@ -372,13 +372,9 @@ const Projects = () => {
         <div className="hero-overlay" />
         <div className="hero-grid-lines" />
 
-        <div className="absolute top-24 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10 animate-float-slow">
-          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+        <div className="absolute top-24 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10 lg:animate-float-slow">
+          <span className="w-2 h-2 rounded-full bg-green-400 lg:animate-pulse" />
           Residential · Commercial · Industrial
-        </div>
-        <div className="absolute bottom-24 left-[6%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10 animate-float-medium">
-          <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-          800+ Projects Delivered
         </div>
 
         <div className="container-main relative z-10">
@@ -386,7 +382,7 @@ const Projects = () => {
             <div>
               {/* Badge — local keyword */}
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-widest mb-4">
-                <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-blue-400 lg:animate-pulse" />
                 {BRAND_NAME} — Fabrication Projects in Trichy
               </div>
 

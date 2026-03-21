@@ -5,16 +5,15 @@ import { useEffect, lazy, Suspense } from "react";
 
 import FloatingSocialMenu from "./components/FloatingSocialMenu";
 
-// Lazy load pages for performance
-const Index = lazy(() => import("./pages/Index"));
-const About = lazy(() => import("./pages/About"));
-const Products = lazy(() => import("./pages/Products"));
-const Services = lazy(() => import("./pages/Services"));
-const Projects = lazy(() => import("./pages/Projects"));
-const Contact = lazy(() => import("./pages/Contact"));
-const NotFound = lazy(() => import("./pages/NotFound"));
+import Index from "./pages/Index";
+import About from "./pages/About";
+import Products from "./pages/Products";
+import Services from "./pages/Services";
+import Projects from "./pages/Projects";
+import Contact from "./pages/Contact";
+import NotFound from "./pages/NotFound";
 
-// Service Detail Pages
+// Service Detail Pages remain lazy loaded
 const ElevationWork = lazy(() => import("./pages/services/ElevationWork"));
 const AluminiumPartition = lazy(() => import("./pages/services/AluminiumPartition"));
 const AluminiumWindows = lazy(() => import("./pages/services/AluminiumWindows"));
