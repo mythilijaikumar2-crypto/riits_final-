@@ -88,11 +88,6 @@
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
-
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
 }
 
 /* Layout utilities */
@@ -155,725 +150,863 @@
   transform: translateZ(0);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   MOBILE RESPONSIVE FIXES - RIITS METAL CRAFT WEBSITE
-   
-   Add this CSS to your src/index.css file at the end.
-   These styles ONLY affect mobile devices (< 768px).
-   Desktop layout remains unchanged.
-═══════════════════════════════════════════════════════════════ */
-
 /* ─────────────────────────────────────────────────────────────
-   HOMEPAGE MOBILE FIXES
+   DESIGN TOKENS — single source of truth
 ───────────────────────────────────────────────────────────── */
+:root {
+  /* Hero heading — same on every page */
+  --hero-h1:        clamp(2rem, 6vw, 3.5rem);
+  --hero-h1-line:   1.05;
+  --hero-h1-track:  -0.02em;
 
-@media (max-width: 767px) {
-  
-  /* Hero Section Mobile Adjustments */
-  .projects-hero,
-  .products-hero,
-  .contact-hero,
-  .about-hero {
-    min-height: 85vh !important;
-    padding-top: 14vh !important;
-    padding-bottom: 10vh !important;
-  }
+  /* Section H2 */
+  --sec-h2:         clamp(1.5rem, 3.5vw, 2.25rem);
+  --sec-h2-line:    1.12;
+  --sec-h2-track:   -0.015em;
 
-  /* Mobile Hero Content Spacing */
-  .projects-hero .max-w-3xl,
-  .products-hero .max-w-3xl,
-  .contact-hero .max-w-3xl {
-    padding: 0 1.5rem;
-  }
+  /* Card / subsection H3 */
+  --card-h3:        clamp(1rem, 2.4vw, 1.3rem);
+  --card-h3-line:   1.25;
+  --card-h3-track:  -0.01em;
 
-  /* Mobile Heading Size Reduction */
-  .font-heading.text-3xl,
-  .font-heading.text-4xl,
-  .font-heading.text-5xl {
-    font-size: clamp(1.75rem, 7vw, 2.5rem) !important;
-    line-height: 1.15 !important;
-  }
+  /* Body text */
+  --body-size:      clamp(0.875rem, 2vw, 0.97rem);
+  --body-line:      1.72;
+  --body-track:     0.01em;
 
-  /* Mobile Button Size Reduction */
-  .btn,
-  button[class*="btn-"],
-  a[class*="btn-"],
-  .inline-flex.items-center.justify-center {
-    padding: 0.65rem 1.25rem !important;
-    font-size: 0.8rem !important;
-    min-height: 42px !important;
-    height: auto !important;
-  }
-
-  /* TurtleButton Mobile Size */
-  button[class*="TurtleButton"],
-  a[class*="TurtleButton"] {
-    padding: 0.65rem 1.5rem !important;
-    font-size: 0.75rem !important;
-    height: 44px !important;
-  }
-
-  /* Call Now Button Mobile */
-  button[class*="call_now"],
-  a[class*="call_now"] {
-    padding: 0.7rem 1.75rem !important;
-    font-size: 0.8rem !important;
-    height: 46px !important;
-  }
-
-  /* Card Animation Speed Adjustment */
-  .card,
-  .why-card,
-  .product-card,
-  .service-card {
-    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out !important;
-  }
-
-  .card:active,
-  .why-card:active {
-    transform: scale(0.98) !important;
-  }
-
-  /* Mobile Card Grid Spacing */
-  .cards-grid,
-  .product-grid,
-  .why-grid {
-    gap: 1.25rem !important;
-  }
-
-  /* Mobile Stats Grid */
-  .stat-grid-row {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 1rem !important;
-  }
-
-  /* Mobile Stat Card */
-  .about-stat-card {
-    padding: 1.5rem 1rem !important;
-    min-height: auto !important;
-  }
-
-  .about-stat-val {
-    font-size: 2.5rem !important;
-  }
-
-  .about-stat-lbl {
-    font-size: 0.65rem !important;
-  }
-
+  /* Small label / tag */
+  --label-size:     0.68rem;
+  --label-track:    0.22em;
+  --label-line:     1.5;
 }
 
+
 /* ─────────────────────────────────────────────────────────────
-   ABOUT PAGE MOBILE FIXES
+   1. GLOBAL RESETS
 ───────────────────────────────────────────────────────────── */
 
-@media (max-width: 767px) {
-
-  /* About Hero Mobile */
-  .ap .hero-content h1,
-  .ap .hero-content .dxl {
-    font-size: clamp(2rem, 8vw, 3rem) !important;
-  }
-
-  /* About Stats Mobile Layout */
-  .ap .stat-grid-row {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-
-  /* Vision Mission Cards Mobile */
-  .vm-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
-  }
-
-  .vm-card {
-    padding: 1.75rem !important;
-  }
-
-  .vm-icon {
-    width: 48px !important;
-    height: 48px !important;
-  }
-
-  .vm-title {
-    font-size: clamp(1.35rem, 5vw, 1.65rem) !important;
-  }
-
-  /* How We Deliver Cards Mobile */
-  .hwd-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.25rem !important;
-  }
-
-  .hwd-card {
-    padding: 1.5rem !important;
-  }
-
-  .hwd-icon {
-    width: 42px !important;
-    height: 42px !important;
-  }
-
-  /* Why Choose Us Cards Mobile */
-  .why-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .why-card {
-    min-height: 340px !important;
-    padding: 2rem 1.5rem !important;
-  }
-
-  /* Coverage Map Mobile */
-  .cov-row {
-    flex-direction: column !important;
-    gap: 2rem !important;
-  }
-
-  /* Mobile Button in Coverage */
-  .cov-row .inline-flex {
-    min-width: 100% !important;
-    justify-content: center !important;
-  }
-
+p, li, span:not(.font-heading):not(.font-black) {
+  line-height:     var(--body-line);
+  letter-spacing:  var(--body-track);
 }
 
-/* ─────────────────────────────────────────────────────────────
-   PRODUCTS PAGE MOBILE FIXES
-───────────────────────────────────────────────────────────── */
-
-@media (max-width: 767px) {
-
-  /* Products Nav Tabs Mobile */
-  nav[onmouseenter] .flex {
-    gap: 0.5rem !important;
-    padding: 0.5rem !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    scrollbar-width: none !important;
-  }
-
-  nav[onmouseenter] .flex::-webkit-scrollbar {
-    display: none !important;
-  }
-
-  /* Products Tab Button Mobile */
-  nav[onmouseenter] button {
-    padding: 0.6rem 1rem !important;
-    font-size: 0.7rem !important;
-    white-space: nowrap !important;
-    min-width: auto !important;
-  }
-
-  /* Products Grid Mobile */
-  .products-grid {
-    grid-template-columns: 1fr !important;
-    gap: 2rem !important;
-  }
-
-  /* Product Card Mobile */
-  .product-card {
-    min-height: auto !important;
-  }
-
-  .card-img {
-    height: 200px !important;
-  }
-
-  .project-info {
-    padding: 0 1.25rem 1.5rem !important;
-  }
-
-  .project-title {
-    font-size: 1.35rem !important;
-  }
-
-  /* Product Buttons Mobile Alignment */
-  .product-buttons {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0.65rem !important;
-    width: 100% !important;
-  }
-
-  .product-buttons .btn {
-    width: 100% !important;
-    justify-content: center !important;
-  }
-
-  /* Benefit Card Mobile */
-  .benefit-wrapper {
-    height: 220px !important;
-  }
-
-  .letter-image {
-    width: 180px !important;
-    height: 180px !important;
-  }
-
-  .animated-mail {
-    width: 180px !important;
-  }
-
+h1, h2, h3, h4, h5, h6 {
+  line-height:    1.1;
+  letter-spacing: -0.01em;
 }
 
+
 /* ─────────────────────────────────────────────────────────────
-   SERVICES & PROJECTS MOBILE FIXES
+   2. SECTION SUBTITLE LABEL (the small uppercase tag above H2)
+      SectionHeading.tsx renders this as .section-subtitle
+      Also remove Tailwind overrides: text-[1.85rem] leading-[1.75rem]
+      from SectionHeading.tsx manually (see note at bottom)
 ───────────────────────────────────────────────────────────── */
 
-@media (max-width: 767px) {
-
-  /* Service Area Cards Mobile */
-  .service-area-card,
-  .project-card {
-    margin-bottom: 1.5rem !important;
-  }
-
-  /* Service List Items Mobile */
-  .service-list li {
-    font-size: 0.85rem !important;
-    padding: 0.5rem 0 !important;
-  }
-
-  /* Projects Grid Mobile */
-  .project-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
-  }
-
-  /* Project Modal Mobile */
-  .fixed.inset-0 .relative {
-    max-width: 95vw !important;
-    max-height: 92vh !important;
-    margin: 0 !important;
-  }
-
-  .fixed.inset-0 [class*="lg:w-3/5"] {
-    height: 250px !important;
-  }
-
-  .fixed.inset-0 [class*="lg:w-2/5"] {
-    padding: 1.5rem !important;
-  }
-
+.section-subtitle,
+p.section-subtitle {
+  font-size:      var(--label-size)  !important;
+  font-weight:    800                !important;
+  letter-spacing: var(--label-track) !important;
+  line-height:    var(--label-line)  !important;
+  text-transform: uppercase          !important;
 }
 
+
 /* ─────────────────────────────────────────────────────────────
-   CONTACT PAGE MOBILE FIXES
+   3. HERO HEADINGS — UNIFIED across Index / About / Contact /
+      Products / Projects / Services + service detail pages.
+      All use the same --hero-h1 token.
 ───────────────────────────────────────────────────────────── */
 
-@media (max-width: 767px) {
-
-  /* Contact Cards Mobile */
-  .contact-card {
-    padding: 1.75rem !important;
-  }
-
-  .contact-card h3 {
-    font-size: 1rem !important;
-  }
-
-  /* Contact Map Mobile */
-  iframe[title*="Location"] {
-    height: 320px !important;
-  }
-
-  /* Contact Form Mobile */
-  .contact-form {
-    padding: 1.5rem !important;
-  }
-
-  .contact-form input,
-  .contact-form textarea {
-    font-size: 0.95rem !important;
-    padding: 0.75rem !important;
-  }
-
+/* Index hero "Where Steel Meets Mastery" (aria-hidden p) */
+section.relative.h-screen p.font-heading[aria-hidden="true"],
+/* Contact hero */
+.contact-hero p.font-heading[aria-hidden="true"],
+/* Products hero */
+.products-hero p.font-heading[aria-hidden="true"],
+/* Projects hero */
+.projects-hero p[aria-hidden="true"],
+/* Services hero */
+section.relative.h-screen p[aria-hidden="true"].font-heading,
+/* Service detail pages h1 */
+main.overflow-hidden.bg-white section h1.font-heading {
+  font-size:      var(--hero-h1)    !important;
+  line-height:    var(--hero-h1-line) !important;
+  letter-spacing: var(--hero-h1-track) !important;
+  word-break:     break-word;
 }
 
+/* ── About page — .dxl is 5.8rem, .dlg is 3.4rem — both too big ── */
+
+/* About hero "Precision Steelcraft. Proven Trust." */
+.ap section p.font-heading[aria-hidden="true"],
+.ap .dxl {
+  font-size:      var(--hero-h1)    !important;
+  line-height:    var(--hero-h1-line) !important;
+  letter-spacing: var(--hero-h1-track) !important;
+}
+
+/* About section subheadings (.dlg used for "Our Vision", "How We Deliver" etc.) */
+.ap .dlg,
+.ap h2.dlg,
+.dlg {
+  font-size:      var(--sec-h2)     !important;
+  line-height:    var(--sec-h2-line) !important;
+  letter-spacing: var(--sec-h2-track) !important;
+}
+
+
 /* ─────────────────────────────────────────────────────────────
-   NAVBAR MOBILE FIXES
+   4. SECTION H2 — all pages
 ───────────────────────────────────────────────────────────── */
+
+/* SectionHeading component h2 */
+h2.heading-lg {
+  font-size:      var(--sec-h2)     !important;
+  line-height:    var(--sec-h2-line) !important;
+  letter-spacing: var(--sec-h2-track) !important;
+}
+
+/* Generic large H2s on all pages */
+h2.text-3xl, h2.text-4xl, h2.text-5xl,
+h2.font-black, h2.font-extrabold {
+  font-size:      var(--sec-h2)     !important;
+  line-height:    var(--sec-h2-line) !important;
+  letter-spacing: var(--sec-h2-track) !important;
+}
+
+/* About page specific section H2s (.hwd-title, .vm-title) */
+.hwd-title {
+  font-size:      var(--sec-h2)     !important;
+  line-height:    var(--sec-h2-line) !important;
+  letter-spacing: var(--sec-h2-track) !important;
+}
+
+.vm-title {
+  font-size:      clamp(1.2rem, 2.8vw, 1.6rem) !important;
+  line-height:    1.1  !important;
+  letter-spacing: 0.02em !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   5. HERO BODY PARAGRAPH — the lead text under every hero heading
+───────────────────────────────────────────────────────────── */
+
+/* All hero sections lead paragraph */
+.contact-hero p[class*="text-white/65"],
+.contact-hero p[class*="text-white/70"],
+.products-hero p[class*="text-white/65"],
+.products-hero p[class*="text-white/70"],
+.projects-hero p[class*="text-white/70"],
+section.relative.h-screen p[class*="text-white/65"],
+section.bg-slate-950 p[class*="text-white/65"],
+.ap section p[class*="text-white/70"] {
+  font-size:      var(--body-size)  !important;
+  line-height:    var(--body-line)  !important;
+  letter-spacing: var(--body-track) !important;
+  max-width:      52ch;
+}
+
+/* Services page hero */
+section.relative.h-screen p[class*="text-white/65"]:not(.font-heading) {
+  font-size:      var(--body-size)  !important;
+  line-height:    var(--body-line)  !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   6. ABOUT PAGE — stat cards, vm/hwd/why cards
+───────────────────────────────────────────────────────────── */
+
+.about-stat-val {
+  font-size:      clamp(2rem, 7vw, 3rem) !important;
+  line-height:    1                      !important;
+  letter-spacing: -0.02em               !important;
+}
+
+.about-stat-lbl {
+  font-size:      0.62rem  !important;
+  letter-spacing: 0.16em   !important;
+  line-height:    1.5      !important;
+}
+
+/* Vision / Mission card body */
+.vm-content {
+  font-size:      var(--body-size)  !important;
+  line-height:    var(--body-line)  !important;
+  letter-spacing: var(--body-track) !important;
+}
+
+.vm-tag {
+  font-size:      0.65rem  !important;
+  letter-spacing: 0.08em   !important;
+}
+
+/* HWD cards */
+.hwd-card-title {
+  font-size:      var(--card-h3)     !important;
+  line-height:    var(--card-h3-line) !important;
+  letter-spacing: var(--card-h3-track) !important;
+}
+
+.hwd-card-desc {
+  font-size:      var(--body-size)  !important;
+  line-height:    var(--body-line)  !important;
+  letter-spacing: var(--body-track) !important;
+}
+
+.hwd-subtitle {
+  font-size:      var(--body-size)  !important;
+  line-height:    var(--body-line)  !important;
+  letter-spacing: var(--body-track) !important;
+}
+
+/* Why card (dark navy bg on about page) */
+.why-card-title {
+  font-size:      clamp(1rem, 2.2vw, 1.25rem) !important;
+  letter-spacing: 0.04em !important;
+  line-height:    1.2    !important;
+}
+
+.why-card-body {
+  font-size:      var(--body-size)  !important;
+  line-height:    var(--body-line)  !important;
+  letter-spacing: var(--body-track) !important;
+}
+
+/* About page .dsm (small uppercase heading) */
+.ap .dsm,
+.dsm {
+  font-size:      clamp(0.85rem, 2vw, 1rem) !important;
+  letter-spacing: 0.1em !important;
+  line-height:    1.3   !important;
+}
+
+/* About page generic body class */
+.ap .body,
+.body {
+  font-size:      var(--body-size)  !important;
+  line-height:    var(--body-line)  !important;
+  letter-spacing: var(--body-track) !important;
+}
+
+/* ltag — small line+label combo */
+.ltag {
+  font-size:      var(--label-size)  !important;
+  letter-spacing: var(--label-track) !important;
+  line-height:    var(--label-line)  !important;
+}
+
+/* Material cards on About */
+.mat-card {
+  font-size:      var(--body-size) !important;
+  line-height:    1.5              !important;
+  letter-spacing: var(--body-track) !important;
+}
+
+/* District badges */
+.dist-badge {
+  font-size:      0.68rem  !important;
+  letter-spacing: 0.06em   !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   7. INDEX PAGE — services slider, why-us, stats, testimonials
+───────────────────────────────────────────────────────────── */
+
+/* Services slider card heading */
+.card h3.font-heading {
+  font-size:      clamp(0.82rem, 2vw, 0.95rem) !important;
+  letter-spacing: 0.12em !important;
+  line-height:    1.3    !important;
+}
+
+/* Why-us card heading */
+.why-card h3.text-xl {
+  font-size:      var(--card-h3)     !important;
+  line-height:    var(--card-h3-line) !important;
+  letter-spacing: var(--card-h3-track) !important;
+}
+
+/* Mini stats below why-us */
+.grid.grid-cols-2 .text-2xl,
+.grid.grid-cols-4 .text-2xl {
+  font-size:      clamp(1.3rem, 4vw, 1.6rem) !important;
+  letter-spacing: -0.015em !important;
+}
+
+/* Testimonial card text */
+[class*="w-[300px]"] p.italic,
+[class*="w-[360px]"] p.italic {
+  font-size:      clamp(0.78rem, 1.8vw, 0.85rem) !important;
+  line-height:    1.65 !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* Testimonial name */
+[class*="w-[300px]"] p[class*="text-[0.85rem]"],
+[class*="w-[360px]"] p[class*="text-[0.85rem]"] {
+  font-size:      clamp(0.78rem, 1.8vw, 0.85rem) !important;
+  letter-spacing: -0.005em !important;
+}
+
+/* CTA section */
+section.bg-slate-950 h2.text-white,
+section.bg-slate-950 h2 {
+  font-size:      var(--sec-h2)     !important;
+  line-height:    var(--sec-h2-line) !important;
+  letter-spacing: var(--sec-h2-track) !important;
+}
+
+section.bg-slate-950 p[class*="text-white/50"],
+section.bg-slate-950 p[class*="text-white/60"] {
+  font-size:      var(--body-size)  !important;
+  line-height:    var(--body-line)  !important;
+  letter-spacing: var(--body-track) !important;
+}
+
+/* SEO content section H2 */
+section.bg-white h2.text-2xl,
+section.bg-white h2.text-3xl {
+  font-size:      var(--sec-h2)     !important;
+  line-height:    var(--sec-h2-line) !important;
+  letter-spacing: var(--sec-h2-track) !important;
+}
+
+/* SEO content section lead */
+section.bg-white > div > div p.text-slate-500 {
+  font-size:      var(--body-size)  !important;
+  line-height:    var(--body-line)  !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   8. PRODUCTS PAGE — tabs, cards, benefits
+───────────────────────────────────────────────────────────── */
+
+/* Tab button text */
+nav.sticky button span {
+  font-size:      0.68rem  !important;
+  letter-spacing: 0.12em   !important;
+  line-height:    1.4      !important;
+}
+
+/* Product card title */
+.project-title {
+  font-size:      clamp(1.1rem, 2.5vw, 1.35rem) !important;
+  letter-spacing: -0.01em !important;
+  line-height:    1.2     !important;
+  white-space:    normal  !important;
+  overflow:       hidden  !important;
+  display:        -webkit-box !important;
+  -webkit-line-clamp: 2   !important;
+  line-clamp: 2   !important;
+  -webkit-box-orient: vertical !important;
+}
+
+/* Product card description */
+.lighter {
+  font-size:      clamp(0.82rem, 1.8vw, 0.875rem) !important;
+  line-height:    1.68 !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* Technical detail labels */
+.project-info [class*="text-[14px]"] {
+  font-size:      0.8rem   !important;
+  line-height:    1.6      !important;
+  letter-spacing: 0.005em  !important;
+}
+
+/* Category SEO heading */
+section[id^="section-"] h2 {
+  font-size:      var(--sec-h2)     !important;
+  line-height:    var(--sec-h2-line) !important;
+  letter-spacing: var(--sec-h2-track) !important;
+}
+
+/* Category overview paragraph */
+section[id^="section-"] p.mb-10 {
+  font-size:      var(--body-size)  !important;
+  line-height:    var(--body-line)  !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   9. PROJECTS PAGE — cards, modal, section headings
+───────────────────────────────────────────────────────────── */
+
+/* Project card h3 */
+.group h3.font-heading.text-2xl,
+.group h3.font-heading.text-3xl {
+  font-size:      var(--card-h3)     !important;
+  line-height:    var(--card-h3-line) !important;
+  letter-spacing: var(--card-h3-track) !important;
+}
+
+/* Project card body */
+.group p.text-slate-600 {
+  font-size:      clamp(0.82rem, 1.8vw, 0.88rem) !important;
+  line-height:    1.68 !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* SEO section heading above project grid */
+section .text-center h2 {
+  font-size:      var(--sec-h2)     !important;
+  line-height:    var(--sec-h2-line) !important;
+  letter-spacing: var(--sec-h2-track) !important;
+}
+
+section .text-center p.mt-4.text-slate-600 {
+  font-size:      var(--body-size)  !important;
+  line-height:    var(--body-line)  !important;
+}
+
+/* Modal h2 */
+.fixed h2.font-heading {
+  font-size:      clamp(1.3rem, 3vw, 1.75rem) !important;
+  line-height:    1.15 !important;
+  letter-spacing: -0.01em !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   10. SERVICES PAGE — stats, rows, area cards
+───────────────────────────────────────────────────────────── */
+
+/* Stats big number */
+.text-5xl.font-black.font-heading {
+  font-size:      clamp(2.2rem, 5vw, 2.8rem) !important;
+  letter-spacing: -0.02em !important;
+  line-height:    1       !important;
+}
+
+/* Stats label */
+.text-xs.uppercase[class*="tracking-[0.14em]"],
+.text-sm.uppercase[class*="tracking-[0.18em]"] {
+  font-size:      0.65rem !important;
+  letter-spacing: 0.14em  !important;
+  line-height:    1.5     !important;
+}
+
+/* Service row H2 */
+h2.text-xl.sm\:text-2xl.font-black {
+  font-size:      clamp(1.05rem, 2.5vw, 1.35rem) !important;
+  letter-spacing: -0.01em !important;
+  line-height:    1.2     !important;
+}
+
+/* Service row body */
+p.text-slate-600[class*="text-[0.95rem]"] {
+  font-size:      var(--body-size)  !important;
+  line-height:    var(--body-line)  !important;
+  letter-spacing: var(--body-track) !important;
+}
+
+/* Service area card H3 */
+.group h3.font-heading.text-2xl.font-black {
+  font-size:      clamp(1.15rem, 2.5vw, 1.4rem) !important;
+  letter-spacing: 0.04em !important;
+  line-height:    1.15   !important;
+}
+
+/* Service area list items */
+.group li a, .group li span {
+  font-size:      clamp(0.8rem, 1.8vw, 0.875rem) !important;
+  line-height:    1.65 !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   11. CONTACT PAGE
+───────────────────────────────────────────────────────────── */
+
+/* Contact card H3 */
+.group h3.font-heading.text-lg.font-bold {
+  font-size:      clamp(0.9rem, 2vw, 1rem) !important;
+  letter-spacing: -0.005em !important;
+  line-height:    1.3      !important;
+}
+
+/* Contact card lines */
+.group p.text-base.text-slate-500 {
+  font-size:      clamp(0.82rem, 1.8vw, 0.9rem) !important;
+  line-height:    1.65 !important;
+  letter-spacing: 0.01em !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   12. SERVICE DETAIL PAGES (ElevationWork, SSWorks, etc.)
+───────────────────────────────────────────────────────────── */
+
+main.overflow-hidden.bg-white section h1.font-heading {
+  font-size:      var(--hero-h1)     !important;
+  line-height:    var(--hero-h1-line) !important;
+  letter-spacing: var(--hero-h1-track) !important;
+}
+
+main.overflow-hidden.bg-white section p[class*="text-white/70"] {
+  font-size:      var(--body-size)  !important;
+  line-height:    var(--body-line)  !important;
+  letter-spacing: var(--body-track) !important;
+}
+
+main.overflow-hidden.bg-white .prose p,
+main.overflow-hidden.bg-white section p.mb-4,
+main.overflow-hidden.bg-white section p.mb-6 {
+  font-size:      var(--body-size)  !important;
+  line-height:    var(--body-line)  !important;
+  letter-spacing: var(--body-track) !important;
+}
+
+main.overflow-hidden.bg-white h2.font-heading {
+  font-size:      var(--sec-h2)     !important;
+  line-height:    var(--sec-h2-line) !important;
+  letter-spacing: var(--sec-h2-track) !important;
+}
+
+main.overflow-hidden.bg-white li span {
+  font-size:      var(--body-size)  !important;
+  line-height:    var(--body-line)  !important;
+  letter-spacing: var(--body-track) !important;
+}
+
+main.overflow-hidden.bg-white .grid h4.font-bold {
+  font-size:      clamp(0.82rem, 1.8vw, 0.9rem) !important;
+  letter-spacing: -0.005em !important;
+  line-height:    1.3      !important;
+}
+
+main.overflow-hidden.bg-white .grid p.text-xs,
+main.overflow-hidden.bg-white .grid p.text-sm {
+  font-size:      0.78rem !important;
+  line-height:    1.65    !important;
+  letter-spacing: 0.01em  !important;
+}
+
+main.overflow-hidden.bg-white .rounded-3xl h3.font-heading {
+  font-size:      clamp(0.95rem, 2.2vw, 1.1rem) !important;
+  letter-spacing: 0.04em !important;
+  line-height:    1.25   !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   13. PROCESS SECTION
+───────────────────────────────────────────────────────────── */
+
+section.bg-slate-950 h2.font-heading.text-white {
+  font-size:      clamp(1.5rem, 3.5vw, 2rem) !important;
+  letter-spacing: -0.015em !important;
+  line-height:    1.1      !important;
+}
+
+.rounded-xl.px-4.py-2 span.font-heading {
+  font-size:      clamp(0.75rem, 2vw, 0.9rem) !important;
+  letter-spacing: 0.04em !important;
+  line-height:    1.25   !important;
+}
+
+.rounded-xl.px-4.py-2 p {
+  font-size:      clamp(0.72rem, 1.8vw, 0.8rem) !important;
+  line-height:    1.65 !important;
+  letter-spacing: 0.01em !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   14. MOVING TAGS
+───────────────────────────────────────────────────────────── */
+
+.relative.bg-slate-950.border-y span {
+  font-size:      0.6rem  !important;
+  letter-spacing: 0.18em  !important;
+  line-height:    1.4     !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   15. PREMIUM SERVICE CARDS (index SEO section)
+───────────────────────────────────────────────────────────── */
+
+.premium-card-title {
+  font-size:      0.8rem  !important;
+  letter-spacing: 0.06em  !important;
+  line-height:    1.35    !important;
+}
+
+.premium-card-p1,
+.premium-card-p1 p {
+  font-size:      clamp(0.82rem, 1.8vw, 0.875rem) !important;
+  line-height:    var(--body-line) !important;
+  letter-spacing: var(--body-track) !important;
+}
+
+.premium-card-p2 {
+  font-size:      clamp(0.82rem, 1.8vw, 0.875rem) !important;
+  line-height:    var(--body-line) !important;
+  letter-spacing: var(--body-track) !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   16. FOOTER
+───────────────────────────────────────────────────────────── */
+
+footer h4 {
+  font-size:      var(--label-size)  !important;
+  letter-spacing: var(--label-track) !important;
+  line-height:    var(--label-line)  !important;
+}
+
+footer p, footer a, footer span {
+  font-size:      clamp(0.78rem, 1.6vw, 0.85rem) !important;
+  line-height:    1.65 !important;
+  letter-spacing: 0.01em !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   17. HERO SECTIONS — height & structure
+───────────────────────────────────────────────────────────── */
+
+section.relative.h-screen,
+.contact-hero,
+.products-hero,
+.projects-hero {
+  min-height: 100svh !important;
+}
+
+/* Non-index pages need navbar clearance */
+main.pt-20 {
+  padding-top: 80px;
+}
 
 @media (max-width: 1023px) {
-
-  /* Mobile Navbar Height */
-  nav.fixed {
-    height: auto !important;
+  main.pt-20 {
+    padding-top: 64px !important;
   }
 
-  .nav-container,
-  .container-main.flex.items-center {
-    height: 64px !important;
-    padding: 0 1rem !important;
+  nav.fixed img[alt*="Emblem"] {
+    width:  52px !important;
+    height: 52px !important;
   }
 
-  /* Logo Mobile Size */
-  .nav-container .flex.items-center.gap-2 span {
-    font-size: 1.1rem !important;
+  nav.fixed img[alt*="RIITS"] {
+    height: 40px !important;
   }
-
-  .nav-container .w-9.h-9 {
-    width: 32px !important;
-    height: 32px !important;
-    font-size: 0.9rem !important;
-  }
-
-  /* Mobile Menu Items */
-  .lg\:hidden .flex.flex-col a {
-    padding: 0.75rem 1rem !important;
-    font-size: 0.8rem !important;
-  }
-
-  /* Mobile Menu Button */
-  .lg\:hidden button[class*="TurtleButton"] {
-    height: 42px !important;
-    font-size: 0.75rem !important;
-    padding: 0 1.25rem !important;
-  }
-
 }
 
+
 /* ─────────────────────────────────────────────────────────────
-   FOOTER MOBILE FIXES
+   18. MOBILE (max-width: 767px)
 ───────────────────────────────────────────────────────────── */
 
 @media (max-width: 767px) {
 
-  /* Footer Grid Mobile */
-  footer .grid {
-    grid-template-columns: 1fr !important;
-    gap: 2rem !important;
-  }
-
-  footer h3,
-  footer h4 {
-    font-size: 1rem !important;
-    margin-bottom: 0.75rem !important;
-  }
-
-  footer p,
-  footer a,
-  footer span {
-    font-size: 0.85rem !important;
-  }
-
-  /* Footer Bottom Bar Mobile */
-  footer .flex.flex-col.sm\:flex-row {
-    flex-direction: column !important;
-    text-align: center !important;
-    gap: 0.5rem !important;
-  }
-
-}
-
-/* ─────────────────────────────────────────────────────────────
-   MOVING TAGS MOBILE OPTIMIZATION
-───────────────────────────────────────────────────────────── */
-
-@media (max-width: 767px) {
-
-  /* Moving Tags Container Mobile */
-  .relative.bg-slate-950.border-y {
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
-  }
-
-  /* Tag Size Mobile */
-  .relative.bg-slate-950.border-y span {
-    padding: 0.5rem 1rem !important;
-    font-size: 0.65rem !important;
-    letter-spacing: 0.12em !important;
-  }
-
-  /* Animation Speed Mobile */
-  .animate-marquee-left {
-    animation-duration: 30s !important;
-  }
-
-  .animate-marquee-right {
-    animation-duration: 35s !important;
-  }
-
-}
-
-/* ─────────────────────────────────────────────────────────────
-   TESTIMONIAL CARDS MOBILE
-───────────────────────────────────────────────────────────── */
-
-@media (max-width: 767px) {
-
-  /* Testimonial Card Mobile */
-  .w-\[300px\] {
-    width: 280px !important;
-  }
-
-  .testimonial-card {
-    padding: 1.25rem !important;
-  }
-
-  .testimonial-card p {
-    font-size: 0.85rem !important;
-    line-height: 1.5 !important;
-  }
-
-  /* Testimonial Avatar Mobile */
-  .testimonial-card .w-10 {
-    width: 36px !important;
-    height: 36px !important;
-    font-size: 0.9rem !important;
-  }
-
-}
-
-/* ─────────────────────────────────────────────────────────────
-   CTA SECTION MOBILE
-───────────────────────────────────────────────────────────── */
-
-@media (max-width: 767px) {
-
-  /* CTA Padding Mobile */
-  .cta,
-  section[class*="cta"] {
-    padding: 3rem 1.5rem !important;
-  }
-
-  /* CTA Title Mobile */
-  .cta-title,
-  .cta h2 {
-    font-size: clamp(1.75rem, 6vw, 2.25rem) !important;
-  }
-
-  /* CTA Description Mobile */
-  .cta-description,
-  .cta p {
-    font-size: 0.9rem !important;
-    line-height: 1.6 !important;
-  }
-
-  /* CTA Buttons Mobile */
-  .cta .flex {
-    flex-direction: column !important;
-    width: 100% !important;
-  }
-
-  .cta button,
-  .cta a[class*="btn"] {
-    width: 100% !important;
-    justify-content: center !important;
-  }
-
-}
-
-/* ─────────────────────────────────────────────────────────────
-   PROCESS SECTION MOBILE
-───────────────────────────────────────────────────────────── */
-
-@media (max-width: 767px) {
-
-  /* Process Section Padding */
-  .process-section {
-    padding: 3rem 1rem !important;
-  }
-
-  /* Process Timeline Mobile */
-  .process-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* Process Step Mobile */
-  .process-step {
-    padding: 1.5rem !important;
-  }
-
-  .process-step h3 {
-    font-size: 1.1rem !important;
-  }
-
-  .process-step p {
-    font-size: 0.85rem !important;
-  }
-
-  /* Process Image Circle Mobile */
-  .process-image {
-    width: 200px !important;
-    height: 200px !important;
-  }
-
-}
-
-/* ─────────────────────────────────────────────────────────────
-   UTILITY MOBILE FIXES
-───────────────────────────────────────────────────────────── */
-
-@media (max-width: 767px) {
-
-  /* General Spacing Reduction */
+  /* Section spacing */
   .section-padding {
-    padding-top: 3rem !important;
+    padding-top:    3rem !important;
     padding-bottom: 3rem !important;
   }
 
-  /* Container Padding Mobile */
   .container-main {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    padding-left:  1.25rem !important;
+    padding-right: 1.25rem !important;
   }
 
-  /* Hide Desktop-Only Elements */
-  .hidden.lg\:flex,
-  .hidden.lg\:block {
-    display: none !important;
+  /* ── Hero headings on mobile ── */
+  section.relative.h-screen p.font-heading[aria-hidden="true"],
+  .contact-hero p.font-heading[aria-hidden="true"],
+  .products-hero p.font-heading[aria-hidden="true"],
+  .projects-hero p[aria-hidden="true"],
+  section.relative.h-screen p[aria-hidden="true"].font-heading,
+  main.overflow-hidden.bg-white section h1.font-heading,
+  .ap section p.font-heading[aria-hidden="true"],
+  .ap .dxl {
+    font-size:   clamp(1.75rem, 8.5vw, 2.4rem) !important;
+    line-height: 1.05 !important;
   }
 
-  /* Mobile-Only Flex Column */
-  .flex.flex-wrap {
-    flex-direction: column !important;
+  .ap .dlg,
+  .dlg,
+  h2.heading-lg,
+  h2.text-3xl, h2.text-4xl, h2.text-5xl,
+  h2.font-black, h2.font-extrabold,
+  section .text-center h2 {
+    font-size:   clamp(1.35rem, 6vw, 1.75rem) !important;
+    line-height: 1.12 !important;
   }
 
-  /* Gap Reduction Mobile */
-  .gap-8 {
-    gap: 1.5rem !important;
+  /* ── Hero lead text ── */
+  section p[class*="text-white/65"],
+  section p[class*="text-white/70"],
+  .ap section p[class*="text-white/70"] {
+    font-size:  0.88rem !important;
+    line-height: 1.65   !important;
+    max-width:   none   !important;
   }
 
-  .gap-6 {
-    gap: 1rem !important;
-  }
-
-  .gap-4 {
+  /* ── About stats ── */
+  .stat-grid-row {
+    grid-template-columns: repeat(2, 1fr) !important;
     gap: 0.75rem !important;
   }
 
-  /* Image Optimization Mobile */
-  img {
-    image-rendering: auto !important;
+  .about-stat-card {
+    padding:       1rem 0.75rem !important;
+    border-radius: 1.25rem      !important;
   }
 
+  .about-stat-val {
+    font-size: 1.85rem !important;
+  }
+
+  .about-stat-lbl {
+    font-size:      0.58rem !important;
+    letter-spacing: 0.12em  !important;
+  }
+
+  /* ── Why grid ── */
+  .why-grid {
+    grid-template-columns: 1fr  !important;
+    gap:                   1rem !important;
+  }
+
+  .why-card {
+    min-height: 280px   !important;
+    padding:    1.5rem 1.25rem !important;
+  }
+
+  /* ── VM grid ── */
+  .vm-grid {
+    grid-template-columns: 1fr    !important;
+    gap:                   1.25rem !important;
+  }
+
+  .vm-card  { padding: 1.5rem  !important; }
+
+  /* ── HWD grid ── */
+  .hwd-grid {
+    grid-template-columns: 1fr    !important;
+    gap:                   1.25rem !important;
+  }
+
+  .hwd-card { padding: 1.25rem !important; }
+
+  /* ── Product grid ── */
+  .product-grid {
+    grid-template-columns: 1fr    !important;
+    gap:                   2.5rem !important;
+    padding-top:           1.5rem !important;
+  }
+
+  .card-img { height: 190px !important; top: -18px !important; }
+
+  /* ── Process circle ── */
+  .w-56.h-56, .w-64.h-64 {
+    width:  190px !important;
+    height: 190px !important;
+  }
+
+  /* ── Testimonials ── */
+  [class*="w-[300px]"], [class*="w-[360px]"] {
+    width: 270px !important;
+  }
+
+  /* ── FloatingSocialMenu — restore on mobile ── */
+  #button-container {
+    display: flex   !important;
+    width:   50px   !important;
+    height:  50px   !important;
+    bottom:  1.25rem !important;
+    right:   1.25rem !important;
+  }
+
+  #button-container.active .btn-fb   { opacity:1; transform: translate(-240%, 0%)   rotate(360deg); }
+  #button-container.active .btn-ig   { opacity:1; transform: translate(-222%, -92%) rotate(360deg); }
+  #button-container.active .btn-wa   { opacity:1; transform: translate(-170%, -170%) rotate(360deg); }
+  #button-container.active .btn-mail { opacity:1; transform: translate(-92%, -222%) rotate(360deg); }
+  #button-container.active .btn-call { opacity:1; transform: translate(0%, -240%)   rotate(360deg); }
+
+  /* ── Service detail content grid ── */
+  main.overflow-hidden.bg-white .grid[class*="lg:grid-cols-2"] {
+    grid-template-columns: 1fr    !important;
+    gap:                   2rem   !important;
+  }
+
+  main.overflow-hidden.bg-white .grid[class*="sm:grid-cols-2"][class*="lg:grid-cols-3"] {
+    grid-template-columns: 1fr    !important;
+    gap:                   1.25rem !important;
+  }
+
+  /* ── Contact map ── */
+  iframe[title*="Location"] { height: 280px !important; }
+
+  /* ── Footer ── */
+  footer .grid {
+    grid-template-columns: 1fr   !important;
+    gap:                   1.75rem !important;
+  }
+
+  /* ── Moving tags ── */
+  .relative.bg-slate-950.border-y {
+    padding-top:    0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+
+  /* ── Reduce heavy gap overrides ── */
+  .gap-8 { gap: 1.5rem !important; }
+  .gap-6 { gap: 1rem   !important; }
+
 }
+
 
 /* ─────────────────────────────────────────────────────────────
-   ANIMATION PERFORMANCE MOBILE
+   19. TABLET (768px – 1023px)
 ───────────────────────────────────────────────────────────── */
 
-@media (max-width: 767px) {
+@media (min-width: 768px) and (max-width: 1023px) {
 
-  /* Reduce Motion for Performance */
-  @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 
-  /* GPU Acceleration Mobile */
-  .card,
-  .why-card,
-  .product-card,
-  button,
-  a {
-    will-change: transform !important;
-    transform: translateZ(0) !important;
-    backface-visibility: hidden !important;
+  .hwd-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 
-  /* Smooth Scrolling Mobile */
-  html {
-    scroll-behavior: smooth !important;
+  .stat-grid-row {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  main.overflow-hidden.bg-white .grid[class*="lg:grid-cols-2"] {
+    grid-template-columns: 1fr    !important;
+    gap:                   2.5rem !important;
+  }
+
+  .ap .dxl, .dxl,
+  section p.font-heading[aria-hidden="true"] {
+    font-size: clamp(2rem, 5.5vw, 2.8rem) !important;
   }
 
 }
+
 
 /* ─────────────────────────────────────────────────────────────
-   HORIZONTAL SCROLL WITH DOT INDICATORS
-   Modern, Instagram-style scroll with position dots
+   20. REDUCED MOTION
 ───────────────────────────────────────────────────────────── */
- 
-@media (max-width: 767px) {
-  
-  /* Wrapper with scroll indicators */
-  nav.sticky .mx-auto.max-w-7xl {
-    position: relative;
-    padding-bottom: 2.5rem !important;
-  }
- 
-  /* Main tabs container - horizontal scroll */
-  nav.sticky .flex.flex-nowrap {
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    -webkit-overflow-scrolling: touch !important;
-    scroll-snap-type: x mandatory !important;
-    scroll-behavior: smooth !important;
-    gap: 0.75rem !important;
-    padding: 0.75rem 1rem !important;
-    justify-content: flex-start !important;
-    
-    /* Hide scrollbar but keep functionality */
-    scrollbar-width: none !important;
-    -ms-overflow-style: none !important;
-  }
- 
-  nav.sticky .flex.flex-nowrap::-webkit-scrollbar {
-    display: none !important;
-  }
- 
-  /* Individual tab buttons */
-  nav.sticky button {
-    scroll-snap-align: start !important;
-    flex-shrink: 0 !important;
-    min-width: 110px !important;
-    padding: 0.85rem 1.25rem !important;
-    font-size: 0.7rem !important;
-    letter-spacing: 0.1em !important;
-  }
- 
-  /* Active tab - more prominent */
-  nav.sticky button[class*="shadow-[0_15px"] {
-    min-width: 130px !important;
-    transform: scale(1.08) !important;
-  }
- 
-  /* Scroll position indicators (dots) */
-  nav.sticky .mx-auto.max-w-7xl::after {
-    content: '';
-    position: absolute;
-    bottom: 0.75rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 0.35rem;
-    pointer-events: none;
-  }
- 
-  /* Gradient fade edges */
-  nav.sticky .mx-auto.max-w-7xl::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    background: linear-gradient(
-      to right,
-      rgba(15, 23, 42, 0.9) 0%,
-      transparent 8%,
-      transparent 92%,
-      rgba(15, 23, 42, 0.9) 100%
-    );
-    pointer-events: none;
-    z-index: 10;
-  }
- 
-  /* Scroll indicator dots */
-  nav.sticky .mx-auto.max-w-7xl {
-    padding-bottom: 2.5rem !important;
-  }
- 
-}
 
-/* ═══════════════════════════════════════════════════════════════
-   END OF MOBILE RESPONSIVE FIXES
-═══════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration:       0.01ms !important;
+    animation-iteration-count: 1     !important;
+    transition-duration:       0.01ms !important;
+  }
+}
 
