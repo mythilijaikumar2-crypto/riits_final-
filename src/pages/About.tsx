@@ -803,7 +803,7 @@ const About = () => {
       <FontLoader />
 
       {/* ── HERO ── */}
-      <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 bg-[var(--navy)] overflow-hidden">
+      <section className="relative h-screen flex flex-col justify-center bg-[var(--navy)] overflow-hidden">
         <h1 className="sr-only">
           About {COMPANY_NAME} — Trusted Metal Fabrication Company in Trichy, Tamil Nadu
         </h1>
