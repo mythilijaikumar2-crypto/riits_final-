@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { TurtleButton } from "./TurtleButton";
-import { CONTACT_DETAILS, formatTelLink, COMPANY_NAME, LOGO_EMBLEM } from "../config/contact";
+import { CONTACT_DETAILS, formatTelLink, COMPANY_NAME, LOGO_EMBLEM, BRAND_NAME } from "../config/contact";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -66,12 +66,12 @@ const Navbar = () => {
 
       <motion.nav
         ref={navRef}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-[999] transition-all duration-500 ${
           scrolled
             ? "bg-white/80 backdrop-blur-xl border-b border-border/60 shadow-lg shadow-primary/5"
             : "bg-card/90 backdrop-blur-md border-b border-border"
         }`}
-        initial={{ y: -80, opacity: 0 }}
+        initial={{ y: -64, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         style={{
@@ -83,14 +83,10 @@ const Navbar = () => {
           right: 0,
         }}
       >
-<<<<<<< HEAD
-        <div className="container-main flex items-center justify-between h-24 lg:h-32 px-4 sm:px-6 lg:px-8">
-
-
-
-=======
         <div className="container-main flex items-center justify-between h-16 lg:h-20 px-4 sm:px-6 lg:px-8">
->>>>>>> 8647edbb6fa4fd7987a0f3b311cce7e4862d8c09
+
+
+
           {/* Logo */}
           <Link to="/" className="flex items-center gap-0 group" aria-label={`${COMPANY_NAME} Home`}>
             <motion.div
@@ -103,13 +99,8 @@ const Navbar = () => {
             >
               <motion.img 
                 src={LOGO_EMBLEM} 
-<<<<<<< HEAD
                 alt={`${BRAND_NAME} Emblem`}
-                className="w-24 h-24 lg:w-36 lg:h-36 object-contain"
-=======
-                alt={`${COMPANY_NAME} Logo`}
-                className="w-32 h-16 lg:w-64 lg:h-28 object-contain"
->>>>>>> 8647edbb6fa4fd7987a0f3b311cce7e4862d8c09
+                className="w-32 h-32 lg:w-52 lg:h-52 object-contain"
                 whileHover={{ 
                   scale: 1.05
                 }}
@@ -118,29 +109,7 @@ const Navbar = () => {
                 }}
               />
             </motion.div>
-<<<<<<< HEAD
-            <motion.div 
-              className="flex flex-col"
-              initial={{ opacity: 1, x: 0 }}
-              animate={{ 
-                scale: scrolled ? 0.8 : 1,
-                x: scrolled ? -2 : 0
-              }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <img 
-                src={LOGO_TEXT} 
-                alt={COMPANY_NAME}
-                className="h-20 lg:h-40 w-auto object-contain transition-all duration-300"
-                style={{ 
-                  filter: scrolled 
-                    ? 'drop-shadow(0.5px 0px 0px #000) drop-shadow(-0.5px 0px 0px #000) drop-shadow(0px 0.5px 0px #000) drop-shadow(0px -0.5px 0px #000) contrast(1.1)' 
-                    : 'brightness(0) saturate(100%) invert(0%) drop-shadow(0.5px 0px 0px #fff) drop-shadow(-0.5px 0px 0px #fff) drop-shadow(0px 0.5px 0px #fff) drop-shadow(0px -0.5px 0px #fff) contrast(1.2)'
-                }}
-              />
-            </motion.div>
-=======
->>>>>>> 8647edbb6fa4fd7987a0f3b311cce7e4862d8c09
+
           </Link>
 
 

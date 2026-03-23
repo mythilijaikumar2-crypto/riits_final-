@@ -13,7 +13,7 @@ const GeneralFabrication = () => {
       />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-slate-950 overflow-hidden">
+      <section className="relative pt-28 pb-20 bg-slate-950 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src={industrialSvcHero}

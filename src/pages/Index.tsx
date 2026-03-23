@@ -10,7 +10,7 @@ import industry from "../assets/industryworks.jpg";
 import aluminium from "../assets/aluminium.jpg";
 import elevation from "../assets/elevation.avif";
 import roofing from "../assets/roofing/roof1.webp";
-import laserImg from "../assets/decopanels.jpg";
+import laserImg from "../assets/laserphoto/laser gate1 web.webp";
 
 import {
   Phone,
@@ -270,7 +270,7 @@ const HeroSection = ({ isMobile }: { isMobile: boolean }) => (
         transition={{ duration: isMobile ? 1.2 : 2.5, ease: [0.22, 1, 0.36, 1] }}
         src={heroImage}
         alt={`${COMPANY_NAME} — steel gate, railing and metal fabrication workshop in Trichy`}
-        className="w-full h-full object-cover object-center opacity-35 mix-blend-overlay"
+        className="w-full h-full object-cover object-center opacity-40 mix-blend-overlay"
         style={{ willChange: "transform" }}
         loading="eager"
         // @ts-ignore
@@ -290,17 +290,11 @@ const HeroSection = ({ isMobile }: { isMobile: boolean }) => (
     />
 
     {/* Floating stat badges */}
-<<<<<<< HEAD
-    <div className="absolute top-24 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10 lg:animate-float-slow">
+    <div className="absolute top-20 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10 lg:animate-float-slow">
       <span className="w-2 h-2 rounded-full bg-amber-400 lg:animate-pulse" />
       15+ Years of Expertise
     </div>
-    <div className="absolute bottom-24 left-[6%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10 lg:animate-float-medium">
-      <span className="w-2 h-2 rounded-full bg-blue-400 lg:animate-pulse" />
-      800+ Projects Delivered
-    </div>
-=======
->>>>>>> 8647edbb6fa4fd7987a0f3b311cce7e4862d8c09
+
 
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
       <div className="grid lg:grid-cols-2 gap-10 items-center">
@@ -322,7 +316,7 @@ const HeroSection = ({ isMobile }: { isMobile: boolean }) => (
             initial={{ opacity: 0, y: isMobile ? 12 : 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: isMobile ? 0.35 : 0.5, delay: 0.05 }}
-            className="font-heading text-[clamp(1.875rem,8vw,3.75rem)] sm:text-5xl lg:text-6xl font-black uppercase leading-[1.1] sm:leading-none tracking-tight text-white mb-4"
+            className="font-heading text-4xl sm:text-6xl lg:text-7xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
           >
             Where Steel
             <br />

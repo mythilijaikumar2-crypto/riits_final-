@@ -1,11 +1,27 @@
-import { motion, AnimatePresence, useInView } from "framer-motion";
-import { useState, useEffect, memo, useRef, type MouseEvent, type ReactNode } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useInView,
+} from "framer-motion";
+import {
+  useState,
+  useEffect,
+  memo,
+  useRef,
+  type MouseEvent,
+  type ReactNode,
+} from "react";
 import { Phone, MessageCircle, CheckCircle2 } from "lucide-react";
 import { TurtleButton } from "../components/TurtleButton";
 import SEO from "../components/SEO";
-import { CONTACT_DETAILS, formatTelLink, getWhatsAppUrl, COMPANY_NAME, BRAND_NAME } from "../config/contact";
+import {
+  CONTACT_DETAILS,
+  formatTelLink,
+  getWhatsAppUrl,
+  COMPANY_NAME,
+  BRAND_NAME,
+} from "../config/contact";
 import productsHero from "../assets/heropage/products-hero.webp";
-
 
 /* ── Local image imports ── */
 
@@ -36,27 +52,86 @@ import shutterCommImg from "../assets/rollshutter.avif";
 import shutterIndImg from "../assets/shutters.webp";
 import shutterHeavyImg from "../assets/industrial.jpg";
 
+/* ── Laser Design Imports ── */
+import laserGate1 from "../assets/laserphoto/laser gate1 web.webp";
+import laserDesign2 from "../assets/laserphoto/laser design2 webp.webp";
+import laserDesign3 from "../assets/laserphoto/laser design3 webp.webp";
+
 
 /* ── Benefit detail copy ── */
 const benefitDetails: Record<string, { icon: string; desc: string }> = {
-  "Corrosion-resistant": { icon: "🛡️", desc: "Grade SS 304 alloy forms a passive oxide layer that withstands moisture, salt air, and harsh weather without rusting." },
-  "Low maintenance": { icon: "✨", desc: "Smooth polished surfaces resist dirt buildup and require only periodic cleaning — no painting or re-coating needed." },
-  "Premium finish": { icon: "💎", desc: "Brushed or mirror-polish options deliver a refined, architectural look that elevates any residential or commercial façade." },
-  "Long lifespan": { icon: "⏳", desc: "Properly fabricated SS structures routinely last 25+ years with minimal upkeep, offering exceptional return on investment." },
-  "High strength": { icon: "💪", desc: "Mild steel's tensile strength handles heavy structural loads, making it ideal for frames, sheds, and roofing systems." },
-  "Cost-effective": { icon: "💰", desc: "MS is the most economical structural metal — delivering solid performance at a fraction of the cost of stainless options." },
-  "Weldable": { icon: "🔧", desc: "Excellent weldability allows complex custom shapes and on-site modifications without compromising structural integrity." },
-  "Versatile applications": { icon: "🔄", desc: "From ornate gates to industrial shed columns, MS adapts to virtually any form factor or load requirement." },
-  "Weather-sealed": { icon: "🌧️", desc: "EPDM gaskets and precision-fitted aluminium profiles block water, dust, and drafts for a fully weatherproof envelope." },
-  "Energy efficient": { icon: "⚡", desc: "Thermal-break profiles and double-glazed units reduce heat transfer, cutting AC loads and lowering energy bills." },
-  "Modern aesthetics": { icon: "🏙️", desc: "Slim sightlines and large glass areas flood interiors with natural light while maintaining a sleek contemporary look." },
-  "Sound insulation": { icon: "🔇", desc: "Multi-chamber profiles combined with laminated or DGU glass significantly reduce external noise transmission." },
-  "Weather protection": { icon: "🌦️", desc: "Composite and HPL panels act as a rainscreen barrier, channelling water away and protecting the structural wall beneath." },
-  "Thermal insulation": { icon: "🌡️", desc: "Air gaps within the cladding system create a thermal buffer that keeps interiors cooler in summer and warmer in winter." },
-  "Architectural appeal": { icon: "🏛️", desc: "Wide palette of colours, textures, and panel profiles lets architects achieve bold or subtle design statements on any building." },
-  "Motorized options": { icon: "⚙️", desc: "Integrated motor-and-remote systems allow one-touch open/close operation, compatible with phone apps and access control." },
-  "High security": { icon: "🔒", desc: "Interlocking MS/GI slats and tamper-proof locking bars provide a robust physical barrier against forced entry." },
-  "Weather resistant": { icon: "🌪️", desc: "Galvanised or powder-coated slats resist corrosion and UV degradation, maintaining performance through years of outdoor use." },
+  "Corrosion-resistant": {
+    icon: "🛡️",
+    desc: "Grade SS 304 alloy forms a passive oxide layer that withstands moisture, salt air, and harsh weather without rusting.",
+  },
+  "Low maintenance": {
+    icon: "✨",
+    desc: "Smooth polished surfaces resist dirt buildup and require only periodic cleaning — no painting or re-coating needed.",
+  },
+  "Premium finish": {
+    icon: "💎",
+    desc: "Brushed or mirror-polish options deliver a refined, architectural look that elevates any residential or commercial façade.",
+  },
+  "Long lifespan": {
+    icon: "⏳",
+    desc: "Properly fabricated SS structures routinely last 25+ years with minimal upkeep, offering exceptional return on investment.",
+  },
+  "High strength": {
+    icon: "💪",
+    desc: "Mild steel's tensile strength handles heavy structural loads, making it ideal for frames, sheds, and roofing systems.",
+  },
+  "Cost-effective": {
+    icon: "💰",
+    desc: "MS is the most economical structural metal — delivering solid performance at a fraction of the cost of stainless options.",
+  },
+  Weldable: {
+    icon: "🔧",
+    desc: "Excellent weldability allows complex custom shapes and on-site modifications without compromising structural integrity.",
+  },
+  "Versatile applications": {
+    icon: "🔄",
+    desc: "From ornate gates to industrial shed columns, MS adapts to virtually any form factor or load requirement.",
+  },
+  "Weather-sealed": {
+    icon: "🌧️",
+    desc: "EPDM gaskets and precision-fitted aluminium profiles block water, dust, and drafts for a fully weatherproof envelope.",
+  },
+  "Energy efficient": {
+    icon: "⚡",
+    desc: "Thermal-break profiles and double-glazed units reduce heat transfer, cutting AC loads and lowering energy bills.",
+  },
+  "Modern aesthetics": {
+    icon: "🏙️",
+    desc: "Slim sightlines and large glass areas flood interiors with natural light while maintaining a sleek contemporary look.",
+  },
+  "Sound insulation": {
+    icon: "🔇",
+    desc: "Multi-chamber profiles combined with laminated or DGU glass significantly reduce external noise transmission.",
+  },
+  "Weather protection": {
+    icon: "🌦️",
+    desc: "Composite and HPL panels act as a rainscreen barrier, channelling water away and protecting the structural wall beneath.",
+  },
+  "Thermal insulation": {
+    icon: "🌡️",
+    desc: "Air gaps within the cladding system create a thermal buffer that keeps interiors cooler in summer and warmer in winter.",
+  },
+  "Architectural appeal": {
+    icon: "🏛️",
+    desc: "Wide palette of colours, textures, and panel profiles lets architects achieve bold or subtle design statements on any building.",
+  },
+  "Motorized options": {
+    icon: "⚙️",
+    desc: "Integrated motor-and-remote systems allow one-touch open/close operation, compatible with phone apps and access control.",
+  },
+  "High security": {
+    icon: "🔒",
+    desc: "Interlocking MS/GI slats and tamper-proof locking bars provide a robust physical barrier against forced entry.",
+  },
+  "Weather resistant": {
+    icon: "🌪️",
+    desc: "Galvanised or powder-coated slats resist corrosion and UV degradation, maintaining performance through years of outdoor use.",
+  },
 };
 
 /* ── Product Categories — SEO-enriched overviews & descriptions ── */
@@ -67,7 +142,7 @@ const productCategories = [
     subtitle: "STAINLESS STEEL FABRICATION",
     /* H2 maps to: Steel Gates & Metal Gates / Grills & Railings */
     seoHeading: "Steel Gates, Grills & Railings in Trichy",
-    overview: `Looking for a custom steel gate or stainless steel gate in Trichy? ${COMPANY_NAME} offers premium SS 304 and SS 202 gate fabrication, grill work, balcony railings and staircase railings for residential and commercial properties. All products feature brushed or mirror-polished finishes with precision welding.`,
+    overview: `Looking for a custom steel gate or stainless steel gate in Trichy? ${COMPANY_NAME} offers premium SS 304 and SS 202 gate fabrication, grill work, balcony railings and staircase railings for residential and commercial building. All products feature brushed or mirror-polished finishes with precision welding.`,
     products: [
       {
         name: "SS Gates",
@@ -112,7 +187,12 @@ const productCategories = [
         image: ssDecorativeImg,
       },
     ],
-    benefits: ["Corrosion-resistant", "Low maintenance", "Premium finish", "Long lifespan"],
+    benefits: [
+      "Corrosion-resistant",
+      "Low maintenance",
+      "Premium finish",
+      "Long lifespan",
+    ],
   },
   {
     id: "ms",
@@ -120,7 +200,8 @@ const productCategories = [
     subtitle: "MILD STEEL FABRICATION",
     /* H2 maps to: Staircases & Structural Fabrication */
     seoHeading: "MS Gates, Staircases & Structural Steel Fabrication in Trichy",
-    overview: "Need a heavy-duty metal gate or structural steel fabrication in Trichy? Our mild steel fabrication covers MS gates, metal staircases, structural frames, sheds and roofing systems. All MS products are treated with anti-rust primer and powder coating for long-lasting durability.",
+    overview:
+      "Need a heavy-duty metal gate or structural steel fabrication in Trichy? Our mild steel fabrication covers MS gates, metal staircases, structural frames, sheds and roofing systems. All MS products are treated with anti-rust primer and powder coating for long-lasting durability.",
     products: [
       {
         name: "MS Gates",
@@ -139,19 +220,24 @@ const productCategories = [
       {
         name: "MS Sheds",
         desc: "Industrial and commercial shed structures with roofing — cost-effective steel fabrication for warehouses and factories.",
-        materials: "MS tubular frames, GI sheets",
+        materials: "MS tubular frames, PPGL sheets",
         applications: "Warehouses, factories, parking",
         image: msShedImg,
       },
       {
         name: "MS Roofing",
         desc: "Roofing truss systems and metal roof sheet installations — strong, weather-resistant and built to last.",
-        materials: "MS trusses, GI/Color sheets",
+        materials: "MS trusses, PPGL/Color sheets",
         applications: "Industrial, residential roofing",
         image: msRoofingImg,
       },
     ],
-    benefits: ["High strength", "Cost-effective", "Weldable", "Versatile applications"],
+    benefits: [
+      "High strength",
+      "Cost-effective",
+      "Weldable",
+      "Versatile applications",
+    ],
   },
   {
     id: "glass",
@@ -159,7 +245,8 @@ const productCategories = [
     subtitle: "GLASS & ALUMINIUM SYSTEM",
     /* H2 maps to: Aluminium Doors & Windows / Glass Doors & Partitions */
     seoHeading: "Aluminium Doors, Windows, Glass Doors & Partitions in Trichy",
-    overview: "Searching for an aluminium window in Trichy or a toughened glass door for your office? We fabricate and fit aluminium doors, aluminium sliding windows, glass doors, glass partitions and office glass partitions — all using anodized or powder-coated aluminium profiles with toughened safety glass.",
+    overview:
+      "Searching for an aluminium window in Trichy or a toughened glass door for your office? We fabricate and fit aluminium doors, aluminium sliding windows, glass doors, glass partitions and office glass partitions — all using anodized or powder-coated aluminium profiles with toughened safety glass.",
     products: [
       {
         name: "Aluminium Doors",
@@ -197,14 +284,20 @@ const productCategories = [
         image: structGlazingImg,
       },
     ],
-    benefits: ["Weather-sealed", "Energy efficient", "Modern aesthetics", "Sound insulation"],
+    benefits: [
+      "Weather-sealed",
+      "Energy efficient",
+      "Modern aesthetics",
+      "Sound insulation",
+    ],
   },
   {
     id: "elevation",
     title: "Cladding",
     subtitle: "EXTERIOR ELEVATION & CLADDING",
     seoHeading: "ACP Cladding, Facade Panels & Building Elevation in Trichy",
-    overview: "Transform your building's exterior with modern cladding and facade systems. Our elevation solutions — ACP panels, HPL cladding, louvers and decorative facade panels — combine architectural aesthetics with long-term weather protection across Trichy and Tamil Nadu.",
+    overview:
+      "Transform your building's exterior with modern cladding and facade systems. Our elevation solutions — ACP panels, HPL cladding, louvers and decorative facade panels — combine architectural aesthetics with long-term weather protection across Trichy and Tamil Nadu.",
     products: [
       {
         name: "ACP Panels",
@@ -235,7 +328,12 @@ const productCategories = [
         image: facadePanelImg,
       },
     ],
-    benefits: ["Weather protection", "Thermal insulation", "Low maintenance", "Architectural appeal"],
+    benefits: [
+      "Weather protection",
+      "Thermal insulation",
+      "Low maintenance",
+      "Architectural appeal",
+    ],
   },
   {
     id: "shutters",
@@ -248,7 +346,7 @@ const productCategories = [
       {
         name: "Commercial Shutters",
         desc: "Standard rolling shutters and shop shutters for retail shops, showrooms and commercial spaces — durable and secure.",
-        materials: "GI / MS slats, spring/motor",
+        materials: "PPGL / MS slats, spring/motor",
         applications: "Shops, showrooms, offices",
         image: shutterCommImg,
       },
@@ -262,43 +360,54 @@ const productCategories = [
       {
         name: "Heavy-Duty Systems",
         desc: "Extra-wide and extra-tall shutter systems for large industrial openings — reinforced construction for maximum security.",
-        materials: "Reinforced MS/GI construction",
+        materials: "Reinforced MS/PPGL construction",
         applications: "Industrial, logistics, hangars",
         image: shutterHeavyImg,
       },
     ],
-    benefits: ["Motorized options", "High security", "Low maintenance", "Weather resistant"],
+    benefits: [
+      "Motorized options",
+      "High security",
+      "Low maintenance",
+      "Weather resistant",
+    ],
   },
   {
     id: "laser",
     title: "Laser Design",
     subtitle: "CNC LASER CUTTING",
     seoHeading: "CNC Laser Cut Metal Designs & Decorative Panels in Trichy",
-    overview: "Precision-engineered CNC laser cut metal designs for premium architectural applications. We create custom-patterned gates, partitions, wall art, and decorative panels in Stainless Steel and Mild Steel to elevate your building's aesthetic.",
+    overview:
+      "Precision-engineered CNC laser cut metal designs for premium architectural applications. We create custom-patterned gates, partitions, wall art, and decorative panels in Stainless Steel and Mild Steel to elevate your building's aesthetic.",
     products: [
       {
         name: "Laser Cut Gates",
         desc: "Artistic laser-cut patterns for main gates and wicket gates, combining security with high-end design.",
         materials: "MS / SS Sheets",
         applications: "Luxury Residences, Villas",
-        image: ssDecorativeImg,
+        image: laserGate1,
       },
       {
         name: "Interior Partitions",
         desc: "Decorative laser-cut metal screens for living rooms, offices, and commercial interiors.",
         materials: "SS / MS Powder Coated",
         applications: "Offices, Homes, Hotels",
-        image: ssDecorativeImg,
+        image: laserDesign2,
       },
       {
         name: "Wall Art & Panels",
         desc: "Custom metal wall art and facade cladding panels with intricate geometric or floral designs.",
         materials: "SS 304 / MS",
         applications: "Building Facades, Feature Walls",
-        image: ssDecorativeImg,
+        image: laserDesign3,
       },
     ],
-    benefits: ["Premium finish", "Versatile applications", "Modern aesthetics", "Precision cutting"],
+    benefits: [
+      "Premium finish",
+      "Versatile applications",
+      "Modern aesthetics",
+      "Precision cutting",
+    ],
   },
 ];
 
@@ -320,7 +429,7 @@ export function AnimatedButton({
   isPaused = false,
   onClick,
   onHoverStart,
-  onHoverEnd
+  onHoverEnd,
 }: AnimatedButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [rotateX, setRotateX] = useState(0);
@@ -359,8 +468,11 @@ export function AnimatedButton({
   return (
     <motion.button
       ref={buttonRef}
-      className={`relative group px-3 sm:px-4 py-3 md:py-2.5 rounded-xl transition-all duration-500 outline-none whitespace-nowrap overflow-hidden ${isActive ? "shadow-[0_15px_30px_-10px_rgba(37,99,235,0.4)]" : "hover:shadow-2xl"
-        }`}
+      className={`relative group px-3 sm:px-4 py-3 md:py-2.5 rounded-xl transition-all duration-500 outline-none whitespace-nowrap overflow-hidden ${
+        isActive
+          ? "shadow-[0_15px_30px_-10px_rgba(37,99,235,0.4)]"
+          : "hover:shadow-2xl"
+      }`}
       style={{
         transformStyle: "preserve-3d",
         perspective: "1000px",
@@ -387,7 +499,9 @@ export function AnimatedButton({
       tabIndex={0}
     >
       {/* Background Layer */}
-      <div className={`absolute inset-0 transition-colors duration-500 ${isActive ? "bg-white" : "bg-white/5 border border-white/10"}`} />
+      <div
+        className={`absolute inset-0 transition-colors duration-500 ${isActive ? "bg-white" : "bg-white/5 border border-white/10"}`}
+      />
 
       {/* Shimmer effect layer */}
       <div
@@ -402,13 +516,17 @@ export function AnimatedButton({
             width: "50%",
           }}
           initial={{ opacity: 0, x: "-100%" }}
-          animate={isHovered ? {
-            opacity: [0, 1, 0],
-            x: ["0%", "200%"],
-          } : {
-            opacity: 0,
-            x: "-100%"
-          }}
+          animate={
+            isHovered
+              ? {
+                  opacity: [0, 1, 0],
+                  x: ["0%", "200%"],
+                }
+              : {
+                  opacity: 0,
+                  x: "-100%",
+                }
+          }
           transition={{
             duration: 1.2,
             ease: "easeInOut",
@@ -432,12 +550,13 @@ export function AnimatedButton({
       {/* Text content */}
       <div style={{ transform: "translateZ(20px)" }}>
         <span
-          className={`relative z-10 text-[0.65rem] sm:text-[0.75rem] font-black uppercase tracking-[0.14em] transition-colors duration-500 drop-shadow-md ${isActive
+          className={`relative z-10 text-[0.65rem] sm:text-[0.75rem] font-black uppercase tracking-[0.14em] transition-colors duration-500 drop-shadow-md ${
+            isActive
               ? "text-slate-950"
               : isHovered
                 ? "text-white"
                 : "text-white/50"
-            }`}
+          }`}
         >
           {children}
         </span>
@@ -447,81 +566,111 @@ export function AnimatedButton({
 }
 
 /* ── Benefit Card ── */
-const BenefitCard = memo(({ label, index, isActive, onClick, onHover }: { label: string; index: number; isActive: boolean; onClick?: () => void; onHover?: (hovering: boolean) => void }) => {
-  const detail = benefitDetails[label] ?? { icon: "✅", desc: "Quality guaranteed." };
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1, duration: 0.4 }}
-      className="benefit-wrapper"
-      onClick={() => onClick?.()}
-      onMouseEnter={() => onHover?.(true)}
-      onMouseLeave={() => onHover?.(false)}
-    >
-      <div className={`letter-image ${isActive ? "active" : ""}`}>
-        <div className="animated-mail">
-          <div className="back-fold"></div>
-          <div className="letter">
-            <div className="letter-border"></div>
-            <div className="letter-title">{label}</div>
-            <div className="letter-stamp">
-              <div className="letter-stamp-inner">{detail.icon}</div>
+const BenefitCard = memo(
+  ({
+    label,
+    index,
+    isActive,
+    onClick,
+  }: {
+    label: string;
+    index: number;
+    isActive: boolean;
+    onClick?: () => void;
+  }) => {
+    const detail = benefitDetails[label] ?? {
+      icon: "✅",
+      desc: "Quality guaranteed.",
+    };
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: index * 0.1, duration: 0.4 }}
+        className="benefit-wrapper"
+        onClick={() => onClick?.()}
+      >
+        <div className={`letter-image ${isActive ? "active" : ""}`}>
+          <div className="animated-mail">
+            <div className="back-fold"></div>
+            <div className="letter">
+              <div className="letter-border"></div>
+              <div className="letter-title">{label}</div>
+              <div className="letter-stamp">
+                <div className="letter-stamp-inner">{detail.icon}</div>
+              </div>
+              <div className="letter-context">{detail.desc}</div>
             </div>
-            <div className="letter-context">{detail.desc}</div>
+            <div className="top-fold"></div>
+            <div className="body"></div>
+            <div className="left-fold"></div>
           </div>
-          <div className="top-fold"></div>
-          <div className="body"></div>
-          <div className="left-fold"></div>
+          <div className="mail-shadow"></div>
         </div>
-        <div className="mail-shadow"></div>
-      </div>
-    </motion.div>
+      </motion.div>
+    );
+  },
+);
+
+/* ── Product Image ── */
+const ProductImage = ({ src, alt }: { src: string; alt: string }) => {
+  return (
+    <div className="w-full h-full overflow-hidden relative">
+      <motion.img
+        src={src}
+        alt={alt}
+        className="w-full h-full object-cover"
+        loading="lazy"
+        decoding="async"
+        whileHover={{ scale: 1.05 }}
+        transition={{ duration: 0.4 }}
+      />
+    </div>
   );
-});
+};
 
 /* ── Product Card ── */
-const ProductCard = memo(({ product, index }: { product: Product; index: number }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95, y: 30 }}
-      whileInView={{ opacity: 1, scale: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
-      whileHover={{ y: -12, zIndex: 50 }}
-      className="card"
-    >
-      <div className="card-img">
-        <img src={product.image} alt={product.name} loading="lazy" decoding="async" className="card-imgs" />
-      </div>
+const ProductCard = memo(
+  ({ product }: { product: Product }) => {
+    return (
+      <div className="card">
+        <div className="card-img overflow-hidden">
+          <ProductImage src={product.image} alt={product.name} />
+        </div>
 
-      <div className="project-info">
-        <div className="flex justify-between items-center gap-2">
-          <div className="project-title">{product.name}</div>
-          <span className="tag">Product</span>
-        </div>
-        <span className="lighter">
-          {product.desc}
-        </span>
-        <div className="mt-auto pt-5 border-t border-slate-100 flex flex-col gap-2">
-          <div className="text-[12px] leading-tight text-slate-400 font-black uppercase tracking-[0.1em]">Technical Details</div>
-          <div className="text-[14px] text-slate-700 flex items-start gap-2 leading-relaxed">
-            <span className="text-blue-600 font-extrabold min-w-[75px]">MATERIAL:</span> {product.materials}
+        <div className="project-info">
+          <div className="flex justify-between items-center gap-2">
+            <div className="project-title">{product.name}</div>
+            <span className="tag">Product</span>
           </div>
-          <div className="text-[14px] text-slate-700 flex items-start gap-2 leading-relaxed">
-            <span className="text-blue-600 font-extrabold min-w-[75px]">USE CASE:</span> {product.applications}
+          <span className="lighter">{product.desc}</span>
+          <div className="mt-auto pt-5 border-t border-slate-100 flex flex-col gap-2">
+            <div className="text-[12px] leading-tight text-slate-400 font-black uppercase tracking-[0.1em]">
+              Technical Details
+            </div>
+            <div className="text-[14px] text-slate-700 flex items-start gap-2 leading-relaxed">
+              <span className="text-blue-600 font-extrabold min-w-[75px]">
+                MATERIAL:
+              </span>{" "}
+              {product.materials}
+            </div>
+            <div className="text-[14px] text-slate-700 flex items-start gap-2 leading-relaxed">
+              <span className="text-blue-600 font-extrabold min-w-[75px]">
+                USE CASE:
+              </span>{" "}
+              {product.applications}
+            </div>
           </div>
         </div>
       </div>
-    </motion.div>
-  );
-});
+    );
+  },
+);
 
 /* ── Category Section ── */
 const CategorySection = memo(({ category }: { category: Category }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   useEffect(() => {
@@ -549,8 +698,8 @@ const CategorySection = memo(({ category }: { category: Category }) => {
         {category.overview}
       </p>
       <div className="mb-12 product-grid sm:grid-cols-2 lg:grid-cols-3">
-        {category.products.map((p, i) => (
-          <ProductCard key={p.name} product={p} index={i} />
+        {category.products.map((p) => (
+          <ProductCard key={p.name} product={p} />
         ))}
       </div>
       <div className="mb-6">
@@ -559,24 +708,21 @@ const CategorySection = memo(({ category }: { category: Category }) => {
         </h3>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {category.benefits.map((b, i) => {
-            const isActuallyActive = i === activeIndex || (isAutoPlaying && i === hoveredIndex);
             return (
               <BenefitCard
                 key={b}
                 label={b}
                 index={i}
-                isActive={isActuallyActive}
+                isActive={i === activeIndex}
                 onClick={() => {
                   setActiveIndex(i);
                   setIsAutoPlaying(false);
                 }}
-                onHover={(h) => setHoveredIndex(h ? i : null)}
               />
             );
           })}
         </div>
       </div>
-
     </section>
   );
 });
@@ -585,6 +731,7 @@ const CategorySection = memo(({ category }: { category: Category }) => {
 const Products = () => {
   const [activeTab, setActiveTab] = useState(productCategories[0].id);
   const [isPaused, setIsPaused] = useState(false);
+
   const navRef = useRef<HTMLElement>(null);
   const isNavInView = useInView(navRef, { amount: 0.1 });
 
@@ -592,7 +739,7 @@ const Products = () => {
     if (isPaused || !isNavInView) return;
     const interval = setInterval(() => {
       setActiveTab((prev) => {
-        const currentIndex = productCategories.findIndex(c => c.id === prev);
+        const currentIndex = productCategories.findIndex((c) => c.id === prev);
         const nextIndex = (currentIndex + 1) % productCategories.length;
         return productCategories[nextIndex].id;
       });
@@ -600,7 +747,8 @@ const Products = () => {
     return () => clearInterval(interval);
   }, [isPaused, isNavInView]);
 
-  const activeCategory = productCategories.find((c) => c.id === activeTab) || productCategories[0];
+  const activeCategory =
+    productCategories.find((c) => c.id === activeTab) || productCategories[0];
 
   return (
     <main className="min-h-screen bg-white">
@@ -666,7 +814,7 @@ const Products = () => {
           box-shadow: rgba(50, 50, 93, 0.2) 0px 50px 100px -20px,
             rgba(37, 99, 235, 0.1) 0px 30px 60px -30px;
           border-color: #3b82f6;
-          z-index: 50;
+          z-index: 30;
         }
 
         .card-img {
@@ -845,7 +993,7 @@ const Products = () => {
           font-size: 10px;
           color: #475569;
           line-height: 1.3;
-          opacity: 0;
+          opacity: 0.4;
           transition: opacity 0.2s;
         }
         
@@ -901,13 +1049,15 @@ const Products = () => {
 
       {/* ─── Hero ─── */}
       <section className="products-hero">
-
         {/* Visually hidden H1 — primary SEO heading for Google */}
         <h1 className="sr-only">
-          Fabrication Products in Trichy — Steel Gates, Railings, Rolling Shutters, Aluminium Windows &amp; Glass Doors | {COMPANY_NAME}
+          Fabrication Products in Trichy — Steel Gates, Railings, Rolling
+          Shutters, Aluminium Windows &amp; Glass Doors | {COMPANY_NAME}
         </h1>
 
-        <div className="hero-bg-media">
+        <motion.div
+          className="hero-bg-media"
+        >
           <motion.img
             initial={{ scale: 1.1, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -919,19 +1069,27 @@ const Products = () => {
             loading="eager"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#020617]/90 via-[#020617]/55 to-transparent" />
-        </div>
+        </motion.div>
 
         <div className="hero-overlay" />
         <div className="hero-mesh" />
 
-        <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
-          style={{ backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)", backgroundSize: "48px 48px" }} />
+        <div
+          className="absolute inset-0 opacity-[0.04] pointer-events-none"
+          style={{
+            backgroundImage:
+              "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)",
+            backgroundSize: "48px 48px",
+          }}
+        />
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-8">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <div>
               <motion.div
-                initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
                 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 text-xs font-semibold uppercase tracking-widest mb-4"
               >
                 <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
@@ -941,41 +1099,58 @@ const Products = () => {
               {/* Decorative display heading — aria-hidden, real H1 is sr-only above */}
               <motion.p
                 aria-hidden="true"
-                initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.05 }}
-                className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-none tracking-tight text-white mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.05 }}
+                className="font-heading text-4xl sm:text-6xl lg:text-7xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
               >
-                Product<br />
+                Product
+                <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600">
                   Catalogue.
-                </span><br />
+                </span>
+                <br />
                 Built to Excel.
               </motion.p>
 
               {/* SEO-rich hero paragraph */}
               <motion.p
-                initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-white/65 text-base leading-relaxed max-w-md mb-7"
               >
                 Explore our complete range of{" "}
-                <strong className="text-white/85">fabrication products</strong> in Trichy — custom{" "}
+                <strong className="text-white/85">fabrication products</strong>{" "}
+                in Trichy — custom{" "}
                 <strong className="text-white/85">steel gates</strong>,{" "}
                 <strong className="text-white/85">balcony railings</strong>,{" "}
                 <strong className="text-white/85">rolling shutters</strong>,{" "}
                 <strong className="text-white/85">aluminium windows</strong>,{" "}
                 <strong className="text-white/85">glass doors</strong> and{" "}
-                <strong className="text-white/85">ACP cladding</strong> — precision-built
-                with Grade-A materials for lasting excellence.
+                <strong className="text-white/85">ACP cladding</strong> —
+                precision-built with Grade-A materials for lasting excellence.
               </motion.p>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.3 }}
                 className="flex flex-col sm:flex-row gap-3"
               >
-                <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-10 w-full sm:w-auto">
+                <TurtleButton
+                  href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
+                  variant="call_now"
+                  className="rounded-xl px-10 w-full sm:w-auto"
+                >
                   <Phone className="w-4 h-4" /> Call Now
                 </TurtleButton>
-                <TurtleButton href={getWhatsAppUrl()} variant="whatsapp" external className="rounded-xl w-full sm:w-auto">
-
+                <TurtleButton
+                  href={getWhatsAppUrl()}
+                  variant="whatsapp"
+                  external
+                  className="rounded-xl w-full sm:w-auto"
+                >
                   <MessageCircle className="w-4 h-4" /> WhatsApp
                 </TurtleButton>
               </motion.div>
@@ -987,7 +1162,7 @@ const Products = () => {
       {/* ─── Tab Navigation ─── */}
       <nav
         ref={navRef}
-        className="sticky top-[64px] lg:top-[80px] z-40 bg-slate-950/90 backdrop-blur-md border-b border-white/10 shadow-2xl py-4 transition-all duration-300"
+        className="sticky top-[64px] lg:top-[80px] z-[100] bg-slate-950 border-b border-white/10 shadow-2xl py-4 transition-all duration-300"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -1000,7 +1175,10 @@ const Products = () => {
                   key={cat.id}
                   isActive={isActive}
                   isPaused={isPaused}
-                  onClick={() => { setActiveTab(cat.id); setIsPaused(true); }}
+                  onClick={() => {
+                    setActiveTab(cat.id);
+                    setIsPaused(true);
+                  }}
                   onHoverStart={() => setIsPaused(true)}
                   onHoverEnd={() => setIsPaused(false)}
                 >
@@ -1034,7 +1212,10 @@ const Products = () => {
       {/* ─── CTA ─── */}
       <section
         className="bg-slate-950 py-24 relative overflow-hidden text-center"
-        style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 400px' }}
+        style={{
+          contentVisibility: "auto",
+          containIntrinsicSize: "auto 400px",
+        }}
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)]" />
         <div className="mx-auto max-w-7xl px-6 relative z-10 md:px-8">
@@ -1048,16 +1229,20 @@ const Products = () => {
             Need a <strong className="text-white/80">steel gate</strong>,{" "}
             <strong className="text-white/80">rolling shutter</strong>,{" "}
             <strong className="text-white/80">aluminium window</strong> or{" "}
-            <strong className="text-white/80">glass door</strong> in Trichy?
-            Our team will visit your site, measure and provide a detailed, written quotation — completely free.
+            <strong className="text-white/80">glass door</strong> in Trichy? Our
+            team will visit your site, measure and provide a detailed, written
+            quotation — completely free.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-10 w-full sm:w-auto">
+            <TurtleButton
+              href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
+              variant="call_now"
+              className="rounded-xl px-10 w-full sm:w-auto"
+            >
               <Phone className="w-4 h-4" /> Get Free Consultation
             </TurtleButton>
             <a
               href={getWhatsAppUrl()}
-
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2.5 bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 rounded-xl font-heading font-bold uppercase tracking-wider text-sm transition-all duration-300 shadow-lg hover:shadow-emerald-600/30 hover:shadow-2xl hover:-translate-y-1 w-full sm:w-auto"
@@ -1066,8 +1251,15 @@ const Products = () => {
             </a>
           </div>
           <div className="flex flex-wrap justify-center gap-6 mt-12 pt-10 border-t border-white/10">
-            {["Certified Quality", "Precision Engineering", "Timely Delivery"].map((b) => (
-              <div key={b} className="flex items-center gap-2 text-sm text-white/40 font-medium">
+            {[
+              "Certified Quality",
+              "Precision Engineering",
+              "Timely Delivery",
+            ].map((b) => (
+              <div
+                key={b}
+                className="flex items-center gap-2 text-sm text-white/40 font-medium"
+              >
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                 {b}
               </div>

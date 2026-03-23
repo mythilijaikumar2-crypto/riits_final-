@@ -78,7 +78,7 @@ const Contact = () => {
   ];
 
   return (
-    <main className="pt-20">
+    <main className="pt-16">
       <SEO
         title={`Contact ${COMPANY_NAME} — Fabrication Shop in Trichy for Steel Gate, Railing, Rolling Shutter & Aluminium Works`}
         description={`Contact ${COMPANY_NAME}, the trusted fabrication shop in Trichy. Get a free quote for steel gate work, grill work, rolling shutter installation, aluminium window work and glass partition work. Call now.`}
@@ -102,7 +102,7 @@ const Contact = () => {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          opacity: 0.5;
+          opacity: 0.4;
           mix-blend-mode: screen;
           will-change: transform;
         }
@@ -277,7 +277,7 @@ const Contact = () => {
               <motion.p
                 aria-hidden="true"
                 variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-                className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-none tracking-tight text-white mb-4"
+                className="font-heading text-4xl sm:text-6xl lg:text-7xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
               >
                 Let's Talk<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600">

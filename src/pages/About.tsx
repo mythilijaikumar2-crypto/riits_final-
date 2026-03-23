@@ -793,7 +793,7 @@ const About = () => {
   const navigate = useNavigate();
 
   return (
-    <main className="ap pt-20" style={{ transform: "translateZ(0)", overflowX: "hidden" }}>
+    <main className="ap pt-16" style={{ transform: "translateZ(0)", overflowX: "hidden" }}>
       <SEO
         title={`About ${COMPANY_NAME} | Trusted Fabrication Company in Trichy, Tamil Nadu`}
         description={`${COMPANY_NAME} is a leading fabrication shop in Trichy with 15+ years in metal fabrication. We build steel gates, railings, rolling shutters, aluminium windows, glass doors & more.`}
@@ -815,7 +815,7 @@ const About = () => {
             transition={{ duration: 2, ease: "easeOut" }}
             src={aboutHero}
             alt={`${COMPANY_NAME} fabrication workshop — steel gate, railing and welding work in Trichy`}
-            className="w-full h-full object-cover opacity-30 mix-blend-overlay"
+            className="w-full h-full object-cover opacity-40 mix-blend-overlay"
             style={{ willChange: "transform" }}
             loading="eager"
           />
@@ -844,7 +844,7 @@ const About = () => {
               <motion.p
                 aria-hidden="true"
                 variants={{ hidden: { opacity: 0, x: -30 }, visible: { opacity: 1, x: 0 } }}
-                className="font-heading text-3xl sm:text-5xl lg:text-7xl font-black uppercase leading-[0.9] tracking-tighter text-white mb-6"
+                className="font-heading text-4xl sm:text-6xl lg:text-7xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
               >
                 Precision<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600">
@@ -899,7 +899,7 @@ const About = () => {
         <div className="ctr">
           <div style={{ textAlign: "center", marginBottom: "3rem" }}> <R> <span className="ltag" style={{ justifyContent: "center", marginBottom: 14 }}>Material Mastery</span> <h2 className="dlg" style={{ color: "#0d2557" }}>Specialized Grades</h2> </R> </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(220px,1fr))", gap: "0.9rem" }}>
-            {["Stainless Steel (SS 304 / 202)", "Mild Steel (MS) Fabrication", "Aluminium Architectural Sections", "Toughened Safety Glass", "ACP Sheets & HPL Cladding", "GI Structural Tubes", "Polycarbonate Roofing", "Custom Glass Partitions"].map((m, i) => (<R key={m} delay={i * 0.05}> <div className="mat-card"> <CheckCircle2 style={{ width: 18, height: 18, color: "#1d4ed8", flexShrink: 0 }} /> <span>{m}</span> </div> </R>))}
+            {["Stainless Steel (SS 304 / 202)", "Mild Steel (MS) Fabrication", "Aluminium Architectural Sections", "Toughened Safety Glass", "ACP Sheets & HPL Cladding", "PPGL Structural Tubes", "Polycarbonate Roofing", "Custom Glass Partitions"].map((m, i) => (<R key={m} delay={i * 0.05}> <div className="mat-card"> <CheckCircle2 style={{ width: 18, height: 18, color: "#1d4ed8", flexShrink: 0 }} /> <span>{m}</span> </div> </R>))}
           </div>
         </div>
       </section>

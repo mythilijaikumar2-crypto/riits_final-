@@ -75,7 +75,7 @@ export const PremiumServiceCards: React.FC = () => {
         <>
           We fabricate and install <strong>steel gates</strong>, <strong>stainless steel gates</strong>, 
           <strong> MS gates</strong>, <strong>sliding gates</strong> and <strong>compound gates</strong> for 
-          residential and commercial properties. Our <strong>window grills</strong> and 
+          residential and commercial building. Our <strong>window grills</strong> and 
           <strong> steel grills</strong> are precision-cut for exact fitment.
         </>
       ),

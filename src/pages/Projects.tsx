@@ -236,16 +236,16 @@ const projectCategories: ProjectCategory[] = [
        metal fabrication work, steel fabrication work */
     seoHeading: "Industrial & Residential Roofing Fabrication Projects",
     seoDesc:
-      "Our roofing portfolio is part of our wider fabrication projects in Trichy — covering industrial warehouse roofing and residential terrace roofing using GI, Galvalume and polycarbonate systems.",
+      "Our roofing portfolio is part of our wider fabrication projects in Trichy — covering industrial warehouse roofing and residential terrace roofing using PPGL, Galvalume and polycarbonate systems.",
     projects: [
       {
-        title: "Industrial & Warehouse Roofing",
-        desc: "High-durability GI and Galvalume roofing sheets for large industrial spans and warehouses — a steel fabrication work project built for decades of performance.",
+        title: "Industrial & Warehouse Roofing (PEB Structure)",
+        desc: "High-durability PPGL and Galvalume roofing sheets with heavy-duty PEB structure for large industrial spans and warehouses — a steel fabrication work project built for decades of performance.",
         images: [whr1, whr2, whr3, whr4, whr5],
       },
       {
         title: "Residential Terrace Roofing",
-        desc: "Polycarbonate and aesthetic metal roofing solutions for home terraces and sit-outs — quality metal fabrication work in Trichy for residential properties.",
+        desc: "Polycarbonate and aesthetic metal roofing solutions for home terraces and sit-outs — quality metal fabrication work in Trichy for residential building.",
         images: [roof1, roof2, roof3, roof5, roof6, roof7],
       },
     ],
@@ -292,7 +292,7 @@ const Projects = () => {
   }, [location]);
 
   return (
-    <main className="pt-20">
+    <main className="pt-16">
       <SEO
         title={`Steel Gate, Grill, Railing & Fabrication Projects in Trichy | ${COMPANY_NAME} Our Works`}
         description={`Browse 800+ real fabrication projects in Trichy by ${COMPANY_NAME} — steel gate work, grill work, rolling shutter installation, aluminium window work, glass partition work and more.`}
@@ -302,7 +302,7 @@ const Projects = () => {
       <style>{`
         .projects-hero {
           position: relative;
-          min-height: 90vh;
+          height: 100vh;
           display: flex;
           align-items: center;
           background: #020617;
@@ -316,7 +316,7 @@ const Projects = () => {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          opacity: 0.6;
+          opacity: 0.4;
           mix-blend-mode: normal;
           will-change: transform;
         }
@@ -372,14 +372,11 @@ const Projects = () => {
         <div className="hero-overlay" />
         <div className="hero-grid-lines" />
 
-<<<<<<< HEAD
-        <div className="absolute top-24 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10 lg:animate-float-slow">
+        <div className="absolute top-20 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10 lg:animate-float-slow">
           <span className="w-2 h-2 rounded-full bg-green-400 lg:animate-pulse" />
           Residential · Commercial · Industrial
         </div>
 
-=======
->>>>>>> 8647edbb6fa4fd7987a0f3b311cce7e4862d8c09
         <div className="container-main relative z-10">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <div>
@@ -392,7 +389,7 @@ const Projects = () => {
               {/* Decorative display heading — aria-hidden; real H1 is sr-only above */}
               <p
                 aria-hidden="true"
-                className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-none tracking-tight text-white mb-4"
+                className="font-heading text-4xl sm:text-6xl lg:text-7xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
               >
                 Projects
                 <br />

@@ -8,12 +8,12 @@ const RoofingWork = () => {
     <main className="overflow-hidden bg-white">
       <SEO 
         title="Best Industrial & Terrace Roofing Services in Trichy"
-        description="Reliable roofing work in Trichy. Industrial sheds, terrace roofing, GI sheet roofing, and polycarbonate sheet installations. Leak-proof and durable."
+        description="Reliable roofing work in Trichy. Industrial sheds, terrace roofing, PPGL sheet roofing, and polycarbonate sheet installations. Leak-proof and durable."
         keywords="roofing work, industrial roofing contractor, metal roofing sheets, terrace roofing sheds, polycarbonate roofing"
       />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-slate-950 overflow-hidden">
+      <section className="relative pt-28 pb-20 bg-slate-950 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src={industrialSvcHero}
@@ -35,7 +35,7 @@ const RoofingWork = () => {
               </span>
             </h1>
             <p className="text-white/70 text-lg leading-relaxed mb-8">
-              Leak-proof and weather-resistant roofing solutions. From massive industrial sheds to modern terrace roofing using GI sheets and polycarbonate in Trichy.
+              Leak-proof and weather-resistant roofing solutions. From massive industrial sheds to modern terrace roofing using PPGL sheets and polycarbonate in Trichy.
             </p>
             <div className="flex flex-wrap gap-4">
               <p className="text-white/70 text-lg leading-relaxed mb-8">
@@ -62,13 +62,13 @@ const RoofingWork = () => {
                   A high-quality roof is your property's first line of defense. At RIITS Metal Craft, we specialize in **Industrial & Terrace Roofing**, providing durable shedding solutions that are both functional and visually appealing.
                 </p>
                 <p className="mb-6">
-                  We offer a variety of roofing materials, from heavy-duty GI and Galvalume sheets for industrial warehouse sheds to stylish polycarbonate and UV-resistant sheets for home terrace areas. Our focus is always on structural stability and leak-proof installation.
+                  We offer a variety of roofing materials, from heavy-duty PPGL and Galvalume sheets for industrial warehouse sheds to stylish polycarbonate and UV-resistant sheets for home terrace areas. Our focus is always on structural stability and leak-proof installation.
                 </p>
                 
                 <h3 className="text-xl font-bold text-slate-800 mb-4 uppercase tracking-wide">Our Roofing Solutions:</h3>
                 <ul className="space-y-4 mb-8">
                   {[
-                    "Industrial Factory & Warehouse Roofing Sheds",
+                    "Industrial Factory & Warehouse Roofing Sheds (PEB Structure)",
                     "Terrace & Rooftop Multi-Purpose Sheds",
                     "Polycarbonate & UV-Resistant Sheet Work",
                     "Galvalume & Color Coated Profile Sheets",
@@ -134,7 +134,7 @@ const RoofingWork = () => {
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
             {[
-              { title: "High-Quality Sheets", desc: "We use only branded sheets with superior micron coating for long life." },
+              { title: "Expert PEB Structure Design", desc: "We use only branded sheets with superior micron coating for long life." },
               { title: "Precision Framework", desc: "Steel frames are engineered to handle the load and wind pressure of your area." },
               { title: "Professional Finishing", desc: "Complete roofing solutions including gutters and down-pipes for drainage." }
             ].map((item) => (

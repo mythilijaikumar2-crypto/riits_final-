@@ -279,7 +279,7 @@ const Services = () => {
         <div className="absolute inset-0 z-0">
           <img
             src={servicesHero}
-            className="w-full h-full object-cover opacity-60"
+            className="w-full h-full object-cover opacity-40"
             alt={`${COMPANY_NAME} services — steel fabrication, gate work, rolling shutter and aluminium works in Trichy`}
             loading="eager"
             decoding="async"
@@ -296,18 +296,11 @@ const Services = () => {
           }}
         />
 
-<<<<<<< HEAD
-        <div className="absolute top-20 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium lg:animate-float-slow">
+        <div className="absolute top-16 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium lg:animate-float-slow">
           <span className="w-2 h-2 rounded-full bg-green-400 lg:animate-pulse" />
           15+ Years of Expertise
         </div>
-        <div className="absolute bottom-20 left-[6%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium lg:animate-float-medium">
-          <span className="w-2 h-2 rounded-full bg-blue-400 lg:animate-pulse" />
-          800+ Projects Delivered
-        </div>
 
-=======
->>>>>>> 8647edbb6fa4fd7987a0f3b311cce7e4862d8c09
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <div>
@@ -316,7 +309,7 @@ const Services = () => {
               </div>
               <p
                 aria-hidden="true"
-                className="font-heading text-3xl sm:text-5xl lg:text-5xl font-black uppercase leading-none tracking-tight text-white mb-4"
+                className="font-heading text-4xl sm:text-6xl lg:text-7xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
               >
                 Expert<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600">
