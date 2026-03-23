@@ -10,7 +10,6 @@ import { TurtleButton } from "../components/TurtleButton";
 import { CONTACT_DETAILS, formatTelLink, COMPANY_NAME, BRAND_NAME } from "../config/contact";
 import aboutHero from "../assets/heropage/about-hero.webp";
 
-
 /* ══════════════════════════════════════════
     SCROLL REVEAL WRAPPER
 ══════════════════════════════════════════ */
@@ -62,7 +61,7 @@ const FontLoader = () => (
     .ltag { font-size:0.68rem; font-weight:700; letter-spacing:0.24em; text-transform:uppercase; color:var(--blue-6); display:inline-flex; align-items:center; gap:10px; }
     .ltag::before { content:''; display:block; width:26px; height:2px; background:var(--blue-6); flex-shrink:0; }
     .navy-bg { background-color: var(--navy); }
-    .sec { padding: clamp(4rem, 8vw, 7.5rem) 0; overflow: hidden; }
+    .sec { padding: clamp(3rem, 6vw, 4.5rem) 0; overflow: hidden; }
     .ctr { width: 90%; max-width: 1240px; margin: 0 auto; position: relative; z-index: 10; }
 
     /* ── Hero ── */
@@ -81,19 +80,19 @@ const FontLoader = () => (
     .stat-grid-row {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1rem;
+      gap: 0.75rem;
     }
     @media (min-width: 480px) {
-      .stat-grid-row { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+      .stat-grid-row { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     }
     @media (min-width: 1024px) {
-      .stat-grid-row { grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+      .stat-grid-row { grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
     }
     .about-stat-card {
       background: rgba(255,255,255,0.7);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      padding: clamp(25px, 8vw, 45px) 20px;
+      padding: clamp(18px, 5vw, 30px) 15px;
       border-radius: 36px;
       border: 1px solid rgba(37,99,235,0.1);
       text-align: center;
@@ -110,7 +109,7 @@ const FontLoader = () => (
       transform: translateZ(0);
     }
     .about-stat-card:hover {
-      transform: translateY(-12px) scale(1.05);
+      transform: translateY(8px) scale(1.01);
       border-color: rgba(37,99,235,0.4);
       background: white;
       box-shadow: 0 45px 90px -20px rgba(37,99,235,0.2);
@@ -120,13 +119,13 @@ const FontLoader = () => (
       font-size: 3.5rem;
       font-weight: 900;
       line-height: 1;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       background: linear-gradient(135deg, var(--navy) 0%, var(--blue-6) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       transition: transform 0.4s cubic-bezier(0.23,1,0.32,1);
     }
-    .about-stat-card:hover .about-stat-val { transform: scale(1.05) translateY(-2px); }
+    .about-stat-card:hover .about-stat-val { transform: translateY(-1px); }
     .about-stat-lbl {
       font-size: 0.75rem;
       font-weight: 800;
@@ -259,7 +258,7 @@ const FontLoader = () => (
 
     /* ══ Vision & Mission ══ */
     .vm-section {
-      padding: clamp(4rem, 8vw, 5rem) 0;
+      padding: clamp(2.5rem, 6vw, 4rem) 0;
       background: linear-gradient(135deg, #eff6ff 0%, #ffffff 50%, #f8fafc 100%);
     }
     .vm-grid {
@@ -587,8 +586,6 @@ const Counter = ({ value, duration = 2 }: { value: string; duration?: number }) 
   );
 };
 
-
-
 /* ══════════════════════════════════════════
     STATIC DATA
 ══════════════════════════════════════════ */
@@ -602,9 +599,6 @@ const districts = [
   { name: "Ariyalur",    main: false },
   { name: "Dindigul",    main: false },
 ];
-
-
-
 
 /* ══════════════════════════════════════════
     VISION & MISSION
@@ -677,7 +671,6 @@ export function VisionMission() {
     </section>
   );
 }
-
 
 /* ══════════════════════════════════════════
     HOW WE DELIVER
@@ -793,7 +786,6 @@ export function HowWeDeliver() {
   );
 }
 
-
 /* ════════════════════════════════════════════
     MAIN ABOUT PAGE
 ════════════════════════════════════════════ */
@@ -811,7 +803,7 @@ const About = () => {
       <FontLoader />
 
       {/* ── HERO ── */}
-      <section className="relative min-h-[85vh] lg:min-h-screen flex flex-col justify-center bg-[var(--navy)] overflow-hidden">
+      <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 bg-[var(--navy)] overflow-hidden">
         <h1 className="sr-only">
           About {COMPANY_NAME} — Trusted Metal Fabrication Company in Trichy, Tamil Nadu
         </h1>
@@ -873,18 +865,24 @@ const About = () => {
                 homeowners, builders and businesses across Trichy, Thanjavur and Tamil Nadu —
                 delivering every project with precision and care.
               </motion.p>
-
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* ── STATS GRID ── */}
-      <section className="relative z-20 -mt-20 lg:-mt-24 mb-10" style={{ overflow: "visible" }}>
+      <section className="relative z-20 -mt-20 lg:-mt-24 mb-0" style={{ overflow: "visible" }}>
         <div className="ctr">
           <div className="stat-grid-row">
             {[{ val: "800+", lbl: "Projects Completed", delay: 0.05 }, { val: "15+", lbl: "Years Experience", delay: 0.1 }, { val: "100%", lbl: "Client Satisfaction", delay: 0.15 }, { val: "Pan TN", lbl: "Areas Served", delay: 0.2 }].map((stat, i) => (
-              <R key={i} delay={stat.delay} duration={0.4}> <div className="about-stat-card group"> <div className="about-stat-val"> <Counter value={stat.val} duration={2} /> </div> <div className="about-stat-lbl">{stat.lbl}</div> </div> </R>
+              <R key={i} delay={stat.delay} duration={0.4}>
+                <div className="about-stat-card group">
+                  <div className="about-stat-val">
+                    <Counter value={stat.val} duration={2} />
+                  </div>
+                  <div className="about-stat-lbl">{stat.lbl}</div>
+                </div>
+              </R>
             ))}
           </div>
         </div>
@@ -965,8 +963,6 @@ const About = () => {
         </div>
       </section>
 
-
-
       {/* ── WHY CHOOSE US ── */}
       <section className="navy-bg sec">
         <div className="ctr">
@@ -1007,7 +1003,7 @@ const About = () => {
       </section>
 
       {/* ── CTA FOOTER ── */}
-      <section className="navy-bg sec" style={{ textAlign: "center", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+      <section className="navy-bg" style={{ textAlign: "center", borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "4rem", paddingBottom: "2rem" }}>
         <div className="ctr">
           <R>
             <p style={{ fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase", color: "#93c5fd", marginBottom: "1.2rem" }}>
@@ -1041,7 +1037,6 @@ const About = () => {
               >
                 View Our Work <ArrowRight style={{ width: 18, height: 18 }} />
               </motion.button>
-
             </div>
           </R>
         </div>
