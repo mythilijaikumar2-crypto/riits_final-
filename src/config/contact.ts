@@ -1,11 +1,11 @@
-import LOGO_EMBLEM_IMG from "../assets/logo/Emblem_logo.webp";
-import LOGO_TEXT_IMG from "../assets/logo/riits-logo-text.png";
+import LOGO_EMBLEM_IMG from "../assets/logo/RIITS LOGO.png";
 
 export const COMPANY_NAME = "RIITS Metal Craft";
 export const BRAND_NAME = "RIITS";
 
 export const LOGO_EMBLEM = LOGO_EMBLEM_IMG;
-export const LOGO_TEXT = LOGO_TEXT_IMG;
+export const LOGO_TEXT = LOGO_EMBLEM_IMG; // Since we only have one logo file now
+
 
 export const CONTACT_DETAILS = {
   primaryPhone: {

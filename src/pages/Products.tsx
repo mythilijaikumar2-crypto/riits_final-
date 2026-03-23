@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useState, useEffect, memo, useRef, type MouseEvent, type ReactNode } from "react";
 import { Phone, MessageCircle, CheckCircle2 } from "lucide-react";
 import { TurtleButton } from "../components/TurtleButton";
@@ -269,6 +269,37 @@ const productCategories = [
     ],
     benefits: ["Motorized options", "High security", "Low maintenance", "Weather resistant"],
   },
+  {
+    id: "laser",
+    title: "Laser Design",
+    subtitle: "CNC LASER CUTTING",
+    seoHeading: "CNC Laser Cut Metal Designs & Decorative Panels in Trichy",
+    overview: "Precision-engineered CNC laser cut metal designs for premium architectural applications. We create custom-patterned gates, partitions, wall art, and decorative panels in Stainless Steel and Mild Steel to elevate your building's aesthetic.",
+    products: [
+      {
+        name: "Laser Cut Gates",
+        desc: "Artistic laser-cut patterns for main gates and wicket gates, combining security with high-end design.",
+        materials: "MS / SS Sheets",
+        applications: "Luxury Residences, Villas",
+        image: ssDecorativeImg,
+      },
+      {
+        name: "Interior Partitions",
+        desc: "Decorative laser-cut metal screens for living rooms, offices, and commercial interiors.",
+        materials: "SS / MS Powder Coated",
+        applications: "Offices, Homes, Hotels",
+        image: ssDecorativeImg,
+      },
+      {
+        name: "Wall Art & Panels",
+        desc: "Custom metal wall art and facade cladding panels with intricate geometric or floral designs.",
+        materials: "SS 304 / MS",
+        applications: "Building Facades, Feature Walls",
+        image: ssDecorativeImg,
+      },
+    ],
+    benefits: ["Premium finish", "Versatile applications", "Modern aesthetics", "Precision cutting"],
+  },
 ];
 
 type Product = (typeof productCategories)[0]["products"][0];
@@ -455,7 +486,7 @@ const ProductCard = memo(({ product, index }: { product: Product; index: number 
     <motion.div
       initial={{ opacity: 0, scale: 0.95, y: 30 }}
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "-100px" }}
       transition={{ delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
       whileHover={{ y: -12 }}
       className="card"
@@ -465,14 +496,14 @@ const ProductCard = memo(({ product, index }: { product: Product; index: number 
       </div>
 
       <div className="project-info">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center gap-2">
           <div className="project-title">{product.name}</div>
           <span className="tag">Product</span>
         </div>
         <span className="lighter">
           {product.desc}
         </span>
-        <div className="mt-5 pt-5 border-t border-slate-100 flex flex-col gap-2">
+        <div className="mt-auto pt-5 border-t border-slate-100 flex flex-col gap-2">
           <div className="text-[12px] leading-tight text-slate-400 font-black uppercase tracking-[0.1em]">Technical Details</div>
           <div className="text-[14px] text-slate-700 flex items-start gap-2 leading-relaxed">
             <span className="text-blue-600 font-extrabold min-w-[75px]">MATERIAL:</span> {product.materials}
@@ -498,7 +529,7 @@ const CategorySection = memo(({ category }: { category: Category }) => {
   }, [category.id]);
 
   return (
-    <section id={`section-${category.id}`} className="scroll-mt-24 pb-12" style={{ contentVisibility: 'auto' }}>
+    <section id={`section-${category.id}`} className="scroll-mt-24 pb-12">
       <div className="mb-8">
         <p className="text-xs font-semibold tracking-wider text-blue-600 uppercase mb-1">
           {category.subtitle}
@@ -537,9 +568,11 @@ const CategorySection = memo(({ category }: { category: Category }) => {
 const Products = () => {
   const [activeTab, setActiveTab] = useState(productCategories[0].id);
   const [isPaused, setIsPaused] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+  const isNavInView = useInView(navRef, { amount: 0.1 });
 
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || !isNavInView) return;
     const interval = setInterval(() => {
       setActiveTab((prev) => {
         const currentIndex = productCategories.findIndex(c => c.id === prev);
@@ -548,16 +581,16 @@ const Products = () => {
       });
     }, 4000);
     return () => clearInterval(interval);
-  }, [isPaused]);
+  }, [isPaused, isNavInView]);
 
   const activeCategory = productCategories.find((c) => c.id === activeTab) || productCategories[0];
 
   return (
     <main className="min-h-screen bg-white">
       <SEO
-        title={`Fabrication Products in Trichy — Steel Gates, Railings, Shutters & More | ${COMPANY_NAME}`}
-        description={`Browse ${COMPANY_NAME}'s full range of fabrication products in Trichy — steel gates, stainless steel gates, railings, rolling shutters, aluminium windows, glass doors, ACP cladding and more.`}
-        keywords="steel gate, metal gate, stainless steel gate, window grill, grill work, balcony railing, staircase railing, steel railing, rolling shutter, shop shutter, aluminium door, aluminium window, aluminium sliding window, glass door, toughened glass door, glass partition, office glass partition, steel staircase, metal staircase, fabrication products, metal fabrication, steel fabrication, gate fabrication, steel gate in Trichy, grill work in Trichy, rolling shutter in Trichy, aluminium window in Trichy, fabrication shop in Trichy"
+        title={`Fabrication Products in Trichy — Steel Gates, Railings, Shutters & Laser Design | ${COMPANY_NAME}`}
+        description={`Browse ${COMPANY_NAME}'s full range of fabrication products in Trichy — steel gates, stainless steel gates, railings, rolling shutters, laser design, CNC laser cutting, aluminium windows, glass doors, ACP cladding and more.`}
+        keywords="laser design, CNC laser cutting, laser cut gate, laser cut partition, steel gate, metal gate, stainless steel gate, window grill, grill work, balcony railing, staircase railing, steel railing, rolling shutter, shop shutter, aluminium door, aluminium window, aluminium sliding window, glass door, toughened glass door, glass partition, office glass partition, steel staircase, metal staircase, fabrication products, metal fabrication, steel fabrication, gate fabrication, steel gate in Trichy, grill work in Trichy, rolling shutter in Trichy, aluminium window in Trichy, fabrication shop in Trichy"
       />
 
       <style>{`
@@ -652,14 +685,16 @@ const Products = () => {
           margin-top: -5px;
         }
 
-        .project-title {
+         .project-title {
           font-weight: 800;
           font-size: 1.6rem;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
           color: #0f172a;
           letter-spacing: -0.02em;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          line-height: 1.2;
         }
 
         .lighter {
@@ -883,15 +918,6 @@ const Products = () => {
         <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
           style={{ backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)", backgroundSize: "48px 48px" }} />
 
-        <div className="absolute top-24 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10 animate-float-slow">
-          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-          5 Product Categories
-        </div>
-        <div className="absolute bottom-24 left-[6%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10 animate-float-medium">
-          <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-          Grade-A Certified Materials
-        </div>
-
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-8">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <div>
@@ -951,6 +977,7 @@ const Products = () => {
 
       {/* ─── Tab Navigation ─── */}
       <nav
+        ref={navRef}
         className="sticky top-[64px] lg:top-[80px] z-40 bg-slate-950/90 backdrop-blur-md border-b border-white/10 shadow-2xl py-4 transition-all duration-300"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}

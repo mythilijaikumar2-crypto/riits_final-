@@ -256,15 +256,6 @@ const Contact = () => {
         <div className="hero-overlay" />
         <div className="hero-grid-lines" />
 
-        <div className="absolute top-24 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10 animate-float-slow">
-          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-          Available 24/7 For You
-        </div>
-        <div className="absolute bottom-24 left-[6%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10 animate-float-medium">
-          <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-          Free Consultation &amp; Site Visit
-        </div>
-
         <div className="container-main relative z-10">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <motion.div
