@@ -1,9 +1,12 @@
 import { motion, useInView } from "framer-motion";
 import React, { useState, memo } from "react";
 import { useNavigate } from "react-router-dom";
+import tamilNaduMap from "../assets/tamilnadu webp.webp";
 import {
-  ArrowRight, CheckCircle2, MapPin, Phone,
-  Users, Target, Wrench, Clock, ThumbsUp, FileCheck, Headphones, ClipboardList, Truck
+  Phone, ArrowRight, CheckCircle2,
+  MapPin,
+  Target, Users, ClipboardList, Wrench, Truck,
+  Clock, ThumbsUp, Headphones, FileCheck
 } from "lucide-react";
 import SEO from "../components/SEO";
 import { TurtleButton } from "../components/TurtleButton";
@@ -531,16 +534,129 @@ const FontLoader = () => (
     HUB & SPOKE COVERAGE MAP
 ══════════════════════════════════════════ */
 const CoverageMap = () => {
-  const [hov, setHov] = useState<number | null>(null);
-  const spokes = [{ label: "Thanjavur", angle: -45 }, { label: "Perambalur", angle: -110 }, { label: "Karur", angle: 170 }, { label: "Pudukottai", angle: 60 }, { label: "Ariyalur", angle: -80 }, { label: "Dindigul", angle: 140 }];
-  const RL = 85;
+  const districts = [
+    { name: "Trichy", x: 0, y: 0, main: true },
+    { name: "Thanjavur", x: 65, y: -5 },
+    { name: "Perambalur", x: -10, y: -75 },
+    { name: "Karur", x: -85, y: 15 },
+    { name: "Pudukottai", x: 45, y: 85 },
+    { name: "Ariyalur", x: 75, y: -45 },
+    { name: "Dindigul", x: -65, y: 95 },
+  ];
+
   return (
-    <div className="relative w-full aspect-square max-w-[340px] mx-auto flex items-center justify-center bg-slate-50/50 rounded-full border border-slate-100">
-      <svg viewBox="-140 -140 280 280" className="w-full h-full p-6">
-        {spokes.map((s, i) => { const rad = (s.angle - 90) * Math.PI / 180; const x = Math.cos(rad) * RL, y = Math.sin(rad) * RL; return <line key={i} x1="0" y1="0" x2={x} y2={y} stroke={hov === i ? "#1d4ed8" : "#cbd5e1"} strokeWidth={hov === i ? "2.5" : "1.5"} strokeDasharray={hov === i ? "0" : "4 4"} style={{ transition: "stroke 0.2s,stroke-width 0.2s" }} />; })}
-        {spokes.map((s, i) => { const rad = (s.angle - 90) * Math.PI / 180; const x = Math.cos(rad) * RL, y = Math.sin(rad) * RL; const lx = Math.cos(rad) * (RL + 28), ly = Math.sin(rad) * (RL + 28); return <g key={i} style={{ cursor: "pointer" }} onMouseEnter={() => setHov(i)} onMouseLeave={() => setHov(null)}> <circle cx={x} cy={y} r={hov === i ? 8 : 6} fill={hov === i ? "#1d4ed8" : "#3b82f6"} opacity="0.92" style={{ transition: "r 0.2s,fill 0.2s" }} /> <circle cx={x} cy={y} r={hov === i ? 3.5 : 2.8} fill="white" style={{ transition: "r 0.2s" }} /> <text x={lx} y={ly} textAnchor="middle" dominantBaseline="middle" fontSize={hov === i ? 9.5 : 8.5} fontWeight={hov === i ? "800" : "600"} fill={hov === i ? "#0d2557" : "#334155"} fontFamily="DM Sans,sans-serif" style={{ transition: "font-size 0.2s,fill 0.2s" }}> {s.label} </text> </g>; })}
-        <circle cx="0" cy="0" r="22" fill="rgba(13,37,87,0.08)" /> <circle cx="0" cy="0" r="14" fill="#0d2557" /> <circle cx="0" cy="0" r="6" fill="white" /> <circle cx="0" cy="0" r="2.5" fill="#0d2557" /> <text x="0" y="38" textAnchor="middle" fontSize="11" fontWeight="900" fill="#0d2557" style={{ letterSpacing: 1, textTransform: "uppercase" }}> TRICHY </text>
-      </svg>
+    <div className="relative w-full aspect-square max-w-[400px] mx-auto flex items-center justify-center p-8 bg-white/40 ring-1 ring-slate-100 rounded-[3rem] shadow-sm overflow-hidden">
+      {/* Background Pattern */}
+      <div 
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(#000 1px, transparent 1px)",
+          backgroundSize: "20px 20px"
+        }}
+      />
+
+      {/* Tamil Nadu Map Image with Framer Motion */}
+      <motion.img
+        initial={{ opacity: 0, scale: 0.9, filter: "grayscale(1) brightness(1.2)" }}
+        whileInView={{ opacity: 0.35, scale: 1, filter: "grayscale(1) brightness(1.1)" }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        src={tamilNaduMap}
+        alt="Tamil Nadu Service Coverage Map"
+        className="absolute inset-0 w-full h-full object-contain p-10 pointer-events-none z-0"
+      />
+
+      <div className="relative w-full h-full flex items-center justify-center z-10">
+        {/* Dynamic SVG Lines */}
+        <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none">
+          <defs>
+            <linearGradient id="lineGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#2563eb" stopOpacity="0" />
+              <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.8" />
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+              <feMerge>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          {districts.filter(d => !d.main).map((d, i) => (
+            <motion.line
+              key={i}
+              x1="50%" 
+              y1="50%"
+              x2={`${50 + (d.x * 0.4)}%`} 
+              y2={`${50 + (d.y * 0.4)}%`}
+              stroke="url(#lineGlow)"
+              strokeWidth="2"
+              strokeDasharray="8 6"
+              filter="url(#glow)"
+              initial={{ pathLength: 0, opacity: 0, strokeDashoffset: 100 }}
+              whileInView={{ 
+                pathLength: 1, 
+                opacity: 1,
+                strokeDashoffset: [100, 0]
+              }}
+              transition={{ 
+                pathLength: { duration: 2, delay: i * 0.15, ease: "easeOut" },
+                opacity: { duration: 1, delay: i * 0.15 },
+                strokeDashoffset: { duration: 3, repeat: Infinity, ease: "linear" }
+              }}
+            />
+          ))}
+        </svg>
+
+        {/* District Markers */}
+        {districts.map((d, i) => (
+          <motion.div
+            key={i}
+            className="absolute z-20"
+            style={{
+              left: `${50 + (d.x * 0.4)}%`,
+              top: `${50 + (d.y * 0.4)}%`,
+              transform: 'translate(-50%, -50%)'
+            }}
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay: i * 0.1 + 0.8, type: "spring", stiffness: 150, damping: 12 }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.25 }}
+              className={`relative flex items-center justify-center cursor-pointer group`}
+            >
+              {/* Layered Pulse Effect */}
+              <div className={`absolute inset-0 rounded-full animate-ping ${d.main ? 'bg-blue-600/40' : 'bg-blue-400/30'}`} style={{ animationDuration: '3s' }} />
+              {d.main && <div className="absolute inset-0 rounded-full animate-ping bg-blue-500/20" style={{ animationDuration: '2s', animationDelay: '1s' }} />}
+              
+              {/* Marker Core */}
+              <div className={`relative rounded-full border-2 border-white shadow-xl transition-all duration-500 group-hover:shadow-blue-500/50 ${d.main ? 'w-14 h-14 bg-gradient-to-br from-[#0d2557] to-[#1e3a8a] ring-4 ring-blue-100/50' : 'w-4 h-4 bg-blue-600 shadow-blue-500/20'}`}>
+                {d.main && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center leading-none">
+                    <span className="text-[9px] font-black text-white tracking-[0.2em] mb-0.5 ml-1">RIITS</span>
+                    <div className="w-4 h-[1px] bg-blue-400/50" />
+                  </div>
+                )}
+              </div>
+
+              {/* Enhanced Label Component */}
+              <motion.div 
+                initial={{ opacity: d.main ? 1 : 0, y: d.main ? 8 : 15 }}
+                whileHover={{ opacity: 1, y: 0 }}
+                className={`absolute whitespace-nowrap bg-white/95 backdrop-blur-xl px-3 py-2 rounded-xl border border-blue-50 shadow-2xl transition-all duration-500 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0
+                ${d.main ? 'top-[140%] ring-2 ring-blue-500/5' : 'top-[160%] opacity-0'}`}
+              >
+                <div className="flex items-center gap-2">
+                  <div className={`w-2 h-2 rounded-full ${d.main ? 'bg-blue-700 animate-pulse' : 'bg-blue-500'}`} />
+                  <span className={`text-[11px] font-black uppercase tracking-[0.15em] ${d.main ? 'text-blue-900' : 'text-slate-700'}`}>
+                    {d.name}
+                  </span>
+                </div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 };
@@ -605,7 +721,7 @@ const districts = [
 ══════════════════════════════════════════ */
 export function VisionMission() {
   return (
-    <section className="vm-section">
+    <section className="vm-section" style={{ contentVisibility: "auto", containIntrinsicSize: "auto 400px" }}>
       <div className="vm-grid">
 
         {/* Vision */}
@@ -729,7 +845,7 @@ const deliveryPoints = [
 
 export function HowWeDeliver() {
   return (
-    <section className="hwd-section">
+    <section className="hwd-section" style={{ contentVisibility: "auto", containIntrinsicSize: "auto 800px" }}>
       <div className="ctr">
         {/* Header */}
         <div className="hwd-header">
@@ -810,14 +926,16 @@ const About = () => {
 
         <div className="absolute inset-0 z-0">
           <motion.img
-            initial={{ scale: 1.15, opacity: 0 }}
+            initial={{ scale: 1.1, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 2, ease: "easeOut" }}
+            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
             src={aboutHero}
             alt={`${COMPANY_NAME} fabrication workshop — steel gate, railing and welding work in Trichy`}
             className="w-full h-full object-cover opacity-40 mix-blend-overlay"
             style={{ willChange: "transform" }}
             loading="eager"
+            // @ts-ignore
+            fetchpriority="high"
           />
 
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--navy)] via-[var(--navy)]/60 to-transparent z-[1]" />
@@ -1003,7 +1121,7 @@ const About = () => {
       </section>
 
       {/* ── CTA FOOTER ── */}
-      <section className="navy-bg" style={{ textAlign: "center", borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "4rem", paddingBottom: "2rem" }}>
+      <section className="navy-bg" style={{ textAlign: "center", borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "4rem", paddingBottom: "2rem", contentVisibility: "auto", containIntrinsicSize: "auto 300px" }}>
         <div className="ctr">
           <R>
             <p style={{ fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase", color: "#93c5fd", marginBottom: "1.2rem" }}>

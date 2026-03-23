@@ -241,16 +241,17 @@ const Contact = () => {
         </h1>
 
         <motion.div
-          initial={{ scale: 1.15, opacity: 0 }}
+          initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="absolute inset-0"
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="absolute inset-0 z-0"
         >
           <img
             src={contactHero}
             alt={`Contact ${COMPANY_NAME} — fabrication shop in Trichy for steel gate work, rolling shutter and aluminium works`}
             className="hero-bg-img"
             loading="eager"
+            decoding="async"
           />
         </motion.div>
         <div className="hero-overlay" />

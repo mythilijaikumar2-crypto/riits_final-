@@ -1055,23 +1055,23 @@ const Products = () => {
           Shutters, Aluminium Windows &amp; Glass Doors | {COMPANY_NAME}
         </h1>
 
-        <motion.div
-          className="hero-bg-media"
+        {/* Backing Image — uses motion for zoom-out entrance */}
+        <motion.div 
+          initial={{ scale: 1.1, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="absolute inset-0 z-0"
         >
-          <motion.img
-            initial={{ scale: 1.1, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 2, ease: "easeOut" }}
+          <img
             src={productsHero}
-            alt={`${COMPANY_NAME} fabrication products — steel gates, railings, rolling shutters and aluminium works in Trichy`}
-            className="w-full h-full object-cover opacity-30 mix-blend-overlay"
-            style={{ willChange: "transform" }}
+            alt={`Our fabrication products — steel gate, railing, rolling shutter and aluminium door works in Trichy`}
+            className="hero-bg-img h-full w-full object-cover opacity-40 mix-blend-screen"
             loading="eager"
+            decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#020617]/90 via-[#020617]/55 to-transparent" />
+          <div className="hero-overlay" />
         </motion.div>
 
-        <div className="hero-overlay" />
         <div className="hero-mesh" />
 
         <div
@@ -1085,11 +1085,16 @@ const Products = () => {
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-8">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
-            <div>
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.2 } },
+              }}
+            >
               <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
+                variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
                 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 text-xs font-semibold uppercase tracking-widest mb-4"
               >
                 <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
@@ -1098,10 +1103,8 @@ const Products = () => {
 
               {/* Decorative display heading — aria-hidden, real H1 is sr-only above */}
               <motion.p
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
                 aria-hidden="true"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.05 }}
                 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
               >
                 Product
@@ -1115,9 +1118,7 @@ const Products = () => {
 
               {/* SEO-rich hero paragraph */}
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
                 className="text-white/65 text-base leading-relaxed max-w-md mb-7"
               >
                 Explore our complete range of{" "}
@@ -1133,9 +1134,7 @@ const Products = () => {
               </motion.p>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.3 }}
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
                 className="flex flex-col sm:flex-row gap-3"
               >
                 <TurtleButton
@@ -1149,12 +1148,12 @@ const Products = () => {
                   href={getWhatsAppUrl()}
                   variant="whatsapp"
                   external
-                  className="rounded-xl w-full sm:w-auto"
+                  className="rounded-xl w-full sm:w-auto px-10"
                 >
                   <MessageCircle className="w-4 h-4" /> WhatsApp
                 </TurtleButton>
               </motion.div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

@@ -309,6 +309,43 @@ section.relative.h-screen > motion\:div.absolute,
   --label-line:     1.5;
 }
 
+/* ─────────────────────────────────────────────────────────────
+   DEVICE ADAPTIVE SCALING (1080p, 2K, 4K, 8K)
+   Ensures text and containers stay balanced on huge screens.
+───────────────────────────────────────────────────────────── */
+
+/* 2K / Ultra-wide monitors */
+@media (min-width: 1921px) {
+  :root {
+    --hero-h1:        clamp(3rem, 5vw, 4.5rem) !important;
+    --sec-h2:         clamp(2rem, 3.5vw, 3rem) !important;
+    --body-size:      clamp(1rem, 1.8vw, 1.25rem) !important;
+  }
+  .container-main {
+    max-width: 90rem !important; /* ~1440px */
+  }
+  .max-w-7xl {
+    max-width: 90rem !important;
+  }
+}
+
+/* 4K Resolution Scale */
+@media (min-width: 3800px) {
+  :root {
+    --hero-h1:        6rem !important;
+    --sec-h2:         4rem !important;
+    --body-size:      1.5rem !important;
+  }
+  .container-main, .max-w-7xl {
+    max-width: 140rem !important; /* ~2240px */
+  }
+}
+
+/* ── Global Scroll Overflow Fix for Responsive ── */
+.overflow-x-clip {
+  overflow-x: clip; 
+}
+
 
 /* ─────────────────────────────────────────────────────────────
    1. GLOBAL RESETS

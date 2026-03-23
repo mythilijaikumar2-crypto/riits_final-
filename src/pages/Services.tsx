@@ -276,16 +276,21 @@ const Services = () => {
           Steel Fabrication, Gate Work, Railing, Rolling Shutter &amp; Aluminium Services in Trichy | {COMPANY_NAME}
         </h1>
 
-        <div className="absolute inset-0 z-0">
+        <motion.div 
+          initial={{ scale: 1.1, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="absolute inset-0 z-0"
+        >
           <img
             src={servicesHero}
-            className="w-full h-full object-cover opacity-40"
+            className="w-full h-full object-cover opacity-55"
             alt={`${COMPANY_NAME} services — steel fabrication, gate work, rolling shutter and aluminium works in Trichy`}
             loading="eager"
             decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/30 to-transparent" />
-        </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-slate-950/15 to-transparent" />
+        </motion.div>
 
         <div
           className="absolute inset-0 opacity-[0.04] pointer-events-none"
@@ -296,18 +301,26 @@ const Services = () => {
           }}
         />
 
-        <div className="absolute top-16 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium lg:animate-float-slow">
-          <span className="w-2 h-2 rounded-full bg-green-400 lg:animate-pulse" />
-          15+ Years of Expertise
-        </div>
+
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-widest mb-4">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.2 } },
+              }}
+            >
+              <motion.div
+                variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-widest mb-4"
+              >
                 <Zap className="w-3 h-3" /> Fabrication Shop in Trichy
-              </div>
-              <p
+              </motion.div>
+              <motion.p
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
                 aria-hidden="true"
                 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
               >
@@ -316,8 +329,11 @@ const Services = () => {
                   Metal &amp; Glass
                 </span><br />
                 Services
-              </p>
-              <p className="text-white/65 text-base leading-relaxed max-w-md mb-7">
+              </motion.p>
+              <motion.p 
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                className="text-white/65 text-base leading-relaxed max-w-md mb-7"
+              >
                 {COMPANY_NAME} is your trusted{" "}
                 <strong className="text-white/85">fabrication shop in Trichy</strong> —
                 delivering expert{" "}
@@ -327,16 +343,19 @@ const Services = () => {
                 <strong className="text-white/85">aluminium window work</strong> and{" "}
                 <strong className="text-white/85">glass partition work</strong> for
                 residential, commercial and industrial projects across Tamil Nadu.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3">
+              </motion.p>
+              <motion.div 
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                className="flex flex-col sm:flex-row gap-3"
+              >
                 <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-10 w-full sm:w-auto">
                   <Phone className="w-4 h-4" /> Call Now
                 </TurtleButton>
                 <TurtleButton href={getWhatsAppUrl()} variant="whatsapp" external className="rounded-xl w-full sm:w-auto">
                   <MessageCircle className="w-4 h-4" /> WhatsApp
                 </TurtleButton>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -344,7 +363,7 @@ const Services = () => {
       {/* ══════════════════════════════════════════
           STATS
       ══════════════════════════════════════════ */}
-      <section className="min-h-screen flex items-center justify-center bg-white relative border-b border-slate-100 py-20 overflow-hidden">
+      <section className="min-h-screen flex items-center justify-center bg-white relative border-b border-slate-100 py-20 overflow-hidden" style={{ contentVisibility: "auto", containIntrinsicSize: "auto 100vh" }}>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(37,99,235,0.05),transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(26,58,107,0.05),transparent_50%)]" />
         <div className="absolute -top-[30%] -right-[10%] w-[50vw] h-[50vw] rounded-full bg-blue-100/30 blur-[100px] pointer-events-none animate-[spin_60s_linear_infinite]" />
@@ -444,7 +463,7 @@ const Services = () => {
       {/* ══════════════════════════════════════════
           SERVICE AREAS
       ══════════════════════════════════════════ */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-24 bg-white relative overflow-hidden" style={{ contentVisibility: "auto", containIntrinsicSize: "auto 900px" }}>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(26,58,107,0.04),transparent_60%)]" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">

@@ -361,33 +361,47 @@ const Projects = () => {
           Steel Gate, Grill, Railing, Rolling Shutter &amp; Fabrication Projects in Trichy | {COMPANY_NAME} Our Works
         </h1>
 
-        <div className="absolute inset-0 z-0 overflow-hidden opacity-80">
+        <motion.div 
+          initial={{ scale: 1.1, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="absolute inset-0 z-0"
+        >
           <img
             src={projectsHero}
-            alt={`${COMPANY_NAME} — completed steel gate, railing, rolling shutter and fabrication projects in Trichy`}
+            alt={`Our completed fabrication projects — steel gate, railing, rolling shutter and aluminium works in Trichy`}
             className="hero-bg-img"
             loading="eager"
+            decoding="async"
           />
-        </div>
-        <div className="hero-overlay" />
+          <div className="hero-overlay" />
+        </motion.div>
         <div className="hero-grid-lines" />
 
-        <div className="absolute top-20 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10 lg:animate-float-slow">
-          <span className="w-2 h-2 rounded-full bg-green-400 lg:animate-pulse" />
-          Residential · Commercial · Industrial
-        </div>
+
 
         <div className="container-main relative z-10">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
-            <div>
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.2 } },
+              }}
+            >
               {/* Badge — local keyword */}
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-widest mb-4">
+              <motion.div 
+                variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-widest mb-4"
+              >
                 <span className="w-2 h-2 rounded-full bg-blue-400 lg:animate-pulse" />
                 {BRAND_NAME} — Fabrication Projects in Trichy
-              </div>
+              </motion.div>
 
               {/* Decorative display heading — aria-hidden; real H1 is sr-only above */}
-              <p
+              <motion.p
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
                 aria-hidden="true"
                 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
               >
@@ -396,10 +410,13 @@ const Projects = () => {
                 <span className="shimmer-text">Portfolio.</span>
                 <br />
                 Our Best Work.
-              </p>
+              </motion.p>
 
               {/* SEO-rich hero paragraph */}
-              <p className="text-white/70 text-base leading-relaxed max-w-md mb-7">
+              <motion.p 
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                className="text-white/70 text-base leading-relaxed max-w-md mb-7"
+              >
                 Browse our real completed{" "}
                 <strong className="text-white/85">fabrication work photos</strong> — from{" "}
                 <strong className="text-white/85">steel gate work in Trichy</strong> and{" "}
@@ -408,17 +425,20 @@ const Projects = () => {
                 <strong className="text-white/85">glass partition work</strong> and full{" "}
                 <strong className="text-white/85">metal fabrication work in Trichy</strong>{" "}
                 — every photo is a real project we built and installed.
-              </p>
+              </motion.p>
 
-              <div className="flex flex-col sm:flex-row gap-3">
+              <motion.div 
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                className="flex flex-col sm:flex-row gap-3"
+              >
                 <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-10 w-full sm:w-auto">
                   <span>📞</span> Call Now
                 </TurtleButton>
                 <TurtleButton href={getWhatsAppUrl()} variant="whatsapp" external className="rounded-xl w-full sm:w-auto">
                   <span>💬</span> WhatsApp
                 </TurtleButton>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -668,10 +688,13 @@ const ProjectImageSlider = ({
           initial="enter"
           animate="center"
           exit="exit"
+          loading="lazy"
+          decoding="async"
           transition={{
             opacity: { duration: 0.3, ease: "easeInOut" },
             scale: { duration: 0.3, ease: "easeInOut" },
           }}
+          style={{ willChange: "transform, opacity" }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={1}

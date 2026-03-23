@@ -100,7 +100,7 @@ const Navbar = () => {
               <motion.img 
                 src={LOGO_EMBLEM} 
                 alt={`${BRAND_NAME} Emblem`}
-                className="w-32 h-32 lg:w-52 lg:h-52 object-contain"
+                className="w-80 h-80 max-w-[80vw] lg:w-52 lg:h-52 object-contain"
                 whileHover={{ 
                   scale: 1.05
                 }}

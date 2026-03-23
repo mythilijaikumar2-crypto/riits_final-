@@ -252,7 +252,6 @@ const HeroSection = ({ isMobile }: { isMobile: boolean }) => (
   <section
     className="relative h-screen flex flex-col justify-center bg-slate-950 overflow-hidden"
     style={{
-      contentVisibility: "auto",
       paddingTop: isMobile ? "12vh" : "0",
       paddingBottom: isMobile ? "8vh" : "0"
     }}
@@ -265,9 +264,9 @@ const HeroSection = ({ isMobile }: { isMobile: boolean }) => (
     {/* Background image */}
     <div className="absolute inset-0 z-0">
       <motion.img
-        initial={{ scale: isMobile ? 1.05 : 1.15, opacity: 0 }}
+        initial={{ scale: 1.1, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: isMobile ? 1.2 : 2.5, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
         src={heroImage}
         alt={`${COMPANY_NAME} — steel gate, railing and metal fabrication workshop in Trichy`}
         className="w-full h-full object-cover object-center opacity-40 mix-blend-overlay"
@@ -289,21 +288,23 @@ const HeroSection = ({ isMobile }: { isMobile: boolean }) => (
       }}
     />
 
-    {/* Floating stat badges */}
-    <div className="absolute top-20 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10 lg:animate-float-slow">
-      <span className="w-2 h-2 rounded-full bg-amber-400 lg:animate-pulse" />
-      15+ Years of Expertise
-    </div>
+
 
 
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
       <div className="grid lg:grid-cols-2 gap-10 items-center">
         {/* Left copy */}
         <div>
+        <motion.div
+           initial="hidden"
+           animate="visible"
+           variants={{
+             hidden: { opacity: 0 },
+             visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.2 } },
+           }}
+        >
           <motion.div
-            initial={{ opacity: 0, y: isMobile ? 10 : 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: isMobile ? 0.3 : 0.4 }}
+            variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
             className="inline-flex items-center gap-2 px-[4vw] md:px-4 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/30 text-amber-300 text-[clamp(10px,2.5vw,12px)] font-semibold uppercase tracking-widest mb-4"
           >
             <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
@@ -312,10 +313,8 @@ const HeroSection = ({ isMobile }: { isMobile: boolean }) => (
 
           {/* Decorative display heading — aria-hidden because real H1 is sr-only above */}
           <motion.p
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
             aria-hidden="true"
-            initial={{ opacity: 0, y: isMobile ? 12 : 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: isMobile ? 0.35 : 0.5, delay: 0.05 }}
             className="font-heading text-4xl sm:text-6xl lg:text-7xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
           >
             Where Steel
@@ -328,9 +327,7 @@ const HeroSection = ({ isMobile }: { isMobile: boolean }) => (
           </motion.p>
 
           <motion.p
-            initial={{ opacity: 0, y: isMobile ? 12 : 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: isMobile ? 0.35 : 0.5, delay: 0.1 }}
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
             className="text-white/65 text-[clamp(14px,4vw,16px)] leading-relaxed max-w-md mb-7"
           >
             Trichy's most trusted metal fabrication studio — crafting{" "}
@@ -342,9 +339,7 @@ const HeroSection = ({ isMobile }: { isMobile: boolean }) => (
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: isMobile ? 12 : 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: isMobile ? 0.35 : 0.7, delay: 0.15 }}
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
             className="flex flex-col sm:flex-row gap-3"
           >
             <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-10 w-full sm:w-auto h-[clamp(48px,12vw,56px)]">
@@ -355,10 +350,11 @@ const HeroSection = ({ isMobile }: { isMobile: boolean }) => (
 
             </TurtleButton>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 );
 
 /* ================= WHY US ================= */
@@ -455,7 +451,7 @@ const WhyUsSection = ({ isMobile }: { isMobile: boolean }) => {
 // Styled as a subtle info section — not a keyword dump.
 
 const SEOContentSection = () => (
-  <section className="bg-white border-t border-slate-100 py-16">
+  <section className="bg-white border-t border-slate-100 py-16" style={{ contentVisibility: "auto", containIntrinsicSize: "auto 600px" }}>
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Section label */}
       <div className="text-center mb-12">
@@ -529,7 +525,7 @@ const TestimonialsSection = () => {
   const row2 = testimonials.slice(5, 10);
 
   return (
-    <section className="py-20 bg-gradient-to-b from-blue-50/50 via-white to-blue-50/30 overflow-hidden relative border-t border-blue-100/50">
+    <section className="py-20 bg-gradient-to-b from-blue-50/50 via-white to-blue-50/30 overflow-hidden relative border-t border-blue-100/50" style={{ contentVisibility: "auto", containIntrinsicSize: "auto 800px" }}>
       <div className="max-w-7xl mx-auto mb-14 text-center relative z-20 px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -571,14 +567,14 @@ const TestimonialsSection = () => {
 
       <div className="relative space-y-5 z-20">
         <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
-          <div className="flex gap-4 py-3 animate-marquee-left hover:[animation-play-state:paused]">
+          <div className="flex gap-4 py-3 animate-marquee-left hover:[animation-play-state:paused]" style={{ willChange: "transform" }}>
             {[...row1, ...row1].map((t, i) => (
               <TestimonialCard key={i} {...t} />
             ))}
           </div>
         </div>
         <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
-          <div className="flex gap-4 py-3 animate-marquee-right hover:[animation-play-state:paused]">
+          <div className="flex gap-4 py-3 animate-marquee-right hover:[animation-play-state:paused]" style={{ willChange: "transform" }}>
             {[...row2, ...row2].map((t, i) => (
               <TestimonialCard key={i} {...t} />
             ))}
