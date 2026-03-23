@@ -372,11 +372,14 @@ const Projects = () => {
         <div className="hero-overlay" />
         <div className="hero-grid-lines" />
 
+<<<<<<< HEAD
         <div className="absolute top-24 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10 lg:animate-float-slow">
           <span className="w-2 h-2 rounded-full bg-green-400 lg:animate-pulse" />
           Residential · Commercial · Industrial
         </div>
 
+=======
+>>>>>>> 8647edbb6fa4fd7987a0f3b311cce7e4862d8c09
         <div className="container-main relative z-10">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <div>

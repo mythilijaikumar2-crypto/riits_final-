@@ -176,7 +176,7 @@ const services = [
   },
   {
     icon: "🎯",
-    title: "LASER WORKS",
+    title: "LASER DESIGN",
     desc: "Precision CNC laser cutting for custom metal designs",
     seoDesc: "High-precision laser cutting for MS and SS sheets, creating intricate patterns for gates, partitions, and decorative elements.",
     category: "CNC Laser Cutting",
@@ -290,6 +290,7 @@ const HeroSection = ({ isMobile }: { isMobile: boolean }) => (
     />
 
     {/* Floating stat badges */}
+<<<<<<< HEAD
     <div className="absolute top-24 right-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md text-white/80 text-xs font-medium z-10 lg:animate-float-slow">
       <span className="w-2 h-2 rounded-full bg-amber-400 lg:animate-pulse" />
       15+ Years of Expertise
@@ -298,6 +299,8 @@ const HeroSection = ({ isMobile }: { isMobile: boolean }) => (
       <span className="w-2 h-2 rounded-full bg-blue-400 lg:animate-pulse" />
       800+ Projects Delivered
     </div>
+=======
+>>>>>>> 8647edbb6fa4fd7987a0f3b311cce7e4862d8c09
 
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
       <div className="grid lg:grid-cols-2 gap-10 items-center">

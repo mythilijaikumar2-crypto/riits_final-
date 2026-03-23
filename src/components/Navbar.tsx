@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { TurtleButton } from "./TurtleButton";
-import { CONTACT_DETAILS, formatTelLink, COMPANY_NAME, BRAND_NAME, LOGO_EMBLEM, LOGO_TEXT } from "../config/contact";
+import { CONTACT_DETAILS, formatTelLink, COMPANY_NAME, LOGO_EMBLEM } from "../config/contact";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -83,32 +83,42 @@ const Navbar = () => {
           right: 0,
         }}
       >
+<<<<<<< HEAD
         <div className="container-main flex items-center justify-between h-24 lg:h-32 px-4 sm:px-6 lg:px-8">
 
 
 
+=======
+        <div className="container-main flex items-center justify-between h-16 lg:h-20 px-4 sm:px-6 lg:px-8">
+>>>>>>> 8647edbb6fa4fd7987a0f3b311cce7e4862d8c09
           {/* Logo */}
           <Link to="/" className="flex items-center gap-0 group" aria-label={`${COMPANY_NAME} Home`}>
             <motion.div
               className="relative flex items-center justify-center p-0 rounded-xl bg-white/10"
               initial={{ scale: 1 }}
               animate={{ 
-                scale: scrolled ? 0.8 : 1
+                scale: scrolled ? 0.9 : 1
               }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
               <motion.img 
                 src={LOGO_EMBLEM} 
+<<<<<<< HEAD
                 alt={`${BRAND_NAME} Emblem`}
                 className="w-24 h-24 lg:w-36 lg:h-36 object-contain"
+=======
+                alt={`${COMPANY_NAME} Logo`}
+                className="w-32 h-16 lg:w-64 lg:h-28 object-contain"
+>>>>>>> 8647edbb6fa4fd7987a0f3b311cce7e4862d8c09
                 whileHover={{ 
-                  scale: 1.1
+                  scale: 1.05
                 }}
                 transition={{ 
                   scale: { duration: 0.2 }
                 }}
               />
             </motion.div>
+<<<<<<< HEAD
             <motion.div 
               className="flex flex-col"
               initial={{ opacity: 1, x: 0 }}
@@ -129,7 +139,13 @@ const Navbar = () => {
                 }}
               />
             </motion.div>
+=======
+>>>>>>> 8647edbb6fa4fd7987a0f3b311cce7e4862d8c09
           </Link>
+
+
+
+
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-6">
