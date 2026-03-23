@@ -74,7 +74,14 @@ const Navbar = () => {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        style={{ willChange: "transform", transform: "translateZ(0)" }}
+        style={{
+          willChange: "transform",
+          transform: "translateZ(0)",
+          width: "100vw",
+          maxWidth: "100vw",
+          boxSizing: "border-box",
+          right: 0,
+        }}
       >
         <div className="container-main flex items-center justify-between h-24 lg:h-32 px-4 sm:px-6 lg:px-8">
 

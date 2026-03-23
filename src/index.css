@@ -5,6 +5,136 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ═══════════════════════════════════════════════════════════════════
+   WINDOWS SCROLLBAR & HERO OVERFLOW FIX
+   📌 Paste this block RIGHT AFTER the "@tailwind utilities;" line
+      in your src/index.css
+═══════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Root overflow fix ─────────────────────────────────────────
+   Windows scrollbar is 15-17px wide and sits INSIDE the viewport.
+   Without this, it pushes your layout left and causes a horizontal
+   scrollbar / misaligned hero sections.
+─────────────────────────────────────────────────────────────────── */
+html {
+  overflow-x: hidden;
+  /* scrollbar-gutter: stable reserves the scrollbar space upfront,
+     so the layout never shifts when content gets tall enough to scroll */
+  scrollbar-gutter: stable;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  min-width: 0;
+}
+
+/* ── 2. Hero sections — full-width on Windows ─────────────────────
+   h-screen (100vh) on Windows = viewport minus scrollbar = too narrow.
+   100vw covers the full viewport including the scrollbar lane.
+   overflow: clip is like overflow: hidden but does NOT create a new
+   scroll context (so position:sticky still works correctly).
+─────────────────────────────────────────────────────────────────── */
+section.relative.h-screen,
+.contact-hero,
+.products-hero,
+.projects-hero,
+.ap section.relative {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  position: relative;
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+  /* For hero sections that use their own transforms, we override below */
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: clip !important;
+  box-sizing: border-box !important;
+}
+
+/* About page hero doesn't use h-screen class, fix separately */
+.ap section:first-of-type {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  overflow: clip !important;
+}
+
+/* ── 3. Navbar — span full viewport width ─────────────────────────
+   fixed + left-0 + right-0 on Mac = full width.
+   On Windows it sometimes stops short of the scrollbar lane.
+─────────────────────────────────────────────────────────────────── */
+nav.fixed {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  left: 0 !important;
+  right: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* ── 4. Containers inside hero — keep centered, not overflowing ── */
+section.relative.h-screen > .container-main,
+section.relative.h-screen > .max-w-7xl,
+.contact-hero .container-main,
+.products-hero .max-w-7xl,
+.projects-hero .container-main {
+  position: relative;
+  z-index: 10;
+  /* Undo the parent's translateX so content is centered */
+  max-width: min(80rem, calc(100vw - 2rem));
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* ── 5. Absolute-positioned overlays inside hero ─────────────────
+   Images, gradient overlays, grid lines — must not exceed hero width
+─────────────────────────────────────────────────────────────────── */
+section.relative.h-screen > div.absolute,
+section.relative.h-screen > motion\:div.absolute,
+.contact-hero > div.absolute,
+.products-hero > div.absolute,
+.projects-hero > div.absolute {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* ── 6. Scroll progress bar — full width ─────────────────────────── */
+.fixed.top-0.left-0.z-\[60\] {
+  right: 0 !important;
+  width: 100% !important;
+}
+
+/* ── 7. Windows scrollbar styling ────────────────────────────────
+   Makes the Windows scrollbar thinner and on-brand.
+   Doesn't affect Mac (Mac has overlay scrollbars).
+─────────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+::-webkit-scrollbar-thumb {
+  background: #2563eb;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1d4ed8;
+}
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2563eb #020617;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   END OF WINDOWS FIX
+   ═══════════════════════════════════════════════════════════════════ */
+
+
 @layer base {
   :root {
     --background: 220 43% 97.3%;
