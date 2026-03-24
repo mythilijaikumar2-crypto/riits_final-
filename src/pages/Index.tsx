@@ -647,6 +647,7 @@ const Index = () => {
   const { scrollYProgress } = useScroll();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [hasClicked, setHasClicked] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -656,11 +657,12 @@ const Index = () => {
   }, []);
 
   useEffect(() => {
+    if (hasClicked) return;
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % services.length);
     }, 3000);
     return () => clearInterval(timer);
-  }, []);
+  }, [hasClicked]);
 
   return (
     <main className="overflow-hidden" style={{ scrollBehavior: "smooth" }}>
@@ -683,7 +685,6 @@ const Index = () => {
       {/* ── KEYWORD TAG STRIP ── */}
       <MovingTags tags={serviceTags} speed={50} />
 
-      {/* ── SERVICES SLIDER ── */}
       <section
         className="section-padding bg-slate-100 py-[5vh] overflow-hidden"
         style={{ contentVisibility: "auto", containIntrinsicSize: "auto 600px" }}
@@ -695,8 +696,13 @@ const Index = () => {
               {services.map((item, index) => (
                 <motion.button
                   key={item.title}
-                  onClick={() => setCurrentSlide(index)}
-                  onMouseEnter={() => setCurrentSlide(index)}
+                  onClick={() => {
+                    setCurrentSlide(index);
+                    setHasClicked(true);
+                  }}
+                  onMouseEnter={() => {
+                    setCurrentSlide(index);
+                  }}
                   className={`w-full text-left px-5 py-2.5 rounded-xl font-heading text-xs font-bold uppercase tracking-[0.15em] transition-all duration-150 border-2 ${currentSlide === index
                       ? "bg-[hsl(225,73%,35%)] text-white border-[hsl(225,73%,35%)] shadow-lg sm:scale-105"
                       : "bg-white text-[hsl(225,73%,35%)]/85 border-transparent hover:bg-slate-50 hover:text-[hsl(225,73%,35%)]"
@@ -769,7 +775,10 @@ const Index = () => {
                     {services.map((_, i) => (
                       <button
                         key={i}
-                        onClick={() => setCurrentSlide(i)}
+                        onClick={() => {
+                          setCurrentSlide(i);
+                          setHasClicked(true);
+                        }}
                         aria-label={`Go to slide ${i + 1}`}
                         className="p-1 sm:p-4 transition-all duration-300 hover:scale-110 active:scale-95 outline-none group"
                       >

@@ -4,6 +4,7 @@ import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { TurtleButton } from "./TurtleButton";
 import { CONTACT_DETAILS, formatTelLink, COMPANY_NAME, LOGO_EMBLEM, BRAND_NAME } from "../config/contact";
+import MOBILE_LOGO from "../assets/logo/RIITS LOGO CROPPED.png";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -58,19 +59,30 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Scroll Progress Bar */}
+      {/* ========================= SCROLL PROGRESS BAR ========================= */}
       <motion.div
-        className="fixed top-0 left-0 z-[60] h-[3px] bg-gradient-to-r from-primary via-secondary to-accent origin-left"
+        className="
+      fixed top-0 left-0 
+      z-[60] 
+      h-[3px] 
+      bg-gradient-to-r from-primary via-secondary to-accent 
+      origin-left
+    "
         style={{ scaleX: scrollYProgress }}
       />
 
+      {/* ========================= NAVBAR ========================= */}
       <motion.nav
         ref={navRef}
-        className={`fixed top-0 left-0 right-0 z-[999] transition-all duration-500 ${
-          scrolled
+        className={` 
+      fixed top-0 left-0 right-0 
+      z-[999] 
+      transition-all duration-500
+      ${scrolled
             ? "bg-white/80 backdrop-blur-xl border-b border-border/60 shadow-lg shadow-primary/5"
             : "bg-card/90 backdrop-blur-md border-b border-border"
-        }`}
+          }
+    `}
         initial={{ y: -64, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -83,71 +95,152 @@ const Navbar = () => {
           right: 0,
         }}
       >
-        <div className="container-main flex items-center justify-between h-16 lg:h-20 px-4 sm:px-6 lg:px-8">
 
+        {/* ========================= NAVBAR INNER CONTAINER ========================= */}
+        <div
+          className="
+        flex items-center justify-between 
+        px-2 sm:px-3 lg:px-5 xl:px-6   /* horizontal spacing */
+        w-full
+      "
+        >
 
+          {/* ========================= LOGO SECTION ========================= */}
+          <Link
+            to="/"
+            aria-label={`${COMPANY_NAME} Home`}
+            className="
+          relative flex items-center 
+          shrink-0                     /* prevent shrinking */
+        "
+          >
 
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-0 group" aria-label={`${COMPANY_NAME} Home`}>
-            <motion.div
-              className="relative flex items-center justify-center"
-              initial={{ scale: 1 }}
-              animate={{ 
-                scale: scrolled ? 0.9 : 1
-              }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            {/* ========================= MOBILE LOGO ========================= */}
+            <div
+              className="
+            relative 
+            w-[220px]                 /* FIXED WIDTH (prevents layout shift) */
+            h-[80px] 
+            md:w-[320px]                 /* FIXED WIDTH (prevents layout shift) */
+            md:h-[100px]                 /* FIXED HEIGHT */
+            flex items-center
+            lg:hidden                 /* only mobile */
+            overflow-hidden           /* hide overflow */
+          "
             >
-              <motion.img 
-                src={LOGO_EMBLEM} 
-                alt={`${BRAND_NAME} Emblem`}
-                className="w-80 h-80 max-w-[80vw] lg:w-52 lg:h-52 object-contain"
-                whileHover={{ 
-                  scale: 1.05
-                }}
-                transition={{ 
-                  scale: { duration: 0.2 }
-                }}
+              <motion.img
+                src={MOBILE_LOGO}
+                alt={`${BRAND_NAME} Mobile Logo`}
+                className="
+              absolute 
+              left-7
+              -translate-y-1/2        /* vertical center */
+              h-[180px]  
+              md:h-[20px]               /* increase size freely */
+              w-auto 
+              object-contain 
+              origin-left
+            "
+                animate={{ scale: scrolled ? 0.9 : 1 }}
+                transition={{ duration: 0.4 }}
               />
-            </motion.div>
+            </div>
+
+            {/* ========================= DESKTOP LOGO ========================= */}
+            <div
+              className="
+            relative 
+            w-[260px]                /* FIXED WIDTH (KEY FIX) */
+            h-[100px]                 /* FIXED HEIGHT */
+            hidden lg:flex           /* only desktop */
+            items-center
+            overflow-hidden
+          "
+            >
+              <motion.img
+                src={LOGO_EMBLEM}
+                alt={`${BRAND_NAME} Desktop Logo`}
+                className="
+              absolute 
+              left-16 mt-3 
+              -translate-y-1/2
+              h-[135px]              /* BIG logo without affecting layout */
+              w-auto 
+              object-contain 
+              origin-left
+            "
+                animate={{ scale: scrolled ? 0.9 : 1 }}
+                transition={{ duration: 0.4 }}
+              />
+            </div>
 
           </Link>
 
-
-
-
-
-          {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-6">
+          {/* ========================= DESKTOP NAVIGATION ========================= */}
+          <div
+            className="
+          hidden lg:flex 
+          lg:ml-auto               /* push nav to right */
+          items-center 
+          justify-end 
+          gap-8                    /* spacing between links */
+        "
+          >
             {navLinks.map((link) => {
               const isActive = location.pathname === link.to;
+
               return (
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="relative font-heading text-sm uppercase tracking-wider font-bold transition-colors duration-200 focus:outline-none group"
-                  style={{ color: isActive ? "hsl(var(--primary))" : "#2d2d2d" }}
+                  className="
+                relative 
+                font-heading 
+                text-sm 
+                uppercase 
+                tracking-wider 
+                font-bold 
+                transition-colors duration-200 
+                group
+              "
+                  style={{
+                    color: isActive ? "hsl(var(--primary))" : "#2d2d2d",
+                  }}
                 >
-                  {/* Active glow pill */}
+
+                  {/* ================= ACTIVE UNDERLINE ================= */}
                   {isActive && (
                     <motion.span
                       layoutId="active-pill"
-                      className="absolute inset-x-0 -bottom-1 h-[3px] rounded-full bg-primary"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      className="
+                    absolute inset-x-0 -bottom-1 
+                    h-[3px] 
+                    rounded-full 
+                    bg-primary
+                  "
                     />
                   )}
 
-                  {/* Hover underline (non-active) */}
+                  {/* ================= HOVER UNDERLINE ================= */}
                   {!isActive && (
                     <span
-                      className="absolute inset-x-0 -bottom-1 h-[2px] rounded-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                      className="
+                    absolute inset-x-0 -bottom-1 
+                    h-[2px] 
+                    rounded-full 
+                    bg-primary 
+                    scale-x-0 
+                    group-hover:scale-x-100 
+                    transition-transform 
+                    duration-300 
+                    origin-left
+                  "
                     />
                   )}
 
                   <motion.span
                     className="relative z-10 block"
                     whileHover={{ y: -1.5, color: "hsl(var(--primary))" }}
-                    transition={{ duration: 0.2 }}
-                    aria-label={`Navigate to ${link.label}`}
                   >
                     {link.label}
                   </motion.span>
@@ -155,44 +248,36 @@ const Navbar = () => {
               );
             })}
 
-            {/* CTA Button with shimmer */}
+            {/* ================= CTA BUTTON ================= */}
             <TurtleButton
-                href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
-
-                variant="call_now"
-                size="sm"
-                className="rounded-xl px-5"
-              >
-                <Phone className="w-3.5 h-3.5" /> Call Now
-              </TurtleButton>
+              href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
+              variant="call_now"
+              size="sm"
+              className="rounded-xl px-5"
+            >
+              <Phone className="w-3.5 h-3.5" /> Call Now
+            </TurtleButton>
           </div>
 
-          {/* Mobile toggle */}
+          {/* ========================= MOBILE MENU BUTTON ========================= */}
           <motion.button
-            className="lg:hidden text-foreground p-2 rounded-lg hover:bg-muted transition-colors"
+            className="
+          lg:hidden 
+          p-2 
+          rounded-lg 
+          hover:bg-muted 
+          transition-colors
+        "
             onClick={() => setOpen(!open)}
-            aria-label="Toggle menu"
             whileTap={{ scale: 0.9 }}
           >
-            <AnimatePresence mode="wait" initial={false}>
+            <AnimatePresence mode="wait">
               {open ? (
-                <motion.span
-                  key="close"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
+                <motion.span key="close">
                   <X className="w-6 h-6" />
                 </motion.span>
               ) : (
-                <motion.span
-                  key="open"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
+                <motion.span key="open">
                   <Menu className="w-6 h-6" />
                 </motion.span>
               )}
@@ -200,72 +285,63 @@ const Navbar = () => {
           </motion.button>
         </div>
 
-        {/* Mobile Menu Drawer */}
+        {/* ========================= MOBILE MENU ========================= */}
         <AnimatePresence>
           {open && (
             <motion.div
-              key="mobile-menu"
               variants={mobileMenuVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="lg:hidden bg-white/95 backdrop-blur-xl border-t border-border/60 overflow-hidden"
+              className="
+            lg:hidden 
+            bg-white/95 
+            backdrop-blur-xl 
+            border-t 
+            border-border/60
+          "
             >
               <div className="flex flex-col gap-1 p-4 pb-6">
                 {navLinks.map((link, i) => {
                   const isActive = location.pathname === link.to;
+
                   return (
-                    <motion.div
-                      key={link.to}
-                      custom={i}
-                      variants={mobileItemVariants}
-                      initial="hidden"
-                      animate="visible"
-                    >
+                    <motion.div key={link.to} custom={i} variants={mobileItemVariants}>
                       <Link
                         to={link.to}
                         onClick={() => setOpen(false)}
-                        className={`flex items-center gap-3 font-heading text-sm uppercase tracking-wider font-bold py-3 px-4 rounded-xl transition-all duration-200 ${
-                          isActive
+                        className={`
+                      flex items-center gap-3 
+                      font-heading text-sm uppercase tracking-wider font-bold 
+                      py-3 px-4 rounded-xl 
+                      transition-all duration-200
+                      ${isActive
                             ? "bg-primary/10 text-primary border-l-4 border-primary"
                             : "hover:bg-muted text-[#2d2d2d] hover:text-primary border-l-4 border-transparent"
-                        }`}
+                          }
+                    `}
                       >
-                        {/* Active indicator dot */}
-                        {isActive && (
-                          <motion.span
-                            className="w-2 h-2 rounded-full bg-primary"
-                            layoutId="mobile-active-dot"
-                            transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                          />
-                        )}
                         {link.label}
                       </Link>
                     </motion.div>
                   );
                 })}
 
-                <motion.div
-                  custom={navLinks.length}
-                  variants={mobileItemVariants}
-                  initial="hidden"
-                  animate="visible"
-                  className="mt-3"
-                >
+                <div className="mt-3">
                   <TurtleButton
                     href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
-
                     variant="call_now"
                     size="sm"
                     className="w-full rounded-xl"
                   >
                     <Phone className="w-4 h-4" /> Call Now
                   </TurtleButton>
-                </motion.div>
+                </div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
+
       </motion.nav>
     </>
   );

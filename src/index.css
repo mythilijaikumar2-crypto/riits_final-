@@ -958,9 +958,10 @@ main.pt-16 {
     padding-top: 48px !important;
   }
 
-  nav.fixed img[alt*="Emblem"] {
-    width:  112px !important;
-    height: 112px !important;
+  nav.fixed .navbar-logo-mobile {
+    width: min(210px, 68vw) !important;
+    height: auto !important;
+    max-height: 68px !important;
   }
 
   nav.fixed img[alt*="RIITS"] {
@@ -1173,6 +1174,31 @@ main.pt-16 {
     animation-duration:       0.01ms !important;
     animation-iteration-count: 1     !important;
     transition-duration:       0.01ms !important;
+  }
+}
+
+nav.fixed .container-main.navbar-shell {
+  width: 100% !important;
+  max-width: none !important;
+  padding-top: 0.375rem !important;
+  padding-bottom: 0.375rem !important;
+  padding-left: 0.875rem !important;
+  padding-right: 0.875rem !important;
+}
+
+@media (min-width: 640px) {
+  nav.fixed .container-main.navbar-shell {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  nav.fixed .container-main.navbar-shell {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
   }
 }
 
