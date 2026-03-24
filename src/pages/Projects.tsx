@@ -6,7 +6,13 @@ import SectionHeading from "../components/SectionHeading";
 import { TurtleButton } from "../components/TurtleButton";
 import { X, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import SEO from "../components/SEO";
-import { CONTACT_DETAILS, formatTelLink, getWhatsAppUrl, COMPANY_NAME, BRAND_NAME } from "../config/contact";
+import {
+  CONTACT_DETAILS,
+  formatTelLink,
+  getWhatsAppUrl,
+  COMPANY_NAME,
+  BRAND_NAME,
+} from "../config/contact";
 import projectsHero from "../assets/heropage/our-work-hero.webp";
 
 import stair1 from "../assets/staircase/stairs.webp";
@@ -257,13 +263,6 @@ const projectCategories: ProjectCategory[] = [
 ══════════════════════════════════════════════════════════ */
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [globalTick, setGlobalTick] = useState(0);
-
-  useEffect(() => {
-    const id = setInterval(() => setGlobalTick((t) => t + 1), 2500);
-    return () => clearInterval(id);
-  }, []);
-
   const location = useLocation();
 
   useEffect(() => {
@@ -302,10 +301,12 @@ const Projects = () => {
       <style>{`
         .projects-hero {
           position: relative;
-          height: 100vh;
+          min-height: 85vh;
           display: flex;
-          align-items: center;
-          background: #020617;
+          flex-direction: column;
+          justify-content: flex-start;
+          padding-top: 10rem;
+          background: #1e3a8a;
           overflow: hidden;
           transform: translateZ(0);
           backface-visibility: hidden;
@@ -316,25 +317,25 @@ const Projects = () => {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          opacity: 0.4;
+          opacity: 0.6;
           mix-blend-mode: normal;
           will-change: transform;
         }
         .hero-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(to right, #020617 0%, rgba(2, 6, 23, 0.7) 25%, transparent 60%);
+          background: linear-gradient(to right, rgba(30, 58, 138, 0.7) 0%, rgba(30, 58, 138, 0.3) 50%, transparent 100%);
           z-index: 1;
         }
         .hero-grid-lines {
           position: absolute;
           inset: 0;
           background-image:
-            linear-gradient(rgba(29, 78, 216, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(29, 78, 216, 0.1) 1px, transparent 1px);
+            linear-gradient(rgba(29, 78, 216, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(29, 78, 216, 0.05) 1px, transparent 1px);
           background-size: 50px 50px;
           z-index: 0;
-          mask-image: radial-gradient(circle at 50% 50%, black, transparent 70%);
+          mask-image: radial-gradient(circle at 50% 50%, black, transparent 95%);
         }
         .shimmer-text {
           background: linear-gradient(90deg, #60a5fa 0%, #67e8f9 50%, #2563eb 100%);
@@ -355,13 +356,13 @@ const Projects = () => {
           HERO
       ══════════════════════════════════════════ */}
       <section className="projects-hero">
-
         {/* Visually hidden H1 — primary SEO heading for Google */}
         <h1 className="sr-only">
-          Steel Gate, Grill, Railing, Rolling Shutter &amp; Fabrication Projects in Trichy | {COMPANY_NAME} Our Works
+          Steel Gate, Grill, Railing, Rolling Shutter &amp; Fabrication Projects
+          in Trichy | {COMPANY_NAME} Our Works
         </h1>
 
-        <motion.div 
+        <motion.div
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
@@ -378,21 +379,25 @@ const Projects = () => {
         </motion.div>
         <div className="hero-grid-lines" />
 
-
-
         <div className="container-main relative z-10">
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
+          <div className="grid lg:grid-cols-2 gap-10">
             <motion.div
               initial="hidden"
               animate="visible"
               variants={{
                 hidden: { opacity: 0 },
-                visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.2 } },
+                visible: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.12, delayChildren: 0.2 },
+                },
               }}
             >
               {/* Badge — local keyword */}
-              <motion.div 
-                variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: 15 },
+                  visible: { opacity: 1, y: 0 },
+                }}
                 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-widest mb-4"
               >
                 <span className="w-2 h-2 rounded-full bg-blue-400 lg:animate-pulse" />
@@ -401,7 +406,10 @@ const Projects = () => {
 
               {/* Decorative display heading — aria-hidden; real H1 is sr-only above */}
               <motion.p
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
                 aria-hidden="true"
                 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
               >
@@ -413,28 +421,56 @@ const Projects = () => {
               </motion.p>
 
               {/* SEO-rich hero paragraph */}
-              <motion.p 
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+              <motion.p
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
                 className="text-white/70 text-base leading-relaxed max-w-md mb-7"
               >
                 Browse our real completed{" "}
-                <strong className="text-white/85">fabrication work photos</strong> — from{" "}
-                <strong className="text-white/85">steel gate work in Trichy</strong> and{" "}
-                <strong className="text-white/85">grill work in Trichy</strong> to{" "}
-                <strong className="text-white/85">rolling shutter installation</strong>,{" "}
-                <strong className="text-white/85">glass partition work</strong> and full{" "}
-                <strong className="text-white/85">metal fabrication work in Trichy</strong>{" "}
+                <strong className="text-white/85">
+                  fabrication work photos
+                </strong>{" "}
+                — from{" "}
+                <strong className="text-white/85">
+                  steel gate work in Trichy
+                </strong>{" "}
+                and{" "}
+                <strong className="text-white/85">grill work in Trichy</strong>{" "}
+                to{" "}
+                <strong className="text-white/85">
+                  rolling shutter installation
+                </strong>
+                ,{" "}
+                <strong className="text-white/85">glass partition work</strong>{" "}
+                and full{" "}
+                <strong className="text-white/85">
+                  metal fabrication work in Trichy
+                </strong>{" "}
                 — every photo is a real project we built and installed.
               </motion.p>
 
-              <motion.div 
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
                 className="flex flex-col sm:flex-row gap-3"
               >
-                <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-10 w-full sm:w-auto">
+                <TurtleButton
+                  href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
+                  variant="call_now"
+                  className="rounded-xl px-10 w-full sm:w-auto"
+                >
                   <span>📞</span> Call Now
                 </TurtleButton>
-                <TurtleButton href={getWhatsAppUrl()} variant="whatsapp" external className="rounded-xl w-full sm:w-auto">
+                <TurtleButton
+                  href={getWhatsAppUrl()}
+                  variant="whatsapp"
+                  external
+                  className="rounded-xl w-full sm:w-auto"
+                >
                   <span>💬</span> WhatsApp
                 </TurtleButton>
               </motion.div>
@@ -456,11 +492,15 @@ const Projects = () => {
           </h2>
           <p className="text-slate-500 text-[0.95rem] leading-relaxed max-w-2xl mx-auto">
             {COMPANY_NAME} has completed 800+{" "}
-            <strong className="text-slate-700">fabrication projects in Trichy</strong> across
-            homes, shops, offices and industries. Every piece of{" "}
-            <strong className="text-slate-700">steel fabrication work</strong> and{" "}
-            <strong className="text-slate-700">metal fabrication work</strong> you see here
-            was built and installed by our own team using Grade-A materials and expert{" "}
+            <strong className="text-slate-700">
+              fabrication projects in Trichy
+            </strong>{" "}
+            across homes, shops, offices and industries. Every piece of{" "}
+            <strong className="text-slate-700">steel fabrication work</strong>{" "}
+            and{" "}
+            <strong className="text-slate-700">metal fabrication work</strong>{" "}
+            you see here was built and installed by our own team using Grade-A
+            materials and expert{" "}
             <strong className="text-slate-700">welding work</strong>.
           </p>
         </div>
@@ -478,7 +518,10 @@ const Projects = () => {
           <div className="container-main">
             {/* SEO H2 + description paragraph above the project cards */}
             <div className="mb-10">
-              <SectionHeading subtitle={`${cat.title} Projects`} title={cat.seoHeading} />
+              <SectionHeading
+                subtitle={`${cat.title} Projects`}
+                title={cat.seoHeading}
+              />
               <p className="mt-4 text-slate-600 text-[0.95rem] leading-relaxed max-w-3xl mx-auto text-center">
                 {cat.seoDesc}
               </p>
@@ -492,7 +535,7 @@ const Projects = () => {
                 >
                   {/* Project Image Area with Auto-Slider */}
                   <div className="md:w-5/12 aspect-[16/10] md:aspect-auto overflow-hidden relative">
-                    <ProjectImageSlider p={p} tick={globalTick} />
+                    <ProjectImageSlider p={p} />
                     <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
                   </div>
 
@@ -579,12 +622,17 @@ const Projects = () => {
                     </p>
                     <div className="pt-8 border-t border-slate-100 dark:border-slate-800">
                       <p className="text-slate-500 dark:text-slate-500 text-sm italic">
-                        "Delivering precision and excellence in every structure we build."
+                        "Delivering precision and excellence in every structure
+                        we build."
                       </p>
                     </div>
                   </div>
                   <div className="mt-10">
-                    <TurtleButton variant="call_now" className="rounded-2xl px-10" href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}>
+                    <TurtleButton
+                      variant="call_now"
+                      className="rounded-2xl px-10"
+                      href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
+                    >
                       Enquire Now
                     </TurtleButton>
                   </div>
@@ -600,7 +648,10 @@ const Projects = () => {
       ══════════════════════════════════════════ */}
       <section
         className="bg-slate-950 py-24 relative overflow-hidden text-center"
-        style={{ contentVisibility: "auto", containIntrinsicSize: "auto 400px" }}
+        style={{
+          contentVisibility: "auto",
+          containIntrinsicSize: "auto 400px",
+        }}
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)]" />
         <div className="mx-auto max-w-7xl px-6 relative z-10 md:px-8">
@@ -608,16 +659,26 @@ const Projects = () => {
             Next Steps
           </p>
           <h2 className="text-4xl font-black uppercase tracking-tight text-white mb-6">
-            Want Similar Results <br className="hidden sm:block" /> for Your Building?
+            Want Similar Results <br className="hidden sm:block" /> for Your
+            Building?
           </h2>
           <p className="mx-auto max-w-xl text-base text-white/60 mb-10 leading-relaxed">
-            Need <strong className="text-white/75">steel gate work in Trichy</strong>,{" "}
-            <strong className="text-white/75">rolling shutter work</strong> or any{" "}
-            <strong className="text-white/75">fabrication work in Trichy</strong>?
-            Call us for a free site visit and written quotation — no hidden charges.
+            Need{" "}
+            <strong className="text-white/75">steel gate work in Trichy</strong>
+            , <strong className="text-white/75">rolling shutter work</strong> or
+            any{" "}
+            <strong className="text-white/75">
+              fabrication work in Trichy
+            </strong>
+            ? Call us for a free site visit and written quotation — no hidden
+            charges.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-10 w-full sm:w-auto">
+            <TurtleButton
+              href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
+              variant="call_now"
+              className="rounded-xl px-10 w-full sm:w-auto"
+            >
               <span>📞</span> Call Our Expert
             </TurtleButton>
             <a
@@ -630,8 +691,15 @@ const Projects = () => {
             </a>
           </div>
           <div className="flex flex-wrap justify-center gap-6 mt-12 pt-10 border-t border-white/10">
-            {["Premium Finish", "Structural Integrity", "On-Time Completion"].map((b) => (
-              <div key={b} className="flex items-center gap-2 text-sm text-white/40 font-medium">
+            {[
+              "Premium Finish",
+              "Structural Integrity",
+              "On-Time Completion",
+            ].map((b) => (
+              <div
+                key={b}
+                className="flex items-center gap-2 text-sm text-white/40 font-medium"
+              >
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                 {b}
               </div>
@@ -649,21 +717,20 @@ const Projects = () => {
 const ProjectImageSlider = ({
   p,
   isModal = false,
-  tick,
 }: {
   p: Project;
   isModal?: boolean;
-  tick?: number;
 }) => {
   const images = p.images || (p.image ? [p.image] : []);
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    if (isModal) return;
-    if (images.length <= 1) return;
-    setCurrent((prev) => (prev + 1) % images.length);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tick]);
+    if (isModal || images.length <= 1) return;
+    const id = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, 3000 + Math.random() * 2000); // Randomize timing so they don't all shift at once
+    return () => clearInterval(id);
+  }, [images.length, isModal]);
 
   const paginate = (dir: number) => {
     setCurrent((prev) => (prev + dir + images.length) % images.length);
@@ -702,8 +769,11 @@ const ProjectImageSlider = ({
             const swipe = Math.abs(offset.x) > 50;
             if (swipe) paginate(offset.x > 0 ? -1 : 1);
           }}
-          className={`absolute inset-0 w-full h-full object-cover select-none cursor-grab active:cursor-grabbing ${!isModal ? "transition-transform duration-1000 group-hover:scale-105" : ""
-            }`}
+          className={`absolute inset-0 w-full h-full object-cover select-none cursor-grab active:cursor-grabbing ${
+            !isModal
+              ? "transition-transform duration-1000 group-hover:scale-105"
+              : ""
+          }`}
         />
       </AnimatePresence>
 
@@ -712,14 +782,20 @@ const ProjectImageSlider = ({
           <button
             title="Previous Image"
             className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/30 hover:bg-black/60 text-white backdrop-blur-md transition-all opacity-0 group-hover/slider:opacity-100"
-            onClick={(e) => { e.stopPropagation(); paginate(-1); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              paginate(-1);
+            }}
           >
             <ChevronLeft size={isModal ? 24 : 20} />
           </button>
           <button
             title="Next Image"
             className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/30 hover:bg-black/60 text-white backdrop-blur-md transition-all opacity-0 group-hover/slider:opacity-100"
-            onClick={(e) => { e.stopPropagation(); paginate(1); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              paginate(1);
+            }}
           >
             <ChevronRight size={isModal ? 24 : 20} />
           </button>
@@ -732,14 +808,18 @@ const ProjectImageSlider = ({
             <button
               key={i}
               title={`Go to image ${i + 1}`}
-              onClick={(e) => { e.stopPropagation(); setCurrent(i); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                setCurrent(i);
+              }}
               className="group/dot p-1 transition-all"
             >
               <div
-                className={`h-1 rounded-full transition-all duration-500 ${current === i
+                className={`h-1 rounded-full transition-all duration-500 ${
+                  current === i
                     ? "w-6 bg-white shadow-[0_0_10px_rgba(255,255,255,0.5)]"
                     : "w-2 bg-white/40 group-hover/dot:bg-white/60"
-                  }`}
+                }`}
               />
             </button>
           ))}

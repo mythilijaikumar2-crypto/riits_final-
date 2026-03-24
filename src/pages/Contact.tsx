@@ -1,9 +1,25 @@
 import { motion } from "framer-motion";
 import SectionHeading from "../components/SectionHeading";
-import { Phone, MessageCircle, MapPin, Mail, Clock, Facebook, Instagram, type LucideIcon } from "lucide-react";
+import {
+  Phone,
+  MessageCircle,
+  MapPin,
+  Mail,
+  Clock,
+  Facebook,
+  Instagram,
+  type LucideIcon,
+} from "lucide-react";
 import { TurtleButton } from "../components/TurtleButton";
 import SEO from "../components/SEO";
-import { CONTACT_DETAILS, formatTelLink, getWhatsAppUrl, getMailtoLink, COMPANY_NAME, BRAND_NAME } from "../config/contact";
+import {
+  CONTACT_DETAILS,
+  formatTelLink,
+  getWhatsAppUrl,
+  getMailtoLink,
+  COMPANY_NAME,
+  BRAND_NAME,
+} from "../config/contact";
 import contactHero from "../assets/heropage/contact-hero.webp";
 
 const Contact = () => {
@@ -91,7 +107,7 @@ const Contact = () => {
           min-height: 100vh;
           display: flex;
           align-items: center;
-          background: #020617;
+          background: #1e3a8a;
           overflow: hidden;
           transform: translateZ(0);
           backface-visibility: hidden;
@@ -102,25 +118,25 @@ const Contact = () => {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          opacity: 0.4;
-          mix-blend-mode: screen;
+          opacity: 0.6;
+          mix-blend-mode: normal;
           will-change: transform;
         }
         .hero-overlay {
           position: absolute;
           inset: 0;
-          background: radial-gradient(circle at 50% 50%, rgba(2, 6, 23, 0.1) 0%, rgba(2, 6, 23, 0.7) 100%);
+          background: linear-gradient(to right, rgba(30, 58, 138, 0.7) 0%, rgba(30, 58, 138, 0.2) 60%, transparent 100%);
           z-index: 1;
         }
         .hero-grid-lines {
           position: absolute;
           inset: 0;
           background-image: 
-            linear-gradient(rgba(29, 78, 216, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(29, 78, 216, 0.1) 1px, transparent 1px);
+            linear-gradient(rgba(29, 78, 216, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(29, 78, 216, 0.05) 1px, transparent 1px);
           background-size: 60px 60px;
           z-index: 0;
-          mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%);
+          mask-image: radial-gradient(circle at 50% 50%, black, transparent 95%);
         }
         .social-icon-group {
           display: flex;
@@ -237,7 +253,8 @@ const Contact = () => {
       {/* HERO SECTION */}
       <section className="contact-hero">
         <h1 className="sr-only">
-          Contact {COMPANY_NAME} — Fabrication Shop in Trichy for Steel Gate, Grill, Railing, Rolling Shutter &amp; Aluminium Works
+          Contact {COMPANY_NAME} — Fabrication Shop in Trichy for Steel Gate,
+          Grill, Railing, Rolling Shutter &amp; Aluminium Works
         </h1>
 
         <motion.div
@@ -264,11 +281,17 @@ const Contact = () => {
               animate="visible"
               variants={{
                 hidden: { opacity: 0 },
-                visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.3 } },
+                visible: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.12, delayChildren: 0.3 },
+                },
               }}
             >
               <motion.div
-                variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
+                variants={{
+                  hidden: { opacity: 0, y: 15 },
+                  visible: { opacity: 1, y: 0 },
+                }}
                 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-widest mb-4"
               >
                 <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
@@ -277,10 +300,14 @@ const Contact = () => {
 
               <motion.p
                 aria-hidden="true"
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
                 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
               >
-                Let's Talk<br />
+                Let's Talk
+                <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600">
                   Steel.
                 </span>
@@ -289,29 +316,48 @@ const Contact = () => {
               </motion.p>
 
               <motion.p
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
                 className="text-white/65 text-base leading-relaxed max-w-md mb-7"
               >
                 Looking for a trusted{" "}
-                <strong className="text-white/85">fabrication shop near me</strong> in Trichy?
+                <strong className="text-white/85">
+                  fabrication shop near me
+                </strong>{" "}
+                in Trichy?
                 {COMPANY_NAME} offers complete{" "}
                 <strong className="text-white/85">steel fabrication</strong>,{" "}
                 <strong className="text-white/85">metal fabrication</strong> and{" "}
-                <strong className="text-white/85">fabrication services in Trichy</strong> —
-                call or WhatsApp us for a free site visit and written quotation.
+                <strong className="text-white/85">
+                  fabrication services in Trichy
+                </strong>{" "}
+                — call or WhatsApp us for a free site visit and written
+                quotation.
               </motion.p>
 
               <motion.div
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
                 className="flex flex-col gap-3"
               >
-                <div className="social-icon-group hero-social-actions" aria-label="Social media links">
+                <div
+                  className="social-icon-group hero-social-actions"
+                  aria-label="Social media links"
+                >
                   {heroActionLinks.map(({ href, label, Icon, tone }) => (
                     <motion.a
                       key={label}
                       href={href}
                       target={href.startsWith("http") ? "_blank" : undefined}
-                      rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      rel={
+                        href.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
                       aria-label={label}
                       title={label}
                       whileHover={{ scale: 1.08, y: -4 }}
@@ -339,8 +385,11 @@ const Contact = () => {
               Our Location — Fabrication Shop in Trichy
             </h2>
             <p className="text-slate-500 text-[0.95rem] leading-relaxed max-w-2xl mx-auto">
-              Our <strong className="text-slate-700">fabrication shop in Trichy</strong> is
-              centrally located and easy to reach from all parts of the city.
+              Our{" "}
+              <strong className="text-slate-700">
+                fabrication shop in Trichy
+              </strong>{" "}
+              is centrally located and easy to reach from all parts of the city.
             </p>
           </div>
 
@@ -350,23 +399,36 @@ const Contact = () => {
               {
                 icon: <MapPin className="w-6 h-6" />,
                 title: "Address",
-                lines: [COMPANY_NAME, CONTACT_DETAILS.address.city + ", " + CONTACT_DETAILS.address.state, "India"],
+                lines: [
+                  COMPANY_NAME,
+                  CONTACT_DETAILS.address.city +
+                    ", " +
+                    CONTACT_DETAILS.address.state,
+                  "India",
+                ],
                 accent: "bg-blue-500/10 text-blue-600",
                 hoverAccent: "group-hover:bg-blue-600 group-hover:text-white",
               },
               {
                 icon: <Phone className="w-6 h-6" />,
                 title: "Phone",
-                lines: [CONTACT_DETAILS.primaryPhone.display, CONTACT_DETAILS.secondaryPhone.display],
+                lines: [
+                  CONTACT_DETAILS.primaryPhone.display,
+                  CONTACT_DETAILS.secondaryPhone.display,
+                ],
                 isLink: true,
                 prefix: "tel:",
                 accent: "bg-emerald-500/10 text-emerald-600",
-                hoverAccent: "group-hover:bg-emerald-600 group-hover:text-white",
+                hoverAccent:
+                  "group-hover:bg-emerald-600 group-hover:text-white",
               },
               {
                 icon: <Clock className="w-6 h-6" />,
                 title: "Business Hours",
-                lines: ["Mon – Sat: 9:00 AM – 7:00 PM", "Sunday: By Appointment"],
+                lines: [
+                  "Mon – Sat: 9:00 AM – 7:00 PM",
+                  "Sunday: By Appointment",
+                ],
                 accent: "bg-amber-500/10 text-amber-600",
                 hoverAccent: "group-hover:bg-amber-600 group-hover:text-white",
               },
@@ -401,10 +463,13 @@ const Contact = () => {
                           {line}
                         </a>
                       ) : (
-                        <p key={line} className="text-base text-slate-500 font-medium">
+                        <p
+                          key={line}
+                          className="text-base text-slate-500 font-medium"
+                        >
                           {line}
                         </p>
-                      )
+                      ),
                     )}
                   </div>
                 </div>
@@ -414,13 +479,18 @@ const Contact = () => {
 
           {/* Quick Actions */}
           <SectionHeading subtitle="Reach Out" title="Quick Contact" />
-          <div className="social-icon-group quick-social-actions mb-16" aria-label="Contact and social links">
+          <div
+            className="social-icon-group quick-social-actions mb-16"
+            aria-label="Contact and social links"
+          >
             {socialLinks.map(({ href, label, Icon, tone }) => (
               <motion.a
                 key={`quick-${label}`}
                 href={href}
                 target={href.startsWith("http") ? "_blank" : undefined}
-                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                rel={
+                  href.startsWith("http") ? "noopener noreferrer" : undefined
+                }
                 aria-label={label}
                 title={label}
                 whileHover={{ scale: 1.08, y: -4 }}
@@ -475,13 +545,23 @@ const Contact = () => {
           <p className="mx-auto max-w-lg text-base text-white/60 mb-10 leading-relaxed">
             Need{" "}
             <strong className="text-white/75">rolling shutter near me</strong>,{" "}
-            <strong className="text-white/75">aluminium door work</strong> or any{" "}
-            <strong className="text-white/75">fabrication services in Trichy</strong>?
-            Our team is just a call away — free site visit, transparent quote, no hidden charges.
+            <strong className="text-white/75">aluminium door work</strong> or
+            any{" "}
+            <strong className="text-white/75">
+              fabrication services in Trichy
+            </strong>
+            ? Our team is just a call away — free site visit, transparent quote,
+            no hidden charges.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-10 w-full sm:w-auto">
-              <Phone className="w-4 h-4" /> Call {CONTACT_DETAILS.primaryPhone.display} / {CONTACT_DETAILS.secondaryPhone.display}
+            <TurtleButton
+              href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
+              variant="call_now"
+              className="rounded-xl px-10 w-full sm:w-auto"
+            >
+              <Phone className="w-4 h-4" /> Call{" "}
+              {CONTACT_DETAILS.primaryPhone.display} /{" "}
+              {CONTACT_DETAILS.secondaryPhone.display}
             </TurtleButton>
             <a
               href={getWhatsAppUrl()}

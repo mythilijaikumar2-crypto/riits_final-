@@ -3,17 +3,30 @@ import { Link } from "react-router-dom";
 
 import { motion, useInView } from "framer-motion";
 import {
-  Phone, MessageCircle, ArrowRight, Star, CheckCircle2,
-  Wrench, Home, Building2, Factory, Zap,
+  Phone,
+  MessageCircle,
+  ArrowRight,
+  Star,
+  CheckCircle2,
+  Wrench,
+  Home,
+  Building2,
+  Factory,
+  Zap,
 } from "lucide-react";
 import { TurtleButton } from "../components/TurtleButton";
 import SEO from "../components/SEO";
-import { CONTACT_DETAILS, formatTelLink, getWhatsAppUrl, COMPANY_NAME, BRAND_NAME } from "../config/contact";
+import {
+  CONTACT_DETAILS,
+  formatTelLink,
+  getWhatsAppUrl,
+  COMPANY_NAME,
+  BRAND_NAME,
+} from "../config/contact";
 import servicesHero from "../assets/heropage/services-hero.webp";
 import resSvcImg from "../assets/residential-service.jpeg";
 import comSvcImg from "../assets/commercial-service.jpeg";
 import indSvcImg from "../assets/industrial-service.jpeg";
-
 
 /* ─── DATA ──────────────────────────────────────────────────────────── */
 const serviceAreas = [
@@ -24,11 +37,11 @@ const serviceAreas = [
     gradient: "from-blue-600 to-indigo-800",
     image: comSvcImg,
     items: [
-      { name: "Steel Gate & Grill Work",    slug: "ms-works" },
-      { name: "Balcony Railing Work",        slug: "ss-works" },
-      { name: "Staircase Railing Work",      slug: "ss-works" },
-      { name: "Aluminium Window Work",       slug: "aluminium-windows" },
-      { name: "Elevation & Cladding Work",   slug: "elevation-work" },
+      { name: "Steel Gate & Grill Work", slug: "ms-works" },
+      { name: "Balcony Railing Work", slug: "ss-works" },
+      { name: "Staircase Railing Work", slug: "ss-works" },
+      { name: "Aluminium Window Work", slug: "aluminium-windows" },
+      { name: "Elevation & Cladding Work", slug: "elevation-work" },
     ],
   },
   {
@@ -39,10 +52,10 @@ const serviceAreas = [
     image: indSvcImg,
     items: [
       { name: "Showroom Facade & ACP Cladding", slug: "elevation-work" },
-      { name: "Glass Partition Work",            slug: "aluminium-partition" },
-      { name: "Toughened Glass Door Work",       slug: "aluminium-windows" },
-      { name: "Rolling Shutter Installation",    slug: "general-fabrication" },
-      { name: "Aluminium Door Work",             slug: "aluminium-windows" },
+      { name: "Glass Partition Work", slug: "aluminium-partition" },
+      { name: "Toughened Glass Door Work", slug: "aluminium-windows" },
+      { name: "Rolling Shutter Installation", slug: "general-fabrication" },
+      { name: "Aluminium Door Work", slug: "aluminium-windows" },
     ],
   },
   {
@@ -52,20 +65,32 @@ const serviceAreas = [
     gradient: "from-amber-600 to-orange-800",
     image: resSvcImg,
     items: [
-      { name: "Factory Shed Fabrication",      slug: "roofing-work" },
-      { name: "Warehouse Steel Fabrication",   slug: "steel-fabrication" },
-      { name: "Heavy-Duty Shop Shutter",        slug: "general-fabrication" },
-      { name: "Structural Metal Fabrication",  slug: "steel-fabrication" },
-      { name: "Industrial Gate Fabrication",   slug: "ms-works" },
+      { name: "Factory Shed Fabrication", slug: "roofing-work" },
+      { name: "Warehouse Steel Fabrication", slug: "steel-fabrication" },
+      { name: "Heavy-Duty Shop Shutter", slug: "general-fabrication" },
+      { name: "Structural Metal Fabrication", slug: "steel-fabrication" },
+      { name: "Industrial Gate Fabrication", slug: "ms-works" },
     ],
   },
 ];
 
 const stats = [
-  { val: "800+",   label: "Projects Completed", icon: <Wrench className="w-5 h-5" /> },
-  { val: "15+",    label: "Years Experience",   icon: <Zap className="w-5 h-5" /> },
-  { val: "100%",   label: "Client Satisfaction", icon: <Star className="w-5 h-5" /> },
-  { val: "Pan TN", label: "Areas Served",        icon: <CheckCircle2 className="w-5 h-5" /> },
+  {
+    val: "800+",
+    label: "Projects Completed",
+    icon: <Wrench className="w-5 h-5" />,
+  },
+  { val: "15+", label: "Years Experience", icon: <Zap className="w-5 h-5" /> },
+  {
+    val: "100%",
+    label: "Client Satisfaction",
+    icon: <Star className="w-5 h-5" />,
+  },
+  {
+    val: "Pan TN",
+    label: "Areas Served",
+    icon: <CheckCircle2 className="w-5 h-5" />,
+  },
 ];
 
 const serviceSections = [
@@ -75,12 +100,13 @@ const serviceSections = [
     body: (
       <>
         We offer complete{" "}
-        <strong className="text-slate-800">steel fabrication in Trichy</strong> — from
-        small custom parts to large structural projects. Our skilled team handles all types of{" "}
+        <strong className="text-slate-800">steel fabrication in Trichy</strong>{" "}
+        — from small custom parts to large structural projects. Our skilled team
+        handles all types of{" "}
         <strong className="text-slate-800">metal fabrication</strong>,{" "}
         <strong className="text-slate-800">steel work</strong> and{" "}
-        <strong className="text-slate-800">metal work</strong> with precision and quality
-        at every step.
+        <strong className="text-slate-800">metal work</strong> with precision
+        and quality at every step.
       </>
     ),
   },
@@ -89,12 +115,16 @@ const serviceSections = [
     heading: "Steel Gate & Grill Work",
     body: (
       <>
-        Our <strong className="text-slate-800">gate fabrication in Trichy</strong> service
-        covers custom <strong className="text-slate-800">steel gate work</strong>,{" "}
-        <strong className="text-slate-800">metal gate work</strong> and decorative{" "}
-        <strong className="text-slate-800">grill work in Trichy</strong>. We also install{" "}
-        <strong className="text-slate-800">window grill work</strong> for homes, offices
-        and commercial buildings.
+        Our{" "}
+        <strong className="text-slate-800">gate fabrication in Trichy</strong>{" "}
+        service covers custom{" "}
+        <strong className="text-slate-800">steel gate work</strong>,{" "}
+        <strong className="text-slate-800">metal gate work</strong> and
+        decorative{" "}
+        <strong className="text-slate-800">grill work in Trichy</strong>. We
+        also install{" "}
+        <strong className="text-slate-800">window grill work</strong> for homes,
+        offices and commercial buildings.
       </>
     ),
   },
@@ -105,9 +135,9 @@ const serviceSections = [
       <>
         We specialise in precision-welded{" "}
         <strong className="text-slate-800">balcony railing work</strong> and{" "}
-        <strong className="text-slate-800">staircase railing work</strong> using Grade-A
-        stainless steel and mild steel. Every railing is built for safety, durability and
-        a clean professional finish.
+        <strong className="text-slate-800">staircase railing work</strong> using
+        Grade-A stainless steel and mild steel. Every railing is built for
+        safety, durability and a clean professional finish.
       </>
     ),
   },
@@ -117,10 +147,13 @@ const serviceSections = [
     body: (
       <>
         {COMPANY_NAME} provides professional{" "}
-        <strong className="text-slate-800">rolling shutter work in Trichy</strong> and{" "}
-        <strong className="text-slate-800">shop shutter installation</strong> for retail
-        outlets, showrooms, warehouses and industrial units — motorized or manual,
-        built for heavy daily use.
+        <strong className="text-slate-800">
+          rolling shutter work in Trichy
+        </strong>{" "}
+        and{" "}
+        <strong className="text-slate-800">shop shutter installation</strong>{" "}
+        for retail outlets, showrooms, warehouses and industrial units —
+        motorized or manual, built for heavy daily use.
       </>
     ),
   },
@@ -130,10 +163,11 @@ const serviceSections = [
     body: (
       <>
         Our <strong className="text-slate-800">aluminium door work</strong> and{" "}
-        <strong className="text-slate-800">aluminium window work</strong> services cover
-        supply, fabrication and installation of{" "}
-        <strong className="text-slate-800">aluminium sliding windows</strong>, casement
-        windows and aluminium doors — weather-resistant, low-maintenance and perfectly fitted.
+        <strong className="text-slate-800">aluminium window work</strong>{" "}
+        services cover supply, fabrication and installation of{" "}
+        <strong className="text-slate-800">aluminium sliding windows</strong>,
+        casement windows and aluminium doors — weather-resistant,
+        low-maintenance and perfectly fitted.
       </>
     ),
   },
@@ -145,8 +179,9 @@ const serviceSections = [
         We install frameless{" "}
         <strong className="text-slate-800">glass door work</strong>,{" "}
         <strong className="text-slate-800">toughened glass doors</strong> and{" "}
-        <strong className="text-slate-800">glass partition work</strong> for modern homes,
-        offices and showrooms — clean lines, professional finish and built to last.
+        <strong className="text-slate-800">glass partition work</strong> for
+        modern homes, offices and showrooms — clean lines, professional finish
+        and built to last.
       </>
     ),
   },
@@ -169,20 +204,21 @@ const ServiceRow = React.memo(({ svc, index, isLast }: ServiceRowProps) => {
   const inView = useInView(rowRef, { once: true, margin: "-80px 0px" });
 
   /* Responsive slide distance — smaller on narrow viewports */
-  const slideX = typeof window !== "undefined" && window.innerWidth < 640 ? 30 : 60;
+  const slideX =
+    typeof window !== "undefined" && window.innerWidth < 640 ? 30 : 60;
 
   const leftVariants = {
-    hidden:  { opacity: 0, x: -slideX },
+    hidden: { opacity: 0, x: -slideX },
     visible: { opacity: 1, x: 0 },
   };
 
   const rightVariants = {
-    hidden:  { opacity: 0, x: slideX },
+    hidden: { opacity: 0, x: slideX },
     visible: { opacity: 1, x: 0 },
   };
 
   const dividerVariants = {
-    hidden:  { scaleX: 0, originX: 0 },
+    hidden: { scaleX: 0, originX: 0 },
     visible: { scaleX: 1, originX: 0 },
   };
 
@@ -208,10 +244,14 @@ const ServiceRow = React.memo(({ svc, index, isLast }: ServiceRowProps) => {
           {/* Animated number badge */}
           <motion.div
             variants={{
-              hidden:  { opacity: 0, scale: 0.7, rotate: -8 },
-              visible: { opacity: 1, scale: 1,   rotate: 0 },
+              hidden: { opacity: 0, scale: 0.7, rotate: -8 },
+              visible: { opacity: 1, scale: 1, rotate: 0 },
             }}
-            transition={{ duration: 0.55, ease: easing, delay: index * 0.06 + 0.05 }}
+            transition={{
+              duration: 0.55,
+              ease: easing,
+              delay: index * 0.06 + 0.05,
+            }}
             className="shrink-0 w-10 h-10 rounded-xl bg-[hsl(225,73%,35%)] text-white
               text-xs font-black flex items-center justify-center mt-1
               group-hover:bg-blue-700 group-hover:scale-110 transition-all duration-300
@@ -223,7 +263,11 @@ const ServiceRow = React.memo(({ svc, index, isLast }: ServiceRowProps) => {
           <div className="flex-1 min-w-0">
             <motion.h2
               variants={leftVariants}
-              transition={{ duration: 0.62, ease: easing, delay: index * 0.06 + 0.08 }}
+              transition={{
+                duration: 0.62,
+                ease: easing,
+                delay: index * 0.06 + 0.08,
+              }}
               className="text-xl sm:text-2xl font-black text-slate-950 uppercase
                 tracking-tight mb-2 group-hover:text-blue-800 transition-colors duration-300"
             >
@@ -233,7 +277,11 @@ const ServiceRow = React.memo(({ svc, index, isLast }: ServiceRowProps) => {
             {/* RIGHT — Description slides from right */}
             <motion.p
               variants={rightVariants}
-              transition={{ duration: 0.65, ease: easing, delay: index * 0.06 + 0.14 }}
+              transition={{
+                duration: 0.65,
+                ease: easing,
+                delay: index * 0.06 + 0.14,
+              }}
               className="text-slate-600 text-[0.95rem] leading-relaxed"
             >
               {svc.body}
@@ -248,7 +296,11 @@ const ServiceRow = React.memo(({ svc, index, isLast }: ServiceRowProps) => {
           variants={dividerVariants}
           animate={inView ? "visible" : "hidden"}
           initial="hidden"
-          transition={{ duration: 0.7, ease: easing, delay: index * 0.06 + 0.25 }}
+          transition={{
+            duration: 0.7,
+            ease: easing,
+            delay: index * 0.06 + 0.25,
+          }}
           className="mt-8 mb-0 border-0 h-px bg-gradient-to-r
             from-slate-200 via-blue-100 to-transparent"
           style={{ transformOrigin: "left" }}
@@ -273,10 +325,11 @@ const Services = () => {
       ══════════════════════════════════════════ */}
       <section className="relative h-screen flex flex-col justify-center overflow-hidden bg-slate-950">
         <h1 className="sr-only">
-          Steel Fabrication, Gate Work, Railing, Rolling Shutter &amp; Aluminium Services in Trichy | {COMPANY_NAME}
+          Steel Fabrication, Gate Work, Railing, Rolling Shutter &amp; Aluminium
+          Services in Trichy | {COMPANY_NAME}
         </h1>
 
-        <motion.div 
+        <motion.div
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
@@ -301,8 +354,6 @@ const Services = () => {
           }}
         />
 
-
-
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <motion.div
@@ -310,48 +361,78 @@ const Services = () => {
               animate="visible"
               variants={{
                 hidden: { opacity: 0 },
-                visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.2 } },
+                visible: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.12, delayChildren: 0.2 },
+                },
               }}
             >
               <motion.div
-                variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
+                variants={{
+                  hidden: { opacity: 0, y: 15 },
+                  visible: { opacity: 1, y: 0 },
+                }}
                 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-widest mb-4"
               >
                 <Zap className="w-3 h-3" /> Fabrication Shop in Trichy
               </motion.div>
               <motion.p
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
                 aria-hidden="true"
                 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
               >
-                Expert<br />
+                Expert
+                <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600">
                   Metal &amp; Glass
-                </span><br />
+                </span>
+                <br />
                 Services
               </motion.p>
-              <motion.p 
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+              <motion.p
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
                 className="text-white/65 text-base leading-relaxed max-w-md mb-7"
               >
                 {COMPANY_NAME} is your trusted{" "}
-                <strong className="text-white/85">fabrication shop in Trichy</strong> —
-                delivering expert{" "}
+                <strong className="text-white/85">
+                  fabrication shop in Trichy
+                </strong>{" "}
+                — delivering expert{" "}
                 <strong className="text-white/85">steel fabrication</strong>,{" "}
                 <strong className="text-white/85">gate fabrication</strong>,{" "}
                 <strong className="text-white/85">rolling shutter work</strong>,{" "}
-                <strong className="text-white/85">aluminium window work</strong> and{" "}
-                <strong className="text-white/85">glass partition work</strong> for
-                residential, commercial and industrial projects across Tamil Nadu.
+                <strong className="text-white/85">aluminium window work</strong>{" "}
+                and{" "}
+                <strong className="text-white/85">glass partition work</strong>{" "}
+                for residential, commercial and industrial projects across Tamil
+                Nadu.
               </motion.p>
-              <motion.div 
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
                 className="flex flex-col sm:flex-row gap-3"
               >
-                <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-10 w-full sm:w-auto">
+                <TurtleButton
+                  href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
+                  variant="call_now"
+                  className="rounded-xl px-10 w-full sm:w-auto"
+                >
                   <Phone className="w-4 h-4" /> Call Now
                 </TurtleButton>
-                <TurtleButton href={getWhatsAppUrl()} variant="whatsapp" external className="rounded-xl w-full sm:w-auto">
+                <TurtleButton
+                  href={getWhatsAppUrl()}
+                  variant="whatsapp"
+                  external
+                  className="rounded-xl w-full sm:w-auto"
+                >
                   <MessageCircle className="w-4 h-4" /> WhatsApp
                 </TurtleButton>
               </motion.div>
@@ -363,7 +444,13 @@ const Services = () => {
       {/* ══════════════════════════════════════════
           STATS
       ══════════════════════════════════════════ */}
-      <section className="min-h-screen flex items-center justify-center bg-white relative border-b border-slate-100 py-20 overflow-hidden" style={{ contentVisibility: "auto", containIntrinsicSize: "auto 100vh" }}>
+      <section
+        className="min-h-screen flex items-center justify-center bg-white relative border-b border-slate-100 py-20 overflow-hidden"
+        style={{
+          contentVisibility: "auto",
+          containIntrinsicSize: "auto 100vh",
+        }}
+      >
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(37,99,235,0.05),transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(26,58,107,0.05),transparent_50%)]" />
         <div className="absolute -top-[30%] -right-[10%] w-[50vw] h-[50vw] rounded-full bg-blue-100/30 blur-[100px] pointer-events-none animate-[spin_60s_linear_infinite]" />
@@ -382,8 +469,8 @@ const Services = () => {
             <p className="mt-5 text-slate-500 max-w-xl mx-auto text-base leading-relaxed">
               15+ years of trusted{" "}
               <strong className="text-slate-700">metal fabrication</strong> and{" "}
-              <strong className="text-slate-700">welding work</strong> in Trichy —
-              serving 800+ happy clients across Tamil Nadu.
+              <strong className="text-slate-700">welding work</strong> in Trichy
+              — serving 800+ happy clients across Tamil Nadu.
             </p>
           </div>
 
@@ -417,10 +504,12 @@ const Services = () => {
       ══════════════════════════════════════════ */}
       <section
         className="bg-white py-20 px-6 border-b border-slate-100"
-        style={{ contentVisibility: "auto", containIntrinsicSize: "auto 700px" }}
+        style={{
+          contentVisibility: "auto",
+          containIntrinsicSize: "auto 700px",
+        }}
       >
         <div className="max-w-5xl mx-auto">
-
           {/* Section header animates in from bottom */}
           <motion.div
             initial={{ opacity: 0, y: 32 }}
@@ -436,11 +525,17 @@ const Services = () => {
               Our Fabrication Services in Trichy
             </h2>
             <p className="text-slate-500 text-[0.95rem] max-w-2xl mx-auto leading-relaxed">
-              From <strong className="text-slate-700">steel fabrication in Trichy</strong> to{" "}
-              <strong className="text-slate-700">gate fabrication in Trichy</strong> —
-              {COMPANY_NAME} delivers complete{" "}
-              <strong className="text-slate-700">fabrication work</strong> across
-              every category, on time and at transparent prices.
+              From{" "}
+              <strong className="text-slate-700">
+                steel fabrication in Trichy
+              </strong>{" "}
+              to{" "}
+              <strong className="text-slate-700">
+                gate fabrication in Trichy
+              </strong>{" "}
+              —{COMPANY_NAME} delivers complete{" "}
+              <strong className="text-slate-700">fabrication work</strong>{" "}
+              across every category, on time and at transparent prices.
             </p>
           </motion.div>
 
@@ -455,15 +550,19 @@ const Services = () => {
               />
             ))}
           </div>
-
-
         </div>
       </section>
 
       {/* ══════════════════════════════════════════
           SERVICE AREAS
       ══════════════════════════════════════════ */}
-      <section className="py-24 bg-white relative overflow-hidden" style={{ contentVisibility: "auto", containIntrinsicSize: "auto 900px" }}>
+      <section
+        className="py-24 bg-white relative overflow-hidden"
+        style={{
+          contentVisibility: "auto",
+          containIntrinsicSize: "auto 900px",
+        }}
+      >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(26,58,107,0.04),transparent_60%)]" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -475,9 +574,11 @@ const Services = () => {
               Service Areas
             </h2>
             <p className="mt-4 text-slate-500 max-w-xl mx-auto text-base leading-relaxed">
-              Comprehensive <strong className="text-slate-700">metal fabrication</strong> and{" "}
-              <strong className="text-slate-700">fabrication work</strong> across residential,
-              commercial and industrial segments in Trichy and Tamil Nadu.
+              Comprehensive{" "}
+              <strong className="text-slate-700">metal fabrication</strong> and{" "}
+              <strong className="text-slate-700">fabrication work</strong>{" "}
+              across residential, commercial and industrial segments in Trichy
+              and Tamil Nadu.
             </p>
           </div>
 
@@ -498,7 +599,9 @@ const Services = () => {
                       style={{ willChange: "transform" }}
                     />
                   </div>
-                  <div className={`absolute inset-0 bg-gradient-to-br ${area.gradient} mix-blend-multiply opacity-20 group-hover:opacity-40 transition-opacity duration-500`} />
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${area.gradient} mix-blend-multiply opacity-20 group-hover:opacity-40 transition-opacity duration-500`}
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute -top-8 -right-8 w-32 h-32 bg-white/10 rounded-full" />
                   <div className="absolute bottom-0 left-0 w-24 h-24 bg-black/20 rounded-full translate-y-1/2 -translate-x-1/2" />
@@ -522,8 +625,14 @@ const Services = () => {
                         key={item.name}
                         className="flex items-center gap-2.5 sm:gap-3 text-sm text-slate-600 group-hover:gap-4 transition-all duration-300"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: area.color }} />
-                        <Link to={`/services/${item.slug}`} className="hover:text-blue-600 transition-colors">
+                        <span
+                          className="w-1.5 h-1.5 rounded-full shrink-0"
+                          style={{ background: area.color }}
+                        />
+                        <Link
+                          to={`/services/${item.slug}`}
+                          className="hover:text-blue-600 transition-colors"
+                        >
                           {item.name}
                         </Link>
                       </li>
@@ -548,13 +657,15 @@ const Services = () => {
           PROCESS
       ══════════════════════════════════════════ */}
 
-
       {/* ══════════════════════════════════════════
           CTA
       ══════════════════════════════════════════ */}
       <section
         className="py-24 bg-slate-950 relative overflow-hidden text-white"
-        style={{ contentVisibility: "auto", containIntrinsicSize: "auto 400px" }}
+        style={{
+          contentVisibility: "auto",
+          containIntrinsicSize: "auto 400px",
+        }}
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)]" />
 
@@ -563,16 +674,25 @@ const Services = () => {
             Get In Touch
           </p>
           <h2 className="font-heading text-4xl sm:text-5xl font-black uppercase tracking-tight mb-6">
-            Ready to Start<br />Your Project?
+            Ready to Start
+            <br />
+            Your Project?
           </h2>
           <p className="text-white/60 text-base leading-relaxed max-w-xl mx-auto mb-10">
             Need <strong className="text-white/80">steel gate work</strong>,{" "}
-            <strong className="text-white/80">rolling shutter work in Trichy</strong> or{" "}
-            <strong className="text-white/80">glass partition work</strong> for your
-            property? Contact us for a free site visit and written quotation — no hidden charges.
+            <strong className="text-white/80">
+              rolling shutter work in Trichy
+            </strong>{" "}
+            or <strong className="text-white/80">glass partition work</strong>{" "}
+            for your property? Contact us for a free site visit and written
+            quotation — no hidden charges.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-10 w-full sm:w-auto">
+            <TurtleButton
+              href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
+              variant="call_now"
+              className="rounded-xl px-10 w-full sm:w-auto"
+            >
               <Phone className="w-4 h-4" /> Call Now
             </TurtleButton>
             <a
@@ -585,8 +705,16 @@ const Services = () => {
             </a>
           </div>
           <div className="flex flex-wrap justify-center gap-6 mt-12 pt-10 border-t border-white/10">
-            {["Free Consultation", "On-Time Delivery", "Quality Assured", "Pan Tamil Nadu"].map((b) => (
-              <div key={b} className="flex items-center gap-2 text-sm text-white/50 font-medium">
+            {[
+              "Free Consultation",
+              "On-Time Delivery",
+              "Quality Assured",
+              "Pan Tamil Nadu",
+            ].map((b) => (
+              <div
+                key={b}
+                className="flex items-center gap-2 text-sm text-white/50 font-medium"
+              >
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                 {b}
               </div>

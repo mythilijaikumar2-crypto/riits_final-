@@ -1,8 +1,4 @@
-import {
-  motion,
-  AnimatePresence,
-  useInView,
-} from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import {
   useState,
   useEffect,
@@ -56,7 +52,6 @@ import shutterHeavyImg from "../assets/industrial.jpg";
 import laserGate1 from "../assets/laserphoto/laser gate1 web.webp";
 import laserDesign2 from "../assets/laserphoto/laser design2 webp.webp";
 import laserDesign3 from "../assets/laserphoto/laser design3 webp.webp";
-
 
 /* ── Benefit detail copy ── */
 const benefitDetails: Record<string, { icon: string; desc: string }> = {
@@ -631,42 +626,40 @@ const ProductImage = ({ src, alt }: { src: string; alt: string }) => {
 };
 
 /* ── Product Card ── */
-const ProductCard = memo(
-  ({ product }: { product: Product }) => {
-    return (
-      <div className="card">
-        <div className="card-img overflow-hidden">
-          <ProductImage src={product.image} alt={product.name} />
-        </div>
+const ProductCard = memo(({ product }: { product: Product }) => {
+  return (
+    <div className="card">
+      <div className="card-img overflow-hidden">
+        <ProductImage src={product.image} alt={product.name} />
+      </div>
 
-        <div className="project-info">
-          <div className="flex justify-between items-center gap-2">
-            <div className="project-title">{product.name}</div>
-            <span className="tag">Product</span>
+      <div className="project-info">
+        <div className="flex justify-between items-center gap-2">
+          <div className="project-title">{product.name}</div>
+          <span className="tag">Product</span>
+        </div>
+        <span className="lighter">{product.desc}</span>
+        <div className="mt-auto pt-5 border-t border-slate-100 flex flex-col gap-2">
+          <div className="text-[12px] leading-tight text-slate-400 font-black uppercase tracking-[0.1em]">
+            Technical Details
           </div>
-          <span className="lighter">{product.desc}</span>
-          <div className="mt-auto pt-5 border-t border-slate-100 flex flex-col gap-2">
-            <div className="text-[12px] leading-tight text-slate-400 font-black uppercase tracking-[0.1em]">
-              Technical Details
-            </div>
-            <div className="text-[14px] text-slate-700 flex items-start gap-2 leading-relaxed">
-              <span className="text-blue-600 font-extrabold min-w-[75px]">
-                MATERIAL:
-              </span>{" "}
-              {product.materials}
-            </div>
-            <div className="text-[14px] text-slate-700 flex items-start gap-2 leading-relaxed">
-              <span className="text-blue-600 font-extrabold min-w-[75px]">
-                USE CASE:
-              </span>{" "}
-              {product.applications}
-            </div>
+          <div className="text-[14px] text-slate-700 flex items-start gap-2 leading-relaxed">
+            <span className="text-blue-600 font-extrabold min-w-[75px]">
+              MATERIAL:
+            </span>{" "}
+            {product.materials}
+          </div>
+          <div className="text-[14px] text-slate-700 flex items-start gap-2 leading-relaxed">
+            <span className="text-blue-600 font-extrabold min-w-[75px]">
+              USE CASE:
+            </span>{" "}
+            {product.applications}
           </div>
         </div>
       </div>
-    );
-  },
-);
+    </div>
+  );
+});
 
 /* ── Category Section ── */
 const CategorySection = memo(({ category }: { category: Category }) => {
@@ -1057,7 +1050,7 @@ const Products = () => {
         </h1>
 
         {/* Backing Image — uses motion for zoom-out entrance */}
-        <motion.div 
+        <motion.div
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
@@ -1091,11 +1084,17 @@ const Products = () => {
               animate="visible"
               variants={{
                 hidden: { opacity: 0 },
-                visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.2 } },
+                visible: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.12, delayChildren: 0.2 },
+                },
               }}
             >
               <motion.div
-                variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
+                variants={{
+                  hidden: { opacity: 0, y: 15 },
+                  visible: { opacity: 1, y: 0 },
+                }}
                 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 text-xs font-semibold uppercase tracking-widest mb-4"
               >
                 <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
@@ -1104,7 +1103,10 @@ const Products = () => {
 
               {/* Decorative display heading — aria-hidden, real H1 is sr-only above */}
               <motion.p
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
                 aria-hidden="true"
                 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
               >
@@ -1119,7 +1121,10 @@ const Products = () => {
 
               {/* SEO-rich hero paragraph */}
               <motion.p
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
                 className="text-white/65 text-base leading-relaxed max-w-md mb-7"
               >
                 Explore our complete range of{" "}
@@ -1135,7 +1140,10 @@ const Products = () => {
               </motion.p>
 
               <motion.div
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
                 className="flex flex-col sm:flex-row gap-3"
               >
                 <TurtleButton
@@ -1167,7 +1175,7 @@ const Products = () => {
         onMouseLeave={() => setIsPaused(false)}
       >
         <div className="mx-auto max-w-7xl px-0 sm:px-4">
-          <div 
+          <div
             className="flex flex-nowrap overflow-x-auto justify-start sm:justify-center items-center gap-2 sm:gap-3 px-4 sm:px-0 pb-3 pt-1"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >

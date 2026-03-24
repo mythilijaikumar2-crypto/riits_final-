@@ -37,57 +37,127 @@ import { PremiumServiceCards } from "../components/PremiumServiceCards/PremiumSe
 import ProcessSection from "../components/ProcessSection";
 import SEO from "../components/SEO";
 import MovingTags from "../components/MovingTags";
-import { CONTACT_DETAILS, formatTelLink, getWhatsAppUrl, COMPANY_NAME, BRAND_NAME } from "../config/contact";
+import {
+  CONTACT_DETAILS,
+  formatTelLink,
+  getWhatsAppUrl,
+  COMPANY_NAME,
+  BRAND_NAME,
+} from "../config/contact";
 
 /* ================= SCHEMA ================= */
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": COMPANY_NAME,
-  "image": `https://riits.in/og-image.webp`,
-  "url": "https://riits.in",
-  "telephone": CONTACT_DETAILS.primaryPhone.value,
+  name: COMPANY_NAME,
+  image: `https://riits.in/og-image.webp`,
+  url: "https://riits.in",
+  telephone: CONTACT_DETAILS.primaryPhone.value,
 
-  "priceRange": "₹₹",
-  "address": {
+  priceRange: "₹₹",
+  address: {
     "@type": "PostalAddress",
-    "streetAddress": CONTACT_DETAILS.address.city,
-    "addressLocality": CONTACT_DETAILS.address.city,
-    "addressRegion": CONTACT_DETAILS.address.state,
-    "postalCode": CONTACT_DETAILS.address.pincode,
-    "addressCountry": "IN"
+    streetAddress: CONTACT_DETAILS.address.city,
+    addressLocality: CONTACT_DETAILS.address.city,
+    addressRegion: CONTACT_DETAILS.address.state,
+    postalCode: CONTACT_DETAILS.address.pincode,
+    addressCountry: "IN",
   },
-  "geo": {
+  geo: {
     "@type": "GeoCoordinates",
-    "latitude": 10.7905,
-    "longitude": 78.7047
+    latitude: 10.7905,
+    longitude: 78.7047,
   },
-  "description": "Trichy's most trusted metal fabrication studio — custom steel gates, MS/SS railings, rolling shutters, aluminium glazing, ACP cladding & industrial structural fabrication.",
-  "openingHoursSpecification": {
+  description:
+    "Trichy's most trusted metal fabrication studio — custom steel gates, MS/SS railings, rolling shutters, aluminium glazing, ACP cladding & industrial structural fabrication.",
+  openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    "opens": "09:00",
-    "closes": "20:00"
+    dayOfWeek: [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ],
+    opens: "09:00",
+    closes: "20:00",
   },
-  "aggregateRating": {
+  aggregateRating: {
     "@type": "AggregateRating",
-    "ratingValue": "5.0",
-    "reviewCount": "800"
+    ratingValue: "5.0",
+    reviewCount: "800",
   },
-  "hasOfferCatalog": {
+  hasOfferCatalog: {
     "@type": "OfferCatalog",
-    "name": "Metal Fabrication Services",
-    "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Steel Gates & Grills", "description": "Custom MS & SS gates, compound gates, window grills and sliding gates in Trichy" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Stainless Steel Railings & Handrails", "description": "Balcony railings, staircase railings and steel handrails" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Rolling Shutters", "description": "Shop shutters, commercial and industrial rolling shutter systems" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Aluminium & Glass Works", "description": "Aluminium sliding windows, doors, partitions, toughened glass doors and glass partitions" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ACP Cladding & Elevation", "description": "ACP cladding panels, aluminium cladding panels and building facade panels" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Structural Steel Fabrication", "description": "Steel pergolas, metal canopies, sheds, roofing and structural steel frames" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Laser Cutting", "description": "High-precision laser cutting for SS and MS decorative gates, partitions and panels" } }
-    ]
-  }
+    name: "Metal Fabrication Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Steel Gates & Grills",
+          description:
+            "Custom MS & SS gates, compound gates, window grills and sliding gates in Trichy",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Stainless Steel Railings & Handrails",
+          description:
+            "Balcony railings, staircase railings and steel handrails",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Rolling Shutters",
+          description:
+            "Shop shutters, commercial and industrial rolling shutter systems",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Aluminium & Glass Works",
+          description:
+            "Aluminium sliding windows, doors, partitions, toughened glass doors and glass partitions",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "ACP Cladding & Elevation",
+          description:
+            "ACP cladding panels, aluminium cladding panels and building facade panels",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Structural Steel Fabrication",
+          description:
+            "Steel pergolas, metal canopies, sheds, roofing and structural steel frames",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Laser Cutting",
+          description:
+            "High-precision laser cutting for SS and MS decorative gates, partitions and panels",
+        },
+      },
+    ],
+  },
 };
 
 /* ================= DATA ================= */
@@ -97,7 +167,8 @@ const services = [
     icon: "🚪",
     title: "Gates & Grills",
     desc: "Custom MS & SS gates with modern geometric designs",
-    seoDesc: "We fabricate steel gates, stainless steel gates, MS gates, sliding gates, compound gates and window grills tailored to your property.",
+    seoDesc:
+      "We fabricate steel gates, stainless steel gates, MS gates, sliding gates, compound gates and window grills tailored to your property.",
     category: "MS / SS Fabrication",
     image: gates,
     productCategory: "ss",
@@ -106,7 +177,8 @@ const services = [
     icon: "🛡️",
     title: "Railings & Handrails",
     desc: "Brushed stainless steel balcony & staircase railings",
-    seoDesc: "Precision-welded balcony railings, stainless steel railings, staircase railings and steel handrails for homes and commercial spaces.",
+    seoDesc:
+      "Precision-welded balcony railings, stainless steel railings, staircase railings and steel handrails for homes and commercial spaces.",
     category: "Stainless Steel",
     image: railings,
     productCategory: "ss",
@@ -115,7 +187,8 @@ const services = [
     icon: "🪜",
     title: "Staircases & Pergolas",
     desc: "Structural steel staircases and decorative pergolas",
-    seoDesc: "Custom steel staircases, metal staircases, steel pergolas and metal canopies designed and installed across Trichy.",
+    seoDesc:
+      "Custom steel staircases, metal staircases, steel pergolas and metal canopies designed and installed across Trichy.",
     category: "Structural Steel",
     image: staircase,
     productCategory: "ss",
@@ -124,7 +197,8 @@ const services = [
     icon: "🏗️",
     title: "Rolling Shutters",
     desc: "Heavy-duty commercial & industrial rolling systems",
-    seoDesc: "Durable rolling shutters, shop shutters and industrial shutters built for high-frequency commercial and warehouse use.",
+    seoDesc:
+      "Durable rolling shutters, shop shutters and industrial shutters built for high-frequency commercial and warehouse use.",
     category: "Industrial",
     image: roll,
     productCategory: "shutters",
@@ -133,7 +207,8 @@ const services = [
     icon: "🪟",
     title: "Aluminium & Glass",
     desc: "Sliding windows, glass partitions & structural glazing",
-    seoDesc: "Aluminium doors, aluminium sliding windows, aluminium partitions, toughened glass doors, frameless glass doors and glass partitions.",
+    seoDesc:
+      "Aluminium doors, aluminium sliding windows, aluminium partitions, toughened glass doors, frameless glass doors and glass partitions.",
     category: "Aluminium & Glass",
     image: aluminium,
     productCategory: "glass",
@@ -142,7 +217,8 @@ const services = [
     icon: "🏢",
     title: "Elevation & Cladding",
     desc: "ACP panels, HPL cladding & decorative facades",
-    seoDesc: "Premium ACP cladding panels, aluminium cladding panels and building facade panels that transform commercial and residential exteriors.",
+    seoDesc:
+      "Premium ACP cladding panels, aluminium cladding panels and building facade panels that transform commercial and residential exteriors.",
     category: "Facade & Cladding",
     image: elevation,
     productCategory: "elevation",
@@ -151,7 +227,8 @@ const services = [
     icon: "⚙️",
     title: "Structural Fabrication",
     desc: "Steel frames, sheds, roofing & support beams",
-    seoDesc: "Industrial-grade structural steel fabrication including frames, sheds, roofing systems and heavy support beams.",
+    seoDesc:
+      "Industrial-grade structural steel fabrication including frames, sheds, roofing systems and heavy support beams.",
     category: "Structural Works",
     image: struct,
     productCategory: "ms",
@@ -160,7 +237,8 @@ const services = [
     icon: "🏭",
     title: "Industrial Works",
     desc: "Large-scale industrial metal fabrication projects",
-    seoDesc: "End-to-end industrial metal fabrication for factories, warehouses and large-scale construction projects across Tamil Nadu.",
+    seoDesc:
+      "End-to-end industrial metal fabrication for factories, warehouses and large-scale construction projects across Tamil Nadu.",
     category: "Industrial",
     image: industry,
     productCategory: "ms",
@@ -169,7 +247,8 @@ const services = [
     icon: "🏠",
     title: "Roofing Works",
     desc: "Premium roofing solutions for residential and industrial projects",
-    seoDesc: "Expert roofing installation, Car shed roofing, Kerala style roofing,shettle court, warehouse roofing, and residential terrace roofing works in Trichy.",
+    seoDesc:
+      "Expert roofing installation, Car shed roofing, Kerala style roofing,shettle court, warehouse roofing, and residential terrace roofing works in Trichy.",
     category: "Roofing Solutions",
     image: roofing,
     productCategory: "roofing",
@@ -178,7 +257,8 @@ const services = [
     icon: "🎯",
     title: "LASER DESIGN",
     desc: "Precision laser cutting for custom metal designs",
-    seoDesc: "High-precision laser cutting for MS and SS sheets, creating intricate patterns for gates, partitions, and decorative elements.",
+    seoDesc:
+      "High-precision laser cutting for MS and SS sheets, creating intricate patterns for gates, partitions, and decorative elements.",
     category: "Laser Cutting",
     image: laserImg,
     productCategory: "ss",
@@ -190,7 +270,11 @@ const whyUs = [
     Icon: Shield,
     title: "Transparent Pricing",
     desc: "No hidden costs, no surprises. Every project gets a detailed written quotation before work begins.",
-    highlights: ["Written estimates", "No surprise charges", "Fair market rates"],
+    highlights: [
+      "Written estimates",
+      "No surprise charges",
+      "Fair market rates",
+    ],
     accent: "#1a3a6b",
     bg: pricingImg,
   },
@@ -198,7 +282,11 @@ const whyUs = [
     Icon: Ruler,
     title: "Precision Fabrication",
     desc: "Every cut, weld and finish is executed with absolute accuracy. We don't cut corners — only metal.",
-    highlights: ["Accuracy cutting Edges", "Zero-tolerance fits", "Quality inspected"],
+    highlights: [
+      "Accuracy cutting Edges",
+      "Zero-tolerance fits",
+      "Quality inspected",
+    ],
     accent: "#2d5a8e",
     bg: fabricationImg,
   },
@@ -206,7 +294,11 @@ const whyUs = [
     Icon: Layers,
     title: "Premium Materials",
     desc: "Grade-A stainless steel, mild steel, aluminium & glass — sourced only from certified suppliers.",
-    highlights: ["Grade A materials", "Certified suppliers", "Long-lasting finish"],
+    highlights: [
+      "Grade A materials",
+      "Certified suppliers",
+      "Long-lasting finish",
+    ],
     accent: "#1e4d7b",
     bg: materialsImg,
   },
@@ -214,23 +306,87 @@ const whyUs = [
     Icon: Clock4,
     title: "On-Time Delivery",
     desc: "Trichy's most reliable team. We set deadlines and we meet them — every single time.",
-    highlights: ["Trichy-based team", "Timely handover", "Post-install support"],
+    highlights: [
+      "Trichy-based team",
+      "Timely handover",
+      "Post-install support",
+    ],
     accent: "#16355f",
     bg: deliveryImg,
   },
 ];
 
 const testimonials = [
-  { name: "Rajesh Kumar", initial: "R", text: "Excellent service and high-quality fabrication work. The team was very professional.", rating: 5, verified: true },
-  { name: "Shanmugam", initial: "S", text: "தரமான வேலை மற்றும் சரியான நேரத்தில் முடித்துக் கொடுத்தார்கள். மிக்க நன்றி.", rating: 5, verified: true },
-  { name: "Priya S.", initial: "P", text: "The stainless steel railings installed at my home are top-notch. Highly recommended!", rating: 5, verified: true },
-  { name: "Revathi", initial: "R", text: "எங்கள் வீட்டிற்கு அமைத்த ஸ்டெயின்லெஸ் ஸ்டீல் கைப்பிடிகள் மிகவும் அழகாக உள்ளது.", rating: 5, verified: true },
-  { name: "Arun Enterprises", initial: "A", text: `${COMPANY_NAME} delivered our industrial shed ahead of schedule. Great project management.`, rating: 5, verified: true },
-  { name: "Karthik", initial: "K", text: "திருச்சியில் சிறந்த இரும்பு வேலை செய்யும் இடம். நம்பகமான சேவை.", rating: 5, verified: true },
-  { name: "Murali Dharan", initial: "M", text: "Best metal fabricators in Trichy. Their attention to detail is remarkable.", rating: 5, verified: true },
-  { name: "Selvam Krishna", initial: "S", text: "வேலைப்பாடு மிகவும் நுணுக்கமாக உள்ளது. விலையும் நியாயமானதாக இருக்கிறது.", rating: 5, verified: true },
-  { name: "Kavitha R.", initial: "K", text: "Very happy with the modern gate design they provided. It really enhanced our home's curb appeal.", rating: 5, verified: true },
-  { name: "Suresh Babu", initial: "S", text: "Professional team, transparent pricing, and quality materials. Would definitely hire them again.", rating: 5, verified: true },
+  {
+    name: "Rajesh Kumar",
+    initial: "R",
+    text: "Excellent service and high-quality fabrication work. The team was very professional.",
+    rating: 5,
+    verified: true,
+  },
+  {
+    name: "Shanmugam",
+    initial: "S",
+    text: "தரமான வேலை மற்றும் சரியான நேரத்தில் முடித்துக் கொடுத்தார்கள். மிக்க நன்றி.",
+    rating: 5,
+    verified: true,
+  },
+  {
+    name: "Priya S.",
+    initial: "P",
+    text: "The stainless steel railings installed at my home are top-notch. Highly recommended!",
+    rating: 5,
+    verified: true,
+  },
+  {
+    name: "Revathi",
+    initial: "R",
+    text: "எங்கள் வீட்டிற்கு அமைத்த ஸ்டெயின்லெஸ் ஸ்டீல் கைப்பிடிகள் மிகவும் அழகாக உள்ளது.",
+    rating: 5,
+    verified: true,
+  },
+  {
+    name: "Arun Enterprises",
+    initial: "A",
+    text: `${COMPANY_NAME} delivered our industrial shed ahead of schedule. Great project management.`,
+    rating: 5,
+    verified: true,
+  },
+  {
+    name: "Karthik",
+    initial: "K",
+    text: "திருச்சியில் சிறந்த இரும்பு வேலை செய்யும் இடம். நம்பகமான சேவை.",
+    rating: 5,
+    verified: true,
+  },
+  {
+    name: "Murali Dharan",
+    initial: "M",
+    text: "Best metal fabricators in Trichy. Their attention to detail is remarkable.",
+    rating: 5,
+    verified: true,
+  },
+  {
+    name: "Selvam Krishna",
+    initial: "S",
+    text: "வேலைப்பாடு மிகவும் நுணுக்கமாக உள்ளது. விலையும் நியாயமானதாக இருக்கிறது.",
+    rating: 5,
+    verified: true,
+  },
+  {
+    name: "Kavitha R.",
+    initial: "K",
+    text: "Very happy with the modern gate design they provided. It really enhanced our home's curb appeal.",
+    rating: 5,
+    verified: true,
+  },
+  {
+    name: "Suresh Babu",
+    initial: "S",
+    text: "Professional team, transparent pricing, and quality materials. Would definitely hire them again.",
+    rating: 5,
+    verified: true,
+  },
 ];
 
 /* ================= SEO KEYWORD STRIP ================= */
@@ -238,13 +394,28 @@ const testimonials = [
 // Rich in product + near-me keywords for Google crawlers.
 
 const serviceTags = [
-  "Steel Gate", "MS Gate", "SS Gate", "Sliding Gate", "Compound Gate",
-  "Window Grill", "Steel Grill", "Balcony Railing", "Staircase Railing",
-  "Steel Handrail", "Rolling Shutter", "Shop Shutter", "Aluminium Window",
-  "Glass Door", "Toughened Glass", "ACP Cladding", "Facade Panels",
-  "Steel Pergola", "Metal Canopy", "Fabrication Near Me", "Laser Cutting",
+  "Steel Gate",
+  "MS Gate",
+  "SS Gate",
+  "Sliding Gate",
+  "Compound Gate",
+  "Window Grill",
+  "Steel Grill",
+  "Balcony Railing",
+  "Staircase Railing",
+  "Steel Handrail",
+  "Rolling Shutter",
+  "Shop Shutter",
+  "Aluminium Window",
+  "Glass Door",
+  "Toughened Glass",
+  "ACP Cladding",
+  "Facade Panels",
+  "Steel Pergola",
+  "Metal Canopy",
+  "Fabrication Near Me",
+  "Laser Cutting",
 ];
-
 
 /* ================= HERO ================= */
 
@@ -253,12 +424,13 @@ const HeroSection = ({ isMobile }: { isMobile: boolean }) => (
     className="relative h-screen flex flex-col justify-center bg-slate-950 overflow-hidden"
     style={{
       paddingTop: isMobile ? "12vh" : "0",
-      paddingBottom: isMobile ? "8vh" : "0"
+      paddingBottom: isMobile ? "8vh" : "0",
     }}
   >
     {/* Visually hidden H1 for Google — primary SEO heading */}
     <h1 className="sr-only">
-      Steel Gates, Railings, Rolling Shutters &amp; Metal Fabrication Works in Trichy
+      Steel Gates, Railings, Rolling Shutters &amp; Metal Fabrication Works in
+      Trichy
     </h1>
 
     {/* Background image */}
@@ -288,77 +460,113 @@ const HeroSection = ({ isMobile }: { isMobile: boolean }) => (
       }}
     />
 
-
-
-
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
       <div className="grid lg:grid-cols-2 gap-10 items-center">
         {/* Left copy */}
         <div>
-        <motion.div
-           initial="hidden"
-           animate="visible"
-           variants={{
-             hidden: { opacity: 0 },
-             visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.2 } },
-           }}
-        >
           <motion.div
-            variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
-            className="inline-flex items-center gap-2 px-[4vw] md:px-4 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/30 text-amber-300 text-[clamp(10px,2.5vw,12px)] font-semibold uppercase tracking-widest mb-4"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.12, delayChildren: 0.2 },
+              },
+            }}
           >
-            <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-            Trichy's #1 Metal Fabricators
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 15 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              className="inline-flex items-center gap-2 px-[4vw] md:px-4 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/30 text-amber-300 text-[clamp(10px,2.5vw,12px)] font-semibold uppercase tracking-widest mb-4"
+            >
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+              Trichy's #1 Metal Fabricators
+            </motion.div>
+
+            {/* Decorative display heading — aria-hidden because real H1 is sr-only above */}
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              aria-hidden="true"
+              className="font-heading text-4xl sm:text-6xl lg:text-7xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
+            >
+              Where Steel
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500">
+                Meets Mastery.
+              </span>
+              <br />
+              Built to Last.
+            </motion.p>
+
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              className="text-white/65 text-[clamp(14px,4vw,16px)] leading-relaxed max-w-md mb-7"
+            >
+              Trichy's most trusted metal fabrication studio — crafting{" "}
+              <strong className="text-white/80 font-semibold">
+                steel gates
+              </strong>
+              ,{" "}
+              <strong className="text-white/80 font-semibold">
+                stainless steel railings
+              </strong>
+              ,{" "}
+              <strong className="text-white/80 font-semibold">
+                rolling shutters
+              </strong>
+              ,{" "}
+              <strong className="text-white/80 font-semibold">
+                aluminium windows
+              </strong>{" "}
+              &amp;{" "}
+              <strong className="text-white/80 font-semibold">
+                ACP cladding
+              </strong>{" "}
+              that stand the test of time.
+            </motion.p>
+
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              className="flex flex-col sm:flex-row gap-3"
+            >
+              <TurtleButton
+                href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
+                variant="call_now"
+                className="rounded-xl px-10 w-full sm:w-auto h-[clamp(48px,12vw,56px)]"
+              >
+                <Phone className="w-[clamp(16px,4vw,18px)] h-[clamp(16px,4vw,18px)]" />{" "}
+                Call Now
+              </TurtleButton>
+              <TurtleButton
+                href={getWhatsAppUrl()}
+                variant="whatsapp"
+                external
+                className="rounded-xl w-full sm:w-auto h-[clamp(48px,12vw,56px)]"
+              >
+                <MessageCircle className="w-[clamp(16px,4vw,18px)] h-[clamp(16px,4vw,18px)]" />{" "}
+                WhatsApp
+              </TurtleButton>
+            </motion.div>
           </motion.div>
-
-          {/* Decorative display heading — aria-hidden because real H1 is sr-only above */}
-          <motion.p
-            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-            aria-hidden="true"
-            className="font-heading text-4xl sm:text-6xl lg:text-7xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
-          >
-            Where Steel
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500">
-              Meets Mastery.
-            </span>
-            <br />
-            Built to Last.
-          </motion.p>
-
-          <motion.p
-            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-            className="text-white/65 text-[clamp(14px,4vw,16px)] leading-relaxed max-w-md mb-7"
-          >
-            Trichy's most trusted metal fabrication studio — crafting{" "}
-            <strong className="text-white/80 font-semibold">steel gates</strong>,{" "}
-            <strong className="text-white/80 font-semibold">stainless steel railings</strong>,{" "}
-            <strong className="text-white/80 font-semibold">rolling shutters</strong>,{" "}
-            <strong className="text-white/80 font-semibold">aluminium windows</strong> &amp;{" "}
-            <strong className="text-white/80 font-semibold">ACP cladding</strong> that stand the test of time.
-          </motion.p>
-
-          <motion.div
-            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-            className="flex flex-col sm:flex-row gap-3"
-          >
-            <TurtleButton href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)} variant="call_now" className="rounded-xl px-10 w-full sm:w-auto h-[clamp(48px,12vw,56px)]">
-              <Phone className="w-[clamp(16px,4vw,18px)] h-[clamp(16px,4vw,18px)]" /> Call Now
-            </TurtleButton>
-            <TurtleButton href={getWhatsAppUrl()} variant="whatsapp" external className="rounded-xl w-full sm:w-auto h-[clamp(48px,12vw,56px)]">
-              <MessageCircle className="w-[clamp(16px,4vw,18px)] h-[clamp(16px,4vw,18px)]" /> WhatsApp
-
-            </TurtleButton>
-          </motion.div>
-        </motion.div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 );
 
 /* ================= WHY US ================= */
-
 
 const WhyUsSection = ({ isMobile }: { isMobile: boolean }) => {
   return (
@@ -369,7 +577,8 @@ const WhyUsSection = ({ isMobile }: { isMobile: boolean }) => {
       <div
         className="absolute inset-0 opacity-[0.06] pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(circle,rgba(0,0,0,0.6) 1px,transparent 1px)",
+          backgroundImage:
+            "radial-gradient(circle,rgba(0,0,0,0.6) 1px,transparent 1px)",
           backgroundSize: "26px 26px",
         }}
       />
@@ -394,18 +603,26 @@ const WhyUsSection = ({ isMobile }: { isMobile: boolean }) => {
                 className="why-card-img absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60 group-hover:opacity-40"
               />
               <div className="why-card-overlay absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-transparent" />
-              <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ backgroundColor: accent }} />
+              <div
+                className="absolute top-0 left-0 right-0 h-[3px]"
+                style={{ backgroundColor: accent }}
+              />
               <div className="relative z-10 h-full flex flex-col justify-end p-7">
                 <div className="mb-5 w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 bg-white/20 border border-white/30 group-hover:bg-white group-hover:text-blue-900">
                   <Icon className="w-5 h-5 text-white group-hover:text-blue-900" />
                 </div>
-                <h3 className="text-xl font-bold text-white font-display mb-2">{title}</h3>
-                <p className="text-sm text-white/70 leading-relaxed mb-4 max-w-sm">{desc}</p>
-                <motion.ul
-                  className="overflow-hidden flex flex-col gap-2 mb-4"
-                >
+                <h3 className="text-xl font-bold text-white font-display mb-2">
+                  {title}
+                </h3>
+                <p className="text-sm text-white/70 leading-relaxed mb-4 max-w-sm">
+                  {desc}
+                </p>
+                <motion.ul className="overflow-hidden flex flex-col gap-2 mb-4">
                   {highlights.map((h, j) => (
-                    <li key={j} className="flex items-center gap-2 text-xs font-semibold text-white/80">
+                    <li
+                      key={j}
+                      className="flex items-center gap-2 text-xs font-semibold text-white/80"
+                    >
                       <CheckCircle2 className="w-3 h-3 text-emerald-400" />
                       {h}
                     </li>
@@ -415,18 +632,21 @@ const WhyUsSection = ({ isMobile }: { isMobile: boolean }) => {
                   href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
                   className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-white/90 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300"
                 >
-                  Contact Us <ArrowRight className="w-4 h-4 group-hover:translate-x-1" />
+                  Contact Us{" "}
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1" />
                 </a>
               </div>
             </motion.div>
-
           ))}
         </div>
         <motion.div
           initial={{ opacity: 0, y: isMobile ? 12 : 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: isMobile ? 0.35 : 0.6, delay: isMobile ? 0.1 : 0.5 }}
+          transition={{
+            duration: isMobile ? 0.35 : 0.6,
+            delay: isMobile ? 0.1 : 0.5,
+          }}
           className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 px-[4vw] md:px-0"
         >
           {[
@@ -435,9 +655,16 @@ const WhyUsSection = ({ isMobile }: { isMobile: boolean }) => {
             { val: "100%", label: "Client Satisfaction" },
             { val: "Pan TN", label: "Areas Served" },
           ].map((s, i) => (
-            <div key={i} className="py-6 text-center rounded-2xl border border-border/60 bg-background shadow-sm">
-              <div className="text-2xl font-black font-display text-primary">{s.val}</div>
-              <div className="text-[10px] uppercase tracking-widest text-muted-foreground mt-1">{s.label}</div>
+            <div
+              key={i}
+              className="py-6 text-center rounded-2xl border border-border/60 bg-background shadow-sm"
+            >
+              <div className="text-2xl font-black font-display text-primary">
+                {s.val}
+              </div>
+              <div className="text-[10px] uppercase tracking-widest text-muted-foreground mt-1">
+                {s.label}
+              </div>
             </div>
           ))}
         </motion.div>
@@ -451,7 +678,10 @@ const WhyUsSection = ({ isMobile }: { isMobile: boolean }) => {
 // Styled as a subtle info section — not a keyword dump.
 
 const SEOContentSection = () => (
-  <section className="bg-white border-t border-slate-100 py-16" style={{ contentVisibility: "auto", containIntrinsicSize: "auto 600px" }}>
+  <section
+    className="bg-white border-t border-slate-100 py-16"
+    style={{ contentVisibility: "auto", containIntrinsicSize: "auto 600px" }}
+  >
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Section label */}
       <div className="text-center mb-12">
@@ -462,24 +692,34 @@ const SEOContentSection = () => (
           Your Trusted Fabrication Shop Near You in Trichy
         </h2>
         <p className="text-slate-500 text-sm mt-3 max-w-2xl mx-auto leading-relaxed">
-          Whether you're searching for <strong>steel gate fabrication near me</strong>, a reliable{" "}
+          Whether you're searching for{" "}
+          <strong>steel gate fabrication near me</strong>, a reliable{" "}
           <strong>railing fabrication shop near me</strong>, or professional{" "}
-          <strong>elevation and aluminium and glass work (acp)</strong> near me — {COMPANY_NAME} is Trichy's one-stop solution
-          for all metal, glass and elevation needs.
+          <strong>elevation and aluminium and glass work (acp)</strong> near me
+          — {COMPANY_NAME} is Trichy's one-stop solution for all metal, glass
+          and elevation needs.
         </p>
       </div>
 
       {/* Premium Product Info Grid */}
       <PremiumServiceCards />
-
     </div>
   </section>
 );
 
 /* ================= TESTIMONIALS ================= */
 
-const TestimonialCard = ({ name, initial, text, rating, verified }: typeof testimonials[0]) => (
-  <div className="w-[300px] sm:w-[360px] shrink-0 px-2" style={{ transform: "translateZ(0)" }}>
+const TestimonialCard = ({
+  name,
+  initial,
+  text,
+  rating,
+  verified,
+}: (typeof testimonials)[0]) => (
+  <div
+    className="w-[300px] sm:w-[360px] shrink-0 px-2"
+    style={{ transform: "translateZ(0)" }}
+  >
     <div className="relative flex flex-col justify-between h-full bg-white/90 backdrop-blur-sm rounded-2xl border border-slate-200/70 px-6 py-6 shadow-sm overflow-hidden group/card transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-2 hover:shadow-[0_20px_48px_-12px_rgba(37,99,235,0.12)] hover:border-blue-300/50">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200/60 to-transparent" />
       <Quote
@@ -491,13 +731,15 @@ const TestimonialCard = ({ name, initial, text, rating, verified }: typeof testi
           {[...Array(rating)].map((_, i) => (
             <Star key={i} className="w-3 h-3 fill-amber-400 text-amber-400" />
           ))}
-          <span className="ml-2 text-[9px] font-extrabold text-amber-600 uppercase tracking-widest">5.0</span>
+          <span className="ml-2 text-[9px] font-extrabold text-amber-600 uppercase tracking-widest">
+            5.0
+          </span>
         </div>
         <p
           className={`text-slate-600 leading-relaxed text-[0.88rem] font-medium line-clamp-4 italic ${
             // eslint-disable-next-line no-control-regex
             text.match(/[^\x00-\x7F]/) ? "font-serif" : ""
-            }`}
+          }`}
         >
           "{text}"
         </p>
@@ -507,11 +749,15 @@ const TestimonialCard = ({ name, initial, text, rating, verified }: typeof testi
           {initial}
         </div>
         <div className="min-w-0">
-          <p className="text-[0.85rem] font-black text-slate-950 leading-tight truncate">{name}</p>
+          <p className="text-[0.85rem] font-black text-slate-950 leading-tight truncate">
+            {name}
+          </p>
           {verified && (
             <div className="flex items-center gap-1.5 mt-0.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
-              <p className="text-[9px] text-emerald-600 font-bold uppercase tracking-[0.14em]">Verified Client</p>
+              <p className="text-[9px] text-emerald-600 font-bold uppercase tracking-[0.14em]">
+                Verified Client
+              </p>
             </div>
           )}
         </div>
@@ -525,7 +771,10 @@ const TestimonialsSection = () => {
   const row2 = testimonials.slice(5, 10);
 
   return (
-    <section className="py-20 bg-gradient-to-b from-blue-50/50 via-white to-blue-50/30 overflow-hidden relative border-t border-blue-100/50" style={{ contentVisibility: "auto", containIntrinsicSize: "auto 800px" }}>
+    <section
+      className="py-20 bg-gradient-to-b from-blue-50/50 via-white to-blue-50/30 overflow-hidden relative border-t border-blue-100/50"
+      style={{ contentVisibility: "auto", containIntrinsicSize: "auto 800px" }}
+    >
       <div className="max-w-7xl mx-auto mb-14 text-center relative z-20 px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -535,14 +784,16 @@ const TestimonialsSection = () => {
         >
           <div className="flex flex-col items-center gap-4">
             <span className="inline-flex items-center gap-2 bg-white text-blue-700 px-5 py-1.5 rounded-full font-bold text-[0.7rem] tracking-[0.22em] uppercase border border-slate-200 shadow-sm">
-              <Star className="w-3 h-3 fill-blue-600 text-blue-600" /> Client Testimonials
+              <Star className="w-3 h-3 fill-blue-600 text-blue-600" /> Client
+              Testimonials
             </span>
             <h2 className="text-3xl sm:text-4xl font-black text-slate-950 tracking-tight leading-tight max-w-xl mx-auto uppercase">
               Trusted by Hundreds of Happy Clients
             </h2>
             <p className="text-slate-500 text-[0.95rem] max-w-lg mx-auto leading-relaxed font-medium">
-              Over 800 families and businesses in Trichy trust {COMPANY_NAME} for steel gates,
-              railings, rolling shutters and aluminium works. Here's what they say.
+              Over 800 families and businesses in Trichy trust {COMPANY_NAME}{" "}
+              for steel gates, railings, rolling shutters and aluminium works.
+              Here's what they say.
             </p>
             <div className="flex items-center justify-center gap-6 sm:gap-10 mt-6 pt-6 border-t border-slate-200 w-full max-w-sm mx-auto">
               {[
@@ -552,7 +803,9 @@ const TestimonialsSection = () => {
               ].map((stat, i) => (
                 <div key={i} className="flex items-center gap-6 sm:gap-10">
                   <div className="text-center">
-                    <div className="text-2xl font-black text-slate-950">{stat.val}</div>
+                    <div className="text-2xl font-black text-slate-950">
+                      {stat.val}
+                    </div>
                     <div className="text-[10px] text-slate-400 uppercase tracking-widest font-bold mt-0.5">
                       {stat.label}
                     </div>
@@ -567,14 +820,20 @@ const TestimonialsSection = () => {
 
       <div className="relative space-y-5 z-20">
         <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
-          <div className="flex gap-4 py-3 animate-marquee-left hover:[animation-play-state:paused]" style={{ willChange: "transform" }}>
+          <div
+            className="flex gap-4 py-3 animate-marquee-left hover:[animation-play-state:paused]"
+            style={{ willChange: "transform" }}
+          >
             {[...row1, ...row1].map((t, i) => (
               <TestimonialCard key={i} {...t} />
             ))}
           </div>
         </div>
         <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
-          <div className="flex gap-4 py-3 animate-marquee-right hover:[animation-play-state:paused]" style={{ willChange: "transform" }}>
+          <div
+            className="flex gap-4 py-3 animate-marquee-right hover:[animation-play-state:paused]"
+            style={{ willChange: "transform" }}
+          >
             {[...row2, ...row2].map((t, i) => (
               <TestimonialCard key={i} {...t} />
             ))}
@@ -588,9 +847,7 @@ const TestimonialsSection = () => {
 /* ================= CTA ================= */
 
 const CTASection = ({ isMobile }: { isMobile: boolean }) => (
-  <section
-    className="bg-slate-950 relative overflow-hidden py-[8vh] px-[4vw] text-center border-t border-white/5"
-  >
+  <section className="bg-slate-950 relative overflow-hidden py-[8vh] px-[4vw] text-center border-t border-white/5">
     <div
       className="absolute inset-0 pointer-events-none"
       style={{
@@ -625,16 +882,18 @@ const CTASection = ({ isMobile }: { isMobile: boolean }) => (
             variant="call_now"
             className="rounded-xl px-10 py-4 h-auto text-[clamp(14px,4vw,16px)] w-full sm:w-auto min-h-[48px]"
           >
-            <Phone className="w-[clamp(18px,5vw,20px)] h-[clamp(18px,5vw,20px)]" /> Call {CONTACT_DETAILS.primaryPhone.display} / {CONTACT_DETAILS.secondaryPhone.display}
+            <Phone className="w-[clamp(18px,5vw,20px)] h-[clamp(18px,5vw,20px)]" />{" "}
+            Call {CONTACT_DETAILS.primaryPhone.display} /{" "}
+            {CONTACT_DETAILS.secondaryPhone.display}
           </TurtleButton>
           <TurtleButton
             to="/projects"
             variant="premium_outline_shimmer"
             className="rounded-xl px-10 py-4 h-auto text-[clamp(14px,4vw,16px)] w-full sm:w-auto min-h-[48px]"
           >
-            View Our Work <ArrowRight className="w-[clamp(18px,5vw,20px)] h-[clamp(18px,5vw,20px)]" />
+            View Our Work{" "}
+            <ArrowRight className="w-[clamp(18px,5vw,20px)] h-[clamp(18px,5vw,20px)]" />
           </TurtleButton>
-
         </div>
       </motion.div>
     </div>
@@ -687,7 +946,10 @@ const Index = () => {
 
       <section
         className="section-padding bg-slate-100 py-[5vh] overflow-hidden"
-        style={{ contentVisibility: "auto", containIntrinsicSize: "auto 600px" }}
+        style={{
+          contentVisibility: "auto",
+          containIntrinsicSize: "auto 600px",
+        }}
       >
         <div className="container-main max-w-6xl">
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 items-stretch min-h-[420px]">
@@ -703,11 +965,11 @@ const Index = () => {
                   onMouseEnter={() => {
                     setCurrentSlide(index);
                   }}
-                  className={`w-full text-left px-5 py-2.5 rounded-xl font-heading text-xs font-bold uppercase tracking-[0.15em] transition-all duration-150 border-2 ${currentSlide === index
+                  className={`w-full text-left px-5 py-2.5 rounded-xl font-heading text-xs font-bold uppercase tracking-[0.15em] transition-all duration-150 border-2 ${
+                    currentSlide === index
                       ? "bg-[hsl(225,73%,35%)] text-white border-[hsl(225,73%,35%)] shadow-lg sm:scale-105"
                       : "bg-white text-[hsl(225,73%,35%)]/85 border-transparent hover:bg-slate-50 hover:text-[hsl(225,73%,35%)]"
-                    }`}
-
+                  }`}
                   whileHover={{ x: 8 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -742,7 +1004,7 @@ const Index = () => {
                         exit={{ x: -100, opacity: 0 }}
                         transition={{ duration: 0.3, ease: "circOut" }}
                         className="w-full max-w-lg bg-white rounded-2xl shadow-lg border border-slate-100 overflow-visible flex flex-col absolute"
-                        style={{ marginTop: isMobile ? '0' : 'auto' }}
+                        style={{ marginTop: isMobile ? "0" : "auto" }}
                       >
                         <div className="bg-[hsl(225,73%,35%)] px-8 py-10 md:p-6 text-center flex flex-col items-center justify-center relative overflow-visible min-h-[180px] md:min-h-[auto]">
                           <span className="text-5xl md:text-4xl mb-5 md:mb-3 bg-white/10 p-6 md:p-4 rounded-xl backdrop-blur-md inline-flex items-center justify-center w-[90px] h-[90px] md:w-[70px] md:h-[70px] shrink-0">
@@ -783,10 +1045,11 @@ const Index = () => {
                         className="p-1 sm:p-4 transition-all duration-300 hover:scale-110 active:scale-95 outline-none group"
                       >
                         <div
-                          className={`h-2 rounded-full transition-all duration-300 ${currentSlide === i
-                            ? "bg-[hsl(225,73%,35%)] w-6"
-                            : "bg-slate-300 w-2"
-                            }`}
+                          className={`h-2 rounded-full transition-all duration-300 ${
+                            currentSlide === i
+                              ? "bg-[hsl(225,73%,35%)] w-6"
+                              : "bg-slate-300 w-2"
+                          }`}
                         />
                       </button>
                     ))}
@@ -814,9 +1077,7 @@ const Index = () => {
       <CTASection isMobile={isMobile} />
 
       {/* ── FOOTER ── */}
-      <footer
-        className="footer-bg bg-slate-950 text-white overflow-hidden -mt-[1px] relative z-10"
-      >
+      <footer className="footer-bg bg-slate-950 text-white overflow-hidden -mt-[1px] relative z-10">
         <div
           className="px-8 sm:px-12 lg:px-20 py-14 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
           style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}
@@ -824,23 +1085,30 @@ const Index = () => {
           {/* Brand */}
           <div className="flex flex-col">
             <p className="text-sm opacity-60 leading-relaxed">
-              The Art of Metal. Premium steel gate fabrication, railing, rolling shutter, aluminium &amp;
-              ACP cladding solutions based in Trichy, Tamil Nadu.
+              The Art of Metal. Premium steel gate fabrication, railing, rolling
+              shutter, aluminium &amp; ACP cladding solutions based in Trichy,
+              Tamil Nadu.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider mb-5">Quick Links</h4>
+            <h4 className="text-sm font-semibold uppercase tracking-wider mb-5">
+              Quick Links
+            </h4>
             <div className="flex flex-col gap-3">
               {[
                 { name: "About Us", path: "/about" },
                 { name: "Products", path: "/products" },
                 { name: "Services", path: "/services" },
                 { name: "Our Work", path: "/projects" },
-                { name: "Contact", path: "/contact" }
+                { name: "Contact", path: "/contact" },
               ].map((item) => (
-                <Link key={item.name} to={item.path} className="text-sm opacity-60 hover:opacity-100 transition-opacity">
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className="text-sm opacity-60 hover:opacity-100 transition-opacity"
+                >
                   {item.name}
                 </Link>
               ))}
@@ -849,7 +1117,9 @@ const Index = () => {
 
           {/* Services — keyword-rich anchor text */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider mb-5">Our Services</h4>
+            <h4 className="text-sm font-semibold uppercase tracking-wider mb-5">
+              Our Services
+            </h4>
             <div className="flex flex-col gap-3 text-sm opacity-60">
               {[
                 "Steel Gates & Grills",
@@ -866,18 +1136,25 @@ const Index = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider mb-5">Contact</h4>
+            <h4 className="text-sm font-semibold uppercase tracking-wider mb-5">
+              Contact
+            </h4>
             <div className="flex flex-col gap-4 text-sm">
               <div className="flex items-start gap-2 opacity-80 py-1">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                <span className="leading-relaxed">{CONTACT_DETAILS.address.full}</span>
+                <span className="leading-relaxed">
+                  {CONTACT_DETAILS.address.full}
+                </span>
               </div>
               <a
                 href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
                 className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity py-1"
               >
                 <Phone className="w-4 h-4 shrink-0" />
-                <span className="leading-relaxed">{CONTACT_DETAILS.primaryPhone.display} / {CONTACT_DETAILS.secondaryPhone.display}</span>
+                <span className="leading-relaxed">
+                  {CONTACT_DETAILS.primaryPhone.display} /{" "}
+                  {CONTACT_DETAILS.secondaryPhone.display}
+                </span>
               </a>
 
               <a
@@ -893,8 +1170,13 @@ const Index = () => {
 
         {/* Bottom bar */}
         <div className="px-8 sm:px-12 lg:px-20 py-6 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-sm opacity-40">
-          <span>&copy; {new Date().getFullYear()} {COMPANY_NAME}. All rights reserved.</span>
-          <span>Steel Gate · Railing · Rolling Shutter · ACP Cladding · Trichy</span>
+          <span>
+            &copy; {new Date().getFullYear()} {COMPANY_NAME}. All rights
+            reserved.
+          </span>
+          <span>
+            Steel Gate · Railing · Rolling Shutter · ACP Cladding · Trichy
+          </span>
         </div>
       </footer>
     </main>
