@@ -90,7 +90,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-0 group" aria-label={`${COMPANY_NAME} Home`}>
             <motion.div
-              className="relative flex items-center justify-center p-0 rounded-xl bg-white/10"
+              className="relative flex items-center justify-center"
               initial={{ scale: 1 }}
               animate={{ 
                 scale: scrolled ? 0.9 : 1

@@ -590,7 +590,6 @@ const TestimonialsSection = () => {
 const CTASection = ({ isMobile }: { isMobile: boolean }) => (
   <section
     className="bg-slate-950 relative overflow-hidden py-[8vh] px-[4vw] text-center border-t border-white/5"
-    style={{ contentVisibility: "auto", containIntrinsicSize: "auto 400px" }}
   >
     <div
       className="absolute inset-0 pointer-events-none"
@@ -807,8 +806,7 @@ const Index = () => {
 
       {/* ── FOOTER ── */}
       <footer
-        className="footer-bg bg-slate-950 text-white overflow-hidden"
-        style={{ contentVisibility: "auto", containIntrinsicSize: "auto 400px" }}
+        className="footer-bg bg-slate-950 text-white overflow-hidden -mt-[1px] relative z-10"
       >
         <div
           className="px-8 sm:px-12 lg:px-20 py-14 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
@@ -861,24 +859,24 @@ const Index = () => {
           <div>
             <h4 className="text-sm font-semibold uppercase tracking-wider mb-5">Contact</h4>
             <div className="flex flex-col gap-4 text-sm">
-              <div className="flex items-start gap-2 opacity-80">
+              <div className="flex items-start gap-2 opacity-80 py-1">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                <span>{CONTACT_DETAILS.address.full}</span>
+                <span className="leading-relaxed">{CONTACT_DETAILS.address.full}</span>
               </div>
               <a
                 href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
-                className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity"
+                className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity py-1"
               >
                 <Phone className="w-4 h-4 shrink-0" />
-                <span>{CONTACT_DETAILS.primaryPhone.display} / {CONTACT_DETAILS.secondaryPhone.display}</span>
+                <span className="leading-relaxed">{CONTACT_DETAILS.primaryPhone.display} / {CONTACT_DETAILS.secondaryPhone.display}</span>
               </a>
 
               <a
                 href={`mailto:${CONTACT_DETAILS.email}`}
-                className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity"
+                className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity py-1"
               >
                 <MessageCircle className="w-4 h-4 shrink-0" />
-                <span>{CONTACT_DETAILS.email}</span>
+                <span className="leading-relaxed">{CONTACT_DETAILS.email}</span>
               </a>
             </div>
           </div>

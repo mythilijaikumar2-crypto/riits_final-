@@ -968,6 +968,7 @@ const Products = () => {
           transition: .4s .2s;
           border-radius: 4px;
           box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+          overflow: hidden;
         }
         
         .animated-mail .letter-border {
@@ -993,7 +994,7 @@ const Products = () => {
           font-size: 10px;
           color: #475569;
           line-height: 1.3;
-          opacity: 0.4;
+          opacity: 0;
           transition: opacity 0.2s;
         }
         
