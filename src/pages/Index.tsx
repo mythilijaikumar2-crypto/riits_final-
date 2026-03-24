@@ -85,7 +85,7 @@ const localBusinessSchema = {
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Aluminium & Glass Works", "description": "Aluminium sliding windows, doors, partitions, toughened glass doors and glass partitions" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ACP Cladding & Elevation", "description": "ACP cladding panels, aluminium cladding panels and building facade panels" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Structural Steel Fabrication", "description": "Steel pergolas, metal canopies, sheds, roofing and structural steel frames" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "CNC Laser Cutting", "description": "High-precision laser cutting for SS and MS decorative gates, partitions and panels" } }
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Laser Cutting", "description": "High-precision laser cutting for SS and MS decorative gates, partitions and panels" } }
     ]
   }
 };
@@ -177,9 +177,9 @@ const services = [
   {
     icon: "🎯",
     title: "LASER DESIGN",
-    desc: "Precision CNC laser cutting for custom metal designs",
+    desc: "Precision laser cutting for custom metal designs",
     seoDesc: "High-precision laser cutting for MS and SS sheets, creating intricate patterns for gates, partitions, and decorative elements.",
-    category: "CNC Laser Cutting",
+    category: "Laser Cutting",
     image: laserImg,
     productCategory: "ss",
   },
@@ -242,7 +242,7 @@ const serviceTags = [
   "Window Grill", "Steel Grill", "Balcony Railing", "Staircase Railing",
   "Steel Handrail", "Rolling Shutter", "Shop Shutter", "Aluminium Window",
   "Glass Door", "Toughened Glass", "ACP Cladding", "Facade Panels",
-  "Steel Pergola", "Metal Canopy", "Fabrication Near Me", "Laser Cutting", "CNC Laser Cutting",
+  "Steel Pergola", "Metal Canopy", "Fabrication Near Me", "Laser Cutting",
 ];
 
 

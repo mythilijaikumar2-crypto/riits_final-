@@ -375,10 +375,10 @@ const productCategories = [
   {
     id: "laser",
     title: "Laser Design",
-    subtitle: "CNC LASER CUTTING",
-    seoHeading: "CNC Laser Cut Metal Designs & Decorative Panels in Trichy",
+    subtitle: "LASER CUTTING",
+    seoHeading: "Laser Cut Metal Designs & Decorative Panels in Trichy",
     overview:
-      "Precision-engineered CNC laser cut metal designs for premium architectural applications. We create custom-patterned gates, partitions, wall art, and decorative panels in Stainless Steel and Mild Steel to elevate your building's aesthetic.",
+      "Precision-engineered laser cut metal designs for premium architectural applications. We create custom-patterned gates, partitions, wall art, and decorative panels in Stainless Steel and Mild Steel to elevate your building's aesthetic.",
     products: [
       {
         name: "Laser Cut Gates",
@@ -468,7 +468,7 @@ export function AnimatedButton({
   return (
     <motion.button
       ref={buttonRef}
-      className={`relative group px-3 sm:px-4 py-3 md:py-2.5 rounded-xl transition-all duration-500 outline-none whitespace-nowrap overflow-hidden ${
+      className={`shrink-0 relative group px-3 sm:px-4 py-3 md:py-2.5 rounded-xl transition-all duration-500 outline-none whitespace-nowrap overflow-hidden ${
         isActive
           ? "shadow-[0_15px_30px_-10px_rgba(37,99,235,0.4)]"
           : "hover:shadow-2xl"
@@ -754,8 +754,8 @@ const Products = () => {
     <main className="min-h-screen bg-white">
       <SEO
         title={`Fabrication Products in Trichy — Steel Gates, Railings, Shutters & Laser Design | ${COMPANY_NAME}`}
-        description={`Browse ${COMPANY_NAME}'s full range of fabrication products in Trichy — steel gates, stainless steel gates, railings, rolling shutters, laser design, CNC laser cutting, aluminium windows, glass doors, ACP cladding and more.`}
-        keywords="laser design, CNC laser cutting, laser cut gate, laser cut partition, steel gate, metal gate, stainless steel gate, window grill, grill work, balcony railing, staircase railing, steel railing, rolling shutter, shop shutter, aluminium door, aluminium window, aluminium sliding window, glass door, toughened glass door, glass partition, office glass partition, steel staircase, metal staircase, fabrication products, metal fabrication, steel fabrication, gate fabrication, steel gate in Trichy, grill work in Trichy, rolling shutter in Trichy, aluminium window in Trichy, fabrication shop in Trichy"
+        description={`Browse ${COMPANY_NAME}'s full range of fabrication products in Trichy — steel gates, stainless steel gates, railings, rolling shutters, laser design, laser cutting, aluminium windows, glass doors, ACP cladding and more.`}
+        keywords="laser design, laser cutting, laser cut gate, laser cut partition, steel gate, metal gate, stainless steel gate, window grill, grill work, balcony railing, staircase railing, steel railing, rolling shutter, shop shutter, aluminium door, aluminium window, aluminium sliding window, glass door, toughened glass door, glass partition, office glass partition, steel staircase, metal staircase, fabrication products, metal fabrication, steel fabrication, gate fabrication, steel gate in Trichy, grill work in Trichy, rolling shutter in Trichy, aluminium window in Trichy, fabrication shop in Trichy"
       />
 
       <style>{`
@@ -1166,8 +1166,11 @@ const Products = () => {
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <div className="mx-auto max-w-7xl px-2 sm:px-4">
-          <div className="flex flex-nowrap justify-center items-center gap-1.5 sm:gap-3">
+        <div className="mx-auto max-w-7xl px-0 sm:px-4">
+          <div 
+            className="flex flex-nowrap overflow-x-auto justify-start sm:justify-center items-center gap-2 sm:gap-3 px-4 sm:px-0 pb-3 pt-1"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
             {productCategories.map((cat) => {
               const isActive = activeTab === cat.id;
               return (
