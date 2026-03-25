@@ -1,0 +1,33 @@
+/* SERVICES PAGE SPECIFIC OVERRIDES */
+
+section.relative.h-screen p[aria-hidden="true"].font-heading,
+main.overflow-hidden.bg-white section h1.font-heading {
+  font-size: var(--hero-h1) !important;
+  line-height: var(--hero-h1-line) !important;
+}
+
+/* Service Detail Pages */
+main.overflow-hidden.bg-white section p[class*="text-white/70"],
+main.overflow-hidden.bg-white .prose p,
+main.overflow-hidden.bg-white section p.mb-4 {
+  font-size: var(--body-size) !important;
+  line-height: var(--body-line) !important;
+}
+
+main.overflow-hidden.bg-white h2.font-heading {
+  font-size: var(--sec-h2) !important;
+  line-height: var(--sec-h2-line) !important;
+}
+
+/* Service area card H3 */
+.group h3.font-heading.text-2xl.font-black {
+  font-size: clamp(1.15rem, 2.5vw, 1.4rem) !important;
+  letter-spacing: 0.04em !important;
+  line-height: 1.15 !important;
+}
+
+/* Stats */
+.text-5xl.font-black.font-heading {
+  font-size: clamp(2.2rem, 5vw, 2.8rem) !important;
+  line-height: 1 !important;
+}

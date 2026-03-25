@@ -180,7 +180,7 @@ const Navbar = () => {
                   transition={{ duration: 0.4, ease: "easeOut" }}
                   style={{
                     willChange: "transform",
-                    transform: "translateY(4px)" // Subtle offset for visual balance
+                    transform: "translateY(4px)", // Subtle offset for visual balance
                   }}
                 />
               </div>
@@ -280,6 +280,7 @@ const Navbar = () => {
         "
             onClick={() => setOpen(!open)}
             whileTap={{ scale: 0.9 }}
+            aria-label={open ? "Close menu" : "Open menu"}
           >
             <AnimatePresence mode="wait">
               {open ? (
@@ -317,7 +318,11 @@ const Navbar = () => {
           >
             {/* --- Drawer Header --- */}
             <div className="flex items-center justify-center px-5 h-20 border-b border-border/40 relative">
-              <img src={MOBILE_LOGO} alt={BRAND_NAME} className="h-10 w-auto object-contain" />
+              <img
+                src={MOBILE_LOGO}
+                alt={BRAND_NAME}
+                className="h-10 w-auto object-contain"
+              />
               <button
                 onClick={() => setOpen(false)}
                 className="absolute right-5 p-2 rounded-full hover:bg-muted/50 transition-colors"
@@ -347,9 +352,10 @@ const Navbar = () => {
                           font-heading text-sm uppercase tracking-widest font-bold 
                           py-3 px-6 rounded-xl border
                           transition-all duration-300
-                          ${isActive
-                            ? "bg-primary text-white border-primary shadow-lg"
-                            : "bg-white/40 dark:bg-slate-900/40 border-white/10 text-slate-900 dark:text-slate-100 hover:bg-white/60 hover:text-primary"
+                          ${
+                            isActive
+                              ? "bg-primary text-white border-primary shadow-lg"
+                              : "bg-white/40 dark:bg-slate-900/40 border-white/10 text-slate-900 dark:text-slate-100 hover:bg-white/60 hover:text-primary"
                           }
                         `}
                     >

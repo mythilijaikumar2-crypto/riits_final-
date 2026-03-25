@@ -45,6 +45,8 @@ import {
   BRAND_NAME,
 } from "../config/contact";
 
+import "../styles/index-page.css";
+
 /* ================= SCHEMA ================= */
 
 const localBusinessSchema = {
@@ -791,7 +793,7 @@ const TestimonialsSection = () => {
                     <div className="text-2xl font-black text-slate-950">
                       {stat.val}
                     </div>
-                    <div className="text-[10px] text-slate-400 uppercase tracking-widest font-bold mt-0.5">
+                    <div className="text-[10px] text-slate-500 uppercase tracking-widest font-bold mt-0.5">
                       {stat.label}
                     </div>
                   </div>
@@ -1007,7 +1009,7 @@ const Index = () => {
                               {services[currentSlide].desc}
                             </p>
                             {/* SEO-rich sub-description — natural product keyword placement */}
-                            <p className="text-xs text-slate-400 leading-relaxed mb-5">
+                            <p className="text-xs text-slate-500 leading-relaxed mb-5">
                               {services[currentSlide].seoDesc}
                             </p>
                             <Link

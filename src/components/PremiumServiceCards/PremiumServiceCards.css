@@ -1,116 +1,196 @@
-/* Premium Service Cards - 60fps GPU Accelerated Animations */
+@tailwind components;
 
 .premium-card-container {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), 
-              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform;
-  position: relative;
-  background: #f8fafc;
-  border-radius: 1.5rem;
-  padding: 1.75rem;
-  border: 1px solid #f1f5f9;
+  overflow: visible;
+  width: 100%;
+  height: 280px; /* Adjust based on content */
+  perspective: 1000px;
+}
+
+.card-content {
+  width: 100%;
   height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 600ms cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 1.5rem;
+  position: relative;
 }
 
-.premium-card-container.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+.premium-card-container:hover .card-content {
+  transform: rotateY(180deg);
 }
 
-/* Background Decoration */
-.premium-card-bg {
+.card-front, .card-back {
+  background-color: #1e293b; /* Dark slate */
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 120px;
-  height: 120px;
-  background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.05), transparent 70%);
-  border-radius: 0 1.5rem 0 100%;
-  transform: scale(0);
-  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-  transition-delay: 800ms;
-  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
-.is-visible .premium-card-bg {
-  transform: scale(1);
-}
-
-/* Icon Animation */
-.premium-card-icon {
-  display: inline-flex;
-  font-size: 1.5rem;
-  margin-bottom: 0.75rem;
-  transform: scale(0) rotate(-45deg);
-  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-  transition-delay: 300ms;
-}
-
-.is-visible .premium-card-icon {
-  transform: scale(1) rotate(0deg);
-}
-
-.is-visible .premium-card-icon.is-floating {
-  animation: float-loop 3s ease-in-out infinite;
-}
-
-@keyframes float-loop {
-  0%, 100% { transform: translateY(0) scale(1.05); }
-  50% { transform: translateY(-8px) scale(1); }
-}
-
-/* Text Animations */
-.premium-card-title {
-  font-size: 1rem;
-  font-weight: 900;
-  color: #0f172a;
-  text-transform: uppercase;
-  letter-spacing: 0.025em;
-  margin-bottom: 0.75rem;
+/* -- BACK -- */
+.card-back {
+  justify-content: center;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  opacity: 0;
-  transform: translateX(-20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  transition-delay: 500ms;
+  transform: rotateY(180deg);
 }
 
-.is-visible .premium-card-title {
-  opacity: 1;
-  transform: translateX(0);
+.card-back::before {
+  position: absolute;
+  content: ' ';
+  display: block;
+  width: 100%;
+  height: 250%; /* Make bigger to rotate correctly */
+  background: linear-gradient(90deg, transparent, #3b82f6, #60a5fa, #3b82f6, transparent);
+  animation: rotation_481 5000ms infinite linear;
+  opacity: 0.5;
 }
 
-.premium-card-p1 { transition-delay: 600ms; margin-bottom: 0px; }
-
-.is-visible .premium-card-p1 {
-  opacity: 1;
-  transform: translateY(0);
+.card-back-content {
+  position: absolute;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  background-color: #0f172a; /* Inner dark */
+  border-radius: 1.4rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem;
+  z-index: 2;
 }
 
-.premium-card-container.is-opened {
-  background: #ffffff;
-  border-color: #e2e8f0;
-  box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.12);
-  transform: translateY(-8px);
-  z-index: 20;
+@keyframes rotation_481 {
+  0% { transform: rotateZ(0deg); }
+  100% { transform: rotateZ(360deg); }
 }
 
-.premium-card-p2 {
+.back-text-content {
   font-size: 0.875rem;
-  color: #475569;
-  line-height: 1.625;
+  color: #cbd5e1; /* slate-300 */
+  line-height: 1.6;
 }
 
-.is-opened .premium-card-bg {
-  transform: scale(1.5) rotate(15deg);
-  opacity: 0.1;
-}
-
-/* Strong Tag Highlights */
-.premium-card-container strong {
-  color: #1e293b;
+.back-text-content strong {
+  color: #60a5fa; /* blue-400 */
   font-weight: 600;
+}
+
+
+/* -- FRONT -- */
+.card-front {
+  color: white;
+}
+
+.card-front-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.card-badge {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  width: fit-content;
+  font-size: 1.5rem; /* Icon size */
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.card-description {
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
+  width: 100%;
+  padding: 1rem;
+  background-color: rgba(15, 23, 42, 0.7); /* slate-900 transparent */
+  backdrop-filter: blur(8px);
+  border-radius: 1rem;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.card-title-row {
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  gap: 0.5rem;
+}
+
+.card-title-text {
+  flex: 1;
+}
+
+.card-title-text strong {
+  font-weight: 800;
+  color: white;
+}
+
+.card-p1-text {
+  color: #94a3b8; /* slate-400 */
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.card-p1-text strong {
+  color: #e2e8f0; /* slate-200 */
+  font-weight: 600;
+}
+
+/* -- FRONT BACKGROUND ORBS -- */
+.card-img-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #1e293b;
+}
+
+.anim-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #3b82f6; /* Default Blue */
+  position: absolute;
+  filter: blur(35px);
+  animation: floating 4s infinite ease-in-out alternate;
+  opacity: 0.6;
+}
+
+#anim-bottom {
+  background-color: #2563eb;
+  left: -20px;
+  bottom: -40px;
+  width: 180px;
+  height: 180px;
+  animation-delay: -1s;
+}
+
+#anim-right {
+  background-color: #60a5fa;
+  right: -30px;
+  top: -20px;
+  width: 120px;
+  height: 120px;
+  animation-delay: -2s;
+}
+
+@keyframes floating {
+  0% { transform: translateY(0px) scale(1); }
+  100% { transform: translateY(15px) scale(1.1); }
 }

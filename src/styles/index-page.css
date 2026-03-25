@@ -1,0 +1,54 @@
+/* INDEX PAGE SPECIFIC OVERRIDES */
+
+section.relative.h-screen,
+.contact-hero,
+.products-hero,
+.projects-hero {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 100svh !important;
+  overflow: hidden !important;
+}
+
+/* Index hero */
+section.relative.h-screen p.font-heading[aria-hidden="true"] {
+  font-size: var(--hero-h1) !important;
+  line-height: var(--hero-h1-line) !important;
+  letter-spacing: var(--hero-h1-track) !important;
+}
+
+/* Why-us section images */
+.why-card-img {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Why-us card heading */
+.why-card h3.text-xl {
+  font-size: var(--card-h3) !important;
+  line-height: var(--card-h3-line) !important;
+}
+
+/* Stats */
+.grid.grid-cols-2 .text-2xl,
+.grid.grid-cols-4 .text-2xl {
+  font-size: clamp(1.3rem, 4vw, 1.6rem) !important;
+}
+
+/* Testimonials */
+[class*="w-[300px]"] p.italic,
+[class*="w-[360px]"] p.italic {
+  font-size: clamp(0.78rem, 1.8vw, 0.85rem) !important;
+  line-height: 1.65 !important;
+}
+
+/* Premium cards */
+.premium-card-title {
+  font-size: 0.8rem !important;
+  letter-spacing: 0.06em !important;
+}
+
+/* Process section */
+section.bg-slate-950 h2.font-heading.text-white {
+  font-size: clamp(1.5rem, 3.5vw, 2rem) !important;
+}

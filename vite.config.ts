@@ -1,6 +1,9 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   server: {
@@ -36,23 +39,18 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          // Vendor: React core
-          "vendor-react": ["react", "react-dom"],
-
-          // Vendor: Router
-          "vendor-router": ["react-router-dom"],
-
-          // Vendor: Animations (large — split out)
-          "vendor-motion": ["framer-motion"],
-
-          // Vendor: Icons (large — split out)
-          "vendor-icons": ["lucide-react"],
-
-          // Vendor: Helmet
-          "vendor-helmet": ["react-helmet-async"],
-
-          // Vendor: Utilities
-          "vendor-utils": ["clsx", "tailwind-merge", "class-variance-authority"],
+          // Grouping all core vendors into one chunk to reduce request overhead on HTTP/1.1
+          "vendor": [
+            "react",
+            "react-dom",
+            "react-router-dom",
+            "framer-motion",
+            "lucide-react",
+            "react-helmet-async",
+            "clsx",
+            "tailwind-merge",
+            "class-variance-authority"
+          ],
         },
 
         // Asset file naming

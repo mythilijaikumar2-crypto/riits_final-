@@ -1,0 +1,38 @@
+/* SHARED RESPONSIVE OVERRIDES */
+
+@media (max-width: 767px) {
+  .section-padding {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  .container-main {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+
+  /* Responsive font scaling for all headers */
+  h2.text-3xl, h2.text-4xl, h2.text-5xl, h2.font-black {
+    font-size: clamp(1.35rem, 6vw, 1.75rem) !important;
+  }
+}
+
+@media (min-width: 1921px) {
+  :root {
+    --hero-h1: clamp(3rem, 5vw, 4.5rem) !important;
+    --sec-h2: clamp(2rem, 3.5vw, 3rem) !important;
+    --body-size: clamp(1rem, 1.8vw, 1.25rem) !important;
+  }
+  .container-main {
+    max-width: 90rem !important;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

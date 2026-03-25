@@ -53,6 +53,8 @@ import laserGate1 from "../assets/laserphoto/laser gate1 web.webp";
 import laserDesign2 from "../assets/laserphoto/laser design2 webp.webp";
 import laserDesign3 from "../assets/laserphoto/laser design3 webp.webp";
 
+import "../styles/products-page.css";
+
 /* ── Benefit detail copy ── */
 const benefitDetails: Record<string, { icon: string; desc: string }> = {
   "Corrosion-resistant": {
@@ -640,7 +642,7 @@ const ProductCard = memo(({ product }: { product: Product }) => {
         </div>
         <span className="lighter">{product.desc}</span>
         <div className="mt-auto pt-5 border-t border-slate-100 flex flex-col gap-2">
-          <div className="text-[12px] leading-tight text-slate-400 font-black uppercase tracking-[0.1em]">
+          <div className="text-[12px] leading-tight text-slate-500 font-black uppercase tracking-[0.1em]">
             Technical Details
           </div>
           <div className="text-[14px] text-slate-700 flex items-start gap-2 leading-relaxed">

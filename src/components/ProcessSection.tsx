@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { CheckCircle2, Phone } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { CheckCircle2, Phone, MousePointerClick } from "lucide-react";
 import { BRAND_NAME, CONTACT_DETAILS, formatTelLink } from "../config/contact";
 import { TurtleButton } from "./TurtleButton";
 
@@ -77,9 +78,10 @@ const ProcessSection: React.FC = () => {
   const [active, setActive] = useState<number>(0);
   const [displayed, setDisplayed] = useState<number>(0);
   const [fading, setFading] = useState<boolean>(false);
-  /* ✅ Pause auto-play when mouse is over section */
   const [isPaused, setIsPaused] = useState<boolean>(false);
+  const [hasInteracted, setHasInteracted] = useState<boolean>(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const touchStartX = useRef<number>(0);
 
   /* Auto-advance — stops while hovered */
   useEffect(() => {
@@ -99,6 +101,32 @@ const ProcessSection: React.FC = () => {
     return () => clearTimeout(t);
   }, [active, displayed]);
 
+  /* Handle step change with interaction tracking */
+  const handleStepChange = (i: number) => {
+    setActive(i);
+    if (!hasInteracted) setHasInteracted(true);
+  };
+
+  /* Touch swipe support */
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    setIsPaused(true);
+  };
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(dx) > 40) {
+      setActive((p) => {
+        const next =
+          dx < 0
+            ? (p + 1) % STEPS.length
+            : (p - 1 + STEPS.length) % STEPS.length;
+        return next;
+      });
+      if (!hasInteracted) setHasInteracted(true);
+    }
+    setTimeout(() => setIsPaused(false), 1500);
+  };
+
   const progressPct = Math.round(((active + 1) / STEPS.length) * 100);
 
   return (
@@ -107,6 +135,8 @@ const ProcessSection: React.FC = () => {
       className="w-full bg-slate-950 min-h-[100dvh] py-12 md:py-16 lg:py-24 flex flex-col justify-center px-4 sm:px-6 lg:px-8 overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       <div className="max-w-7xl mx-auto">
         {/* ── ADDRESS BAR UI ── */}
@@ -123,6 +153,36 @@ const ProcessSection: React.FC = () => {
             A proven end-to-end workflow that delivers quality from the first
             call to final handover.
           </p>
+
+          {/* ── Interaction hint ── */}
+          <AnimatePresence>
+            {!hasInteracted && (
+              <motion.div
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6, scale: 0.95 }}
+                transition={{ duration: 0.4, delay: 1.2 }}
+                className="flex justify-center mt-3"
+              >
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/8 backdrop-blur-sm text-white/70 text-[11px] font-semibold tracking-wide select-none">
+                  {/* Pulsing dot */}
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-400" />
+                  </span>
+                  {/* Desktop hint */}
+                  <span className="hidden sm:inline">
+                    Hover or click any step to explore
+                  </span>
+                  {/* Mobile hint */}
+                  <span className="sm:hidden">
+                    Tap a step · Swipe to navigate
+                  </span>
+                  <MousePointerClick className="w-3.5 h-3.5 text-blue-400" />
+                </span>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {/* Progress bar */}
@@ -156,8 +216,8 @@ const ProcessSection: React.FC = () => {
                 return (
                   <button
                     key={step.num}
-                    onClick={() => setActive(i)}
-                    onMouseEnter={() => setActive(i)}
+                    onClick={() => handleStepChange(i)}
+                    onMouseEnter={() => handleStepChange(i)}
                     aria-label={`Switch to ${step.title}`}
                     className="flex items-start gap-3 sm:gap-5 text-left group py-3 focus:outline-none"
                   >
@@ -172,7 +232,7 @@ const ProcessSection: React.FC = () => {
                             ? "bg-white border-white text-[#084158] shadow-[0_0_20px_rgba(255,255,255,0.3)]"
                             : isPast
                               ? "bg-[#084158] border-white/60 text-white"
-                              : "bg-[#020617] border-white/20 text-white/50",
+                              : "bg-slate-900/50 border-white/20 text-white/70",
                         ].join(" ")}
                       >
                         {isPast && !isActive ? "✓" : step.num}
@@ -184,7 +244,7 @@ const ProcessSection: React.FC = () => {
                         "flex-1 rounded-xl px-4 py-2 transition-all duration-300",
                         isActive
                           ? "bg-white shadow-lg shadow-black/20"
-                          : "bg-white/10 group-hover:bg-white/15",
+                          : "bg-white/20 group-hover:bg-white/25",
                       ].join(" ")}
                     >
                       <span
@@ -204,7 +264,9 @@ const ProcessSection: React.FC = () => {
                             : "max-h-0 opacity-0",
                         ].join(" ")}
                       >
-                        <p className="text-[0.8rem] text-[#084158] font-medium leading-relaxed mb-2">
+                        <p
+                          className={`text-[0.8rem] transition-colors duration-300 font-medium leading-relaxed mb-2 ${isActive ? "text-[#084158]" : "text-white/50"}`}
+                        >
                           {step.desc}
                         </p>
 
@@ -215,8 +277,12 @@ const ProcessSection: React.FC = () => {
                                 key={idx}
                                 className="flex items-center gap-2"
                               >
-                                <CheckCircle2 className="w-3.5 h-3.5 text-[#084158]" />
-                                <span className="text-[0.75rem] font-bold text-[#084158]/80">
+                                <CheckCircle2
+                                  className={`w-3.5 h-3.5 transition-colors duration-300 ${isActive ? "text-[#084158]" : "text-white/50"}`}
+                                />
+                                <span
+                                  className={`text-[0.75rem] font-bold transition-colors duration-300 ${isActive ? "text-[#084158]/80" : "text-white/40"}`}
+                                >
                                   {bullet}
                                 </span>
                               </div>
@@ -306,7 +372,7 @@ const ProcessSection: React.FC = () => {
           {STEPS.map((_, i) => (
             <button
               key={i}
-              onClick={() => setActive(i)}
+              onClick={() => handleStepChange(i)}
               title={`Step ${i + 1}`}
               aria-label={`Go to step ${i + 1}`}
               className="p-2 sm:p-3 transition-all duration-300 focus:outline-none group"

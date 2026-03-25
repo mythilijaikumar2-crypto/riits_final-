@@ -1,0 +1,38 @@
+/* PROJECTS PAGE SPECIFIC OVERRIDES */
+
+.projects-hero p[aria-hidden="true"] {
+  font-size: var(--hero-h1) !important;
+  line-height: var(--hero-h1-line) !important;
+  letter-spacing: var(--hero-h1-track) !important;
+}
+
+.projects-hero p[class*="text-white/70"] {
+  font-size: var(--body-size) !important;
+  line-height: var(--body-line) !important;
+  max-width: 52ch;
+}
+
+/* Project card h3 */
+.group h3.font-heading.text-2xl,
+.group h3.font-heading.text-3xl {
+  font-size: var(--card-h3) !important;
+  line-height: var(--card-h3-line) !important;
+}
+
+/* Project card body */
+.group p.text-slate-600 {
+  font-size: clamp(0.82rem, 1.8vw, 0.88rem) !important;
+  line-height: 1.68 !important;
+}
+
+/* SEO section heading */
+section .text-center h2 {
+  font-size: var(--sec-h2) !important;
+  line-height: var(--sec-h2-line) !important;
+}
+
+/* Modal h2 */
+.fixed h2.font-heading {
+  font-size: clamp(1.3rem, 3vw, 1.75rem) !important;
+  line-height: 1.15 !important;
+}

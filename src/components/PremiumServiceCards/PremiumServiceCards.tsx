@@ -12,56 +12,53 @@ interface ServiceCardProps {
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, p1, p2 }) => {
   const { targetRef, isIntersecting } = useIntersectionObserver({ threshold: 0.2 });
-  const [isHovered, setIsHovered] = useState(false);
-  const [startFloating, setStartFloating] = useState(false);
-
-  useEffect(() => {
-    if (isIntersecting) {
-      const timer = setTimeout(() => {
-        setStartFloating(true);
-      }, 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [isIntersecting]);
-
-  // Card opens if hovered OR if it's visible on mobile (scroll-based reveal)
-  const isOpened = isHovered || (isIntersecting && typeof window !== 'undefined' && window.innerWidth < 1024);
 
   return (
     <div 
       ref={targetRef} 
-      className={`premium-card-container ${isIntersecting ? 'is-visible' : ''} ${isOpened ? 'is-opened' : ''}`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      style={{ 
-        cursor: 'default',
-        transition: 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)'
-      }}
+      className={`premium-card-container ${isIntersecting ? 'is-visible' : ''}`}
     >
-      <div className="premium-card-bg" />
-      <span className={`premium-card-icon ${startFloating ? 'is-floating' : ''}`}>
-        {icon}
-      </span>
-      <h3 className="premium-card-title">
-        {title}
-      </h3>
-      <div className="premium-card-p1">{p1}</div>
-      
-      <AnimatePresence>
-        {isOpened && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            style={{ overflow: 'hidden' }}
-          >
-            <div className="premium-card-p2 pt-4 mt-4 border-t border-slate-200/60">
+      <div className="card-content">
+        {/* -- BACK OF CARD -- */}
+        <div className="card-back">
+          <div className="card-back-content">
+            <div className="back-text-content">
               {p2}
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </div>
+
+        {/* -- FRONT OF CARD -- */}
+        <div className="card-front">
+          <div className="card-img-bg">
+            <div className="anim-circle"></div>
+            <div className="anim-circle" id="anim-right"></div>
+            <div className="anim-circle" id="anim-bottom"></div>
+          </div>
+
+          <div className="card-front-content">
+            <small className="card-badge">{icon}</small>
+            
+            <div className="card-description">
+              <div className="card-title-row">
+                <p className="card-title-text">
+                  <strong>{title}</strong>
+                </p>
+                <svg fillRule="nonzero" height="15px" width="15px" viewBox="0,0,256,256" xmlnsXlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+                  <g style={{ mixBlendMode: 'normal' }} textAnchor="none" fontSize="none" fontWeight="none" fontFamily="none" strokeDashoffset="0" strokeDasharray="" strokeMiterlimit="10" strokeLinejoin="miter" strokeLinecap="butt" strokeWidth="1" stroke="none" fillRule="nonzero" fill="#20c997">
+                    <g transform="scale(8,8)">
+                      <path d="M25,27l-9,-6.75l-9,6.75v-23h18z"></path>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+              <div className="card-p1-text">
+                {p1}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
