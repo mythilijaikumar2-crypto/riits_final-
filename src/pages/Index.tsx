@@ -420,9 +420,7 @@ const serviceTags = [
 /* ================= HERO ================= */
 
 const HeroSection = () => (
-  <section
-    className="relative min-h-[100dvh] flex flex-col justify-center items-stretch bg-slate-950 overflow-hidden px-6 pt-0 pb-10 md:px-0 md:pt-0 md:pb-0"
-  >
+  <section className="relative min-h-[100dvh] flex flex-col justify-center items-center bg-slate-950 overflow-hidden">
     {/* Visually hidden H1 for Google — primary SEO heading */}
     <h1 className="sr-only">
       Steel Gates, Railings, Rolling Shutters &amp; Metal Fabrication Works in
@@ -443,15 +441,13 @@ const HeroSection = () => (
         // @ts-ignore
         fetchpriority="high"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/50 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/30 to-slate-950/50" />
     </div>
 
-
-
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-      <div className="grid lg:grid-cols-2 gap-10 items-center">
-        {/* Left copy */}
-        <div>
+    <div className="w-full max-w-4xl mx-auto px-6 relative z-10">
+      <div className="flex flex-col items-center text-center justify-center">
+        {/* Hero content */}
+        <div className="max-w-3xl">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -462,26 +458,27 @@ const HeroSection = () => (
                 transition: { staggerChildren: 0.12, delayChildren: 0.2 },
               },
             }}
+            className="flex flex-col items-center"
           >
             <motion.div
               variants={{
                 hidden: { opacity: 0, y: 15 },
                 visible: { opacity: 1, y: 0 },
               }}
-              className="inline-flex items-center gap-2 px-[4vw] md:px-4 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/30 text-amber-300 text-[clamp(10px,2.5vw,12px)] font-semibold uppercase tracking-widest mb-4"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/30 text-amber-300 text-xs font-semibold uppercase tracking-widest mb-6"
             >
               <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
               Trichy's #1 Metal Fabricators
             </motion.div>
 
-            {/* Decorative display heading — aria-hidden because real H1 is sr-only above */}
+            {/* Decorative display heading */}
             <motion.p
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 },
               }}
               aria-hidden="true"
-              className="font-heading text-4xl sm:text-6xl lg:text-7xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
+              className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
             >
               Where Steel
               <br />
@@ -497,7 +494,7 @@ const HeroSection = () => (
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 },
               }}
-              className="text-white/65 text-[clamp(14px,4vw,16px)] leading-relaxed max-w-md mb-7"
+              className="text-white/65 text-[clamp(14px,4vw,16px)] leading-relaxed max-w-2xl mb-8 mx-auto"
             >
               Trichy's most trusted metal fabrication studio — crafting{" "}
               <strong className="text-white/80 font-semibold">
@@ -527,7 +524,7 @@ const HeroSection = () => (
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 },
               }}
-              className="flex flex-col sm:flex-row gap-3"
+              className="flex flex-col sm:flex-row gap-4 justify-center"
             >
               <TurtleButton
                 href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
@@ -541,7 +538,7 @@ const HeroSection = () => (
                 href={getWhatsAppUrl()}
                 variant="whatsapp"
                 external
-                className="rounded-xl w-full sm:w-auto h-[clamp(48px,12vw,56px)]"
+                className="rounded-xl px-10 w-full sm:w-auto h-[clamp(48px,12vw,56px)]"
               >
                 <MessageCircle className="w-[clamp(16px,4vw,18px)] h-[clamp(16px,4vw,18px)]" />{" "}
                 WhatsApp
@@ -912,7 +909,10 @@ const Index = () => {
   }, [hasClicked]);
 
   return (
-    <main className="overflow-hidden pt-14 md:pt-16" style={{ scrollBehavior: "smooth" }}>
+    <main
+      className="overflow-hidden pt-14 md:pt-16"
+      style={{ scrollBehavior: "smooth" }}
+    >
       <SEO
         title={`Steel Gates, Railings & Metal Fabrication in Trichy | ${COMPANY_NAME}`}
         description={`${COMPANY_NAME} – Trichy's trusted fabricators of SS/MS gates, railings, rolling shutters, aluminium windows, ACP cladding & industrial structures. Free quote today!`}

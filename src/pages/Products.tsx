@@ -758,14 +758,15 @@ const Products = () => {
           display: flex;
           flex-direction: column;
           justify-content: center;
-          padding: 3.5rem 1.5rem 2.5rem;
+          align-items: center;
+          padding: 0 1.5rem;
           background: #020617;
           overflow: hidden;
           transform: translateZ(0);
           backface-visibility: hidden;
         }
         @media (min-width: 768px) {
-          .products-hero { padding: 0; }
+          .products-hero { padding: 0 1.5rem; }
         }
         .hero-bg-media {
           position: absolute;
@@ -775,7 +776,7 @@ const Products = () => {
         .hero-overlay {
           position: absolute;
           inset: 0;
-          background: radial-gradient(circle at 30% 50%, rgba(6, 27, 84, 0.2) 0%, rgba(2, 6, 23, 0.7) 100%);
+          background: radial-gradient(circle at 30% 50%, rgba(6, 27, 84, 0.08) 0%, rgba(2, 6, 23, 0.35) 100%);
           z-index: 1;
         }
         .hero-mesh {
@@ -1075,93 +1076,92 @@ const Products = () => {
 
         <div className="hero-mesh" />
 
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-8">
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
+        <div className="relative z-10 mx-auto w-full max-w-4xl px-6">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.12, delayChildren: 0.2 },
+              },
+            }}
+            className="flex flex-col items-center text-center"
+          >
             <motion.div
-              initial="hidden"
-              animate="visible"
               variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: { staggerChildren: 0.12, delayChildren: 0.2 },
-                },
+                hidden: { opacity: 0, y: 15 },
+                visible: { opacity: 1, y: 0 },
               }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 text-xs font-semibold uppercase tracking-widest mb-6"
             >
-              <motion.div
-                variants={{
-                  hidden: { opacity: 0, y: 15 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 text-xs font-semibold uppercase tracking-widest mb-4"
-              >
-                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                Fabrication Shop in Trichy
-              </motion.div>
-
-              {/* Decorative display heading — aria-hidden, real H1 is sr-only above */}
-              <motion.p
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                aria-hidden="true"
-                className="font-heading text-4xl sm:text-6xl lg:text-7xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
-              >
-                Product
-                <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600">
-                  Catalogue.
-                </span>
-                <br />
-                Built to Excel.
-              </motion.p>
-
-              {/* SEO-rich hero paragraph */}
-              <motion.p
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                className="text-white/65 text-base leading-relaxed max-w-md mb-7"
-              >
-                Explore our complete range of{" "}
-                <strong className="text-white/85">fabrication products</strong>{" "}
-                in Trichy — custom{" "}
-                <strong className="text-white/85">steel gates</strong>,{" "}
-                <strong className="text-white/85">balcony railings</strong>,{" "}
-                <strong className="text-white/85">rolling shutters</strong>,{" "}
-                <strong className="text-white/85">aluminium windows</strong>,{" "}
-                <strong className="text-white/85">glass doors</strong> and{" "}
-                <strong className="text-white/85">ACP cladding</strong> —
-                precision-built with Grade-A materials for lasting excellence.
-              </motion.p>
-
-              <motion.div
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                className="flex flex-col sm:flex-row gap-3"
-              >
-                <TurtleButton
-                  href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
-                  variant="call_now"
-                  className="rounded-xl px-10 w-full sm:w-auto"
-                >
-                  <Phone className="w-4 h-4" /> Call Now
-                </TurtleButton>
-                <TurtleButton
-                  href={getWhatsAppUrl()}
-                  variant="whatsapp"
-                  external
-                  className="rounded-xl w-full sm:w-auto px-10"
-                >
-                  <MessageCircle className="w-4 h-4" /> WhatsApp
-                </TurtleButton>
-              </motion.div>
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+              Fabrication Shop in Trichy
             </motion.div>
-          </div>
+
+            {/* Decorative display heading */}
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              aria-hidden="true"
+              className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
+            >
+              Product
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600">
+                Catalogue.
+              </span>
+              <br />
+              Built to Excel.
+            </motion.p>
+
+            {/* SEO-rich hero paragraph */}
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              className="text-white/65 text-base leading-relaxed max-w-2xl mb-8 mx-auto"
+            >
+              Explore our complete range of{" "}
+              <strong className="text-white/85">fabrication products</strong>{" "}
+              in Trichy — custom{" "}
+              <strong className="text-white/85">steel gates</strong>,{" "}
+              <strong className="text-white/85">balcony railings</strong>,{" "}
+              <strong className="text-white/85">rolling shutters</strong>,{" "}
+              <strong className="text-white/85">aluminium windows</strong>,{" "}
+              <strong className="text-white/85">glass doors</strong> and{" "}
+              <strong className="text-white/85">ACP cladding</strong> —
+              precision-built with Grade-A materials for lasting excellence.
+            </motion.p>
+
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
+              <TurtleButton
+                href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
+                variant="call_now"
+                className="rounded-xl px-10 w-full sm:w-auto"
+              >
+                <Phone className="w-4 h-4" /> Call Now
+              </TurtleButton>
+              <TurtleButton
+                href={getWhatsAppUrl()}
+                variant="whatsapp"
+                external
+                className="rounded-xl w-full sm:w-auto px-10"
+              >
+                <MessageCircle className="w-4 h-4" /> WhatsApp
+              </TurtleButton>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 

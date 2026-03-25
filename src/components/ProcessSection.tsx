@@ -297,19 +297,12 @@ const ProcessSection: React.FC = () => {
 
             {/* ✅ Circle with overflow-hidden so badge stays INSIDE */}
             <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 shadow-2xl shadow-blue-500/50 overflow-hidden">
-              {/* Gloss */}
-              <div className="absolute inset-0 bg-gradient-to-t from-transparent via-white/5 to-white/15 z-10 pointer-events-none" />
-
-              {/* Decorative rings */}
-              <div className="absolute inset-5 rounded-full border border-white/10 z-10 pointer-events-none" />
-              <div className="absolute inset-10 rounded-full border border-white/5 z-10 pointer-events-none" />
-
-              {/* Step image */}
+              {/* Step image — zoomed slightly to crop out any white edges/padding in source files */}
               <img
                 key={displayed}
                 src={STEPS[displayed].image}
                 alt={STEPS[displayed].title}
-                className="absolute inset-0 w-full h-full object-cover select-none"
+                className="absolute inset-0 w-full h-full object-cover scale-[1.12] object-center select-none"
                 style={{
                   opacity: fading ? 0 : 1,
                   transition: "opacity 150ms ease-in-out",

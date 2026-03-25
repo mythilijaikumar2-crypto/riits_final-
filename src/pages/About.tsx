@@ -1009,7 +1009,7 @@ const About = () => {
       <FontLoader />
 
       {/* ── HERO ── */}
-      <section className="relative min-h-[100dvh] flex flex-col justify-center bg-[var(--navy)] overflow-hidden px-6 pt-0 pb-10 md:px-0 md:pt-0 md:pb-0">
+      <section className="relative min-h-[100dvh] flex flex-col justify-center items-center bg-[var(--navy)] overflow-hidden">
         <h1 className="sr-only">
           About {COMPANY_NAME} — Trusted Metal Fabrication Company in Trichy,
           Tamil Nadu
@@ -1029,70 +1029,74 @@ const About = () => {
             fetchpriority="high"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-r from-[var(--navy)] via-[var(--navy)]/60 to-transparent z-[1]" />
+          {/* Primary dark overlay */}
+          <div className="absolute inset-0 bg-[var(--navy)]/85 z-[1]" />
+          {/* Gradient tint for depth */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[var(--navy)]/80 via-[var(--navy)]/40 to-[var(--navy)]/90 z-[2]" />
+          {/* Centre glow to lift text area */}
+          <div className="absolute inset-0 z-[3]" style={{background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(13,37,87,0.7) 0%, transparent 100%)'}} />
         </div>
         <div className="about-mesh" />
-        <div className="ctr relative z-10 lg:-translate-y-6">
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
+        <div className="w-full max-w-4xl mx-auto px-6 relative z-20">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.06, delayChildren: 0.05 },
+              },
+            }}
+            className="flex flex-col items-center text-center"
+          >
             <motion.div
-              initial="hidden"
-              animate="visible"
               variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: { staggerChildren: 0.06, delayChildren: 0.05 },
-                },
+                hidden: { opacity: 0, y: 15 },
+                visible: { opacity: 1, y: 0 },
               }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-widest mb-6"
             >
-              <motion.div
-                variants={{
-                  hidden: { opacity: 0, y: 15 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-widest mb-4"
-              >
-                <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-                Fabrication Company in Trichy
-              </motion.div>
-
-              <motion.p
-                aria-hidden="true"
-                variants={{
-                  hidden: { opacity: 0, x: -30 },
-                  visible: { opacity: 1, x: 0 },
-                }}
-                className="font-heading text-4xl sm:text-6xl lg:text-7xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
-              >
-                Precision
-                <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600">
-                  Steelcraft.
-                </span>
-                <br />
-                Proven Trust.
-              </motion.p>
-
-              <motion.p
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                className="text-white/70 text-lg leading-relaxed max-w-2xl mb-0"
-              >
-                {COMPANY_NAME} is a trusted{" "}
-                <strong className="text-white/85">
-                  fabrication shop in Trichy
-                </strong>{" "}
-                with over 15 years of experience in{" "}
-                <strong className="text-white/85">metal fabrication</strong> and{" "}
-                <strong className="text-white/85">steel fabrication</strong>. We
-                serve homeowners, builders and businesses across Trichy,
-                Thanjavur and Tamil Nadu — delivering every project with
-                precision and care.
-              </motion.p>
+              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+              Fabrication Company in Trichy
             </motion.div>
-          </div>
+
+            <motion.p
+              aria-hidden="true"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
+            >
+              Precision
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600">
+                Steelcraft.
+              </span>
+              <br />
+              Proven Trust.
+            </motion.p>
+
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              className="text-white/70 text-base leading-relaxed max-w-2xl mx-auto"
+            >
+              {COMPANY_NAME} is a trusted{" "}
+              <strong className="text-white/85">
+                fabrication shop in Trichy
+              </strong>{" "}
+              with over 15 years of experience in{" "}
+              <strong className="text-white/85">metal fabrication</strong> and{" "}
+              <strong className="text-white/85">steel fabrication</strong>. We
+              serve homeowners, builders and businesses across Trichy,
+              Thanjavur and Tamil Nadu — delivering every project with
+              precision and care.
+            </motion.p>
+          </motion.div>
         </div>
       </section>
 

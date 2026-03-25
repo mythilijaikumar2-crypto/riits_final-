@@ -313,7 +313,10 @@ const ServiceRow = React.memo(({ svc, index, isLast }: ServiceRowProps) => {
 /* ─── PAGE COMPONENT ─────────────────────────────────────────────────── */
 const Services = () => {
   return (
-    <main className="overflow-hidden pt-14 md:pt-16" style={{ transform: "translateZ(0)" }}>
+    <main
+      className="overflow-hidden pt-14 md:pt-16"
+      style={{ transform: "translateZ(0)" }}
+    >
       <SEO
         title={`Steel Fabrication, Gate Work, Railing & Rolling Shutter Services in Trichy | ${COMPANY_NAME}`}
         description={`${COMPANY_NAME} offers expert steel fabrication, gate work, grill work, railing, rolling shutter installation, aluminium door & window work and glass partition services in Trichy.`}
@@ -323,7 +326,7 @@ const Services = () => {
       {/* ══════════════════════════════════════════
           HERO
       ══════════════════════════════════════════ */}
-      <section className="relative min-h-[100dvh] flex flex-col justify-center overflow-hidden bg-slate-950 px-6 pt-0 pb-10 md:px-0 md:pt-0 md:pb-0">
+      <section className="relative min-h-[100dvh] flex flex-col justify-center items-center overflow-hidden bg-slate-950">
         <h1 className="sr-only">
           Steel Fabrication, Gate Work, Railing, Rolling Shutter &amp; Aluminium
           Services in Trichy | {COMPANY_NAME}
@@ -342,95 +345,92 @@ const Services = () => {
             loading="eager"
             decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-slate-950/15 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/30 to-slate-950/50" />
         </motion.div>
 
-
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
+        <div className="w-full max-w-4xl mx-auto px-6 relative z-10">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.12, delayChildren: 0.2 },
+              },
+            }}
+            className="flex flex-col items-center text-center"
+          >
             <motion.div
-              initial="hidden"
-              animate="visible"
               variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: { staggerChildren: 0.12, delayChildren: 0.2 },
-                },
+                hidden: { opacity: 0, y: 15 },
+                visible: { opacity: 1, y: 0 },
               }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-widest mb-6"
             >
-              <motion.div
-                variants={{
-                  hidden: { opacity: 0, y: 15 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-widest mb-4"
-              >
-                <Zap className="w-3 h-3" /> Fabrication Shop in Trichy
-              </motion.div>
-              <motion.p
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                aria-hidden="true"
-                className="font-heading text-4xl sm:text-6xl lg:text-7xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
-              >
-                Expert
-                <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600">
-                  Metal &amp; Glass
-                </span>
-                <br />
-                Services
-              </motion.p>
-              <motion.p
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                className="text-white/65 text-base leading-relaxed max-w-md mb-7"
-              >
-                {COMPANY_NAME} is your trusted{" "}
-                <strong className="text-white/85">
-                  fabrication shop in Trichy
-                </strong>{" "}
-                — delivering expert{" "}
-                <strong className="text-white/85">steel fabrication</strong>,{" "}
-                <strong className="text-white/85">gate fabrication</strong>,{" "}
-                <strong className="text-white/85">rolling shutter work</strong>,{" "}
-                <strong className="text-white/85">aluminium window work</strong>{" "}
-                and{" "}
-                <strong className="text-white/85">glass partition work</strong>{" "}
-                for residential, commercial and industrial projects across Tamil
-                Nadu.
-              </motion.p>
-              <motion.div
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                className="flex flex-col sm:flex-row gap-3"
-              >
-                <TurtleButton
-                  href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
-                  variant="call_now"
-                  className="rounded-xl px-10 w-full sm:w-auto"
-                >
-                  <Phone className="w-4 h-4" /> Call Now
-                </TurtleButton>
-                <TurtleButton
-                  href={getWhatsAppUrl()}
-                  variant="whatsapp"
-                  external
-                  className="rounded-xl w-full sm:w-auto"
-                >
-                  <MessageCircle className="w-4 h-4" /> WhatsApp
-                </TurtleButton>
-              </motion.div>
+              <Zap className="w-3 h-3" /> Fabrication Shop in Trichy
             </motion.div>
-          </div>
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              aria-hidden="true"
+              className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
+            >
+              Expert
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600">
+                Metal &amp; Glass
+              </span>
+              <br />
+              Services
+            </motion.p>
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              className="text-white/65 text-base leading-relaxed max-w-2xl mb-8 mx-auto"
+            >
+              {COMPANY_NAME} is your trusted{" "}
+              <strong className="text-white/85">
+                fabrication shop in Trichy
+              </strong>{" "}
+              — delivering expert{" "}
+              <strong className="text-white/85">steel fabrication</strong>,{" "}
+              <strong className="text-white/85">gate fabrication</strong>,{" "}
+              <strong className="text-white/85">rolling shutter work</strong>,{" "}
+              <strong className="text-white/85">aluminium window work</strong>{" "}
+              and{" "}
+              <strong className="text-white/85">glass partition work</strong>{" "}
+              for residential, commercial and industrial projects across Tamil
+              Nadu.
+            </motion.p>
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
+              <TurtleButton
+                href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
+                variant="call_now"
+                className="rounded-xl px-10 w-full sm:w-auto"
+              >
+                <Phone className="w-4 h-4" /> Call Now
+              </TurtleButton>
+              <TurtleButton
+                href={getWhatsAppUrl()}
+                variant="whatsapp"
+                external
+                className="rounded-xl px-10 w-full sm:w-auto"
+              >
+                <MessageCircle className="w-4 h-4" /> WhatsApp
+              </TurtleButton>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 

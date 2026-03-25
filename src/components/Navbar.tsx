@@ -44,31 +44,32 @@ const Navbar = () => {
   }, [location.pathname]);
 
   const mobileMenuVariants = {
-    hidden: { opacity: 0, height: 0, y: -10 },
+    hidden: { opacity: 0, scale: 0.97, y: -10 },
     visible: {
       opacity: 1,
-      height: "auto",
+      scale: 1,
       y: 0,
       transition: {
-        duration: 0.35,
+        duration: 0.4,
         ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
       },
     },
     exit: {
       opacity: 0,
-      height: 0,
+      scale: 0.97,
       y: -10,
-      transition: { duration: 0.25, ease: "easeIn" as const },
+      transition: { duration: 0.3, ease: "easeIn" as const },
     },
   };
 
   const mobileItemVariants = {
-    hidden: { opacity: 0, x: -24 },
+    hidden: { opacity: 0, x: -15, scale: 0.98 },
     visible: (i: number) => ({
       opacity: 1,
       x: 0,
+      scale: 1,
       transition: {
-        delay: i * 0.07,
+        delay: i * 0.05,
         duration: 0.35,
         ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
       },
@@ -93,15 +94,16 @@ const Navbar = () => {
       <motion.nav
         ref={navRef}
         className={` 
-      fixed top-0 left-0 right-0 
-      z-[999] 
-      transition-all duration-500
-      ${
-        scrolled
-          ? "bg-white/80 backdrop-blur-xl border-b border-border/60 shadow-lg shadow-primary/5"
-          : "bg-card/90 backdrop-blur-md border-b border-border"
-      }
-    `}
+          fixed top-0 left-0 right-0 
+          z-[99998] 
+          h-16 md:h-20
+          transition-all duration-500
+          ${
+            scrolled
+              ? "bg-white dark:bg-slate-950 border-b border-border/60 shadow-lg shadow-primary/5"
+              : "bg-white dark:bg-slate-950 border-b border-border shadow-sm"
+          }
+        `}
         initial={{ y: -64, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -118,8 +120,8 @@ const Navbar = () => {
         <div
           className="
         flex items-center justify-between 
-        px-2 sm:px-3 lg:px-5 xl:px-6   /* horizontal spacing */
-        w-full
+        px-4 sm:px-6 lg:px-8
+        w-full h-full
       "
         >
           {/* ========================= LOGO SECTION ========================= */}
@@ -136,18 +138,17 @@ const Navbar = () => {
               className="
             relative 
             w-auto                     /* FLUID WIDTH */
-            max-w-[55vw]               /* Constraint for mobile */
-            h-14 md:h-16               /* Responsive height */
+            max-w-[60vw]               /* Constraint for mobile */
+            h-16                       /* Fixed container height */
             flex items-center
             lg:hidden                 /* only mobile */
-            overflow-hidden           /* hide overflow */
           "
             >
               <motion.img
                 src={MOBILE_LOGO}
                 alt={`${BRAND_NAME} Mobile Logo`}
-                className="h-10 md:h-14 w-auto object-contain origin-left"
-                animate={{ scale: scrolled ? 0.9 : 1 }}
+                className="h-12 w-auto object-contain origin-left"
+                animate={{ scale: scrolled ? 0.95 : 1 }}
                 transition={{ duration: 0.4 }}
               />
             </div>
@@ -157,26 +158,32 @@ const Navbar = () => {
               className="
             relative 
             w-auto
-            max-w-[240px]
-            h-20
-            hidden lg:flex           /* only desktop */
+            max-w-[320px]         /* Increased width for premium impact */
+            h-20                  /* Fixed height container - doesn't pull nav */
+            hidden lg:flex        /* only desktop */
             items-center
-            overflow-hidden
           "
             >
-              <motion.img
-                src={LOGO_EMBLEM}
-                alt={`${BRAND_NAME} Desktop Logo`}
-                className="
-              relative
-              h-16                   /* Fluid sizing */
-              w-auto 
-              object-contain 
-              origin-left
-            "
-                animate={{ scale: scrolled ? 0.9 : 1 }}
-                transition={{ duration: 0.4 }}
-              />
+              <div className="relative">
+                <motion.img
+                  src={LOGO_EMBLEM}
+                  alt={`${BRAND_NAME} Desktop Logo`}
+                  className="
+                relative z-10
+                h-28                /* Massive branding */
+                w-auto 
+                object-contain 
+                origin-left
+                drop-shadow-sm
+              "
+                  animate={{ scale: scrolled ? 0.8 : 1 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  style={{
+                    willChange: "transform",
+                    transform: "translateY(4px)" // Subtle offset for visual balance
+                  }}
+                />
+              </div>
             </div>
           </Link>
 
@@ -277,79 +284,84 @@ const Navbar = () => {
             <AnimatePresence mode="wait">
               {open ? (
                 <motion.span key="close">
-                  <X className="w-6 h-6" />
+                  <X className="w-6 h-6 text-slate-900 dark:text-white" />
                 </motion.span>
               ) : (
                 <motion.span key="open">
-                  <Menu className="w-6 h-6" />
+                  <Menu className="w-6 h-6 text-slate-900 dark:text-white" />
                 </motion.span>
               )}
             </AnimatePresence>
           </motion.button>
         </div>
-
-        {/* ========================= MOBILE MENU ========================= */}
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              variants={mobileMenuVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="
-            lg:hidden 
-            bg-white/95 
-            backdrop-blur-xl 
-            border-t 
-            border-border/60
-          "
-            >
-              <div className="flex flex-col gap-1 p-4 pb-6">
-                {navLinks.map((link, i) => {
-                  const isActive = location.pathname === link.to;
-
-                  return (
-                    <motion.div
-                      key={link.to}
-                      custom={i}
-                      variants={mobileItemVariants}
-                    >
-                      <Link
-                        to={link.to}
-                        onClick={() => setOpen(false)}
-                        className={`
-                      flex items-center gap-3 
-                      font-heading text-sm uppercase tracking-wider font-bold 
-                      py-3 px-4 rounded-xl 
-                      transition-all duration-200
-                      ${
-                        isActive
-                          ? "bg-primary/10 text-primary border-l-4 border-primary"
-                          : "hover:bg-muted text-[#2d2d2d] hover:text-primary border-l-4 border-transparent"
-                      }
-                    `}
-                      >
-                        {link.label}
-                      </Link>
-                    </motion.div>
-                  );
-                })}
-
-                <div className="mt-3">
-                  <TurtleButton
-                    href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
-                    variant="call_now"
-                    size="sm"
-                    className="w-full rounded-xl py-3 min-h-[44px]"
-                  >
-                    <Phone className="w-4 h-4" /> Call Now
-                  </TurtleButton>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </motion.nav>
+
+      {/* ========================= MOBILE MENU ========================= */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            variants={mobileMenuVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="
+                lg:hidden 
+                fixed inset-0 
+                top-0
+                z-[99999]
+                bg-white/40
+                dark:bg-slate-950/40
+                backdrop-blur-3xl
+                flex flex-col
+              "
+          >
+            {/* --- Drawer Header --- */}
+            <div className="flex items-center justify-center px-5 h-20 border-b border-border/40 relative">
+              <img src={MOBILE_LOGO} alt={BRAND_NAME} className="h-10 w-auto object-contain" />
+              <button
+                onClick={() => setOpen(false)}
+                className="absolute right-5 p-2 rounded-full hover:bg-muted/50 transition-colors"
+                aria-label="Close menu"
+              >
+                <X className="w-6 h-6 text-slate-800 dark:text-white" />
+              </button>
+            </div>
+
+            {/* --- Navigation Links --- */}
+            <div className="flex-1 flex flex-col items-center justify-center px-4 py-8 gap-3">
+              {navLinks.map((link, i) => {
+                const isActive = location.pathname === link.to;
+
+                return (
+                  <motion.div
+                    key={link.to}
+                    custom={i}
+                    variants={mobileItemVariants}
+                    className="w-full max-w-[240px]"
+                  >
+                    <Link
+                      to={link.to}
+                      onClick={() => setOpen(false)}
+                      className={`
+                          flex items-center justify-center 
+                          font-heading text-sm uppercase tracking-widest font-bold 
+                          py-3 px-6 rounded-xl border
+                          transition-all duration-300
+                          ${isActive
+                            ? "bg-primary text-white border-primary shadow-lg"
+                            : "bg-white/40 dark:bg-slate-900/40 border-white/10 text-slate-900 dark:text-slate-100 hover:bg-white/60 hover:text-primary"
+                          }
+                        `}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

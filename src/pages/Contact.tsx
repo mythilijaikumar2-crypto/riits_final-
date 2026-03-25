@@ -131,7 +131,7 @@ const Contact = () => {
         .hero-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(to right, rgba(30, 58, 138, 0.7) 0%, rgba(30, 58, 138, 0.2) 60%, transparent 100%);
+          background: linear-gradient(to bottom, rgba(30, 58, 138, 0.3) 0%, rgba(30, 58, 138, 0.15) 50%, rgba(30, 58, 138, 0.3) 100%);
           z-index: 1;
         }
         .social-icon-group {
@@ -271,102 +271,101 @@ const Contact = () => {
 
 
         <div className="container-main relative z-10">
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.12, delayChildren: 0.3 },
+              },
+            }}
+            className="flex flex-col items-center text-center"
+          >
             <motion.div
-              initial="hidden"
-              animate="visible"
               variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: { staggerChildren: 0.12, delayChildren: 0.3 },
-                },
+                hidden: { opacity: 0, y: 15 },
+                visible: { opacity: 1, y: 0 },
               }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-widest mb-6"
             >
-              <motion.div
-                variants={{
-                  hidden: { opacity: 0, y: 15 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-widest mb-4"
-              >
-                <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-                {BRAND_NAME} — Fabrication Shop in Trichy
-              </motion.div>
-
-              <motion.p
-                aria-hidden="true"
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                className="font-heading text-4xl sm:text-6xl lg:text-7xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
-              >
-                Let's Talk
-                <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600">
-                  Steel.
-                </span>
-                <br />
-                Start Today.
-              </motion.p>
-
-              <motion.p
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                className="text-white/65 text-base leading-relaxed max-w-md mb-7"
-              >
-                Looking for a trusted{" "}
-                <strong className="text-white/85">
-                  fabrication shop near me
-                </strong>{" "}
-                in Trichy?
-                {COMPANY_NAME} offers complete{" "}
-                <strong className="text-white/85">steel fabrication</strong>,{" "}
-                <strong className="text-white/85">metal fabrication</strong> and{" "}
-                <strong className="text-white/85">
-                  fabrication services in Trichy
-                </strong>{" "}
-                — call or WhatsApp us for a free site visit and written
-                quotation.
-              </motion.p>
-
-              <motion.div
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                className="flex flex-col gap-3"
-              >
-                <div
-                  className="social-icon-group hero-social-actions"
-                  aria-label="Social media links"
-                >
-                  {heroActionLinks.map(({ href, label, Icon, tone }) => (
-                    <motion.a
-                      key={label}
-                      href={href}
-                      target={href.startsWith("http") ? "_blank" : undefined}
-                      rel={
-                        href.startsWith("http")
-                          ? "noopener noreferrer"
-                          : undefined
-                      }
-                      aria-label={label}
-                      title={label}
-                      whileHover={{ scale: 1.08, y: -4 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`social-icon-link ${tone}`}
-                    >
-                      <Icon className="w-5 h-5" />
-                    </motion.a>
-                  ))}
-                </div>
-              </motion.div>
+              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+              {BRAND_NAME} — Fabrication Shop in Trichy
             </motion.div>
-          </div>
+
+            <motion.p
+              aria-hidden="true"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
+            >
+              Let's Talk
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600">
+                Steel.
+              </span>
+              <br />
+              Start Today.
+            </motion.p>
+
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              className="text-white/65 text-base leading-relaxed max-w-2xl mb-8 mx-auto"
+            >
+              Looking for a trusted{" "}
+              <strong className="text-white/85">
+                fabrication shop near me
+              </strong>{" "}
+              in Trichy?
+              {COMPANY_NAME} offers complete{" "}
+              <strong className="text-white/85">steel fabrication</strong>,{" "}
+              <strong className="text-white/85">metal fabrication</strong> and{" "}
+              <strong className="text-white/85">
+                fabrication services in Trichy
+              </strong>{" "}
+              — call or WhatsApp us for a free site visit and written
+              quotation.
+            </motion.p>
+
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              className="flex flex-col gap-3 items-center"
+            >
+              <div
+                className="social-icon-group hero-social-actions"
+                aria-label="Social media links"
+              >
+                {heroActionLinks.map(({ href, label, Icon, tone }) => (
+                  <motion.a
+                    key={label}
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel={
+                      href.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    aria-label={label}
+                    title={label}
+                    whileHover={{ scale: 1.08, y: -4 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`social-icon-link ${tone}`}
+                  >
+                    <Icon className="w-5 h-5" />
+                  </motion.a>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
