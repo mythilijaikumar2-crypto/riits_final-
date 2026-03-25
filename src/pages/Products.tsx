@@ -695,11 +695,11 @@ const CategorySection = memo(({ category }: { category: Category }) => {
           <ProductCard key={p.name} product={p} />
         ))}
       </div>
-      <div className="mb-6">
-        <h3 className="text-sm font-semibold tracking-wider text-slate-500 uppercase mb-5">
+      <div className="mb-12">
+        <h3 className="text-sm font-semibold tracking-wider text-slate-500 uppercase mb-8">
           {BRAND_NAME} Benefits
         </h3>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4 pt-10">
           {category.benefits.map((b, i) => {
             return (
               <BenefitCard
@@ -887,7 +887,7 @@ const Products = () => {
         .benefit-wrapper {
           position: relative;
           width: 100%;
-          min-height: 200px;
+          min-height: 260px;
           height: auto;
           display: flex;
           align-items: center;
