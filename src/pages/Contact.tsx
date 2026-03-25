@@ -94,7 +94,7 @@ const Contact = () => {
   ];
 
   return (
-    <main className="pt-16">
+    <main className="pt-14 md:pt-16">
       <SEO
         title={`Contact ${COMPANY_NAME} — Fabrication Shop in Trichy for Steel Gate, Railing, Rolling Shutter & Aluminium Works`}
         description={`Contact ${COMPANY_NAME}, the trusted fabrication shop in Trichy. Get a free quote for steel gate work, grill work, rolling shutter installation, aluminium window work and glass partition work. Call now.`}
@@ -104,13 +104,19 @@ const Contact = () => {
       <style>{`
         .contact-hero {
           position: relative;
-          min-height: 100vh;
+          min-height: 100dvh;
           display: flex;
+          flex-direction: column;
+          justify-content: center;
           align-items: center;
+          padding: 0 1.5rem 2.5rem;
           background: #1e3a8a;
           overflow: hidden;
           transform: translateZ(0);
           backface-visibility: hidden;
+        }
+        @media (min-width: 768px) {
+          .contact-hero { padding: 0; }
         }
         .hero-bg-img {
           position: absolute;
@@ -127,16 +133,6 @@ const Contact = () => {
           inset: 0;
           background: linear-gradient(to right, rgba(30, 58, 138, 0.7) 0%, rgba(30, 58, 138, 0.2) 60%, transparent 100%);
           z-index: 1;
-        }
-        .hero-grid-lines {
-          position: absolute;
-          inset: 0;
-          background-image: 
-            linear-gradient(rgba(29, 78, 216, 0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(29, 78, 216, 0.05) 1px, transparent 1px);
-          background-size: 60px 60px;
-          z-index: 0;
-          mask-image: radial-gradient(circle at 50% 50%, black, transparent 95%);
         }
         .social-icon-group {
           display: flex;
@@ -272,7 +268,7 @@ const Contact = () => {
           />
         </motion.div>
         <div className="hero-overlay" />
-        <div className="hero-grid-lines" />
+
 
         <div className="container-main relative z-10">
           <div className="grid lg:grid-cols-2 gap-10 items-center">

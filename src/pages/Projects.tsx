@@ -291,7 +291,7 @@ const Projects = () => {
   }, [location]);
 
   return (
-    <main className="pt-16">
+    <main className="pt-14 md:pt-16">
       <SEO
         title={`Steel Gate, Grill, Railing & Fabrication Projects in Trichy | ${COMPANY_NAME} Our Works`}
         description={`Browse 800+ real fabrication projects in Trichy by ${COMPANY_NAME} — steel gate work, grill work, rolling shutter installation, aluminium window work, glass partition work and more.`}
@@ -301,15 +301,18 @@ const Projects = () => {
       <style>{`
         .projects-hero {
           position: relative;
-          min-height: 85vh;
+          min-height: 100dvh;
           display: flex;
           flex-direction: column;
-          justify-content: flex-start;
-          padding-top: 10rem;
+          justify-content: center;
+          padding: 0 1.5rem 2.5rem;
           background: #1e3a8a;
           overflow: hidden;
           transform: translateZ(0);
           backface-visibility: hidden;
+        }
+        @media (min-width: 768px) {
+          .projects-hero { padding: 0; }
         }
         .hero-bg-img {
           position: absolute;
@@ -339,7 +342,7 @@ const Projects = () => {
           to { background-position: 200% center; }
         }
         @media (max-width: 768px) {
-          .projects-hero { min-height: 70vh; }
+          .projects-hero { min-height: 100dvh; }
         }
       `}</style>
 
@@ -368,7 +371,6 @@ const Projects = () => {
           />
           <div className="hero-overlay" />
         </motion.div>
-
 
         <div className="container-main relative z-10">
           <div className="grid lg:grid-cols-2 gap-10">
@@ -582,7 +584,7 @@ const Projects = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-5xl max-h-[90vh] bg-white dark:bg-slate-900 rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col"
+              className="relative w-full max-w-5xl max-h-[90vh] bg-white dark:bg-slate-900 rounded-[2.5rem] overflow-x-hidden overflow-y-auto shadow-2xl flex flex-col"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -593,7 +595,7 @@ const Projects = () => {
                 <X size={24} />
               </button>
 
-              <div className="flex flex-col lg:flex-row h-full overflow-y-auto lg:overflow-hidden">
+              <div className="flex flex-col lg:flex-row h-full">
                 <div className="lg:w-3/5 h-[300px] sm:h-[400px] lg:h-auto relative overflow-hidden bg-slate-100 dark:bg-slate-800">
                   <ProjectImageSlider p={selectedProject} isModal />
                 </div>
@@ -717,9 +719,12 @@ const ProjectImageSlider = ({
 
   useEffect(() => {
     if (isModal || images.length <= 1) return;
-    const id = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % images.length);
-    }, 3000 + Math.random() * 2000); // Randomize timing so they don't all shift at once
+    const id = setInterval(
+      () => {
+        setCurrent((prev) => (prev + 1) % images.length);
+      },
+      3000 + Math.random() * 2000,
+    ); // Randomize timing so they don't all shift at once
     return () => clearInterval(id);
   }, [images.length, isModal]);
 

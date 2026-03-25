@@ -106,7 +106,7 @@ const ProcessSection: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="w-full bg-slate-950 min-h-screen py-16 sm:py-24 flex flex-col justify-center px-4 sm:px-8 lg:px-16 overflow-hidden"
+      className="w-full bg-slate-950 min-h-[100dvh] py-12 md:py-16 lg:py-24 flex flex-col justify-center px-4 sm:px-6 lg:px-8 overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -318,9 +318,9 @@ const ProcessSection: React.FC = () => {
               />
 
               {/* ✅ Badge — inside circle, pinned to bottom */}
-              <div className="absolute bottom-0 left-0 right-0 z-20 flex justify-center pb-5 px-4">
+              <div className="absolute bottom-0 left-0 right-0 z-20 flex justify-center pb-5 px-4 overflow-hidden">
                 <div
-                  className="flex flex-col items-center gap-0.5 px-4 py-2 rounded-xl bg-slate-950/80 border border-white/20 backdrop-blur-xl shadow-xl w-full"
+                  className="flex flex-col items-center gap-0.5 px-4 py-2 rounded-xl bg-slate-950/80 border border-white/20 backdrop-blur-xl shadow-xl w-full max-w-full overflow-hidden"
                   style={{
                     opacity: fading ? 0 : 1,
                     transform: fading ? "translateY(6px)" : "translateY(0)",

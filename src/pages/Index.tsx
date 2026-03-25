@@ -419,13 +419,9 @@ const serviceTags = [
 
 /* ================= HERO ================= */
 
-const HeroSection = ({ isMobile }: { isMobile: boolean }) => (
+const HeroSection = () => (
   <section
-    className="relative h-screen flex flex-col justify-center bg-slate-950 overflow-hidden"
-    style={{
-      paddingTop: isMobile ? "12vh" : "0",
-      paddingBottom: isMobile ? "8vh" : "0",
-    }}
+    className="relative min-h-[100dvh] flex flex-col justify-center items-stretch bg-slate-950 overflow-hidden px-6 pt-0 pb-10 md:px-0 md:pt-0 md:pb-0"
   >
     {/* Visually hidden H1 for Google — primary SEO heading */}
     <h1 className="sr-only">
@@ -916,7 +912,7 @@ const Index = () => {
   }, [hasClicked]);
 
   return (
-    <main className="overflow-hidden" style={{ scrollBehavior: "smooth" }}>
+    <main className="overflow-hidden pt-14 md:pt-16" style={{ scrollBehavior: "smooth" }}>
       <SEO
         title={`Steel Gates, Railings & Metal Fabrication in Trichy | ${COMPANY_NAME}`}
         description={`${COMPANY_NAME} – Trichy's trusted fabricators of SS/MS gates, railings, rolling shutters, aluminium windows, ACP cladding & industrial structures. Free quote today!`}
@@ -931,7 +927,7 @@ const Index = () => {
       />
 
       {/* ── HERO ── */}
-      <HeroSection isMobile={isMobile} />
+      <HeroSection />
 
       {/* ── KEYWORD TAG STRIP ── */}
       <MovingTags tags={serviceTags} speed={50} />

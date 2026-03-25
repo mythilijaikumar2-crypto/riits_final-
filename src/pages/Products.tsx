@@ -675,7 +675,7 @@ const CategorySection = memo(({ category }: { category: Category }) => {
   }, [category.id, isAutoPlaying]);
 
   return (
-    <section id={`section-${category.id}`} className="scroll-mt-24 pb-12">
+    <section id={`section-${category.id}`} className="scroll-mt-[5rem] pb-12">
       <div className="mb-8">
         <p className="text-xs font-semibold tracking-wider text-blue-600 uppercase mb-1">
           {category.subtitle}
@@ -744,7 +744,7 @@ const Products = () => {
     productCategories.find((c) => c.id === activeTab) || productCategories[0];
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-[100dvh] bg-white pt-14 md:pt-16">
       <SEO
         title={`Fabrication Products in Trichy — Steel Gates, Railings, Shutters & Laser Design | ${COMPANY_NAME}`}
         description={`Browse ${COMPANY_NAME}'s full range of fabrication products in Trichy — steel gates, stainless steel gates, railings, rolling shutters, laser design, laser cutting, aluminium windows, glass doors, ACP cladding and more.`}
@@ -754,14 +754,18 @@ const Products = () => {
       <style>{`
         .products-hero {
           position: relative;
-          height: 100vh;
+          min-height: 100dvh;
           display: flex;
           flex-direction: column;
           justify-content: center;
+          padding: 3.5rem 1.5rem 2.5rem;
           background: #020617;
           overflow: hidden;
           transform: translateZ(0);
           backface-visibility: hidden;
+        }
+        @media (min-width: 768px) {
+          .products-hero { padding: 0; }
         }
         .hero-bg-media {
           position: absolute;
@@ -784,7 +788,7 @@ const Products = () => {
 
         .product-grid {
           display: grid;
-          gap: 4rem 4rem;
+          gap: clamp(1.5rem, 4vw, 3rem);
           padding-top: 2rem;
         }
 
@@ -792,7 +796,7 @@ const Products = () => {
           background-color: white;
           color: black;
           width: 100%;
-          min-height: 380px;
+          min-height: auto;
           border-radius: 16px;
           box-shadow: rgba(50, 50, 93, 0.15) 0px 30px 60px -20px,
             rgba(0, 0, 0, 0.2) 0px 20px 40px -30px;
@@ -812,7 +816,7 @@ const Products = () => {
 
         .card-img {
           position: relative;
-          height: 220px;
+          height: clamp(180px, 30vw, 220px);
           display: flex;
           justify-content: center;
           padding: 1.25rem 1.25rem 0;
@@ -843,7 +847,7 @@ const Products = () => {
 
          .project-title {
           font-weight: 800;
-          font-size: 1.6rem;
+          font-size: clamp(1.1rem, 3vw, 1.35rem);
           color: #0f172a;
           letter-spacing: -0.02em;
           display: -webkit-box;
@@ -854,7 +858,7 @@ const Products = () => {
         }
 
         .lighter {
-          font-size: 1.05rem;
+          font-size: clamp(0.82rem, 1.8vw, 0.875rem);
           color: #475569;
           line-height: 1.6;
           display: -webkit-box;
@@ -882,7 +886,8 @@ const Products = () => {
         .benefit-wrapper {
           position: relative;
           width: 100%;
-          height: 250px;
+          min-height: 200px;
+          height: auto;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -901,7 +906,7 @@ const Products = () => {
         .animated-mail {
           position: absolute;
           height: 150px;
-          width: 200px;
+          width: min(200px, 85vw);
           transition: .4s;
           z-index: 10;
         }
@@ -1008,11 +1013,13 @@ const Products = () => {
         .mail-shadow {
           position: absolute;
           top: 190px;
-          left: 50%;
-          width: 200px;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          width: min(200px, 85vw);
           height: 15px;
           transition: .4s;
-          transform: translateX(-50%);
+          /* transform removed for cleaner centering */
           border-radius: 100%;
           background: radial-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.0), rgba(0,0,0,0.0));
         }
@@ -1067,8 +1074,6 @@ const Products = () => {
         </motion.div>
 
         <div className="hero-mesh" />
-
-
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-8">
           <div className="grid lg:grid-cols-2 gap-10 items-center">

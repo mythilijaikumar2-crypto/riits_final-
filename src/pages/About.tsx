@@ -76,7 +76,7 @@ const FontLoader = () => (
     }
     .ap * { box-sizing: border-box; margin: 0; padding: 0; }
     .ap { font-family: 'DM Sans', sans-serif; color: var(--sl7); background: var(--white); overflow-x: hidden; }
-    .dxl { font-family:'Barlow Condensed',sans-serif; font-size:clamp(2.2rem,8vw,5.8rem); font-weight:900; line-height:0.95; letter-spacing:-0.01em; text-transform:uppercase; }
+    .dxl { font-family:'Barlow Condensed',sans-serif; font-size:clamp(1.75rem,7vw,4rem); font-weight:900; line-height:0.95; letter-spacing:-0.01em; text-transform:uppercase; }
     .dlg { font-family:'Barlow Condensed',sans-serif; font-size:clamp(1.75rem,6vw,3.4rem); font-weight:800; line-height:1.05; letter-spacing:0.01em; text-transform:uppercase; }
     .dsm { font-family:'Barlow Condensed',sans-serif; font-size:clamp(1.1rem,4vw,1.65rem); font-weight:700; letter-spacing:0.04em; text-transform:uppercase; }
 
@@ -315,7 +315,7 @@ const FontLoader = () => (
       width: 100%;
       background: #ffffff;
       border-radius: 24px;
-      padding: 2.5rem;
+      padding: clamp(1.25rem, 4vw, 2.5rem);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -567,7 +567,7 @@ const CoverageMap = () => {
   ];
 
   return (
-    <div className="relative w-full aspect-square max-w-[400px] mx-auto flex items-center justify-center p-8 bg-white/40 ring-1 ring-slate-100 rounded-[3rem] shadow-sm overflow-hidden">
+    <div className="relative w-full aspect-square max-w-[min(400px,90vw)] mx-auto flex items-center justify-center p-8 bg-white/40 ring-1 ring-slate-100 rounded-[3rem] shadow-sm overflow-hidden">
       {/* Background Pattern */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
@@ -997,7 +997,7 @@ const About = () => {
 
   return (
     <main
-      className="ap pt-16"
+      className="ap pt-14 md:pt-16"
       style={{ transform: "translateZ(0)", overflowX: "hidden" }}
     >
       <SEO
@@ -1009,7 +1009,7 @@ const About = () => {
       <FontLoader />
 
       {/* ── HERO ── */}
-      <section className="relative h-screen flex flex-col justify-center bg-[var(--navy)] overflow-hidden">
+      <section className="relative min-h-[100dvh] flex flex-col justify-center bg-[var(--navy)] overflow-hidden px-6 pt-0 pb-10 md:px-0 md:pt-0 md:pb-0">
         <h1 className="sr-only">
           About {COMPANY_NAME} — Trusted Metal Fabrication Company in Trichy,
           Tamil Nadu

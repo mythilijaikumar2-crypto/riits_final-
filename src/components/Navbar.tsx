@@ -135,10 +135,9 @@ const Navbar = () => {
             <div
               className="
             relative 
-            w-[220px]                 /* FIXED WIDTH (prevents layout shift) */
-            h-[80px] 
-            md:w-[320px]                 /* FIXED WIDTH (prevents layout shift) */
-            md:h-[100px]                 /* FIXED HEIGHT */
+            w-auto                     /* FLUID WIDTH */
+            max-w-[55vw]               /* Constraint for mobile */
+            h-14 md:h-16               /* Responsive height */
             flex items-center
             lg:hidden                 /* only mobile */
             overflow-hidden           /* hide overflow */
@@ -148,11 +147,8 @@ const Navbar = () => {
                 src={MOBILE_LOGO}
                 alt={`${BRAND_NAME} Mobile Logo`}
                 className="
-              absolute 
-              left-7
-              -translate-y-1/2        /* vertical center */
-              h-[180px]  
-              md:h-[20px]               /* increase size freely */
+              relative                  /* Switched from absolute to maintain flow */
+              h-10 md:h-14  
               w-auto 
               object-contain 
               origin-left
@@ -166,8 +162,9 @@ const Navbar = () => {
             <div
               className="
             relative 
-            w-[260px]                /* FIXED WIDTH (KEY FIX) */
-            h-[100px]                 /* FIXED HEIGHT */
+            w-auto
+            max-w-[240px]
+            h-20
             hidden lg:flex           /* only desktop */
             items-center
             overflow-hidden
@@ -177,10 +174,8 @@ const Navbar = () => {
                 src={LOGO_EMBLEM}
                 alt={`${BRAND_NAME} Desktop Logo`}
                 className="
-              absolute 
-              left-16 mt-3 
-              -translate-y-1/2
-              h-[135px]              /* BIG logo without affecting layout */
+              relative
+              h-16                   /* Fluid sizing */
               w-auto 
               object-contain 
               origin-left
@@ -267,7 +262,7 @@ const Navbar = () => {
               href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
               variant="call_now"
               size="sm"
-              className="rounded-xl px-5"
+              className="rounded-xl px-5 py-3 min-h-[44px]"
             >
               <Phone className="w-3.5 h-3.5" /> Call Now
             </TurtleButton>
@@ -351,7 +346,7 @@ const Navbar = () => {
                     href={formatTelLink(CONTACT_DETAILS.primaryPhone.value)}
                     variant="call_now"
                     size="sm"
-                    className="w-full rounded-xl"
+                    className="w-full rounded-xl py-3 min-h-[44px]"
                   >
                     <Phone className="w-4 h-4" /> Call Now
                   </TurtleButton>

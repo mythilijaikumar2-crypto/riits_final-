@@ -313,7 +313,7 @@ const ServiceRow = React.memo(({ svc, index, isLast }: ServiceRowProps) => {
 /* ─── PAGE COMPONENT ─────────────────────────────────────────────────── */
 const Services = () => {
   return (
-    <main className="overflow-hidden" style={{ transform: "translateZ(0)" }}>
+    <main className="overflow-hidden pt-14 md:pt-16" style={{ transform: "translateZ(0)" }}>
       <SEO
         title={`Steel Fabrication, Gate Work, Railing & Rolling Shutter Services in Trichy | ${COMPANY_NAME}`}
         description={`${COMPANY_NAME} offers expert steel fabrication, gate work, grill work, railing, rolling shutter installation, aluminium door & window work and glass partition services in Trichy.`}
@@ -323,7 +323,7 @@ const Services = () => {
       {/* ══════════════════════════════════════════
           HERO
       ══════════════════════════════════════════ */}
-      <section className="relative h-screen flex flex-col justify-center overflow-hidden bg-slate-950">
+      <section className="relative min-h-[100dvh] flex flex-col justify-center overflow-hidden bg-slate-950 px-6 pt-0 pb-10 md:px-0 md:pt-0 md:pb-0">
         <h1 className="sr-only">
           Steel Fabrication, Gate Work, Railing, Rolling Shutter &amp; Aluminium
           Services in Trichy | {COMPANY_NAME}
