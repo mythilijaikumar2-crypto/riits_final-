@@ -1,9 +1,20 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
 import { TurtleButton } from "./TurtleButton";
-import { CONTACT_DETAILS, formatTelLink, COMPANY_NAME, LOGO_EMBLEM, BRAND_NAME } from "../config/contact";
+import {
+  CONTACT_DETAILS,
+  formatTelLink,
+  COMPANY_NAME,
+  LOGO_EMBLEM,
+  BRAND_NAME,
+} from "../config/contact";
 import MOBILE_LOGO from "../assets/logo/RIITS LOGO CROPPED.png";
 
 const navLinks = [
@@ -38,7 +49,10 @@ const Navbar = () => {
       opacity: 1,
       height: "auto",
       y: 0,
-      transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
+      transition: {
+        duration: 0.35,
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      },
     },
     exit: {
       opacity: 0,
@@ -53,7 +67,11 @@ const Navbar = () => {
     visible: (i: number) => ({
       opacity: 1,
       x: 0,
-      transition: { delay: i * 0.07, duration: 0.35, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
+      transition: {
+        delay: i * 0.07,
+        duration: 0.35,
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      },
     }),
   };
 
@@ -78,10 +96,11 @@ const Navbar = () => {
       fixed top-0 left-0 right-0 
       z-[999] 
       transition-all duration-500
-      ${scrolled
-            ? "bg-white/80 backdrop-blur-xl border-b border-border/60 shadow-lg shadow-primary/5"
-            : "bg-card/90 backdrop-blur-md border-b border-border"
-          }
+      ${
+        scrolled
+          ? "bg-white/80 backdrop-blur-xl border-b border-border/60 shadow-lg shadow-primary/5"
+          : "bg-card/90 backdrop-blur-md border-b border-border"
+      }
     `}
         initial={{ y: -64, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -95,7 +114,6 @@ const Navbar = () => {
           right: 0,
         }}
       >
-
         {/* ========================= NAVBAR INNER CONTAINER ========================= */}
         <div
           className="
@@ -104,7 +122,6 @@ const Navbar = () => {
         w-full
       "
         >
-
           {/* ========================= LOGO SECTION ========================= */}
           <Link
             to="/"
@@ -114,7 +131,6 @@ const Navbar = () => {
           shrink-0                     /* prevent shrinking */
         "
           >
-
             {/* ========================= MOBILE LOGO ========================= */}
             <div
               className="
@@ -173,7 +189,6 @@ const Navbar = () => {
                 transition={{ duration: 0.4 }}
               />
             </div>
-
           </Link>
 
           {/* ========================= DESKTOP NAVIGATION ========================= */}
@@ -207,7 +222,6 @@ const Navbar = () => {
                     color: isActive ? "hsl(var(--primary))" : "#2d2d2d",
                   }}
                 >
-
                   {/* ================= ACTIVE UNDERLINE ================= */}
                   {isActive && (
                     <motion.span
@@ -306,7 +320,11 @@ const Navbar = () => {
                   const isActive = location.pathname === link.to;
 
                   return (
-                    <motion.div key={link.to} custom={i} variants={mobileItemVariants}>
+                    <motion.div
+                      key={link.to}
+                      custom={i}
+                      variants={mobileItemVariants}
+                    >
                       <Link
                         to={link.to}
                         onClick={() => setOpen(false)}
@@ -315,10 +333,11 @@ const Navbar = () => {
                       font-heading text-sm uppercase tracking-wider font-bold 
                       py-3 px-4 rounded-xl 
                       transition-all duration-200
-                      ${isActive
-                            ? "bg-primary/10 text-primary border-l-4 border-primary"
-                            : "hover:bg-muted text-[#2d2d2d] hover:text-primary border-l-4 border-transparent"
-                          }
+                      ${
+                        isActive
+                          ? "bg-primary/10 text-primary border-l-4 border-primary"
+                          : "hover:bg-muted text-[#2d2d2d] hover:text-primary border-l-4 border-transparent"
+                      }
                     `}
                       >
                         {link.label}
@@ -341,7 +360,6 @@ const Navbar = () => {
             </motion.div>
           )}
         </AnimatePresence>
-
       </motion.nav>
     </>
   );

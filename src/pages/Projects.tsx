@@ -327,16 +327,7 @@ const Projects = () => {
           background: linear-gradient(to right, rgba(30, 58, 138, 0.7) 0%, rgba(30, 58, 138, 0.3) 50%, transparent 100%);
           z-index: 1;
         }
-        .hero-grid-lines {
-          position: absolute;
-          inset: 0;
-          background-image:
-            linear-gradient(rgba(29, 78, 216, 0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(29, 78, 216, 0.05) 1px, transparent 1px);
-          background-size: 50px 50px;
-          z-index: 0;
-          mask-image: radial-gradient(circle at 50% 50%, black, transparent 95%);
-        }
+
         .shimmer-text {
           background: linear-gradient(90deg, #60a5fa 0%, #67e8f9 50%, #2563eb 100%);
           background-size: 200% auto;
@@ -377,7 +368,7 @@ const Projects = () => {
           />
           <div className="hero-overlay" />
         </motion.div>
-        <div className="hero-grid-lines" />
+
 
         <div className="container-main relative z-10">
           <div className="grid lg:grid-cols-2 gap-10">
