@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, Phone, Lock, Globe } from "lucide-react";
+import { CheckCircle2, Phone } from "lucide-react";
 import { BRAND_NAME, CONTACT_DETAILS, formatTelLink } from "../config/contact";
-import ADDRESS_BAR_LOGO from "../assets/logo/logo png.png";
 import { TurtleButton } from "./TurtleButton";
 
 /* ─── assets ────────────────────────────────────────────────────────── */
@@ -112,52 +110,6 @@ const ProcessSection: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto">
         {/* ── ADDRESS BAR UI ── */}
-        <div className="max-w-2xl mx-auto mb-10 overflow-hidden">
-          <motion.div 
-            initial={{ y: -20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            className="bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden shadow-2xl shadow-blue-500/10"
-          >
-            {/* Browser-style Top Controls */}
-            <div className="flex items-center gap-2 px-4 py-2 bg-white/5 border-b border-white/5">
-              <div className="flex gap-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-500/40" />
-                <div className="w-2.5 h-2.5 rounded-full bg-amber-500/40" />
-                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/40" />
-              </div>
-            </div>
-
-            {/* Address Bar Entry */}
-            <div className="flex items-center gap-3 px-4 py-2">
-              <div className="flex items-center gap-2 bg-slate-950/60 border border-white/5 rounded-lg px-4 py-1.5 flex-1 select-none">
-                <Lock className="w-3 h-3 text-emerald-500" />
-                <div className="flex items-center gap-1.5 text-[11px] font-medium tracking-wide">
-                  <span className="text-white/30 px-1 border border-white/10 rounded bg-white/5 font-black flex items-center gap-1">
-                    <img src={ADDRESS_BAR_LOGO} alt="logo" className="w-3 h-3 object-contain" />
-                  </span>
-                  <span className="text-white/40">riits.in</span>
-                  <span className="text-white/20 select-none">/</span>
-                  <span className="text-white/40">our-process</span>
-                  <span className="text-white/20 select-none">/</span>
-                  <AnimatePresence mode="wait">
-                    <motion.span 
-                      key={active}
-                      initial={{ y: 5, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      exit={{ y: -5, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="text-white font-bold"
-                    >
-                      {STEPS[active].label.toLowerCase().replace(/\s+/g, '-')}
-                    </motion.span>
-                  </AnimatePresence>
-                </div>
-              </div>
-              <Globe className="w-4 h-4 text-white/20" />
-            </div>
-          </motion.div>
-        </div>
 
         {/* Section title */}
         <div className="text-center mb-2">

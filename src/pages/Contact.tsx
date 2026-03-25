@@ -554,9 +554,7 @@ const Contact = () => {
               variant="call_now"
               className="rounded-xl px-10 w-full sm:w-auto"
             >
-              <Phone className="w-4 h-4" /> Call{" "}
-              {CONTACT_DETAILS.primaryPhone.display} /{" "}
-              {CONTACT_DETAILS.secondaryPhone.display}
+              <Phone className="w-4 h-4" /> Call Now
             </TurtleButton>
             <a
               href={getWhatsAppUrl()}

@@ -868,8 +868,7 @@ const CTASection = ({ isMobile }: { isMobile: boolean }) => (
             className="rounded-xl px-10 py-4 h-auto text-[clamp(14px,4vw,16px)] w-full sm:w-auto min-h-[48px]"
           >
             <Phone className="w-[clamp(18px,5vw,20px)] h-[clamp(18px,5vw,20px)]" />{" "}
-            Call {CONTACT_DETAILS.primaryPhone.display} /{" "}
-            {CONTACT_DETAILS.secondaryPhone.display}
+            Call Now
           </TurtleButton>
           <TurtleButton
             to="/projects"
@@ -983,45 +982,46 @@ const Index = () => {
                     />
                   </motion.div>
 
-                  <div className="relative flex-1 flex items-center justify-center overflow-visible min-h-[450px] sm:min-h-[320px] pt-8 md:pt-0">
-                    <AnimatePresence>
-                      <motion.div
-                        key={services[currentSlide].title}
-                        initial={{ x: 100, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        exit={{ x: -100, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: "circOut" }}
-                        className="w-full max-w-lg bg-white rounded-2xl shadow-lg border border-slate-100 overflow-visible flex flex-col absolute"
-                        style={{ marginTop: isMobile ? "0" : "auto" }}
-                      >
-                        <div className="bg-[hsl(225,73%,35%)] px-8 py-10 md:p-6 text-center flex flex-col items-center justify-center relative overflow-visible min-h-[180px] md:min-h-[auto]">
-                          <span className="text-5xl md:text-4xl mb-5 md:mb-3 bg-white/10 p-6 md:p-4 rounded-xl backdrop-blur-md inline-flex items-center justify-center w-[90px] h-[90px] md:w-[70px] md:h-[70px] shrink-0">
-                            {services[currentSlide].icon}
-                          </span>
-                          <h3 className="font-heading text-lg font-bold uppercase text-white tracking-[0.15em]">
-                            {services[currentSlide].title}
-                          </h3>
-                        </div>
-                        <div className="p-6 text-center">
-                          <p className="text-sm text-slate-600 font-medium leading-relaxed italic mb-2">
-                            {services[currentSlide].desc}
-                          </p>
-                          {/* SEO-rich sub-description — natural product keyword placement */}
-                          <p className="text-xs text-slate-400 leading-relaxed mb-5">
-                            {services[currentSlide].seoDesc}
-                          </p>
-                          <Link
-                            to={`/products?open=${services[currentSlide].productCategory}`}
-                            className="inline-flex items-center gap-2 text-[hsl(225,73%,35%)] font-bold uppercase tracking-widest text-[10px] hover:gap-3 transition-all"
-                          >
-                            Explore Details <ChevronRight className="w-4 h-4" />
-                          </Link>
-                        </div>
-                      </motion.div>
-                    </AnimatePresence>
-                  </div>
+                  {/* Mobile: flex-col so card sits directly above dots */}
+                  <div className="flex flex-col md:block">
+                    <div className="relative md:flex md:items-center md:justify-center md:overflow-visible md:min-h-[320px]">
+                      <AnimatePresence>
+                        <motion.div
+                          key={services[currentSlide].title}
+                          initial={{ x: 100, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          exit={{ x: -100, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: "circOut" }}
+                          className="w-full max-w-lg bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden flex flex-col md:absolute"
+                        >
+                          <div className="bg-[hsl(225,73%,35%)] px-8 py-8 md:p-6 text-center flex flex-col items-center justify-center relative">
+                            <span className="text-5xl md:text-4xl mb-4 md:mb-3 bg-white/10 p-5 md:p-4 rounded-xl backdrop-blur-md inline-flex items-center justify-center w-[80px] h-[80px] md:w-[70px] md:h-[70px] shrink-0">
+                              {services[currentSlide].icon}
+                            </span>
+                            <h3 className="font-heading text-lg font-bold uppercase text-white tracking-[0.15em]">
+                              {services[currentSlide].title}
+                            </h3>
+                          </div>
+                          <div className="p-6 text-center">
+                            <p className="text-sm text-slate-600 font-medium leading-relaxed italic mb-2">
+                              {services[currentSlide].desc}
+                            </p>
+                            {/* SEO-rich sub-description — natural product keyword placement */}
+                            <p className="text-xs text-slate-400 leading-relaxed mb-5">
+                              {services[currentSlide].seoDesc}
+                            </p>
+                            <Link
+                              to={`/products?open=${services[currentSlide].productCategory}`}
+                              className="inline-flex items-center gap-2 text-[hsl(225,73%,35%)] font-bold uppercase tracking-widest text-[10px] hover:gap-3 transition-all"
+                            >
+                              Explore Details <ChevronRight className="w-4 h-4" />
+                            </Link>
+                          </div>
+                        </motion.div>
+                      </AnimatePresence>
+                    </div>
 
-                  <div className="flex justify-center gap-1.5 sm:gap-2 mt-10 sm:mt-4">
+                  <div className="flex justify-center gap-1.5 sm:gap-2 mt-4">
                     {services.map((_, i) => (
                       <button
                         key={i}
@@ -1041,6 +1041,7 @@ const Index = () => {
                         />
                       </button>
                     ))}
+                  </div>
                   </div>
                 </div>
               </div>
