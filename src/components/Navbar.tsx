@@ -146,13 +146,7 @@ const Navbar = () => {
               <motion.img
                 src={MOBILE_LOGO}
                 alt={`${BRAND_NAME} Mobile Logo`}
-                className="
-              relative                  /* Switched from absolute to maintain flow */
-              h-10 md:h-14  
-              w-auto 
-              object-contain 
-              origin-left
-            "
+                className="h-10 md:h-14 w-auto object-contain origin-left"
                 animate={{ scale: scrolled ? 0.9 : 1 }}
                 transition={{ duration: 0.4 }}
               />
