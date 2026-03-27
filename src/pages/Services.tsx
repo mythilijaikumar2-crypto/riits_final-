@@ -376,7 +376,7 @@ const Services = () => {
                 visible: { opacity: 1, y: 0 },
               }}
               aria-hidden="true"
-              className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
+              className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6 drop-shadow-[0_5px_15px_rgba(0,0,0,0.4)]"
             >
               Expert
               <br />
@@ -391,19 +391,32 @@ const Services = () => {
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 },
               }}
-              className="text-white/65 text-base leading-relaxed max-w-2xl mb-8 mx-auto"
+              className="text-white font-medium text-[clamp(15px,4vw,17.5px)] leading-relaxed max-w-2xl mb-8 mx-auto [text-shadow:_0_2px_15px_rgba(0,0,0,0.6)]"
             >
               {COMPANY_NAME} is your trusted{" "}
-              <strong className="text-white/85">
+              <strong className="text-white font-bold decoration-blue-400/30 underline-offset-4 decoration-2">
                 fabrication shop in Trichy
               </strong>{" "}
               — delivering expert{" "}
-              <strong className="text-white/85">steel fabrication</strong>,{" "}
-              <strong className="text-white/85">gate fabrication</strong>,{" "}
-              <strong className="text-white/85">rolling shutter work</strong>,{" "}
-              <strong className="text-white/85">aluminium window work</strong>{" "}
+              <strong className="text-white font-bold decoration-blue-400/30 underline-offset-4 decoration-2">
+                steel fabrication
+              </strong>
+              ,{" "}
+              <strong className="text-white font-bold decoration-blue-400/30 underline-offset-4 decoration-2">
+                gate fabrication
+              </strong>
+              ,{" "}
+              <strong className="text-white font-bold decoration-blue-400/30 underline-offset-4 decoration-2">
+                rolling shutter work
+              </strong>
+              ,{" "}
+              <strong className="text-white font-bold decoration-blue-400/30 underline-offset-4 decoration-2">
+                aluminium window work
+              </strong>{" "}
               and{" "}
-              <strong className="text-white/85">glass partition work</strong>{" "}
+              <strong className="text-white font-bold decoration-blue-400/30 underline-offset-4 decoration-2">
+                glass partition work
+              </strong>{" "}
               for residential, commercial and industrial projects across Tamil
               Nadu.
             </motion.p>

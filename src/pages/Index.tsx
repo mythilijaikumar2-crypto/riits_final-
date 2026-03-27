@@ -72,7 +72,7 @@ const localBusinessSchema = {
     longitude: 78.7047,
   },
   description:
-    "Trichy's most trusted metal fabrication studio — custom steel gates, MS/SS railings, rolling shutters, aluminium glazing, ACP cladding & industrial structural fabrication.",
+    "Trichy's most trusted metal fabrication studio — crafting steel gates, stainless steel railings, rolling shutters, aluminium windows & ACP cladding that stand the test of time.",
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
     dayOfWeek: [
@@ -443,7 +443,7 @@ const HeroSection = () => (
         // @ts-ignore
         fetchpriority="high"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/30 to-slate-950/50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/45 via-slate-950/35 to-slate-950/45" />
     </div>
 
     <div className="w-full max-w-4xl mx-auto px-6 relative z-10">
@@ -480,7 +480,7 @@ const HeroSection = () => (
                 visible: { opacity: 1, y: 0 },
               }}
               aria-hidden="true"
-              className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
+              className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6 drop-shadow-2xl"
             >
               Where Steel
               <br />
@@ -496,26 +496,26 @@ const HeroSection = () => (
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 },
               }}
-              className="text-white/65 text-[clamp(14px,4vw,16px)] leading-relaxed max-w-2xl mb-8 mx-auto"
+              className="text-white font-medium text-[clamp(15px,4vw,17px)] leading-relaxed max-w-2xl mb-8 mx-auto [text-shadow:_0_1px_20px_rgb(0_0_0_/_40%)]"
             >
               Trichy's most trusted metal fabrication studio — crafting{" "}
-              <strong className="text-white/80 font-semibold">
+              <strong className="text-white font-bold decoration-amber-400/30 underline-offset-4 decoration-2">
                 steel gates
               </strong>
               ,{" "}
-              <strong className="text-white/80 font-semibold">
+              <strong className="text-white font-bold decoration-amber-400/30 underline-offset-4 decoration-2">
                 stainless steel railings
               </strong>
               ,{" "}
-              <strong className="text-white/80 font-semibold">
+              <strong className="text-white font-bold decoration-amber-400/30 underline-offset-4 decoration-2">
                 rolling shutters
               </strong>
               ,{" "}
-              <strong className="text-white/80 font-semibold">
+              <strong className="text-white font-bold decoration-amber-400/30 underline-offset-4 decoration-2">
                 aluminium windows
               </strong>{" "}
               &amp;{" "}
-              <strong className="text-white/80 font-semibold">
+              <strong className="text-white font-bold decoration-amber-400/30 underline-offset-4 decoration-2">
                 ACP cladding
               </strong>{" "}
               that stand the test of time.
@@ -916,7 +916,7 @@ const Index = () => {
     >
       <SEO
         title={`Steel Gates, Railings & Metal Fabrication in Trichy | ${COMPANY_NAME}`}
-        description={`${COMPANY_NAME} – Trichy's trusted fabricators of SS/MS gates, railings, rolling shutters, aluminium windows, ACP cladding & industrial structures. Free quote today!`}
+        description={`Trichy's most trusted metal fabrication studio — crafting steel gates, stainless steel railings, rolling shutters, aluminium windows & ACP cladding. Call: ${CONTACT_DETAILS.primaryPhone.display}.`}
         keywords="steel gate, stainless steel gate, MS gate, metal gate, sliding gate, compound gate, window grill, steel grill, balcony railing, stainless steel railing, staircase railing, steel handrail, steel staircase, metal staircase, rolling shutter, shop shutter, industrial shutter, aluminium door, aluminium window, aluminium sliding window, aluminium partition, glass door, toughened glass door, frameless glass door, glass partition, ACP cladding panel, aluminium cladding panel, building facade panels, steel pergola, metal canopy, steel gate near me, fabrication shop near me, metal fabrication near me, steel fabrication near me, rolling shutter near me, aluminium work near me, glass work near me, railing fabrication near me, gate fabrication near me, grill fabrication near me, metal fabrication trichy, gate fabricators trichy, stainless steel railings trichy, ACP cladding trichy, industrial fabrication tamil nadu"
         schemaData={localBusinessSchema}
       />

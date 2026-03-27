@@ -1109,7 +1109,7 @@ const Products = () => {
                 visible: { opacity: 1, y: 0 },
               }}
               aria-hidden="true"
-              className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
+              className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6 drop-shadow-[0_5px_15px_rgba(0,0,0,0.4)]"
             >
               Product
               <br />
@@ -1126,18 +1126,37 @@ const Products = () => {
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 },
               }}
-              className="text-white/65 text-base leading-relaxed max-w-2xl mb-8 mx-auto"
+              className="text-white font-medium text-[clamp(15px,4vw,17px)] leading-relaxed max-w-2xl mb-8 mx-auto [text-shadow:_0_2px_15px_rgba(0,0,0,0.6)]"
             >
               Explore our complete range of{" "}
-              <strong className="text-white/85">fabrication products</strong>{" "}
+              <strong className="text-white font-bold decoration-cyan-400/30 underline-offset-4 decoration-2">
+                fabrication products
+              </strong>{" "}
               in Trichy — custom{" "}
-              <strong className="text-white/85">steel gates</strong>,{" "}
-              <strong className="text-white/85">balcony railings</strong>,{" "}
-              <strong className="text-white/85">rolling shutters</strong>,{" "}
-              <strong className="text-white/85">aluminium windows</strong>,{" "}
-              <strong className="text-white/85">glass doors</strong> and{" "}
-              <strong className="text-white/85">ACP cladding</strong> —
-              precision-built with Grade-A materials for lasting excellence.
+              <strong className="text-white font-bold decoration-cyan-400/30 underline-offset-4 decoration-2">
+                steel gates
+              </strong>
+              ,{" "}
+              <strong className="text-white font-bold decoration-cyan-400/30 underline-offset-4 decoration-2">
+                balcony railings
+              </strong>
+              ,{" "}
+              <strong className="text-white font-bold decoration-cyan-400/30 underline-offset-4 decoration-2">
+                rolling shutters
+              </strong>
+              ,{" "}
+              <strong className="text-white font-bold decoration-cyan-400/30 underline-offset-4 decoration-2">
+                aluminium windows
+              </strong>
+              ,{" "}
+              <strong className="text-white font-bold decoration-cyan-400/30 underline-offset-4 decoration-2">
+                glass doors
+              </strong>{" "}
+              and{" "}
+              <strong className="text-white font-bold decoration-cyan-400/30 underline-offset-4 decoration-2">
+                ACP cladding
+              </strong>{" "}
+              — precision-built with Grade-A materials for lasting excellence.
             </motion.p>
 
             <motion.div

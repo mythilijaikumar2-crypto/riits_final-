@@ -405,7 +405,7 @@ const Projects = () => {
                 visible: { opacity: 1, y: 0 },
               }}
               aria-hidden="true"
-              className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
+              className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6 drop-shadow-[0_5px_15px_rgba(0,0,0,0.4)]"
             >
               Projects
               <br />
@@ -420,26 +420,30 @@ const Projects = () => {
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 },
               }}
-              className="text-white/70 text-base leading-relaxed max-w-2xl mb-8 mx-auto"
+              className="text-white font-medium text-[clamp(15px,4vw,17px)] leading-relaxed max-w-2xl mb-8 mx-auto [text-shadow:_0_2px_15px_rgba(0,0,0,0.6)]"
             >
               Browse our real completed{" "}
-              <strong className="text-white/85">
+              <strong className="text-white font-bold decoration-blue-400/30 underline-offset-4 decoration-2">
                 fabrication work photos
               </strong>{" "}
               — from{" "}
-              <strong className="text-white/85">
+              <strong className="text-white font-bold decoration-blue-400/30 underline-offset-4 decoration-2">
                 steel gate work in Trichy
               </strong>{" "}
               and{" "}
-              <strong className="text-white/85">grill work in Trichy</strong>{" "}
+              <strong className="text-white font-bold decoration-blue-400/30 underline-offset-4 decoration-2">
+                grill work in Trichy
+              </strong>{" "}
               to{" "}
-              <strong className="text-white/85">
+              <strong className="text-white font-bold decoration-blue-400/30 underline-offset-4 decoration-2">
                 rolling shutter installation
               </strong>
               ,{" "}
-              <strong className="text-white/85">glass partition work</strong>{" "}
+              <strong className="text-white font-bold decoration-blue-400/30 underline-offset-4 decoration-2">
+                glass partition work
+              </strong>{" "}
               and full{" "}
-              <strong className="text-white/85">
+              <strong className="text-white font-bold decoration-blue-400/30 underline-offset-4 decoration-2">
                 metal fabrication work in Trichy
               </strong>{" "}
               — every photo is a real project we built and installed.

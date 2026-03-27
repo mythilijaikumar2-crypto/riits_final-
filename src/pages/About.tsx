@@ -576,7 +576,7 @@ const About = () => {
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 },
               }}
-              className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
+              className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6 drop-shadow-[0_5px_15px_rgba(0,0,0,0.4)]"
             >
               Precision
               <br />
@@ -592,16 +592,21 @@ const About = () => {
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 },
               }}
-              className="text-white/70 text-base leading-relaxed max-w-2xl mx-auto"
+              className="text-white font-medium text-[clamp(15px,4vw,17.5px)] leading-relaxed max-w-2xl mx-auto [text-shadow:_0_2px_15px_rgba(0,0,0,0.6)]"
             >
               {COMPANY_NAME} is a trusted{" "}
-              <strong className="text-white/85">
+              <strong className="text-white font-bold decoration-blue-400/30 underline-offset-4 decoration-2">
                 fabrication shop in Trichy
               </strong>{" "}
               with over 15 years of experience in{" "}
-              <strong className="text-white/85">metal fabrication</strong> and{" "}
-              <strong className="text-white/85">steel fabrication</strong>. We
-              serve homeowners, builders and businesses across Trichy,
+              <strong className="text-white font-bold decoration-blue-400/30 underline-offset-4 decoration-2">
+                metal fabrication
+              </strong>{" "}
+              and{" "}
+              <strong className="text-white font-bold decoration-blue-400/30 underline-offset-4 decoration-2">
+                steel fabrication
+              </strong>
+              . We serve homeowners, builders and businesses across Trichy,
               Thanjavur and Tamil Nadu — delivering every project with
               precision and care.
             </motion.p>

@@ -24,7 +24,7 @@ const SEO = ({
 }: SEOProps) => {
   const siteName = COMPANY_NAME;
   const fullTitle = `${title} | ${siteName}`;
-  const siteUrl = "https://riits.in";
+  const siteUrl = "https://riitsmetalcraft.in";
   const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
 
   return (

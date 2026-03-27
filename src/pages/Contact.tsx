@@ -300,7 +300,7 @@ const Contact = () => {
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 },
               }}
-              className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6"
+              className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-[1.1] tracking-tight text-white mb-6 drop-shadow-[0_5px_15px_rgba(0,0,0,0.4)]"
             >
               Let's Talk
               <br />
@@ -316,17 +316,22 @@ const Contact = () => {
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 },
               }}
-              className="text-white/65 text-base leading-relaxed max-w-2xl mb-8 mx-auto"
+              className="text-white font-medium text-[clamp(15px,4vw,17px)] leading-relaxed max-w-2xl mb-8 mx-auto [text-shadow:_0_2px_15px_rgba(0,0,0,0.6)]"
             >
               Looking for a trusted{" "}
-              <strong className="text-white/85">
+              <strong className="text-white font-bold decoration-blue-400/30 underline-offset-4 decoration-2">
                 fabrication shop near me
               </strong>{" "}
-              in Trichy?
-              {COMPANY_NAME} offers complete{" "}
-              <strong className="text-white/85">steel fabrication</strong>,{" "}
-              <strong className="text-white/85">metal fabrication</strong> and{" "}
-              <strong className="text-white/85">
+              in Trichy? {COMPANY_NAME} offers complete{" "}
+              <strong className="text-white font-bold decoration-blue-400/30 underline-offset-4 decoration-2">
+                steel fabrication
+              </strong>
+              ,{" "}
+              <strong className="text-white font-bold decoration-blue-400/30 underline-offset-4 decoration-2">
+                metal fabrication
+              </strong>{" "}
+              and{" "}
+              <strong className="text-white font-bold decoration-blue-400/30 underline-offset-4 decoration-2">
                 fabrication services in Trichy
               </strong>{" "}
               — call or WhatsApp us for a free site visit and written
