@@ -1,5 +1,5 @@
-import { Helmet } from 'react-helmet-async';
-import { COMPANY_NAME } from '../config/contact';
+import { Helmet } from "react-helmet-async";
+import { COMPANY_NAME } from "../config/contact";
 
 interface SEOProps {
   title: string;
@@ -7,8 +7,8 @@ interface SEOProps {
   keywords?: string;
   canonical?: string;
   ogImage?: string;
-  ogType?: 'website' | 'article' | 'product';
-  twitterCard?: 'summary' | 'summary_large_image';
+  ogType?: "website" | "article" | "product";
+  twitterCard?: "summary" | "summary_large_image";
   schemaData?: object;
 }
 
@@ -17,14 +17,14 @@ const SEO = ({
   description,
   keywords,
   canonical,
-  ogImage = '/og-image.webp',
-  ogType = 'website',
-  twitterCard = 'summary_large_image',
+  ogImage = "/og-image.webp",
+  ogType = "website",
+  twitterCard = "summary_large_image",
   schemaData,
 }: SEOProps) => {
   const siteName = COMPANY_NAME;
   const fullTitle = `${title} | ${siteName}`;
-  const siteUrl = 'https://riits.in';
+  const siteUrl = "https://riits.in";
   const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
 
   return (
@@ -58,9 +58,7 @@ const SEO = ({
 
       {/* Structured Data */}
       {schemaData && (
-        <script type="application/ld+json">
-          {JSON.stringify(schemaData)}
-        </script>
+        <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
       )}
     </Helmet>
   );
