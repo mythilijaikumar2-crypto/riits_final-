@@ -511,7 +511,7 @@ const About = () => {
     >
       <SEO
         title={`About ${COMPANY_NAME} | Trusted Fabrication Company in Trichy, Tamil Nadu`}
-        description={`${COMPANY_NAME} is a leading fabrication shop in Trichy with 15+ years in metal fabrication. We build steel gates, railings, rolling shutters, aluminium windows, glass doors & more.`}
+        description={`Learn more about RIITS Metal Craft — Trichy's premium fabrication shop with 15+ years of experience. We build high-quality steel gates, railings, rolling shutters, aluminium works & ACP cladding. Serving Trichy, Thanjavur, Karur & Pan Tamil Nadu. Contact: 98947 94557 / 63839 98574. Email: riitsmetalcraft@gmail.com. Visit: https://riitsmetalcraft.in/`}
         keywords="fabrication company in Trichy, fabrication shop in Trichy, metal fabrication, steel fabrication, welding work, steel gate, metal gate, grill work, balcony railing, staircase railing, window grill, rolling shutter, shop shutter, aluminium door, aluminium window, glass door, glass partition, steel gate near me, grill work near me, steel gate fabrication in Trichy"
       />
 

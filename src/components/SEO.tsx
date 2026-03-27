@@ -17,9 +17,9 @@ const SEO = ({
   description,
   keywords,
   canonical,
-  ogImage = "/og-image.webp",
+  ogImage = "/preview.png",
   ogType = "website",
-  twitterCard = "summary_large_image",
+  twitterCard = "summary",
   schemaData,
 }: SEOProps) => {
   const siteName = COMPANY_NAME;

@@ -319,7 +319,7 @@ const Services = () => {
     >
       <SEO
         title={`Steel Fabrication, Gate Work, Railing & Rolling Shutter Services in Trichy | ${COMPANY_NAME}`}
-        description={`${COMPANY_NAME} offers expert steel fabrication, gate work, grill work, railing, rolling shutter installation, aluminium door & window work and glass partition services in Trichy.`}
+        description={`Explore RIITS Metal Craft's expert services in Trichy. We specialize in high-quality Steel Gates, SS Railings, Rolling Shutters, Aluminium Windows, ACP Cladding, and Glass Partitions. Professional fabrication work with on-time delivery across Tamil Nadu. Contact: 98947 94557 / 63839 98574. Email: riitsmetalcraft@gmail.com. Visit: https://riitsmetalcraft.in/`}
         keywords="steel fabrication, metal fabrication, fabrication work, gate fabrication, steel gate work, metal gate work, grill work, window grill work, balcony railing work, staircase railing work, rolling shutter work, shop shutter installation, aluminium door work, aluminium window work, aluminium sliding window, glass door work, toughened glass door, glass partition work, welding work, fabrication shop, metal work, steel work, fabrication shop in Trichy, steel fabrication in Trichy, gate fabrication in Trichy, grill work in Trichy, rolling shutter work in Trichy"
       />
 

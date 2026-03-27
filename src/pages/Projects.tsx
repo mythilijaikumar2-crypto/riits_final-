@@ -294,7 +294,7 @@ const Projects = () => {
     <main className="pt-14 md:pt-16">
       <SEO
         title={`Steel Gate, Grill, Railing & Fabrication Projects in Trichy | ${COMPANY_NAME} Our Works`}
-        description={`Browse 800+ real fabrication projects in Trichy by ${COMPANY_NAME} — steel gate work, grill work, rolling shutter installation, aluminium window work, glass partition work and more.`}
+        description={`Browse 800+ real-world fabrication projects by RIITS Metal Craft in Trichy. See our expert work in Steel Gates, SS Railings, Rolling Shutters, Aluminium Windows, ACP Cladding, and Glass Partitions. High-quality craftsmanship and proven results. Contact: 98947 94557 / 63839 98574. Email: riitsmetalcraft@gmail.com. Visit: https://riitsmetalcraft.in/`}
         keywords="steel gate work in Trichy, grill work in Trichy, rolling shutter work in Trichy, fabrication projects in Trichy, metal fabrication work in Trichy, balcony railing work, staircase railing work, rolling shutter installation, shop shutter work, aluminium door installation, aluminium window work, glass door installation, glass partition work, steel fabrication work, metal fabrication work, welding work, fabrication work photos, gate fabrication designs"
       />
 

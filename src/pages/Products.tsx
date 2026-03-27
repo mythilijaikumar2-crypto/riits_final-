@@ -749,7 +749,7 @@ const Products = () => {
     <main className="min-h-[100dvh] bg-white pt-14 md:pt-16">
       <SEO
         title={`Fabrication Products in Trichy — Steel Gates, Railings, Shutters & Laser Design | ${COMPANY_NAME}`}
-        description={`Browse ${COMPANY_NAME}'s full range of fabrication products in Trichy — steel gates, stainless steel gates, railings, rolling shutters, laser design, laser cutting, aluminium windows, glass doors, ACP cladding and more.`}
+        description={`Discover RIITS Metal Craft's full range of fabrication products in Trichy. From Steel Gates and SS Railings to Rolling Shutters, Aluminium Windows, ACP Cladding, and Laser Design. High-quality materials, precision engineering, and expert installation. Contact: 98947 94557 / 63839 98574. Email: riitsmetalcraft@gmail.com. Visit: https://riitsmetalcraft.in/`}
         keywords="laser design, laser cutting, laser cut gate, laser cut partition, steel gate, metal gate, stainless steel gate, window grill, grill work, balcony railing, staircase railing, steel railing, rolling shutter, shop shutter, aluminium door, aluminium window, aluminium sliding window, glass door, toughened glass door, glass partition, office glass partition, steel staircase, metal staircase, fabrication products, metal fabrication, steel fabrication, gate fabrication, steel gate in Trichy, grill work in Trichy, rolling shutter in Trichy, aluminium window in Trichy, fabrication shop in Trichy"
       />
 
